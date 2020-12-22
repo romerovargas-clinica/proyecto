@@ -1,0 +1,36 @@
+localhost/phpmyadmin
+
+Crear BASE DE DATOS
+NOMBRE    COTEJAMIENTO
+clinica   utf8_general_ci
+
+Seleccionar Base de Datos >> Privilegios
+Agregar cuenta de usuario
+Nombre de usuario: clinica
+Contraseña: kIj6%jkDf_09
+Privilegios globales >> Seleccionar todo
+
+Crear TABLA
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+--
+-- Estructura de tabla para la tabla `content`
+--
+CREATE TABLE `content` (
+  `id` int(11) NOT NULL,
+  `label` varchar(15) NOT NULL,
+  `content` text NOT NULL,
+  `last_modify` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--
+-- Indices de la tabla `content`
+--
+ALTER TABLE `content`
+  ADD PRIMARY KEY (`id`);
+--
+-- AUTO_INCREMENT de la tabla `content`
+--
+ALTER TABLE `content`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
