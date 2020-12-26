@@ -38,30 +38,22 @@ $nav_style = "alt";
   </div>
   <?php include "sections/navbar.php"?>
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <!-- Imagen de Darko Stojanovic https://pixabay.com/es/users/darkostojanovic-638422/ -->
-        <img class="d-block w-100" src="images/carousel/doctor-563429_640.jpg" alt="First slide">
+    <!-- login -->
+
+    <div class="container-fluid container-sm p-5" style="width: 20rem;">
+      <div class="mb-3">
+        <label for="FormControlInput1" class="form-label"><?=__('frm_Email',$lang)?></label>
+        <input type="email" class="form-control" id="FormControlInput1" placeholder="name@example.com">
       </div>
-      <div class="carousel-item">
-        <!-- Imagen de StockSnap https://pixabay.com/es/users/stocksnap-894430/ -->
-        <img class="d-block w-100" src="images/carousel/chair-2589771_640.jpg" alt="Second slide">
+      <div class="mb-3">
+        <label for="FormControlPass" class="form-label"><?=__('frm_Pass',$lang)?></label>
+        <input type="password" class="form-control" id="FormControlPass" placeholder="password">
       </div>
-      <div class="carousel-item">
-        <!-- Imagen de StockSnap https://pixabay.com/es/users/stocksnap-894430/ -->
-        <img class="d-block w-100" src="images/carousel/chair-2584260_640.jpg" alt="Third slide">
+      <div class="mb-3">
+        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-  <?php include ("includes/scripts.php")?>
+    <?php include ("includes/scripts.php")?>
 </body>
 
 </html>
