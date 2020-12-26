@@ -12,32 +12,9 @@ $nav_style = "alt";
 <?php require "sections/head.php";?>
 
 <body>
-  <div class="container-lg">
-    <div class="row align-items-start">
-      <div class="col">
-        <figure class="figure">
-          <img class="rounded float-start" src="images/logoAzul.svg" width="300" height="175">
-        </figure>
-      </div>
-      <div class="col">
-        <div class="social">
-          <div class="container px-4">
-            <div class="row gx-5">
-              <div class="col ">
-                <div class="p-3 border bg-light"><i class="fab fa-twitter-square my-2 my-sm-0"></i></div>
-              </div>
-              <div class="col">
-                <div class="p-3 border bg-light">Custom column padding</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <?php include "sections/header.php"?>
   <?php include "sections/navbar.php"?>
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div id="carouselExampleControls" class="container carousel slide bd-light" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <!-- Imagen de Darko Stojanovic https://pixabay.com/es/users/darkostojanovic-638422/ -->
@@ -61,6 +38,14 @@ $nav_style = "alt";
       <span class="sr-only">Next</span>
     </a>
   </div>
+  <div class="jumbotron container">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+</div>
+  <?php include "sections/footer.php"?>
   <?php include ("includes/scripts.php")?>
 </body>
 
