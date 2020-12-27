@@ -6,7 +6,7 @@ class DataBase
     var $connection;
 
     public function __construct()
-    {
+    {        
         if (DB_PASS == NULL)
             $this->connection = mysqli_connect(DB_SERVER, DB_USER, DB_NAME);
         else

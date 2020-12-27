@@ -3,6 +3,8 @@
 include ("includes/data.php");
 include ("includes/functions.php");
 include ("includes/sessions.php");
+// Recuperar la sesión anterior
+initiate();
 // TITLE DE LA PÁGINA ACTUAL //
 $PG_NAME = "Home";
 $nav_style = "alt";
@@ -11,7 +13,7 @@ $nav_style = "alt";
 <html lang="<?=$lang?>">
 <?php require "sections/head.php";?>
 
-<body>
+<body class="bg-light">
   <?php include "sections/header.php"?>
   <?php include "sections/navbar.php"?>
   <div id="carouselExampleControls" class="container carousel slide bd-light" data-ride="carousel">

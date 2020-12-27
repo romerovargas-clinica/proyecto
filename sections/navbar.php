@@ -30,9 +30,14 @@
         <a class="nav-link" href="login.php"><?=__('mn_Login', $lang)?><?php if($PG_NAME=="Login"):?><span class="sr-only">(current)</span><?php endif;?></a>
       </li>
       <?php else:?>
-        <li class="nav-item<?php if($PG_NAME=="Login"):?> active<?php endif;?>">
-        <a class="nav-link" href="logout.php"><?=__('mn_Logout', $lang)?></a>
-      </li>
+        <?php if(isset($_SESSION["roles"]) && $_SESSION["roles"]=="[ADMIN-USER]"):?>
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="admin.php"><?=__('mn_Admin', $lang)?></a>
+        </li>
+        <?PHP endif;?>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php"><?=__('mn_Logout', $lang)?></a>
+        </li>
       <?php endif?>
     </ul>
     <form class="form-inline my-2 my-lg-0">

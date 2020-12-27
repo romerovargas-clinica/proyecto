@@ -11,8 +11,10 @@ $texts = array(
   'mn_Speciality' => "Speciality",
   'mn_Login' => "Login",
   'mn_Logout' => "Logout",
+  'mn_Admin' => "Admin",
   // Forms
   'frm_Email' => "Email address",
   'frm_Pass' => "Password",
   'frm_Send' => "Send",
+  'frm_Remember' => "Remember session",
 );
