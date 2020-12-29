@@ -4,3 +4,6 @@
 .panel-lateral{
   height: 100%;
 }
+tr.tbl-h tr:hover{
+  cursor: pointer;
+}

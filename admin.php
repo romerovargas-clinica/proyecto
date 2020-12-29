@@ -1,4 +1,9 @@
 <?php
+// Si hay algún error, descomentar las siguiente líneas
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // TODAS LAS PÁGINAS CARGAN LOS SIGUIENTE ARCHIVOS //
 include ("includes/data.php");
 include ("includes/functions.php");
@@ -12,6 +17,16 @@ if (!isAuthenticated() && $_SESSION["roles"]!=["ADMIN-USER"]) {
   // fuera de aquí!!
   header("location:index.php");
 }
+// Página del main
+if(isset($_GET["section"])):
+  $adm_pag = $_GET["section"];
+else:
+  $adm_pag = "dashboard";
+endif;
+
+// Datos
+$db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
+$param = $db->send("SELECT * FROM config;");
 ?>
 <!DOCTYPE html>
 <html lang="<?=$lang?>">
@@ -19,7 +34,7 @@ if (!isAuthenticated() && $_SESSION["roles"]!=["ADMIN-USER"]) {
 
     <body>
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php"><?=$param[0]["value"]?></a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -28,7 +43,7 @@ if (!isAuthenticated() && $_SESSION["roles"]!=["ADMIN-USER"]) {
             <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
-                    <a class="nav-link" href="#">Sign out</a>
+                    <a class="nav-link" href="logout.php"><?=__('mn_Logout', $lang)?></a>
                 </li>
             </ul>
         </header>
@@ -39,41 +54,29 @@ if (!isAuthenticated() && $_SESSION["roles"]!=["ADMIN-USER"]) {
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">
+                                <a class="nav-link active" aria-current="page" href="admin.php">
                                     <span data-feather="home"></span>
                                     Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file"></span>
-                                    Orders
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="shopping-cart"></span>
-                                    Products
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="users"></span>
-                                    Customers
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="bar-chart-2"></span>
-                                    Reports
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="admin.php?section=settings">
                                     <span data-feather="layers"></span>
-                                    Integrations
+                                    <?=__('sect_settings',$lang)?>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin.php?section=users">
+                                    <span data-feather="users"></span>
+                                    <?=__('sect_users',$lang)?>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin.php?section=articles">
+                                    <span data-feather="file-text"></span>
+                                    <?=__('sect_articles',$lang)?>
+                                </a>
+                            </li>                            
                         </ul>
 
                         <h6
@@ -115,149 +118,24 @@ if (!isAuthenticated() && $_SESSION["roles"]!=["ADMIN-USER"]) {
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-left:219px">
                     <div
                         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Dashboard</h1>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <div class="btn-group me-2">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                            </div>
-                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                                <span data-feather="calendar"></span>
-                                This week
-                            </button>
-                        </div>
-                    </div>
-
-                    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
-                    <h2>Section title</h2>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Header</th>
-                                    <th>Header</th>
-                                    <th>Header</th>
-                                    <th>Header</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1,001</td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td>1,002</td>
-                                    <td>amet</td>
-                                    <td>consectetur</td>
-                                    <td>adipiscing</td>
-                                    <td>elit</td>
-                                </tr>
-                                <tr>
-                                    <td>1,003</td>
-                                    <td>Integer</td>
-                                    <td>nec</td>
-                                    <td>odio</td>
-                                    <td>Praesent</td>
-                                </tr>
-                                <tr>
-                                    <td>1,003</td>
-                                    <td>libero</td>
-                                    <td>Sed</td>
-                                    <td>cursus</td>
-                                    <td>ante</td>
-                                </tr>
-                                <tr>
-                                    <td>1,004</td>
-                                    <td>dapibus</td>
-                                    <td>diam</td>
-                                    <td>Sed</td>
-                                    <td>nisi</td>
-                                </tr>
-                                <tr>
-                                    <td>1,005</td>
-                                    <td>Nulla</td>
-                                    <td>quis</td>
-                                    <td>sem</td>
-                                    <td>at</td>
-                                </tr>
-                                <tr>
-                                    <td>1,006</td>
-                                    <td>nibh</td>
-                                    <td>elementum</td>
-                                    <td>imperdiet</td>
-                                    <td>Duis</td>
-                                </tr>
-                                <tr>
-                                    <td>1,007</td>
-                                    <td>sagittis</td>
-                                    <td>ipsum</td>
-                                    <td>Praesent</td>
-                                    <td>mauris</td>
-                                </tr>
-                                <tr>
-                                    <td>1,008</td>
-                                    <td>Fusce</td>
-                                    <td>nec</td>
-                                    <td>tellus</td>
-                                    <td>sed</td>
-                                </tr>
-                                <tr>
-                                    <td>1,009</td>
-                                    <td>augue</td>
-                                    <td>semper</td>
-                                    <td>porta</td>
-                                    <td>Mauris</td>
-                                </tr>
-                                <tr>
-                                    <td>1,010</td>
-                                    <td>massa</td>
-                                    <td>Vestibulum</td>
-                                    <td>lacinia</td>
-                                    <td>arcu</td>
-                                </tr>
-                                <tr>
-                                    <td>1,011</td>
-                                    <td>eget</td>
-                                    <td>nulla</td>
-                                    <td>Class</td>
-                                    <td>aptent</td>
-                                </tr>
-                                <tr>
-                                    <td>1,012</td>
-                                    <td>taciti</td>
-                                    <td>sociosqu</td>
-                                    <td>ad</td>
-                                    <td>litora</td>
-                                </tr>
-                                <tr>
-                                    <td>1,013</td>
-                                    <td>torquent</td>
-                                    <td>per</td>
-                                    <td>conubia</td>
-                                    <td>nostra</td>
-                                </tr>
-                                <tr>
-                                    <td>1,014</td>
-                                    <td>per</td>
-                                    <td>inceptos</td>
-                                    <td>himenaeos</td>
-                                    <td>Curabitur</td>
-                                </tr>
-                                <tr>
-                                    <td>1,015</td>
-                                    <td>sodales</td>
-                                    <td>ligula</td>
-                                    <td>in</td>
-                                    <td>libero</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        <h1 class="h2">Dashboard</h1>                        
+                    </div>                                  
+                    <?php
+                    switch($adm_pag):
+                      case("dashboard"):
+                        $sectTitle = __('sect_title_users',$lang);
+                        include "admin/dashboard.php";                        
+                        break;
+                      case ("settings"):
+                        $sectTitle = __('sect_settings',$lang);
+                        include "admin/settings.php";
+                        break;
+                      case("users"):
+                        $sectTitle = __('sect_users',$lang);
+                        include "admin/users.php";                        
+                        break;
+                    endswitch;
+                    ?>                    
                 </main>
             </div>
         </div>

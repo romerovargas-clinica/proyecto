@@ -17,4 +17,13 @@ $texts = array(
   'frm_Pass' => "Password",
   'frm_Send' => "Send",
   'frm_Remember' => "Remember session",
+  'frm_Name' => "Nick",
+  'frm_FirstName' => "Firstname",
+  'frm_LastName' => "Lastname",
+  'frm_Roles' => "Role",
+  // Admin
+  'sect_users' => "Users",
+  'sect_settings' => "Settings",
+  'sect_categories' => "Categories",
+  'sect_articles' => "Articles",
 );
