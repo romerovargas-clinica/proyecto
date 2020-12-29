@@ -40,13 +40,36 @@ $nav_style = "alt";
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <div class="jumbotron container">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-</div>
+  <div class="container bg-light" style="border-top: 8px solid black">
+    <div class="row" style="border-top: 8px solid #00A797">
+      <nav class="navbar navbar-expand-lg bg-primary shadow navbar-dark" style="padding-top: 0">
+        <a class="navbar-brand" href="index.php"><?=__('mn_News', $lang)?></a>
+      </nav>
+    </div>
+    <div class="container-fluid px-3 py-3" style="background-color: white">
+      <h2>#1 Hello, world!</h2>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+        featured content or information.</p>
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-primary btn-md" href="#" role="button">Learn more</a>
+    </div>
+    <hr class="my-4">
+    <div class="container-fluid px-3 py-3" style="background-color: white">
+      <h2>#2 Hello, world!</h2>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+        featured content or information.</p>
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-primary btn-md" href="#" role="button">Learn more</a>
+    </div>
+    <hr class="my-4">
+    <div class="container-fluid px-3 py-3" style="background-color: white">
+      <h2>#3 Hello, world!</h2>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+        featured content or information.</p>
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-primary btn-md" href="#" role="button">Learn more</a>
+    </div>
+  </div>
   <?php include "sections/footer.php"?>
   <?php include ("includes/scripts.php")?>
 </body>

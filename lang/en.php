@@ -11,7 +11,7 @@ $texts = array(
   'mn_Speciality' => "Speciality",
   'mn_Login' => "Login",
   'mn_Logout' => "Logout",
-  'mn_Admin' => "Admin",
+  'mn_Admin' => "CPanel",
   // Forms
   'frm_Email' => "Email address",
   'frm_Pass' => "Password",

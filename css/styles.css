@@ -1,3 +1,16 @@
+.bg-light{
+  background-color: #FFF9ED !important;
+}
+
+.bg-primary {
+  background-color: #00A797 !important;
+}
+
+.text-primary {
+  color: #00A797 !important;
+}
+
+
 .social{
   margin-top: 25px;
 }
@@ -7,3 +20,4 @@
 tr.tbl-h tr:hover{
   cursor: pointer;
 }
+
