@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: mysqlc
--- Tiempo de generación: 29-12-2020 a las 16:41:18
--- Versión del servidor: 5.7.28
--- Versión de PHP: 7.4.13
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 29-12-2020 a las 20:29:19
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,6 +45,7 @@ CREATE TABLE `articles` (
 
 CREATE TABLE `config` (
   `id` int(9) NOT NULL,
+  `type` varchar(10) NOT NULL,
   `label` varchar(25) NOT NULL,
   `value` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -53,9 +54,17 @@ CREATE TABLE `config` (
 -- Volcado de datos para la tabla `config`
 --
 
-INSERT INTO `config` (`id`, `label`, `value`) VALUES
-(1, 'namesite', 'SonriseClinic'),
-(2, 'urlsite', 'http://clinica.com');
+INSERT INTO `config` (`id`, `type`, `label`, `value`) VALUES
+(1, 'general', 'namesite', 'SonriseClinic'),
+(2, 'general', 'urlsite', 'http://clinica.com'),
+(3, 'social', 'fab fa-twitter-square', 'https://twitter.com/sonriseclinic'),
+(4, 'social', 'fab fa-facebook-square', 'https://facebook.com/sonriseclinic'),
+(5, 'social', 'fab fa-instagram-square', ''),
+(6, 'social', 'fab fa-google-plus-square', ''),
+(7, 'social', 'fab fa-youtube-square', ''),
+(8, 'social', 'pinterest_usefa-pinterest', ''),
+(9, 'social', 'fab fa-whatsapp-square', ''),
+(10, 'email', 'fas fa-envelope-square', 'admin@sonriseclinic.es');
 
 -- --------------------------------------------------------
 
@@ -87,7 +96,7 @@ CREATE TABLE `users` (
   `firstname` varchar(100) DEFAULT NULL,
   `lastname` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1'
+  `enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -95,7 +104,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2020-12-29 03:43:04', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2020-12-29 17:45:15', '[ADMIN-USER]', 'a659aa4566ab8de24e74aa9b6a763a17', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
 (3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2020-12-29 03:17:20', '[AUTHOR]', '', 'es', 'David', 'Bermúdez', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
 (4, 'cintia', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[AUTHOR]', NULL, 'es', 'Cintia', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
@@ -139,7 +148,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `config`
 --
 ALTER TABLE `config`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `content`
