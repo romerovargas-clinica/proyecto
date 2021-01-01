@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto fs-5">
           <li class="nav-item">
-            <a class="nav-link fs-5" href="#"><?=__('mn_News', $lang)?></a>
+            <a class="nav-link fs-5" href="index.php#<?=__('mn_News', $lang)?>"><?=__('mn_News', $lang)?></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

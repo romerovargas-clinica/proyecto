@@ -9,6 +9,8 @@ error_reporting(E_ALL);
 include ("includes/data.php");
 include ("includes/functions.php");
 include ("includes/sessions.php");
+// Si ya estamos logueados, salir de aquí
+if(isAuthenticated()) header("location:index.php");
 // TITLE DE LA PÁGINA ACTUAL //
 $PG_NAME = "Login";
 $nav_style = "alt";

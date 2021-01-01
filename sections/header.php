@@ -18,12 +18,15 @@
                   foreach($social as $key):
                     $cont++;
                     if($cont>1) echo "|";?>
-                <i class="fab <?=$key['label']?> my-2 my-sm-0"
-                  onclick="window.open('<?=$key['value']?>', '_blank')"></i>
+                <a href="<?=$key['value']?>" target="_blank" style="text-decoration:none;">
+                  <i class="fab <?=$key['label']?> my-2 my-sm-0"></i>
+                </a>
                 <?php endforeach;
                 endif;
                 $email = $db->select("config", "type = 'email' AND value <>''");
-                if(!empty($email)) echo "| <i class='fas ".$email[0]['label']." my-2 my-sm-0'></i>";
+                if(!empty($email)):?>
+                   | <a href="mailto:<?=$email[0]['value']?>"><i class="fas <?=$email[0]['label']?> my-2 my-sm-0"></i></a>
+                <?php endif;
                 $db->close();
                 ?>
               </div>
@@ -39,6 +42,7 @@
                 <?php endif;?>
               </div>
             </div>
+            
           </div>
         </div>
       </div>

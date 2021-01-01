@@ -40,10 +40,11 @@ $nav_style = "alt";
       <span class="sr-only">Next</span>
     </a>
   </div>
+  <a name="<?=__('mn_News', $lang)?>"></a>
   <div class="container bg-light" style="border-top: 8px solid black">
     <div class="row" style="border-top: 8px solid #00A797">
       <nav class="navbar navbar-expand-lg bg-primary shadow navbar-dark" style="padding-top: 0">
-        <a class="navbar-brand" href="index.php"><?=__('mn_News', $lang)?></a>
+        <a class="navbar-brand" href="#"><?=__('mn_News', $lang)?></a>
       </nav>
     </div>
     <div class="container-fluid px-3 py-3" style="background-color: white">

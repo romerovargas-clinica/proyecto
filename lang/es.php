@@ -2,7 +2,7 @@
 $texts = array(
   // Opciones generales
   'app_Title' => "SonriseClinic",
-  // Menú Buttons
+  // Menú
   'mn_Home' => "Inicio",
   'mn_News' => "Novedades",
   'mn_Categories' => "Categorías",
@@ -21,9 +21,21 @@ $texts = array(
   'frm_FirstName' => "Nombre",
   'frm_LastName' => "Apellidos",
   'frm_Roles' => "Rol",
+  'frm_Type' => "Grupo",
+  'frm_Label' => "Etiqueta",
+  'frm_Value' => "Valor",
+  // Buttons
+  'btn_Update' => "Actualizar",
+  'btn_Deleted' => "Eliminar",
+  'btn_Ok' => "Aceptar",
+  'btn_Close' => "Cerrar",
   // Admin
   'sect_users' => "Usuarios",
   'sect_settings' => "Configuración",
   'sect_categories' => "Categorías",
   'sect_articles' => "Artículos",
+  'sect_pages' => "Páginas",
+  // Modal
+  'modal_title_confirm' => "Confirme opción",
+  'modal_text_confirm' => "Esta opción no es posible deshacerla. Si realmente está seguro/a pulse en 'Aceptar'",
 );

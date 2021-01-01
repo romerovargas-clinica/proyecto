@@ -21,9 +21,21 @@ $texts = array(
   'frm_FirstName' => "Firstname",
   'frm_LastName' => "Lastname",
   'frm_Roles' => "Role",
+  'frm_Type' => "Group",
+  'frm_Label' => "Label",
+  'frm_Value' => "Value",
+  // Buttons
+  'btn_Update' => "Update",
+  'btn_Deleted' => "Deleted",
+  'btn_Ok' => "Accept",
+  'btn_Close' => "Close",
   // Admin
   'sect_users' => "Users",
   'sect_settings' => "Settings",
   'sect_categories' => "Categories",
   'sect_articles' => "Articles",
+  'sect_pages' => "Pages",
+  // Modal
+  'modal_title_confirm' => "Confirm selection",
+  'modal_text_confirm' => "It is not possible to undo. If you really intend to continue with it, click on 'OK'",
 );
