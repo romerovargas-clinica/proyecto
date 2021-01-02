@@ -24,6 +24,9 @@ $texts = array(
   'frm_Type' => "Grupo",
   'frm_Label' => "Etiqueta",
   'frm_Value' => "Valor",
+  'frm_Title' => "Título",
+  'frm_Subtitle' => "Subtítulo",
+  'frm_Text' => "Texto",
   // Buttons
   'btn_Update' => "Actualizar",
   'btn_Deleted' => "Eliminar",

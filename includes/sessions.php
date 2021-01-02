@@ -90,7 +90,7 @@ function initiate() {
                 setcookie("auth_key", "", time() - 3600);
             } else {                
                 // adelante con el login
-                login($resultset[0]['name'], $resultset[0]['password'], TRUE, FALSE);
+                login($resultset[0]['name'], $resultset[0]['pass'], TRUE, FALSE);
             }
             $db->close();
         }        

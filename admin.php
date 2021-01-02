@@ -112,6 +112,10 @@ $param = $db->send("SELECT * FROM config;");
                         $sectTitle = __('sect_users',$lang);
                         include "admin/users.php";                        
                         break;
+                      case("articles"):
+                        $sectTitle = __('sect_articles',$lang);
+                        include "admin/articles.php";                        
+                        break;
                     endswitch;
                     ?>
       </main>
