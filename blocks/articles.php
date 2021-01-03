@@ -19,7 +19,10 @@
       <div class="container-fluid px-3 py-3" style="background-color: white">
         <h2><?=$article['title']?></h2>
         <p class="lead"><?=$article['subtitle']?></p>
-        <p<?=$truncate!=0 ? ' class="d-inline-block text-truncate" style="max-width: 400px;"' : ''?>><?=$article['text']?></p>
+        <?php
+        $texto = strip_tags($article['text']);
+        ?>
+        <p<?=$truncate!=0 ? " class='d-inline-block text-truncate' style='max-width: 100%;'" : "" ?>><?=$texto?></p>
         <div class="clearfix"></div>
         <a class="btn btn-primary btn-md" href="#" role="button">Learn more</a>
       </div>

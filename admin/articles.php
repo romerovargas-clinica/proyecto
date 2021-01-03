@@ -2,25 +2,25 @@
 
   // Procesamiento de formulario
   $error = "";
-  if(isset($_POST['inputName'])):
+  if(isset($_POST['inputTitle'])):
     if(isset($_POST['inputDelete']) && $_POST['inputDelete']==1):
-      echo "Pendiente: Eliminar usuario";
+      echo "Pendiente: Eliminar Articulo";
     endif;  
     // Campos Obligatorios
     $id = $_POST['inputId'];
-    $name = $_POST['inputName'];
-    $firstname = $_POST['inputFirstName'];
-    $lastname = $_POST['inputLastName'];
-    $email = $_POST['inputEmail'];
-    $rol = $_POST['inputRol'];
-    if($firstname!="" && $lastname!="" && $email!=""):
+    $title = $_POST['inputTitle'];
+    $subtitle = $_POST['inputSubTitle'];
+    $author = $_POST['inputAuthor'];
+    $text = $_POST['inputText'];
+    echo $text;
+    if($title!=""):
       //update($table, $update, $where, $SQLInyection = 'YES')
       $anarray = array();
-      $anarray["firstname"] = $firstname;
-      $anarray["lastname"] = $lastname;
-      $anarray["email"] = $email;
-      $anarray["roles"] = $rol;
-      $recordset = $db->update("users", $anarray, "id = ".$id);
+      $anarray["title"] = $title;
+      $anarray["subtitle"] = $subtitle;
+      $anarray["author"] = $author;
+      $anarray["text"] = $text;
+      $recordset = $db->update("articles", $anarray, "id = ".$id);
       if(!$recordset):
         $error = "Error al actualizar los datos"; // To-Do Translate
       endif;
@@ -88,7 +88,7 @@
                 <td><?=$record["title"]?></td>
                 <td class="d-inline-block text-truncate" style="max-width: 200px"><?=$record["subtitle"]?></td>
                 <td><?=$record["date_published"]?></td>
-                <td class="d-inline-block text-truncate" style="max-width: 300px"><?=$record["text"]?></td>                
+                <td class="d-inline-block text-truncate" style="max-width: 300px"><?=strip_tags($record["text"])?></td>                
             </tr>
         <?php
             $cont++;
@@ -110,7 +110,7 @@ if(isset($_GET['edit'])):
     $fields[0]["enabled"] = $enabled;
     $fields[0]["author"] = $author;
   else:
-    $fields = $db->send("SELECT * FROM articles WHERE id = ".$_GET['edit']);
+    $fields = $db->send("SELECT a.id, a.title, a.subtitle, a.text, b.id as author FROM articles a INNER JOIN users b ON a.author = b.id WHERE a.id = ".$_GET['edit']);
   endif;
   ?>
   <a name="form"></a>
@@ -128,22 +128,30 @@ if(isset($_GET['edit'])):
       <div class="col-sm-6">
         <input type="text" class="form-control form-control-sm" name="inputSubTitle" id="inputSubTitle" value="<?=$fields[0]["subtitle"]?>">
       </div>
-    </div>
-    <div class="mb-6 row">
-      <label for="inputText" class="col-sm-2 col-form-label"><?=__('frm_Text',$lang)?></label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control form-control-sm" name="inputText" id="inputText" value="<?=$fields[0]["text"]?>">
-      </div>
-    </div>    
+    </div>        
     <div class="mb-6 row">
       <label for="inputAuthor" class="col-sm-2 col-form-label"><?=__('frm_Author',$lang)?></label>
       <div class="col-sm-6">
-        <input type="text" class="form-control form-control-sm" name="inputAuthor" id="inputAuthor" value="<?=$fields[0]["author"]?>">
+      <select class="form-select" aria-label="Default select" name="inputAuthor" id="inputAuthor">
+        <?php         
+        $authors = $db->send("SELECT id, name FROM users;");?>
+        <option value = "0">Default</option>
+        <?php foreach($authors as $key):?>
+        <option value = "<?=$key['id']?>"<?=$key['id']==$fields[0]["author"]?" selected":""?>><?=$key['name']?></option>
+        <?php endforeach;?>
+      </select>
+      </div>      
+    </div>
+    <div> <!-- class="mb-6 row" -->
+      <label for="inputText" class="col-sm-2 col-form-label"><?=__('frm_Text',$lang)?></label>
+      <div> <!-- class="col-sm-6" -->
+        <textarea cols="100" name="inputText" id="inputText" ><?=$fields[0]["text"]?></textarea><!--  class="form-control form-control-sm" -->
       </div>
     </div>
+    <!-- -->
     <input type="hidden" id="inputId" name="inputId" value="<?=$fields[0]["id"]?>">
     <input type="hidden" id="inputDelete" name="inputDelete" value="0">
-    <button type="submit" class="btn btn-primary" name="bttn1"><?=__('btn_Update',$lang)?></button> 
+    <button type="button" onclick="aceptar(false);" class="btn btn-primary" name="bttn1"><?=__('btn_Update',$lang)?></button> 
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal"><?=__('btn_Deleted',$lang)?></button>    
   </form>
   </div>
@@ -163,18 +171,54 @@ if(isset($_GET['edit'])):
       <div class="modal-body"><?=__('modal_text_confirm',$lang)?></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?=__('btn_Close',$lang)?></button>
-        <button type="button" class="btn btn-primary" onclick="aceptar();"><?=__('btn_Ok',$lang)?></button>
+        <button type="button" class="btn btn-primary" onclick="aceptar(true);"><?=__('btn_Ok',$lang)?></button>
       </div>
     </div>
   </div>
 </div>
-<script>
-function aceptar(){
-  document.getElementById("inputDelete").value = "1";  
-  //$('#myModal').modal('hide');
-  document.getElementById("userform").submit();
-}
-function frm_close(){
-  window.location.href="http://clinica.com/admin.php?section=articles&page=<?=$page?>";
-}
+
+<script>  
+  CKEDITOR.replace('inputText', {
+    filebrowserUploadUrl: 'js/ckeditor/ck_upload.php'    
+  });
+  
+  function aceptar(del){
+    document.getElementById("inputDelete").value = del;    
+    if(!del){
+      // sustituimos la etiqueta imagen por la pseudo-etiqueta segura
+      // <img alt="hola" src="../../images/uploads/compartecoche.png" style="height:354px; width:354px" />
+      // <img => [IMG:
+      // /> => ]      
+      var texto = CKEDITOR.instances['inputText'].getData();
+      var posicion1 = texto.indexOf("<img");
+      var posicion2 = texto.indexOf("alt=",posicion1);
+      var posicion3 = texto.indexOf("\"", posicion2+1);
+      var posicion4 = texto.indexOf("\"", posicion3+1);
+      var var_alt = texto.substring(posicion3+1, posicion4);
+
+      posicion2 = texto.indexOf("src=",posicion1);
+      posicion3 = texto.indexOf("\"", posicion2+1);
+      posicion4 = texto.indexOf("\"", posicion3+1);
+      var var_src = texto.substring(posicion3+1, posicion4);
+
+      posicion2 = texto.indexOf("style=",posicion1);
+      posicion3 = texto.indexOf("\"", posicion2+1);
+      posicion4 = texto.indexOf("\"", posicion3+1);
+      var var_style = texto.substring(posicion3+1, posicion4);
+
+      var ultimo = texto.indexOf("\>",posicion4);
+      var new_text = "{IMG:alt[" + var_alt + "]";
+      new_text = new_text + "IMG:src["+ var_src + "]";
+      new_text = new_text + "IMG:style["+ var_style + "]}";
+      texto = texto.substring(0, posicion1) + new_text + texto.substring(posicion4+4);      
+      $('#inputText').val(texto);
+      CKEDITOR.instances['inputText'].setData(texto);
+      console.log(texto);
+    }
+    document.getElementById("userform").submit();
+  }
+
+  function frm_close(){
+    window.location.href="http://clinica.com/admin.php?section=articles&page=<?=$page?>";
+  }
 </script>

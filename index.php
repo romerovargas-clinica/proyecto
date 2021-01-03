@@ -1,7 +1,7 @@
 <?php
-/*ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);*/
+error_reporting(E_ALL);
 // TODAS LAS PÁGINAS CARGAN LOS SIGUIENTE ARCHIVOS //
 include ("includes/data.php");
 include ("includes/functions.php");
