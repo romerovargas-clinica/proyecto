@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 29-12-2020 a las 20:29:19
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Servidor: mysqlc
+-- Tiempo de generación: 03-01-2021 a las 11:41:48
+-- Versión del servidor: 5.7.28
+-- Versión de PHP: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,11 +31,82 @@ CREATE TABLE `articles` (
   `id` int(9) NOT NULL,
   `title` varchar(255) NOT NULL,
   `subtitle` varchar(255) NOT NULL,
+  `text` text NOT NULL,
   `date_created` datetime NOT NULL,
   `date_published` datetime NOT NULL,
   `enabled` tinyint(1) NOT NULL,
   `author` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `articles`
+--
+
+INSERT INTO `articles` (`id`, `title`, `subtitle`, `text`, `date_created`, `date_published`, `enabled`, `author`) VALUES
+(1, '#1 Hola, Mundo!', 'This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.', '<p>Lorenzo ipsum dolor sit amet consectetur, adipisicing elit.</p>\r\n<p>{IMG:alt[]IMG:src[../../images/uploads/compartecoche.png]IMG:style[height:200px; width:200px]}Delectus soluta, <strong>sunt expedita obcaecati repudiandae</strong> eius quam recusandae amet sint quos quae sequi aperiam porro nulla voluptatem repellendus officiis dolores libero! Iure dolor nesciunt eveniet, officia quos distinctio minus voluptatum animi accusamus perspiciatis magni obcaecati alias est sit voluptas doloribus, at, ex consectetur itaque? Repudiandae, amet? Omnis magni rerum similique id! Itaque doloremque culpa recusandae eum perspiciatis dignissimos, asperiores odio ducimus necessitatibus officia officiis pariatur rem, architecto amet maxime ab perferendis!</p>\r\n\r\n<hr />\r\n<p>Est, beatae quia. Quae mollitia iusto quia corrupti consequatur ipsum. Consequuntur ratione natus incidunt dolore, neque libero, nesciunt nam sunt deserunt alias, porro corrupti. Accusantium ipsa animi corrupti, minima dolore iure quasi tempora accusamus eveniet totam excepturi recusandae! Aspernatur, nihil? Cumque, exercitationem et. At assumenda excepturi voluptatem eaque, neque in maxime minus aspernatur veritatis quis inventore eius, iste praesentium! Totam ex cupiditate ullam dignissimos non sint odit eligendi voluptates deleniti? Dignissimos similique iste dolorem, reprehenderit architecto dolores recusandae inventore amet nisi natus? Ipsa ut eveniet, laudantium rem dicta modi ad possimus, rerum, dolore exercitationem inventore praesentium mollitia illo quas voluptatibus! Expedita ipsam in, quisquam libero culpa mollitia tempore laudantium ullam eveniet praesentium excepturi necessitatibus, quos voluptatibus nam labore officia sunt quas recusandae fugiat quam nulla illum? Quia esse qui commodi?</p>\r\n\r\n<p>Nobis commodi a enim eligendi dolorum, eius numquam mollitia tempora facilis, natus asperiores sint recusandae voluptatum ab tempore in, voluptate adipisci blanditiis quae nemo. Porro cum repellendus esse molestiae velit. Sit voluptate nisi ducimus architecto et est, qui provident tempora rerum necessitatibus, expedita mollitia molestias rem voluptates autem sapiente a maxime culpa fugiat perferendis explicabo quis? Blanditiis neque est nulla. Deleniti quidem ipsa ratione dolorem beatae vel laboriosam maxime, quisquam eum veritatis consectetur repudiandae ut atque. Dolorem vel aspernatur eos debitis nesciunt? Saepe iure quisquam quidem cumque? Quas, eligendi vel? Obcaecati, in incidunt dolorem ea voluptatum, iusto earum labore enim, esse reprehenderit et aliquid mollitia modi numquam fugit odio aliquam animi quibusdam? Fugit ab numquam officiis a hic. Nulla, quod. Eaque animi explicabo illum dolores, architecto, accusamus pariatur aut iusto quaerat culpa placeat! Nesciunt eligendi aspernatur fugit commodi pariatur repudiandae, quaerat sed eum ratione. Eum impedit vitae at porro aut. Praesentium consectetur nulla vitae minus dignissimos earum excepturi omnis, velit sequi. Illo qui ratione omnis quo dolores non vitae quibusdam delectus eveniet! Necessitatibus fugit voluptate suscipit magni cumque a! Quibusdam. Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. Vitae in laborum atque. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.</p>\r\n', '2021-01-02 06:40:27', '2021-01-02 06:40:27', 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `block`
+--
+
+CREATE TABLE `block` (
+  `id` int(9) NOT NULL,
+  `name` varchar(56) NOT NULL,
+  `description` varchar(256) NOT NULL,
+  `label#01` varchar(256) NOT NULL,
+  `num#1` int(9) DEFAULT NULL,
+  `label#02` varchar(256) DEFAULT NULL,
+  `num#2` int(9) DEFAULT NULL,
+  `label#03` varchar(256) DEFAULT NULL,
+  `num#3` int(9) DEFAULT NULL,
+  `label#04` varchar(256) DEFAULT NULL,
+  `num#4` int(9) DEFAULT NULL,
+  `label#05` varchar(256) DEFAULT NULL,
+  `num#5` int(9) DEFAULT NULL,
+  `label#06` varchar(256) DEFAULT NULL,
+  `text#1` varchar(56) DEFAULT NULL,
+  `label#0` varchar(256) DEFAULT NULL,
+  `text#2` varchar(56) DEFAULT NULL,
+  `label#08` varchar(256) DEFAULT NULL,
+  `text#3` varchar(56) DEFAULT NULL,
+  `label#09` varchar(256) DEFAULT NULL,
+  `text#4` varchar(56) DEFAULT NULL,
+  `label#10` varchar(256) DEFAULT NULL,
+  `text#5` varchar(56) DEFAULT NULL,
+  `css` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `block`
+--
+
+INSERT INTO `block` (`id`, `name`, `description`, `label#01`, `num#1`, `label#02`, `num#2`, `label#03`, `num#3`, `label#04`, `num#4`, `label#05`, `num#5`, `label#06`, `text#1`, `label#0`, `text#2`, `label#08`, `text#3`, `label#09`, `text#4`, `label#10`, `text#5`, `css`) VALUES
+(1, 'Novedades', 'Listado de artículos que aparecen en portada', 'num_max_articles', 3, 'truncate_text', 1, 'truncate_lenght', 56, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'carousel#1', 'Carrusel de imagenes que aparecen en portada', 'num_images', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'imagen1', 'doctor-563429_640.jpg', 'imagen2', 'chair-2589771_640.jpg', 'imagen3', 'chair-2584260_640.jpg', NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `blocks`
+--
+
+CREATE TABLE `blocks` (
+  `id` int(9) NOT NULL,
+  `id_page` int(9) NOT NULL,
+  `name` varchar(56) NOT NULL,
+  `block` varchar(56) NOT NULL,
+  `order_n` int(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `blocks`
+--
+
+INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`) VALUES
+(1, 1, 'carousel#1', 'carousel', 1),
+(2, 1, 'Novedades', 'articles', 2);
 
 -- --------------------------------------------------------
 
@@ -56,10 +127,10 @@ CREATE TABLE `config` (
 
 INSERT INTO `config` (`id`, `type`, `label`, `value`) VALUES
 (1, 'general', 'namesite', 'SonriseClinic'),
-(2, 'general', 'urlsite', 'http://clinica.com'),
+(2, 'general', 'urlsite', 'https://clinica.com'),
 (3, 'social', 'fab fa-twitter-square', 'https://twitter.com/sonriseclinic'),
 (4, 'social', 'fab fa-facebook-square', 'https://facebook.com/sonriseclinic'),
-(5, 'social', 'fab fa-instagram-square', ''),
+(5, 'social', 'fab fa-instagram-square', 'Imstagrammer'),
 (6, 'social', 'fab fa-google-plus-square', ''),
 (7, 'social', 'fab fa-youtube-square', ''),
 (8, 'social', 'pinterest_usefa-pinterest', ''),
@@ -82,6 +153,27 @@ CREATE TABLE `content` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int(9) NOT NULL,
+  `page` varchar(56) NOT NULL,
+  `created` datetime NOT NULL,
+  `enabled` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pages`
+--
+
+INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
+(1, 'HOME', '2021-01-01 07:01:12', 1),
+(2, 'LOGIN', '2021-01-02 07:01:12', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -96,7 +188,7 @@ CREATE TABLE `users` (
   `firstname` varchar(100) DEFAULT NULL,
   `lastname` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 1
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -104,8 +196,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2020-12-29 17:45:15', '[ADMIN-USER]', 'a659aa4566ab8de24e74aa9b6a763a17', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
-(3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2020-12-29 03:17:20', '[AUTHOR]', '', 'es', 'David', 'Bermúdez', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-02 08:44:05', '[ADMIN-USER]', '3421dddeec1a1bc65e8ddb94fd931fa8', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2020-12-29 03:17:20', '[CUSTOMER]', '', 'es', 'David Antonio', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
 (4, 'cintia', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[AUTHOR]', NULL, 'es', 'Cintia', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
 --
@@ -120,6 +212,20 @@ ALTER TABLE `articles`
   ADD KEY `author` (`author`);
 
 --
+-- Indices de la tabla `block`
+--
+ALTER TABLE `block`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Indices de la tabla `blocks`
+--
+ALTER TABLE `blocks`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
 -- Indices de la tabla `config`
 --
 ALTER TABLE `config`
@@ -129,6 +235,12 @@ ALTER TABLE `config`
 -- Indices de la tabla `content`
 --
 ALTER TABLE `content`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pages`
+--
+ALTER TABLE `pages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -145,6 +257,24 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `block`
+--
+ALTER TABLE `block`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `blocks`
+--
+ALTER TABLE `blocks`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `config`
 --
 ALTER TABLE `config`
@@ -155,6 +285,12 @@ ALTER TABLE `config`
 --
 ALTER TABLE `content`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
