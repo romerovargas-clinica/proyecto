@@ -12,7 +12,35 @@
     $subtitle = $_POST['inputSubTitle'];
     $author = $_POST['inputAuthor'];
     $text = $_POST['inputText'];
-    echo $text;
+    //echo "<pre>".$text."</pre>";
+    // Función inversa para leer las etiquetas de imagenes escritas por javascript, crear los registros necesarios y sustituirlas por sus referencias en la base de datos
+    if(preg_match_all('#{(.*?)}#', $text, $match)!=0):    
+      $img = Array();
+      $i = 0;
+      foreach($match[0] as $imagenes):
+        if(preg_match_all('#\[(.*?)\]#', $imagenes, $attributes)==0) echo "Error TO-DO";
+        $img[$i]['alt'] = $attributes[1][0];
+        $img[$i]['src'] = $attributes[1][2];
+        $img[$i]['style'] = $attributes[1][3];
+        $idunique = $attributes[1][1];
+        if($idunique=="none") {
+          // actualizar registro
+          // numero unico 
+          $bytes = openssl_random_pseudo_bytes(4, $cstrong);
+          $hex   = bin2hex($bytes);
+          $img[$i]['id'] = $hex;
+          $recordset = $db->insert("images", $img[$i]);
+          if(!$recordset):
+            echo "Error introduciendo datos en tabla images"; // To-Do Translate
+          endif;
+        } else {
+          $hex = $idunique;
+        }
+        // por último, quitar del texto la etiqueta entre llaves y sustituirlo por la referencia de la imagen
+        $text = str_replace($imagenes, "[IMG:".$hex."]", $text);
+        $i++;
+      endforeach;    
+    endif;
     if($title!=""):
       //update($table, $update, $where, $SQLInyection = 'YES')
       $anarray = array();
@@ -112,6 +140,13 @@ if(isset($_GET['edit'])):
   else:
     $fields = $db->send("SELECT a.id, a.title, a.subtitle, a.text, b.id as author FROM articles a INNER JOIN users b ON a.author = b.id WHERE a.id = ".$_GET['edit']);
   endif;
+  // reemplazamos los IMG:id
+  if(preg_match_all('#\[(.*?)\]#', $fields[0]["text"], $match)!=0):
+    foreach($match[0] as $etiquetas):
+      $html = labelToImage($etiquetas);
+      $fields[0]["text"] = str_replace($etiquetas, $html, $fields[0]["text"]);      
+    endforeach;
+  endif;
   ?>
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
@@ -179,41 +214,60 @@ if(isset($_GET['edit'])):
 
 <script>  
   CKEDITOR.replace('inputText', {
-    filebrowserUploadUrl: 'js/ckeditor/ck_upload.php'    
+    filebrowserUploadUrl: 'js/ckeditor/ck_upload.php',
+    extraAllowedContent: 'img[idunique]'
   });
   
   function aceptar(del){
-    document.getElementById("inputDelete").value = del;    
+    /*
+    Envía el formulario desde el botón Actualizar (del=false) y el botón Eliminar(del= true)
+    */
+    document.getElementById("inputDelete").value = del;
     if(!del){
-      // sustituimos la etiqueta imagen por la pseudo-etiqueta segura
+      // sustituimos las etiquetas "img" por otra pseudo-etiqueta segura que pase el filtro anti SQL_Injection
       // <img alt="hola" src="../../images/uploads/compartecoche.png" style="height:354px; width:354px" />
       // <img => [IMG:
       // /> => ]      
       var texto = CKEDITOR.instances['inputText'].getData();
-      var posicion1 = texto.indexOf("<img");
-      var posicion2 = texto.indexOf("alt=",posicion1);
-      var posicion3 = texto.indexOf("\"", posicion2+1);
-      var posicion4 = texto.indexOf("\"", posicion3+1);
-      var var_alt = texto.substring(posicion3+1, posicion4);
-
-      posicion2 = texto.indexOf("src=",posicion1);
-      posicion3 = texto.indexOf("\"", posicion2+1);
-      posicion4 = texto.indexOf("\"", posicion3+1);
-      var var_src = texto.substring(posicion3+1, posicion4);
-
-      posicion2 = texto.indexOf("style=",posicion1);
-      posicion3 = texto.indexOf("\"", posicion2+1);
-      posicion4 = texto.indexOf("\"", posicion3+1);
-      var var_style = texto.substring(posicion3+1, posicion4);
-
-      var ultimo = texto.indexOf("\>",posicion4);
-      var new_text = "{IMG:alt[" + var_alt + "]";
-      new_text = new_text + "IMG:src["+ var_src + "]";
-      new_text = new_text + "IMG:style["+ var_style + "]}";
-      texto = texto.substring(0, posicion1) + new_text + texto.substring(posicion4+4);      
-      $('#inputText').val(texto);
+      var var_alt = "";
+      var var_src = "";
+      var var_style = "";
+      var var_idunique = "";
+      var imagen;
+      try{
+        imagen = texto.match(/<img\s+[^>]*\bstyle\s*\=\s*\"\b[\"]*[a-z]*\:[0-9]*px\;\s*[a-z]*\:[0-9]*px\"\s*\/>/)[0];
+      } catch(e){
+        imagen=null;
+      }
+      while(imagen!==null){
+        console.log(imagen);
+        var_alt = imagen.match(/alt\=\"[a-zA-Z]*\"/)[0];
+        var_src = imagen.match(/src\=\"[\-|\_|\,|\.|\/|a-zA-ZÀ-ÿ\u00f1\u00d1|A-Z|0-9|\:|\;|\s|\.]*\"/)[0];
+        var_style = imagen.match(/style\=\"[a-zA-Z0-9\:|\;|\s]*\"/)[0];
+        var_alt_length = var_alt.length;
+        var_alt = var_alt.substring(5, var_alt_length - 1);
+        var_src_length = var_src.length;
+        var_src = var_src.substring(5, var_src_length - 1);
+        var_style_length = var_style.length;
+        var_style = var_style.substring(7, var_style_length - 1);
+        var_idunique = imagen.match(/idunique\=\"[a-zA-Z0-9]*\"/);
+        if(var_idunique===null) {
+          var_idunique="none";
+        } else var_idunique = var_idunique.substring(10, var_idunique.length - 1);
+        var new_text = "{IMG:alt[" + var_alt + "]";
+        new_text = new_text + "IMG:src["+ var_src + "]";
+        new_text = new_text + "IMG:style["+ var_style + "]";
+        new_text = new_text + "IMG:idunique["+ var_idunique + "]}";
+        
+        console.log(new_text);
+        texto = texto.replace(imagen, new_text);
+        try{
+          imagen = texto.match(/<img\s+[^>]*\bstyle\s*\=\s*\"\b[\"]*[a-z]*\:[0-9]*px\;\s*[a-z]*\:[0-9]*px\"\s*\/>/)[0];
+        }catch(e){          
+          break;
+        }
+      }      
       CKEDITOR.instances['inputText'].setData(texto);
-      console.log(texto);
     }
     document.getElementById("userform").submit();
   }

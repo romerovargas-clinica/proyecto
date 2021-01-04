@@ -38,5 +38,6 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.removePlugins = 'easyimage';
 	config.filebrowserUploadMethod = 'form';
+	config.extraAllowedContent = 'img[idunique]';
 	
 };

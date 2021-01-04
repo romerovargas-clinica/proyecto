@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysqlc
--- Tiempo de generación: 03-01-2021 a las 11:41:48
+-- Tiempo de generación: 04-01-2021 a las 03:34:39
 -- Versión del servidor: 5.7.28
 -- Versión de PHP: 7.4.13
 
@@ -32,8 +32,9 @@ CREATE TABLE `articles` (
   `title` varchar(255) NOT NULL,
   `subtitle` varchar(255) NOT NULL,
   `text` text NOT NULL,
-  `date_created` datetime NOT NULL,
-  `date_published` datetime NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_published` datetime DEFAULT NULL,
+  `date_modifiqued` datetime DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL,
   `author` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -42,8 +43,8 @@ CREATE TABLE `articles` (
 -- Volcado de datos para la tabla `articles`
 --
 
-INSERT INTO `articles` (`id`, `title`, `subtitle`, `text`, `date_created`, `date_published`, `enabled`, `author`) VALUES
-(1, '#1 Hola, Mundo!', 'This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.', '<p>Lorenzo ipsum dolor sit amet consectetur, adipisicing elit.</p>\r\n<p>{IMG:alt[]IMG:src[../../images/uploads/compartecoche.png]IMG:style[height:200px; width:200px]}Delectus soluta, <strong>sunt expedita obcaecati repudiandae</strong> eius quam recusandae amet sint quos quae sequi aperiam porro nulla voluptatem repellendus officiis dolores libero! Iure dolor nesciunt eveniet, officia quos distinctio minus voluptatum animi accusamus perspiciatis magni obcaecati alias est sit voluptas doloribus, at, ex consectetur itaque? Repudiandae, amet? Omnis magni rerum similique id! Itaque doloremque culpa recusandae eum perspiciatis dignissimos, asperiores odio ducimus necessitatibus officia officiis pariatur rem, architecto amet maxime ab perferendis!</p>\r\n\r\n<hr />\r\n<p>Est, beatae quia. Quae mollitia iusto quia corrupti consequatur ipsum. Consequuntur ratione natus incidunt dolore, neque libero, nesciunt nam sunt deserunt alias, porro corrupti. Accusantium ipsa animi corrupti, minima dolore iure quasi tempora accusamus eveniet totam excepturi recusandae! Aspernatur, nihil? Cumque, exercitationem et. At assumenda excepturi voluptatem eaque, neque in maxime minus aspernatur veritatis quis inventore eius, iste praesentium! Totam ex cupiditate ullam dignissimos non sint odit eligendi voluptates deleniti? Dignissimos similique iste dolorem, reprehenderit architecto dolores recusandae inventore amet nisi natus? Ipsa ut eveniet, laudantium rem dicta modi ad possimus, rerum, dolore exercitationem inventore praesentium mollitia illo quas voluptatibus! Expedita ipsam in, quisquam libero culpa mollitia tempore laudantium ullam eveniet praesentium excepturi necessitatibus, quos voluptatibus nam labore officia sunt quas recusandae fugiat quam nulla illum? Quia esse qui commodi?</p>\r\n\r\n<p>Nobis commodi a enim eligendi dolorum, eius numquam mollitia tempora facilis, natus asperiores sint recusandae voluptatum ab tempore in, voluptate adipisci blanditiis quae nemo. Porro cum repellendus esse molestiae velit. Sit voluptate nisi ducimus architecto et est, qui provident tempora rerum necessitatibus, expedita mollitia molestias rem voluptates autem sapiente a maxime culpa fugiat perferendis explicabo quis? Blanditiis neque est nulla. Deleniti quidem ipsa ratione dolorem beatae vel laboriosam maxime, quisquam eum veritatis consectetur repudiandae ut atque. Dolorem vel aspernatur eos debitis nesciunt? Saepe iure quisquam quidem cumque? Quas, eligendi vel? Obcaecati, in incidunt dolorem ea voluptatum, iusto earum labore enim, esse reprehenderit et aliquid mollitia modi numquam fugit odio aliquam animi quibusdam? Fugit ab numquam officiis a hic. Nulla, quod. Eaque animi explicabo illum dolores, architecto, accusamus pariatur aut iusto quaerat culpa placeat! Nesciunt eligendi aspernatur fugit commodi pariatur repudiandae, quaerat sed eum ratione. Eum impedit vitae at porro aut. Praesentium consectetur nulla vitae minus dignissimos earum excepturi omnis, velit sequi. Illo qui ratione omnis quo dolores non vitae quibusdam delectus eveniet! Necessitatibus fugit voluptate suscipit magni cumque a! Quibusdam. Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. Vitae in laborum atque. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.</p>\r\n', '2021-01-02 06:40:27', '2021-01-02 06:40:27', 1, 2);
+INSERT INTO `articles` (`id`, `title`, `subtitle`, `text`, `date_created`, `date_published`, `date_modifiqued`, `enabled`, `author`) VALUES
+(1, '#1 Hola, Mundo!', 'Un subtítulo de muestra, para un artículo de muestra', '<p>&nbsp;</p>\r\n\r\n<hr />\r\n<p>Est, beatae quia. Quae mollitia iustoquia corrupti consequatur ipsum. Consequuntur ratione natus incidunt dolore, neque libero, nesciunt nam sunt deserunt alias, porro corrupti. Accusantium ipsa animi corrupti, minima dolore iure quasi tempora accusamus eveniet totam excepturi recusandae! Aspernatur, nihil? Cumque, exercitationemet. <strong>At assumenda excepturi voluptatem eaque</strong>, neque in maxime minus aspernatur veritatis quis inventore eius, iste praesentium! Totam ex cupiditate ullam dignissimos non sint odit eligendi voluptates deleniti? Dignissimos similique iste dolorem, reprehenderit architecto dolores recusandae inventore amet nisi natus? Ipsa ut eveniet, laudantium rem dicta modi ad possimus, rerum, dolore exercitationem inventore praesentium mollitia illo quas voluptatibus! Expedita ipsam in, quisquam libero &iexcl;culpa mollitia tempore laudantium ullam eveniet praesentium excepturi necessitatibus, quos voluptatibus nam labore officia sunt quas recusandae fugiat quam nulla illum? Quia esse qui commodi?</p>\r\n\r\n<hr />\r\n<p>&nbsp;</p>\r\n\r\n<p>Nobis commodi a enim eligendi dolorum, eius numquam mollitia tempora facilis, natus asperiores sint recusandae voluptatum ab tempore in, voluptate adipisci blanditiis quae nemo. Porro cum repellendus esse molestiae velit. Sit voluptate nisi ducimus architecto et est, qui provident tempora rerum necessitatibus, expedita mollitia molestias rem voluptates autem sapiente a maxime culpa fugiat perferendis explicabo quis? Blanditiis neque est nulla. Deleniti quidem ipsa ratione dolorem beatae vel laboriosam maxime, quisquam eum veritatis consectetur repudiandae ut atque. Dolorem vel aspernatur eos debitis nesciunt?<strong> Saepe iure quisquam quidem cumque?</strong> Quas, eligendi vel?Obcaecati, in incidunt dolorem ea voluptatum, iusto earum labore enim, esse reprehenderit et aliquid mollitia modi numquam fugit odio aliquam animi quibusdam? Fugit ab numquam officiis a hic. Nulla, quod. Eaque animi explicabo illum dolores, architecto, accusamus pariatur aut iusto quaerat culpa placeat! Nesciunt eligendi aspernatur fugit commodi pariatur repudiandae, quaerat sed eum ratione.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Eum impedit vitae at porro aut.</h2>\r\n\r\n<p>Praesentium consectetur nulla vitae minus dignissimos earumexcepturi omnis, velit sequi. Illo qui ratione omnis quo dolores non vitae quibusdam delectus eveniet! Necessitatibus fugit voluptate suscipit magni cumque a!Quibusdam. Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.</p>\r\n', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -153,6 +154,28 @@ CREATE TABLE `content` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `images`
+--
+
+CREATE TABLE `images` (
+  `id` varchar(8) NOT NULL,
+  `src` varchar(255) NOT NULL,
+  `alt` varchar(255) NOT NULL,
+  `style` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `images`
+--
+
+INSERT INTO `images` (`id`, `src`, `alt`, `style`) VALUES
+('61bc33c2', '../../images/uploads/iconfinder_hand-stop-o_1608369.png', '', 'height:256px; width:256px'),
+('ab237874', '../../images/uploads/iconfinder_gold_coin_-_stacks_73068.png', 'monedas', 'height:64px; width:64px'),
+('d989b91e', '../../images/uploads/compartecoche.png', '', 'height:354px; width:354px');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `pages`
 --
 
@@ -196,7 +219,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-02 08:44:05', '[ADMIN-USER]', '3421dddeec1a1bc65e8ddb94fd931fa8', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-02 08:44:05', '[ADMIN-USER]', '568b58f08a70e9dc73058bc7b87b90f6', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
 (3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2020-12-29 03:17:20', '[CUSTOMER]', '', 'es', 'David Antonio', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
 (4, 'cintia', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[AUTHOR]', NULL, 'es', 'Cintia', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
@@ -236,6 +259,12 @@ ALTER TABLE `config`
 --
 ALTER TABLE `content`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `images`
+--
+ALTER TABLE `images`
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indices de la tabla `pages`
