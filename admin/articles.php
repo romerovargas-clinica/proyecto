@@ -6,23 +6,26 @@
     if(isset($_POST['inputDelete']) && $_POST['inputDelete']==1):
       echo "Pendiente: Eliminar Articulo";
     endif;  
-    // Campos Obligatorios
+    // Campos Obligatorios    
     $id = $_POST['inputId'];
     $title = $_POST['inputTitle'];
     $subtitle = $_POST['inputSubTitle'];
     $author = $_POST['inputAuthor'];
     $text = $_POST['inputText'];
-    //echo "<pre>".$text."</pre>";
+    echo "<pre>".$text."</pre>";
     // Función inversa para leer las etiquetas de imagenes escritas por javascript, crear los registros necesarios y sustituirlas por sus referencias en la base de datos
-    if(preg_match_all('#{(.*?)}#', $text, $match)!=0):    
+    if(preg_match_all('#{(.*?)}#', $text, $match)!=0):
       $img = Array();
       $i = 0;
-      foreach($match[0] as $imagenes):
-        if(preg_match_all('#\[(.*?)\]#', $imagenes, $attributes)==0) echo "Error TO-DO";
-        $img[$i]['alt'] = $attributes[1][0];
-        $img[$i]['src'] = $attributes[1][2];
-        $img[$i]['style'] = $attributes[1][3];
-        $idunique = $attributes[1][1];
+      foreach($match[0] as $imagenes):        
+        preg_match('#alt\[(.*?)\]#', $imagenes, $match);
+        $img[$i]['alt'] = $match[1];
+        preg_match('#src\[(.*?)\]#', $imagenes, $match);
+        $img[$i]['src'] = $match[1];
+        preg_match('#style\[(.*?)\]#', $imagenes, $match);
+        $img[$i]['style'] = $match[1];
+        preg_match('#idunique\[(.*?)\]#', $imagenes, $match);
+        $idunique = $match[1];
         if($idunique=="none") {
           // actualizar registro
           // numero unico 
@@ -35,6 +38,7 @@
           endif;
         } else {
           $hex = $idunique;
+          $recordset = $db->update("images", $img[$i], "id = '$idunique'");
         }
         // por último, quitar del texto la etiqueta entre llaves y sustituirlo por la referencia de la imagen
         $text = str_replace($imagenes, "[IMG:".$hex."]", $text);
@@ -235,12 +239,14 @@ if(isset($_GET['edit'])):
       var var_idunique = "";
       var imagen;
       try{
-        imagen = texto.match(/<img\s+[^>]*\bstyle\s*\=\s*\"\b[\"]*[a-z]*\:[0-9]*px\;\s*[a-z]*\:[0-9]*px\"\s*\/>/)[0];
+        //imagen = texto.match(/<img\s+[^>]*\bstyle\s*\=\s*\"\b[\"]*[a-z]*\:[0-9]*px\;\s*[a-z]*\:[0-9]*px\"\s*\/>/)[0];
+        imagen = texto.match(/<img\s+[^>]*\b[(.*?)]*\"\s*\/>/);                              
       } catch(e){
         imagen=null;
+        console.log(e);
       }
       while(imagen!==null){
-        console.log(imagen);
+        console.log('Imagen: ' + imagen);
         var_alt = imagen.match(/alt\=\"[a-zA-Z]*\"/)[0];
         var_src = imagen.match(/src\=\"[\-|\_|\,|\.|\/|a-zA-ZÀ-ÿ\u00f1\u00d1|A-Z|0-9|\:|\;|\s|\.]*\"/)[0];
         var_style = imagen.match(/style\=\"[a-zA-Z0-9\:|\;|\s]*\"/)[0];
@@ -250,7 +256,8 @@ if(isset($_GET['edit'])):
         var_src = var_src.substring(5, var_src_length - 1);
         var_style_length = var_style.length;
         var_style = var_style.substring(7, var_style_length - 1);
-        var_idunique = imagen.match(/idunique\=\"[a-zA-Z0-9]*\"/);
+        var_idunique = imagen.match(/idunique\=\"[a-zA-Z0-9]*\"/)[0];
+        console.log(var_idunique);
         if(var_idunique===null) {
           var_idunique="none";
         } else var_idunique = var_idunique.substring(10, var_idunique.length - 1);
@@ -262,8 +269,9 @@ if(isset($_GET['edit'])):
         console.log(new_text);
         texto = texto.replace(imagen, new_text);
         try{
-          imagen = texto.match(/<img\s+[^>]*\bstyle\s*\=\s*\"\b[\"]*[a-z]*\:[0-9]*px\;\s*[a-z]*\:[0-9]*px\"\s*\/>/)[0];
+          imagen = texto.match(/<img\s+[^>]*\b[(.*?)]*\"\s*\/>/)[0];
         }catch(e){          
+          console.log(e);
           break;
         }
       }      
