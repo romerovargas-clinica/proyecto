@@ -15,18 +15,18 @@
   <?php
     $cont=0;
     foreach ($recordset as $article): ?>
-      <?php if($cont>0) echo "<hr class='my-4'>";?>
-      <div class="container-fluid px-3 py-3" style="background-color: white">
-        <h2><?=$article['title']?></h2>
-        <p class="lead"><?=$article['subtitle']?></p>
-        <?php
+  <?php if($cont>0) echo "<hr class='my-4'>";?>
+  <div class="container-fluid px-3 py-3" style="background-color: white">
+    <h2><?=$article['title']?></h2>
+    <p class="lead"><?=$article['subtitle']?></p>
+    <?php
         $texto = strip_tags($article['text']);
         ?>
-        <p<?=$truncate!=0 ? " class='d-inline-block text-truncate' style='max-width: 100%;'" : "" ?>><?=$texto?></p>
-        <div class="clearfix"></div>
-        <a class="btn btn-primary btn-md" href="#" role="button">Learn more</a>
-      </div>
-    <?php 
+    <p<?=$truncate!=0 ? " class='d-inline-block text-truncate' style='max-width: 100%;'" : "" ?>><?=$texto?></p>
+      <div class="clearfix"></div>
+      <a class="btn btn-primary btn-md" href="#" role="button"><?=__('Learn_more', $lang)?></a>
+  </div>
+  <?php 
     $cont++;
     endforeach;?>
 </div>

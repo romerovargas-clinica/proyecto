@@ -32,6 +32,7 @@ $texts = array(
   'btn_Deleted' => "Eliminar",
   'btn_Ok' => "Aceptar",
   'btn_Close' => "Cerrar",
+  'Learn_more' => 'Leer Más',
   // Admin
   'sect_users' => "Usuarios",
   'sect_settings' => "Configuración",
