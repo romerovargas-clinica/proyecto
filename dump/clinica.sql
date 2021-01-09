@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-01-2021 a las 14:10:38
+-- Tiempo de generación: 09-01-2021 a las 16:10:44
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -197,6 +197,61 @@ INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `treatment interventions`
+--
+
+CREATE TABLE `treatment interventions` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `categorie` int(1) NOT NULL,
+  `duration` int(3) NOT NULL,
+  `price` float(6,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `treatment interventions`
+--
+
+INSERT INTO `treatment interventions` (`id`, `name`, `categorie`, `duration`, `price`) VALUES
+(1, 'Obturacion', 1, 50, 45.00),
+(2, 'Tratamiento endodóntico', 1, 90, 235.00),
+(3, 'Blanqueamiento', 2, 45, 220.00),
+(4, 'Carillas dentales', 2, 120, 270.00),
+(5, 'Coronas de circonio', 2, 140, 700.00),
+(6, 'Brackets estéticos', 3, 90, 3500.00),
+(7, 'Sistema damon', 3, 75, 2300.00),
+(8, 'Invisalign', 3, 45, 4780.00),
+(9, 'Implantes dentales ', 4, 90, 1300.00),
+(10, 'Extracción de cordales', 4, 40, 15.00),
+(11, 'Regeneración ósea', 4, 50, 60.00),
+(12, 'Pulpotomía ', 5, 35, 40.00),
+(13, 'Mantenedores de espacio', 5, 40, 90.00);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `treatments categories`
+--
+
+CREATE TABLE `treatments categories` (
+  `id` int(1) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `treatments categories`
+--
+
+INSERT INTO `treatments categories` (`id`, `name`) VALUES
+(1, 'Odontología conservadora'),
+(2, 'Estética'),
+(3, 'Ortodoncia'),
+(4, 'Cirugía'),
+(5, 'Odontopediatría');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -219,9 +274,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-02 08:44:05', '[ADMIN-USER]', '0e7d77e86a861b5636eb2291b802c21d', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-02 08:44:05', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
 (3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 13:37:44', '[CUSTOMER]', '', 'en', 'David Antonio', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
-(4, 'cintia', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[AUTHOR]', NULL, 'es', 'Cintia', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
+(4, 'cintia', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 15:06:52', '[AUTHOR]', NULL, 'es', 'Cintia', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
 --
 -- Índices para tablas volcadas
