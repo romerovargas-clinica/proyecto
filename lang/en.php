@@ -12,6 +12,7 @@ $texts = array(
   'mn_Login' => "Login",
   'mn_Logout' => "Logout",
   'mn_Admin' => "CPanel",
+  'mn_Cites' => "My Cites",
   // Forms
   'frm_Email' => "Email address",
   'frm_Pass' => "Password",
@@ -42,4 +43,6 @@ $texts = array(
   // Modal
   'modal_title_confirm' => "Confirm selection",
   'modal_text_confirm' => "It is not possible to undo. If you really intend to continue with it, click on 'OK'",
+  // Error Messages
+  'err_NotAutenticates' => "Unregistered user",
 );

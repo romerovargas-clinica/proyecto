@@ -30,7 +30,7 @@ function labelToImage($label){
   // [IMG:8949566]
   $db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
   $code = strstr($label,":");
-  $code = substr($code,1,8);
+  $code = substr($code, 1, 8);
   $recordset = $db->select("images","id = '$code'");
   $html = "<img alt='". $recordset[0]['alt']."' src='". $recordset[0]['src']."' style='". $recordset[0]['style']."' idunique='".$code."'>";
   return $html;

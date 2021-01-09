@@ -12,6 +12,7 @@ $texts = array(
   'mn_Login' => "Iniciar Sesión",
   'mn_Logout' => "Cerrar Sesión",
   'mn_Admin' => "Panel de Control",
+  'mn_Cites' => "Mis citas",
   // Forms
   'frm_Email' => "Dirección de correo electrónico",
   'frm_Pass' => "Clave",
@@ -42,4 +43,6 @@ $texts = array(
   // Modal
   'modal_title_confirm' => "Confirme opción",
   'modal_text_confirm' => "Esta opción no es posible deshacerla. Si realmente está seguro/a pulse en 'Aceptar'",
+  // Error Messages
+  'err_NotAutenticates' => "Usuario no registrado",
 );

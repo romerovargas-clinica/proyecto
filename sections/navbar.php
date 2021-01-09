@@ -26,6 +26,9 @@
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cites.php"><?=__('mn_Cites', $lang)?></a>
+          </li>
           <?php if(!isAuthenticated()):?>
           <li class="nav-item<?php if($PG_NAME=="Login"):?> active<?php endif;?>">
             <a class="nav-link" href="login.php"><?=__('mn_Login', $lang)?><?php if($PG_NAME=="Login"):?><span
