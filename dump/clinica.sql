@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: mysqlc
--- Tiempo de generación: 08-01-2021 a las 08:52:27
--- Versión del servidor: 5.7.28
--- Versión de PHP: 7.4.13
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-01-2021 a las 14:10:38
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `articles` (
   `title` varchar(255) NOT NULL,
   `subtitle` varchar(255) NOT NULL,
   `text` text NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_published` datetime DEFAULT NULL,
   `date_modifiqued` datetime DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `block` (
   `text#4` varchar(56) DEFAULT NULL,
   `label#10` varchar(256) DEFAULT NULL,
   `text#5` varchar(56) DEFAULT NULL,
-  `css` text
+  `css` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -107,7 +107,8 @@ CREATE TABLE `blocks` (
 
 INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`) VALUES
 (1, 1, 'carousel#1', 'carousel', 1),
-(2, 1, 'Novedades', 'articles', 2);
+(2, 1, 'Novedades', 'articles', 2),
+(3, 3, 'schedule', 'schedule', 1);
 
 -- --------------------------------------------------------
 
@@ -180,7 +181,7 @@ INSERT INTO `images` (`id`, `src`, `alt`, `style`) VALUES
 CREATE TABLE `pages` (
   `id` int(9) NOT NULL,
   `page` varchar(56) NOT NULL,
-  `created` datetime NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
   `enabled` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -190,7 +191,8 @@ CREATE TABLE `pages` (
 
 INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
 (1, 'HOME', '2021-01-01 07:01:12', 1),
-(2, 'LOGIN', '2021-01-02 07:01:12', 1);
+(2, 'LOGIN', '2021-01-02 07:01:12', 1),
+(3, 'CITES', '2021-01-09 13:35:36', 1);
 
 -- --------------------------------------------------------
 
@@ -209,7 +211,7 @@ CREATE TABLE `users` (
   `firstname` varchar(100) DEFAULT NULL,
   `lastname` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1'
+  `enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -218,7 +220,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
 (2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-02 08:44:05', '[ADMIN-USER]', '0e7d77e86a861b5636eb2291b802c21d', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
-(3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2020-12-29 03:17:20', '[CUSTOMER]', '', 'es', 'David Antonio', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
+(3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 13:37:44', '[CUSTOMER]', '', 'en', 'David Antonio', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
 (4, 'cintia', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[AUTHOR]', NULL, 'es', 'Cintia', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
 --
@@ -299,7 +301,7 @@ ALTER TABLE `block`
 -- AUTO_INCREMENT de la tabla `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `config`
@@ -317,7 +319,7 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT de la tabla `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
