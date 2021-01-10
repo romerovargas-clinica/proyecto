@@ -24,7 +24,7 @@
         ?>
     <p<?=$truncate!=0 ? " class='d-inline-block text-truncate' style='max-width: 100%;'" : "" ?>><?=$texto?></p>
       <div class="clearfix"></div>
-      <a class="btn btn-primary btn-md" href="#" role="button"><?=__('Learn_more', $lang)?></a>
+      <a class="btn btn-primary btn-md" href="plantilla_articulo.php?id=<?=$article['id']?>" role="button"><?=__('Learn_more', $lang)?></a>
   </div>
   <?php 
     $cont++;
