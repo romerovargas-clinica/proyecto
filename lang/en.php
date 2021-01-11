@@ -45,4 +45,6 @@ $texts = array(
   'modal_text_confirm' => "It is not possible to undo. If you really intend to continue with it, click on 'OK'",
   // Error Messages
   'err_NotAutenticates' => "Unregistered user",
+  // Labels
+  'date_Published' => "Date published",
 );
