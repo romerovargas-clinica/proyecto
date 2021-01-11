@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 11-01-2021 a las 13:59:14
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Servidor: mysqlc
+-- Tiempo de generación: 11-01-2021 a las 17:06:37
+-- Versión del servidor: 5.7.28
+-- Versión de PHP: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `articles` (
   `title` varchar(255) NOT NULL,
   `subtitle` varchar(255) NOT NULL,
   `text` text NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_published` datetime DEFAULT NULL,
   `date_modifiqued` datetime DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `block` (
   `text#4` varchar(56) DEFAULT NULL,
   `label#10` varchar(256) DEFAULT NULL,
   `text#5` varchar(56) DEFAULT NULL,
-  `css` text DEFAULT NULL
+  `css` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -85,7 +85,8 @@ CREATE TABLE `block` (
 
 INSERT INTO `block` (`id`, `name`, `description`, `label#01`, `num#1`, `label#02`, `num#2`, `label#03`, `num#3`, `label#04`, `num#4`, `label#05`, `num#5`, `label#06`, `text#1`, `label#0`, `text#2`, `label#08`, `text#3`, `label#09`, `text#4`, `label#10`, `text#5`, `css`) VALUES
 (1, 'Novedades', 'Listado de artículos que aparecen en portada', 'num_max_articles', 3, 'truncate_text', 1, 'truncate_lenght', 56, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'carousel#1', 'Carrusel de imagenes que aparecen en portada', 'num_images', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'imagen1', 'doctor-563429_640.jpg', 'imagen2', 'chair-2589771_640.jpg', 'imagen3', 'chair-2584260_640.jpg', NULL, NULL, NULL, NULL, NULL);
+(2, 'carousel#1', 'Carrusel de imagenes que aparecen en portada', 'num_images', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'imagen1', 'doctor-563429_640.jpg', 'imagen2', 'chair-2589771_640.jpg', 'imagen3', 'chair-2584260_640.jpg', NULL, NULL, NULL, NULL, NULL),
+(3, 'Especialidades', 'Bloque de presentación de las especialidades médicas', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -108,7 +109,8 @@ CREATE TABLE `blocks` (
 INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`) VALUES
 (1, 1, 'carousel#1', 'carousel', 1),
 (2, 1, 'Novedades', 'articles', 2),
-(3, 3, 'schedule', 'schedule', 1);
+(3, 3, 'schedule', 'schedule', 1),
+(4, 1, 'Especialidades', 'specialties', 3);
 
 -- --------------------------------------------------------
 
@@ -181,7 +183,7 @@ INSERT INTO `images` (`id`, `src`, `alt`, `style`) VALUES
 CREATE TABLE `pages` (
   `id` int(9) NOT NULL,
   `page` varchar(56) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `enabled` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -213,11 +215,11 @@ CREATE TABLE `treatments_categories` (
 --
 
 INSERT INTO `treatments_categories` (`id`, `name`, `info`, `image`) VALUES
-(1, 'Odontología conservadora', '', ''),
-(2, 'Estética', '', ''),
-(3, 'Ortodoncia', '', ''),
-(4, 'Cirugía', '', ''),
-(5, 'Odontopediatría', '', '');
+(1, 'Odontología conservadora', 'La Odontología Conservadora tiene como objetivo salvar y conservar en la boca del paciente un diente enfermo o dañado, ya sea por caries, desgaste o traumatismo. Comprende, por tanto, todos aquellos tratamientos que tratan de evitar la extracción de la pieza dental y la posterior colocación de un implante.', 'conservadora.jpg'),
+(2, 'Estética', 'La Estética Dental es la especialidad de la Odontología que se encarga de mejorar la apariencia de la boca para que tenga un aspecto más armónico y saludable. Para ello, ponemos a disposición de nuestros pacientes los tratamientos de carillas, blanqueamiento y coronas de zirconio.', 'estetica.jpg'),
+(3, 'Ortodoncia', 'La ortodoncia es una especialidad de la odontología que estudia, previene y corrige las alteraciones del desarrollo, las formas de las arcadas dentarias y la posición de los maxilares, con el objetivo de restablecer el equilibrio tanto en forma como en función de la boca y de la cara, mejorando también la estética', 'ortodoncia.jpg'),
+(4, 'Cirugía', 'La cirugía bucal es un campo amplio que abarca diferentes tipos de tratamientos. Sin embargo, las técnicas que se llevan a cabo para realizar las intervenciones quirúrgicas son muy similares: requieren anestesia y abordar el procedimiento desde una pequeña incisión en la encía.', 'cirugia.jpg'),
+(5, 'Odontopediatría', 'Aunque tu hijo no presente problemas de salud oral, es recomendable que acudas con él al odontopediatra cuando cumpla su primer año. De esta manera, el profesional podrá detectar posibles patologías que compremeterían su desarrollo más adelante.', 'odontopediatria.jpeg');
 
 -- --------------------------------------------------------
 
@@ -271,7 +273,7 @@ CREATE TABLE `users` (
   `firstname` varchar(100) DEFAULT NULL,
   `lastname` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 1
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -279,7 +281,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-11 09:56:21', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-11 17:27:38', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
 (3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 13:37:44', '[CUSTOMER]', '', 'en', 'David', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
 (4, 'cintia', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 15:06:52', '[AUTHOR]', NULL, 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
@@ -367,13 +369,13 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT de la tabla `block`
 --
 ALTER TABLE `block`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `config`

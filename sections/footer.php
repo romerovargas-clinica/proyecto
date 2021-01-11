@@ -1,4 +1,6 @@
-<div class="container py-5">
+<div class="container" style="border-top: 8px solid black"></div>
+<div class="container py-5" style="border-top: 8px solid #00A797">
+
     <div class="row align-items-center">
         <div class="col">
             <div class="card" style="width: 18rem;">

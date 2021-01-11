@@ -21,3 +21,7 @@ tr.tbl-h tr:hover{
   cursor: pointer;
 }
 
+.t-transp:hover {
+  transition:all .5s ease-in-out;
+  filter: opacity(.5);
+}

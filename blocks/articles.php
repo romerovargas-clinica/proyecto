@@ -1,6 +1,7 @@
 <a name="article"></a>
 <div class="container bg-light" style="border-top: 8px solid black">
   <?php
+    // Parámetros de configuración del bloque
     $articles = $db->select("block", "name = '".$name_block."'");
     $num_articles = $articles[0]['num#1'];
     $truncate = 0;
@@ -9,7 +10,7 @@
   ?>
   <div class="row" style="border-top: 8px solid #00A797">
     <nav class="navbar navbar-expand-lg bg-primary shadow navbar-dark" style="padding-top: 0">
-      <a class="navbar-brand" href="#"><?=$articles[0]['name']?></a>
+      <a class="navbar-brand" href="#"><?=$name_block?></a>
     </nav>
   </div>
   <?php

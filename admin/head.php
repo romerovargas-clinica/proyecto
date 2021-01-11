@@ -2,10 +2,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?=$PG_NAME?></title>
+  <link rel="stylesheet" href="css/styles.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- MyStyles -->
-  <link rel="stylesheet" href="css/styles.css">
+  
   <link rel="stylesheet" href="css/dashboard.css">
   <script src="js/ckeditor/ckeditor.js"></script>
   <!-- Favicons -->
@@ -29,6 +30,11 @@
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
+      }
+
+      .t-opacity:hover {
+        transition:all .5s ease-in-out;
+        filter: opacity(.5);
       }
     </style>
   
