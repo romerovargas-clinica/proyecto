@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-01-2021 a las 10:28:25
+-- Tiempo de generación: 11-01-2021 a las 13:59:14
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -198,10 +198,34 @@ INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `treatment interventions`
+-- Estructura de tabla para la tabla `treatments_categories`
 --
 
-CREATE TABLE `treatment interventions` (
+CREATE TABLE `treatments_categories` (
+  `id` int(1) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `info` text NOT NULL,
+  `image` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `treatments_categories`
+--
+
+INSERT INTO `treatments_categories` (`id`, `name`, `info`, `image`) VALUES
+(1, 'Odontología conservadora', '', ''),
+(2, 'Estética', '', ''),
+(3, 'Ortodoncia', '', ''),
+(4, 'Cirugía', '', ''),
+(5, 'Odontopediatría', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `treatments_interventions`
+--
+
+CREATE TABLE `treatments_interventions` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `categorie` int(1) NOT NULL,
@@ -212,10 +236,10 @@ CREATE TABLE `treatment interventions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `treatment interventions`
+-- Volcado de datos para la tabla `treatments_interventions`
 --
 
-INSERT INTO `treatment interventions` (`id`, `name`, `categorie`, `duration`, `price`, `info`, `image`) VALUES
+INSERT INTO `treatments_interventions` (`id`, `name`, `categorie`, `duration`, `price`, `info`, `image`) VALUES
 (1, 'Obturacion', 1, 50, 45.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit', 1),
 (2, 'Tratamiento endodóntico', 1, 90, 235.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor', 1),
 (3, 'Blanqueamiento', 2, 45, 220.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ', 1),
@@ -229,30 +253,6 @@ INSERT INTO `treatment interventions` (`id`, `name`, `categorie`, `duration`, `p
 (11, 'Regeneración ósea', 4, 50, 60.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu laborum', 1),
 (12, 'Pulpotomía ', 5, 35, 40.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate um', 1),
 (13, 'Mantenedores de espacio', 5, 40, 90.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit iid est laborum', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `treatments categories`
---
-
-CREATE TABLE `treatments categories` (
-  `id` int(1) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `info` text NOT NULL,
-  `image` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `treatments categories`
---
-
-INSERT INTO `treatments categories` (`id`, `name`, `info`, `image`) VALUES
-(1, 'Odontología conservadora', '', ''),
-(2, 'Estética', '', ''),
-(3, 'Ortodoncia', '', ''),
-(4, 'Cirugía', '', ''),
-(5, 'Odontopediatría', '', '');
 
 -- --------------------------------------------------------
 
@@ -280,8 +280,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
 (2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-11 09:56:21', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
-(3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 13:37:44', '[CUSTOMER]', '', 'en', 'David Antonio', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
-(4, 'cintia', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 15:06:52', '[AUTHOR]', NULL, 'es', 'Cintia', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
+(3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 13:37:44', '[CUSTOMER]', '', 'en', 'David', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
+(4, 'cintia', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 15:06:52', '[AUTHOR]', NULL, 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -330,6 +330,18 @@ ALTER TABLE `images`
 -- Indices de la tabla `pages`
 --
 ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `treatments_categories`
+--
+ALTER TABLE `treatments_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `treatments_interventions`
+--
+ALTER TABLE `treatments_interventions`
   ADD PRIMARY KEY (`id`);
 
 --

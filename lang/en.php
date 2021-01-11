@@ -28,6 +28,11 @@ $texts = array(
   'frm_Title' => "Title",
   'frm_Subtitle' => "Subtitle",
   'frm_Text' => "Text",
+  'frm_Image' => "Image",
+  'frm_Desc' => "Description",
+  'frm_Duration' => "Duration",
+  'frm_Price' => "Price",
+  
   // Buttons
   'btn_Update' => "Update",
   'btn_Deleted' => "Deleted",

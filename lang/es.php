@@ -28,6 +28,12 @@ $texts = array(
   'frm_Title' => "Título",
   'frm_Subtitle' => "Subtítulo",
   'frm_Text' => "Texto",
+  'frm_Image' => "Imagen",
+  'frm_Desc' => "Descripción",
+  'frm_Duration' => "Duración",
+  'frm_Price' => "Precio",
+
+
   // Buttons
   'btn_Update' => "Actualizar",
   'btn_Deleted' => "Eliminar",
