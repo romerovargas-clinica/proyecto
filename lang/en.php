@@ -40,6 +40,7 @@ $texts = array(
   'sect_categories' => "Categories",
   'sect_articles' => "Articles",
   'sect_pages' => "Pages",
+  'sect_treatments' => "Treatments",
   // Modal
   'modal_title_confirm' => "Confirm selection",
   'modal_text_confirm' => "It is not possible to undo. If you really intend to continue with it, click on 'OK'",

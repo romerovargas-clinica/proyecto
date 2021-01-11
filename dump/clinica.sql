@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-01-2021 a las 08:59:57
+-- Tiempo de generación: 11-01-2021 a las 10:28:25
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -238,19 +238,21 @@ INSERT INTO `treatment interventions` (`id`, `name`, `categorie`, `duration`, `p
 
 CREATE TABLE `treatments categories` (
   `id` int(1) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) NOT NULL,
+  `info` text NOT NULL,
+  `image` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `treatments categories`
 --
 
-INSERT INTO `treatments categories` (`id`, `name`) VALUES
-(1, 'Odontología conservadora'),
-(2, 'Estética'),
-(3, 'Ortodoncia'),
-(4, 'Cirugía'),
-(5, 'Odontopediatría');
+INSERT INTO `treatments categories` (`id`, `name`, `info`, `image`) VALUES
+(1, 'Odontología conservadora', '', ''),
+(2, 'Estética', '', ''),
+(3, 'Ortodoncia', '', ''),
+(4, 'Cirugía', '', ''),
+(5, 'Odontopediatría', '', '');
 
 -- --------------------------------------------------------
 
@@ -277,7 +279,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-02 08:44:05', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-01-11 09:56:21', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
 (3, 'david', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 13:37:44', '[CUSTOMER]', '', 'en', 'David Antonio', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
 (4, 'cintia', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 15:06:52', '[AUTHOR]', NULL, 'es', 'Cintia', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 

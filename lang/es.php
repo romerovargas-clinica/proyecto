@@ -40,6 +40,7 @@ $texts = array(
   'sect_categories' => "Categorías",
   'sect_articles' => "Artículos",
   'sect_pages' => "Páginas",
+  'sect_treatments' => "Tratamientos",
   // Modal
   'modal_title_confirm' => "Confirme opción",
   'modal_text_confirm' => "Esta opción no es posible deshacerla. Si realmente está seguro/a pulse en 'Aceptar'",
