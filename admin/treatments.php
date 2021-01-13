@@ -126,7 +126,7 @@ $treatments = $db->send("SELECT * FROM treatments_interventions;"); //descargo l
 <div class="container text-warning bg-danger"><?php if ($error != "") echo $error; ?></div>
 
 
-<?php
+<?php //formulario para editar
 if (isset($_GET['edit'])) :
     if (isset($name)) :
         $fields[0]["name"] = $name;
