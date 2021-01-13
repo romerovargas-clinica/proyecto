@@ -106,6 +106,7 @@
 <?php
 if(isset($_GET['edit'])):
   if(isset($name)):
+    $fields[0]["id"] = $id;
     $fields[0]["name"] = $name;
     $fields[0]["firstname"] = $firstname;
     $fields[0]["lastname"] = $lastname;
