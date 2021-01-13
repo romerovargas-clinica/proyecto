@@ -36,6 +36,28 @@
         transition:all .5s ease-in-out;
         filter: opacity(.5);
       }
+
+      .img-thumbnail{
+        height: 150px;
+      }
+
+      .card-img-top {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        margin: 10px;
+        position: relative;
+      }
+      .card-img-top > .crop {
+        position:absolute;
+        left: -100%;
+        right: -100%;
+        top: -100%;
+        bottom: -100%;
+        margin: auto;
+        min-height: 100%;
+        min-width: 100%;
+      }
     </style>
   
   

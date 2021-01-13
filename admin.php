@@ -92,6 +92,12 @@ $param = $db->send("SELECT * FROM config;");
                 <?= __('sect_pages', $lang) ?>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin.php?section=gallery">
+                <span data-feather="image"></span>
+                <?= __('sect_gallery', $lang) ?>
+              </a>
+            </li>
           </ul>
 
 
@@ -124,6 +130,9 @@ $param = $db->send("SELECT * FROM config;");
             $sectTitle = __('sect_treatments', $lang);
             include "admin/treatments.php";
             break;
+          case ("gallery"):
+            $sectTitle = __('sect_gallery', $lang);
+            include "admin/gallery.php";
         endswitch;
         ?>
       </main>

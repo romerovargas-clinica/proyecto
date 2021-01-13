@@ -1,5 +1,4 @@
 <?php
-
   // Procesamiento de formulario
   $error = "";
   if(isset($_POST['inputName'])):
@@ -7,12 +6,7 @@
       echo "Pendiente: Eliminar usuario";
     endif;  
     // Campos Obligatorios
-    $id = $_POST['inputId'];
-    $name = $_POST['inputName'];
-    $firstname = $_POST['inputFirstName'];
-    $lastname = $_POST['inputLastName'];
-    $email = $_POST['inputEmail'];
-    $rol = $_POST['inputRol'];
+    $id = $_POST['inputId'];        
     if($firstname!="" && $lastname!="" && $email!=""):
       //update($table, $update, $where, $SQLInyection = 'YES')
       $anarray = array();
@@ -33,13 +27,13 @@
   include "admin/pagination.php";
   
   // Calculo el total de paginas
-  $row = $db->send("SELECT Count(*) as total FROM users;");
+  $row = $db->send("SELECT Count(*) as total FROM images;");
   $numResult = $row[0]['total'];
   $total_pages = ceil($numResult / $maxRow);
-  $records = $db->select("users", "1 = 1 ORDER BY id ASC LIMIT ".$start.", ".$maxRow);
+  $records = $db->select("images", "1 = 1 ORDER BY id ASC LIMIT ".$start.", ".$maxRow);
 ?>
 
-<h2><?=__('sect_users',$lang)?></h2>
+<h2><?=__('sect_gallery',$lang)?></h2>
 <div class="table-responsive">
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end">
@@ -64,41 +58,25 @@
   </nav>
 
   <table class="table table-striped table-sm table-hover">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th><?=__('frm_Name',$lang)?></th>
-        <th><?=__('frm_FirstName',$lang)?></th>
-        <th><?=__('frm_LastName',$lang)?></th>
-        <th><?=__('frm_Roles',$lang)?></th>
-        <th><?=__('frm_Email',$lang)?></th>
-      </tr>
-    </thead>
-    <tbody>
-        <?php if(!empty($records)):
-          $cont = 0;
-          foreach($records as $record):
-            if(isset($_GET['edit']) && $record['id']==$_GET['edit']):
-              $class = " fw-bold";
-            else:
-              $class = "";
-            endif;
-          ?>
-            <tr class="tbl-h<?=$class?>" onclick="window.location='admin.php?section=users&page=<?=($page)?>&edit=<?=$record['id']?>';">
-                <td><?=$record["id"]?></td>
-                <td><?=$record["name"]?></td>
-                <td><?=$record["firstname"]?></td>
-                <td><?=$record["lastname"]?></td>
-                <td><?=$record["roles"]?></td>
-                <td><?=$record["email"]?></td>
-            </tr>
-        <?php
-            $cont++;
-            if($cont>=$maxRow) break;
-          endforeach;
-        endif;?>
-        </tbody>
-    </table>
+      <thead><tr><th>Images</th></tr></thead>
+      <tbody>
+      <tr><td>
+      <?php      
+      if(!empty($records)):
+        $cont = 0;?>
+        <div class="d-flex p-2 bd-highlight">
+        <?php foreach($records as $record):?>
+          <div class="card mb-3" onclick="window.location='admin.php?section=gallery&page=<?=($page)?>&edit=<?=$record['id']?>';">
+            <div class="card-header"><?="[IMG:".$record['id']."]"?></div>
+            <div class="card-img-top"><img src="<?=$record['src']?>" class="crop rounded d-block" alt="<?=$record['id']?>" height="50"></div>
+            <div class="card-title small text-truncate" style="max-width:150px"><?=$record['name']?></div>
+          </div>
+        <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
+      </td></tr>
+      </tbody>
+  </table>  
 </div>    
 
 <div class="container text-warning bg-danger"><?php if($error!="") echo $error;?></div>
@@ -188,6 +166,6 @@ function aceptar(){
   document.getElementById("userform").submit();
 }
 function frmUser_close(){
-  window.location.href="/admin.php?section=users&page=<?=$page?>";
+  window.location.href="http://clinica.com/admin.php?section=users&page=<?=$page?>";
 }
 </script>

@@ -32,7 +32,6 @@ $texts = array(
   'frm_Desc' => "Description",
   'frm_Duration' => "Duration",
   'frm_Price' => "Price",
-  
   // Buttons
   'btn_Update' => "Update",
   'btn_Deleted' => "Deleted",
@@ -40,6 +39,7 @@ $texts = array(
   'btn_Close' => "Close",
   'Learn_more' => 'Learn more',
   // Admin
+  'sect_gallery' => "Gallery",
   'sect_users' => "Users",
   'sect_settings' => "Settings",
   'sect_categories' => "Categories",

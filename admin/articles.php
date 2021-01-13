@@ -154,7 +154,7 @@ if(isset($_GET['edit'])):
   ?>
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
-  <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frmUser_close()"></button>
+  <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()"></button>
   <form id="userform" action="admin.php?section=articles&page=<?=$_GET['page']?>&edit=<?=$_GET['edit']?>#form" method="POST">
     <div class="mb-6 row">
       <label for="inputTitle" class="col-sm-2 col-form-label"><?=__('frm_Title',$lang)?></label>
@@ -184,7 +184,7 @@ if(isset($_GET['edit'])):
     <div> <!-- class="mb-6 row" -->
       <label for="inputText" class="col-sm-2 col-form-label"><?=__('frm_Text',$lang)?></label>
       <div> <!-- class="col-sm-6" -->
-        <textarea cols="100" name="inputText" id="inputText" ><?=$fields[0]["text"]?></textarea><!--  class="form-control form-control-sm" -->
+        <textarea cols="100" name="inputText" id="inputText" ><?=$fields[0]["text"]?></textarea>
       </div>
     </div>
     <!-- -->
@@ -219,7 +219,11 @@ if(isset($_GET['edit'])):
 <script>  
   CKEDITOR.replace('inputText', {
     filebrowserUploadUrl: 'js/ckeditor/ck_upload.php',
-    extraAllowedContent: 'img[idunique]'
+    extraAllowedContent: 'img[idunique]',
+    filebrowserBrowseUrl : 'admin/filebrowser.php?type=all',
+		filebrowserImageBrowseUrl : 'admin/filebrowser.php?type=images',
+		filebrowserWindowWidth : '730',
+		filebrowserWindowHeight : '500'
   });
   
   function aceptar(del){
@@ -233,31 +237,31 @@ if(isset($_GET['edit'])):
       // <img => [IMG:
       // /> => ]      
       var texto = CKEDITOR.instances['inputText'].getData();
-      var var_alt = "";
-      var var_src = "";
-      var var_style = "";
-      var var_idunique = "";
-      var imagen;
-      try{
-        //imagen = texto.match(/<img\s+[^>]*\bstyle\s*\=\s*\"\b[\"]*[a-z]*\:[0-9]*px\;\s*[a-z]*\:[0-9]*px\"\s*\/>/)[0];
-        imagen = texto.match(/<img\s+[^>]*\b[(.*?)]*\"\s*\/>/);                              
-      } catch(e){
-        imagen=null;
-        console.log(e);
-      }
+      
+      var imagen = texto.match(/<img\s+[^>]*\b[(.*?)]*\"\s*\/>/)[0];      
       while(imagen!==null){
         console.log('Imagen: ' + imagen);
-        var_alt = imagen.match(/alt\=\"[a-zA-Z]*\"/)[0];
-        var_src = imagen.match(/src\=\"[\-|\_|\,|\.|\/|a-zA-ZÀ-ÿ\u00f1\u00d1|A-Z|0-9|\:|\;|\s|\.]*\"/)[0];
-        var_style = imagen.match(/style\=\"[a-zA-Z0-9\:|\;|\s]*\"/)[0];
-        var_alt_length = var_alt.length;
-        var_alt = var_alt.substring(5, var_alt_length - 1);
-        var_src_length = var_src.length;
-        var_src = var_src.substring(5, var_src_length - 1);
-        var_style_length = var_style.length;
-        var_style = var_style.substring(7, var_style_length - 1);
-        var_idunique = imagen.match(/idunique\=\"[a-zA-Z0-9]*\"/)[0];
-        console.log(var_idunique);
+        console.log(typeof(image));
+        var var_alt = imagen.match(/alt\=\"[a-zA-Z]*\"/)[0];
+        var var_src = imagen.match(/src\=\"[\-|\_|\,|\.|\/|a-zA-ZÀ-ÿ\u00f1\u00d1|A-Z|0-9|\:|\;|\s|\.]*\"/)[0];
+        var var_style = imagen.match(/style\=\"[a-zA-Z0-9\:|\;|\s]*\"/)[0];
+        var var_idunique = imagen.match(/idunique\=\"[a-zA-Z0-9]*\"/)[0];
+        if(var_alt!==null){
+          console.log(var_alt);
+          var_alt_length = var_alt.length;
+          var_alt = var_alt.substring(5, var_alt_length - 1);
+        } else var_alt = "";
+        if(var_src!==null){
+          console.log(var_src);
+          var_src_length = var_src.length;
+          var_src = var_src.substring(5, var_src_length - 1);
+        } else var_src = "";
+        if(var_style!==null){
+          console.log(var_style);
+          var_style_length = var_style.length;
+          var_style = var_style.substring(7, var_style_length - 1);
+        } else var_style="";
+        
         if(var_idunique===null) {
           var_idunique="none";
         } else var_idunique = var_idunique.substring(10, var_idunique.length - 1);
@@ -268,6 +272,7 @@ if(isset($_GET['edit'])):
         
         console.log(new_text);
         texto = texto.replace(imagen, new_text);
+        
         try{
           imagen = texto.match(/<img\s+[^>]*\b[(.*?)]*\"\s*\/>/)[0];
         }catch(e){          
@@ -281,6 +286,6 @@ if(isset($_GET['edit'])):
   }
 
   function frm_close(){
-    window.location.href="http://clinica.com/admin.php?section=articles&page=<?=$page?>";
+    window.location.href="/admin.php?section=articles&page=<?=$page?>";
   }
 </script>
