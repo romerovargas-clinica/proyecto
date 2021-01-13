@@ -32,6 +32,7 @@ $texts = array(
   'frm_Desc' => "Descripción",
   'frm_Duration' => "Duración",
   'frm_Price' => "Precio",
+  'frm_Categorie' => "Categoría",
 
 
   // Buttons
@@ -47,6 +48,9 @@ $texts = array(
   'sect_articles' => "Artículos",
   'sect_pages' => "Páginas",
   'sect_treatments' => "Tratamientos",
+  'sect_treatmentsCategories' => "Tipos de tratamientos",
+  'sect_Interventions' => "Intervenciones",
+
   // Modal
   'modal_title_confirm' => "Confirme opción",
   'modal_text_confirm' => "Esta opción no es posible deshacerla. Si realmente está seguro/a pulse en 'Aceptar'",

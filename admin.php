@@ -81,9 +81,16 @@ $param = $db->send("SELECT * FROM config;");
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin.php?section=treatments">
-                <span data-feather="heart"></span> <!--iconos-->
-                <?= __('sect_treatments', $lang) ?>
+              <a class="nav-link" href="admin.php?section=treatmentsCategories">
+                <span data-feather="trello"></span>
+                <?= __('sect_treatmentsCategories', $lang) ?>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin.php?section=treatmentsInterventions">
+                <span data-feather="heart"></span>
+                <!--iconos-->
+                <?= __('sect_Interventions', $lang) ?>
               </a>
             </li>
             <li class="nav-item">
@@ -120,9 +127,13 @@ $param = $db->send("SELECT * FROM config;");
             $sectTitle = __('sect_articles', $lang);
             include "admin/articles.php";
             break;
-          case ("treatments"):
-            $sectTitle = __('sect_treatments', $lang);
-            include "admin/treatments.php";
+          case ("treatmentsCategories"):
+            $sectTitle = __('sect_treatmentsCategories', $lang);
+            include "admin/treatmentsCategories.php";
+            break;
+          case ("treatmentsInterventions"):
+            $sectTitle = __('sect_Interventions', $lang);
+            include "admin/treatmentsInterventions.php";
             break;
         endswitch;
         ?>
