@@ -156,10 +156,7 @@ class DataBase
     }
 
     public function secure($valor)
-    { //well done
-        if (get_magic_quotes_gpc()) {
-            $valor = stripslashes($this->connection, $valor);
-        }
+    { //well done        
         if (!is_numeric($valor)) {
             $valor = "'" . mysqli_real_escape_string($this->connection, $valor) . "'";
         }
