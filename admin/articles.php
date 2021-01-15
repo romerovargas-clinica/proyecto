@@ -63,7 +63,6 @@
 
   // Gestión de la paginación de registros
   include "admin/pagination.php";
-  
   // Calculo el total de paginas
   $row = $db->send("SELECT Count(*) as total FROM articles;");
   $numResult = $row[0]['total'];
@@ -77,20 +76,20 @@
     <ul class="pagination justify-content-end">
       <?php if ($total_pages >= 1) {
         if ($page != 1) {?>
-          <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?=($page-1)?>">&laquo;</a></li>
-        <?php }
+      <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?=($page-1)?>">&laquo;</a></li>
+      <?php }
   
         for ($i=1;$i<=$total_pages;$i++) {
           if ($page == $i) {?>
-            <li class="page-item"><a class="page-link" href="#"><?=$i?></a></li>
-          <?php } else { ?>
-            <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?=$i?>"><?=$i?></a></li>
-          <?php }
+      <li class="page-item"><a class="page-link" href="#"><?=$i?></a></li>
+      <?php } else { ?>
+      <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?=$i?>"><?=$i?></a></li>
+      <?php }
         }
   
         if ($page != $total_pages) { ?>
-          <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?=$page+1?>">&raquo;</a></li>
-        <?php }
+      <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?=$page+1?>">&raquo;</a></li>
+      <?php }
       }?>
     </ul>
   </nav>
@@ -102,11 +101,11 @@
         <th><?=__('frm_Title',$lang)?></th>
         <th id="subtitle"><?=__('frm_Subtitle',$lang)?></th>
         <th><?=__('frm_Publish',$lang)?></th>
-        <th><?=__('frm_Text',$lang)?></th>        
+        <th><?=__('frm_Text',$lang)?></th>
       </tr>
     </thead>
     <tbody>
-        <?php if(!empty($records)):
+      <?php if(!empty($records)):
           $cont = 0;
           foreach($records as $record):
             if(isset($_GET['edit']) && $record['id']==$_GET['edit']):
@@ -115,21 +114,23 @@
               $class = "";
             endif;
           ?>
-            <tr class="tbl-h<?=$class?>" onclick="window.location='admin.php?section=articles&page=<?=($page)?>&edit=<?=$record['id']?>';" style="background-color: rgba(0, 0, 0, 0.05); background-image:linear-gradient(var(--bs-table-accent-bg),var(--bs-table-accent-bg))">
-                <td><?=$record["id"]?></td>
-                <td><?=$record["title"]?></td>
-                <td class="d-inline-block text-truncate" style="max-width: 200px"><?=$record["subtitle"]?></td>
-                <td><?=$record["date_published"]?></td>
-                <td class="d-inline-block text-truncate" style="max-width: 300px"><?=strip_tags($record["text"])?></td>                
-            </tr>
-        <?php
+      <tr class="tbl-h<?=$class?>"
+        onclick="window.location='admin.php?section=articles&page=<?=($page)?>&edit=<?=$record['id']?>';"
+        style="background-color: rgba(0, 0, 0, 0.05); background-image:linear-gradient(var(--bs-table-accent-bg),var(--bs-table-accent-bg))">
+        <td><?=$record["id"]?></td>
+        <td><?=$record["title"]?></td>
+        <td class="d-inline-block text-truncate" style="max-width: 200px"><?=$record["subtitle"]?></td>
+        <td><?=$record["date_published"]?></td>
+        <td class="d-inline-block text-truncate" style="max-width: 300px"><?=strip_tags($record["text"])?></td>
+      </tr>
+      <?php
             $cont++;
             if($cont>=$maxRow) break;
           endforeach;
         endif;?>
-        </tbody>
-    </table>
-</div>    
+    </tbody>
+  </table>
+</div>
 
 <div class="container text-warning bg-danger"><?php if($error!="") echo $error;?></div>
 
@@ -152,52 +153,61 @@ if(isset($_GET['edit'])):
     endforeach;
   endif;
   ?>
-  <a name="form"></a>
-  <div class="container-md border position-relative p-3">
-  <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()"></button>
-  <form id="userform" action="admin.php?section=articles&page=<?=$_GET['page']?>&edit=<?=$_GET['edit']?>#form" method="POST">
+<a name="form"></a>
+<div class="container-md border position-relative p-3">
+  <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close"
+    onclick="frm_close()"></button>
+  <form id="userform" action="admin.php?section=articles&page=<?=$_GET['page']?>&edit=<?=$_GET['edit']?>#form"
+    method="POST">
     <div class="mb-6 row">
       <label for="inputTitle" class="col-sm-2 col-form-label"><?=__('frm_Title',$lang)?></label>
       <div class="col-sm-6">
-        <input type="text" readonly class="form-control form-control-sm" name="inputTitle" id="inputTitle" value="<?=$fields[0]["title"]?>">
+        <input type="text" readonly class="form-control form-control-sm" name="inputTitle" id="inputTitle"
+          value="<?=$fields[0]["title"]?>">
       </div>
     </div>
     <div class="mb-6 row">
       <label for="inputSubTitle" class="col-sm-2 col-form-label"><?=__('frm_Subtitle',$lang)?></label>
       <div class="col-sm-6">
-        <input type="text" class="form-control form-control-sm" name="inputSubTitle" id="inputSubTitle" value="<?=$fields[0]["subtitle"]?>">
+        <input type="text" class="form-control form-control-sm" name="inputSubTitle" id="inputSubTitle"
+          value="<?=$fields[0]["subtitle"]?>">
       </div>
-    </div>        
+    </div>
     <div class="mb-6 row">
       <label for="inputAuthor" class="col-sm-2 col-form-label"><?=__('frm_Author',$lang)?></label>
       <div class="col-sm-6">
-      <select class="form-select" aria-label="Default select" name="inputAuthor" id="inputAuthor">
-        <?php         
+        <select class="form-select" aria-label="Default select" name="inputAuthor" id="inputAuthor">
+          <?php         
         $authors = $db->send("SELECT id, name FROM users;");?>
-        <option value = "0">Default</option>
-        <?php foreach($authors as $key):?>
-        <option value = "<?=$key['id']?>"<?=$key['id']==$fields[0]["author"]?" selected":""?>><?=$key['name']?></option>
-        <?php endforeach;?>
-      </select>
-      </div>      
+          <option value="0">Default</option>
+          <?php foreach($authors as $key):?>
+          <option value="<?=$key['id']?>" <?=$key['id']==$fields[0]["author"]?" selected":""?>><?=$key['name']?>
+          </option>
+          <?php endforeach;?>
+        </select>
+      </div>
     </div>
-    <div> <!-- class="mb-6 row" -->
+    <div>
+      <!-- class="mb-6 row" -->
       <label for="inputText" class="col-sm-2 col-form-label"><?=__('frm_Text',$lang)?></label>
-      <div> <!-- class="col-sm-6" -->
-        <textarea cols="100" name="inputText" id="inputText" ><?=$fields[0]["text"]?></textarea>
+      <div>
+        <!-- class="col-sm-6" -->
+        <textarea cols="100" name="inputText" id="inputText"><?=$fields[0]["text"]?></textarea>
       </div>
     </div>
     <!-- -->
     <input type="hidden" id="inputId" name="inputId" value="<?=$fields[0]["id"]?>">
     <input type="hidden" id="inputDelete" name="inputDelete" value="0">
-    <button type="button" onclick="aceptar(false);" class="btn btn-primary" name="bttn1"><?=__('btn_Update',$lang)?></button> 
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal"><?=__('btn_Deleted',$lang)?></button>    
+    <button type="button" onclick="aceptar(false);" class="btn btn-primary"
+      name="bttn1"><?=__('btn_Update',$lang)?></button>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+      data-bs-target="#myModal"><?=__('btn_Deleted',$lang)?></button>
   </form>
-  </div>
-  <?php endif;?>
-  
-  <!-- Modal -->
-  <?php
+</div>
+<?php endif;?>
+
+<!-- Modal -->
+<?php
 
   ?>
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -216,76 +226,76 @@ if(isset($_GET['edit'])):
   </div>
 </div>
 
-<script>  
-  CKEDITOR.replace('inputText', {
-    filebrowserUploadUrl: 'js/ckeditor/ck_upload.php',
-    extraAllowedContent: 'img[idunique]',
-    filebrowserBrowseUrl : 'admin/filebrowser.php?type=all',
-		filebrowserImageBrowseUrl : 'admin/filebrowser.php?type=images',
-		filebrowserWindowWidth : '730',
-		filebrowserWindowHeight : '500'
-  });
-  
-  function aceptar(del){
-    /*
-    Envía el formulario desde el botón Actualizar (del=false) y el botón Eliminar(del= true)
-    */
-    document.getElementById("inputDelete").value = del;
-    if(!del){
-      // sustituimos las etiquetas "img" por otra pseudo-etiqueta segura que pase el filtro anti SQL_Injection
-      // <img alt="hola" src="../../images/uploads/compartecoche.png" style="height:354px; width:354px" />
-      // <img => [IMG:
-      // /> => ]      
-      var texto = CKEDITOR.instances['inputText'].getData();
-      
-      var imagen = texto.match(/<img\s+[^>]*\b[(.*?)]*\"\s*\/>/)[0];      
-      while(imagen!==null){
-        console.log('Imagen: ' + imagen);
-        console.log(typeof(image));
-        var var_alt = imagen.match(/alt\=\"[a-zA-Z]*\"/)[0];
-        var var_src = imagen.match(/src\=\"[\-|\_|\,|\.|\/|a-zA-ZÀ-ÿ\u00f1\u00d1|A-Z|0-9|\:|\;|\s|\.]*\"/)[0];
-        var var_style = imagen.match(/style\=\"[a-zA-Z0-9\:|\;|\s]*\"/)[0];
-        var var_idunique = imagen.match(/idunique\=\"[a-zA-Z0-9]*\"/)[0];
-        if(var_alt!==null){
-          console.log(var_alt);
-          var_alt_length = var_alt.length;
-          var_alt = var_alt.substring(5, var_alt_length - 1);
-        } else var_alt = "";
-        if(var_src!==null){
-          console.log(var_src);
-          var_src_length = var_src.length;
-          var_src = var_src.substring(5, var_src_length - 1);
-        } else var_src = "";
-        if(var_style!==null){
-          console.log(var_style);
-          var_style_length = var_style.length;
-          var_style = var_style.substring(7, var_style_length - 1);
-        } else var_style="";
-        
-        if(var_idunique===null) {
-          var_idunique="none";
-        } else var_idunique = var_idunique.substring(10, var_idunique.length - 1);
-        var new_text = "{IMG:alt[" + var_alt + "]";
-        new_text = new_text + "IMG:src["+ var_src + "]";
-        new_text = new_text + "IMG:style["+ var_style + "]";
-        new_text = new_text + "IMG:idunique["+ var_idunique + "]}";
-        
-        console.log(new_text);
-        texto = texto.replace(imagen, new_text);
-        
-        try{
-          imagen = texto.match(/<img\s+[^>]*\b[(.*?)]*\"\s*\/>/)[0];
-        }catch(e){          
-          console.log(e);
-          break;
-        }
-      }      
-      CKEDITOR.instances['inputText'].setData(texto);
-    }
-    document.getElementById("userform").submit();
-  }
+<script>
+CKEDITOR.replace('inputText', {
+  filebrowserUploadUrl: 'js/ckeditor/ck_upload.php',
+  extraAllowedContent: 'img[idunique]',
+  filebrowserBrowseUrl: 'admin/filebrowser.php?type=all',
+  filebrowserImageBrowseUrl: 'admin/filebrowser.php?type=images',
+  filebrowserWindowWidth: '730',
+  filebrowserWindowHeight: '500'
+});
 
-  function frm_close(){
-    window.location.href="/admin.php?section=articles&page=<?=$page?>";
+function aceptar(del) {
+  /*
+  Envía el formulario desde el botón Actualizar (del=false) y el botón Eliminar(del= true)
+  */
+  document.getElementById("inputDelete").value = del;
+  if (!del) {
+    // sustituimos las etiquetas "img" por otra pseudo-etiqueta segura que pase el filtro anti SQL_Injection
+    // <img alt="hola" src="../../images/uploads/compartecoche.png" style="height:354px; width:354px" />
+    // <img => [IMG:
+    // /> => ]      
+    var texto = CKEDITOR.instances['inputText'].getData();
+
+    var imagen = texto.match(/<img\s+[^>]*\b[(.*?)]*\"\s*\/>/)[0];
+    while (imagen !== null) {
+      console.log('Imagen: ' + imagen);
+      console.log(typeof(image));
+      var var_alt = imagen.match(/alt\=\"[a-zA-Z]*\"/)[0];
+      var var_src = imagen.match(/src\=\"[\-|\_|\,|\.|\/|a-zA-ZÀ-ÿ\u00f1\u00d1|A-Z|0-9|\:|\;|\s|\.]*\"/)[0];
+      var var_style = imagen.match(/style\=\"[a-zA-Z0-9\:|\;|\s]*\"/)[0];
+      var var_idunique = imagen.match(/idunique\=\"[a-zA-Z0-9]*\"/)[0];
+      if (var_alt !== null) {
+        console.log(var_alt);
+        var_alt_length = var_alt.length;
+        var_alt = var_alt.substring(5, var_alt_length - 1);
+      } else var_alt = "";
+      if (var_src !== null) {
+        console.log(var_src);
+        var_src_length = var_src.length;
+        var_src = var_src.substring(5, var_src_length - 1);
+      } else var_src = "";
+      if (var_style !== null) {
+        console.log(var_style);
+        var_style_length = var_style.length;
+        var_style = var_style.substring(7, var_style_length - 1);
+      } else var_style = "";
+
+      if (var_idunique === null) {
+        var_idunique = "none";
+      } else var_idunique = var_idunique.substring(10, var_idunique.length - 1);
+      var new_text = "{IMG:alt[" + var_alt + "]";
+      new_text = new_text + "IMG:src[" + var_src + "]";
+      new_text = new_text + "IMG:style[" + var_style + "]";
+      new_text = new_text + "IMG:idunique[" + var_idunique + "]}";
+
+      console.log(new_text);
+      texto = texto.replace(imagen, new_text);
+
+      try {
+        imagen = texto.match(/<img\s+[^>]*\b[(.*?)]*\"\s*\/>/)[0];
+      } catch (e) {
+        console.log(e);
+        break;
+      }
+    }
+    CKEDITOR.instances['inputText'].setData(texto);
   }
+  document.getElementById("userform").submit();
+}
+
+function frm_close() {
+  window.location.href = "/admin.php?section=articles&page=<?=$page?>";
+}
 </script>
