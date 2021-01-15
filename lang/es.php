@@ -39,6 +39,9 @@ $texts = array(
   'btn_Ok' => "Aceptar",
   'btn_Close' => "Cerrar",
   'Learn_more' => 'Leer Más',
+  'btn_AddUser' => 'Añadir nuevo usuario',
+  'btn_Add' => 'Añadir',
+
   // Admin
   'sect_gallery' => "Galería",
   'sect_users' => "Usuarios",
