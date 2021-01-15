@@ -22,10 +22,10 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])):
     $anarray["roles"] = $rol;
     $recordset = $db->update("users", $anarray, "id = " . $id);
     if (!$recordset) :
-      $error = "Error al actualizar los datos"; // To-Do Translate
+      $error = __('err_UpdateInfo', $lang);
     endif;
   else :
-    $error = "Falta cumplimentar datos"; // TO-DO Translate
+    $error = __('err_MissingData', $lang); 
   endif;
 endif;
 //Añadir nuevos usuarios

@@ -57,6 +57,9 @@ $texts = array(
   'modal_text_confirm' => "Esta opción no es posible deshacerla. Si realmente está seguro/a pulse en 'Aceptar'",
   // Error Messages
   'err_NotAutenticates' => "Usuario no registrado",
+  'err_UpdateInfo' => "Fallo al actualizar los datos",
+  'err_MissingData' => "Faltan datos por cumplimentar",
+
   // Labels
   'date_Published' => "Fecha de publicación",
 );

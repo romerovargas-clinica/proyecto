@@ -42,8 +42,6 @@ $texts = array(
   'btn_AddUser' => 'Add new user',
   'btn_Add' => 'Add',
 
-
-  
   // Admin
   'sect_gallery' => "Gallery",
   'sect_users' => "Users",
@@ -59,6 +57,9 @@ $texts = array(
   'modal_text_confirm' => "It is not possible to undo. If you really intend to continue with it, click on 'OK'",
   // Error Messages
   'err_NotAutenticates' => "Unregistered user",
+  'err_UpdateInfo' => "Failure updating data",
+  'err_MissingData' => "missing data, need to complete it",
+
   // Labels
   'date_Published' => "Date published",
 );
