@@ -26,10 +26,11 @@ if (isset($_POST['inputName'])) :
         $anarray["Price"] = $price;
         $recordset = $db->update("treatments_interventions", $anarray, "id = " . $id);
         //if (!$recordset) :
-        //    $error = "Error al actualizar los datos"; // To-Do Translate
+         // $error = __('err_UpdateInfo', $lang); 
+
         //endif;
      // else :
-     //    $error = "Falta cumplimentar datos"; // TO-DO Translate
+     //    $error = __('err_MissingData', $lang) ; 
      // endif;
 endif;
 
