@@ -31,13 +31,13 @@ function login($username, $password, $remember, $password_hashed = TRUE) {
     $auth_key = $resultset[0]["auth_key"];
     if ($remember) {
       // genera una nueva auth key en cada log in para que las viejas claves no pueden utilizarse varias veces
-        // en caso de que "secuestren" la cookie
-        $cookie_auth = rand_string() . $resultset[0]["name"];
-        $auth_key = session_encrypt($cookie_auth);
-        $anarray = array();
-        $anarray["auth_key"] = $auth_key;          
-        $auth_query = $db->update("users", $anarray, "name = '" . $resultset[0]["name"] . "'");
-        setcookie("auth_key", $auth_key, time() + 60 * 60 * 24 * 30, "/", null, FALSE, TRUE);                    
+      // en caso de que "secuestren" la cookie
+      $cookie_auth = rand_string() . $resultset[0]["name"];
+      $auth_key = session_encrypt($cookie_auth);
+      $anarray = array();
+      $anarray["auth_key"] = $auth_key;          
+      $auth_query = $db->update("users", $anarray, "name = '" . $resultset[0]["name"] . "'");
+      setcookie("auth_key", $auth_key, time() + 60 * 60 * 24 * 30, "/", null, FALSE, TRUE);                    
     }
     session_regenerate_id(TRUE);
     $_SESSION['id'] = $resultset[0]["id"];
