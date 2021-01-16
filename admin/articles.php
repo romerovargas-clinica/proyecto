@@ -76,7 +76,8 @@ $records = $db->select("articles", "1 = 1 ORDER BY id ASC LIMIT " . $start . ", 
     <ul class="pagination justify-content-end">
       <?php if ($total_pages >= 1) {
         if ($page != 1) { ?>
-          <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?= ($page - 1) ?>">&laquo;</a></li>
+          <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?= ($page - 1) ?>">&laquo;</a>
+          </li>
           <?php }
 
         for ($i = 1; $i <= $total_pages; $i++) {
@@ -88,7 +89,8 @@ $records = $db->select("articles", "1 = 1 ORDER BY id ASC LIMIT " . $start . ", 
         }
 
         if ($page != $total_pages) { ?>
-          <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?= $page + 1 ?>">&raquo;</a></li>
+          <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?= $page + 1 ?>">&raquo;</a>
+          </li>
       <?php }
       } ?>
     </ul>
@@ -175,7 +177,8 @@ if (isset($_GET['edit'])) :
             $authors = $db->send("SELECT id, name FROM users;"); ?>
             <option value="0">Default</option>
             <?php foreach ($authors as $key) : ?>
-              <option value="<?= $key['id'] ?>" <?= $key['id'] == $fields[0]["author"] ? " selected" : "" ?>><?= $key['name'] ?>
+              <option value="<?= $key['id'] ?>" <?= $key['id'] == $fields[0]["author"] ? " selected" : "" ?>>
+                <?= $key['name'] ?>
               </option>
             <?php endforeach; ?>
           </select>
@@ -220,12 +223,13 @@ if (isset($_GET['edit'])) :
 
 <script>
   CKEDITOR.replace('inputText', {
-    filebrowserUploadUrl: 'js/ckeditor/ck_upload.php',
+    //filebrowserUploadUrl: 'js/ckeditor/ck_upload.php',
     extraAllowedContent: 'img[idunique]',
-    filebrowserBrowseUrl: 'admin/filebrowser.php?type=all',
-    filebrowserImageBrowseUrl: 'admin/filebrowser.php?type=images',
+    //filebrowserBrowseUrl: 'admin/filebrowserv.php?type=all',
+    filebrowserImageBrowseUrl: 'filebrowser.php?type=images',
     filebrowserWindowWidth: '730',
-    filebrowserWindowHeight: '500'
+    filebrowserWindowHeight: '500',
+    removeDialogTabs: "image:advanced",
   });
 
   function aceptar(del) {

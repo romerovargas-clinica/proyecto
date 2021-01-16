@@ -28,7 +28,6 @@ endif;
 $db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
 $param = $db->send("SELECT * FROM config;");
 
-
 ?>
 <!DOCTYPE html>
 <html lang="<?= $lang ?>">
@@ -60,39 +59,40 @@ $param = $db->send("SELECT * FROM config;");
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="admin.php">
+              <a class="nav-link<?=$adm_pag=='dashboard'?' active':''?>" aria-current="page" href="admin.php">
                 <span data-feather="home"></span>
                 Dashboard
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin.php?section=settings">
+              <a class="nav-link<?=$adm_pag=='settings'?' active':''?>" href="admin.php?section=settings">
                 <span data-feather="layers"></span>
                 <?= __('sect_settings', $lang) ?>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin.php?section=users">
+              <a class="nav-link<?=$adm_pag=='users'?' active':''?>" href="admin.php?section=users">
                 <span data-feather="users"></span>
                 <?= __('sect_users', $lang) ?>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin.php?section=articles">
+              <a class="nav-link<?=$adm_pag=='articles'?' active':''?>" href="admin.php?section=articles">
                 <span data-feather="file-text"></span>
                 <?= __('sect_articles', $lang) ?>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin.php?section=treatmentsCategories">
+              <a class="nav-link<?=$adm_pag=='treatmentsCategories'?' active':''?>"
+                href="admin.php?section=treatmentsCategories">
                 <span data-feather="trello"></span>
                 <?= __('sect_treatmentsCategories', $lang) ?>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin.php?section=treatmentsInterventions">
+              <a class="nav-link<?=$adm_pag=='treatmentsInterventions'?' active':''?>"
+                href="admin.php?section=treatmentsInterventions">
                 <span data-feather="heart"></span>
-                <!--iconos-->
                 <?= __('sect_Interventions', $lang) ?>
               </a>
             </li>
@@ -103,7 +103,7 @@ $param = $db->send("SELECT * FROM config;");
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin.php?section=gallery">
+              <a class="nav-link<?=$adm_pag=='gallery'?' active':''?>" href="admin.php?section=gallery">
                 <span data-feather="image"></span>
                 <?= __('sect_gallery', $lang) ?>
               </a>
