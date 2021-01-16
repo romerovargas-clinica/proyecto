@@ -18,7 +18,7 @@ if (isset($_POST['inputName'])) :
     $anarray["name"] = $name;
     $anarray["image"] = $image;
     $anarray["info"] = $info;
-    $recordset = $db->update("treatments_categories", $anarray, "id = " . $id);
+    $recordset = $db->update("treatmentsCategories", $anarray, "id = " . $id);
     if (!$recordset) :
       $error = __('err_UpdateInfo', $lang);
     endif;
@@ -27,44 +27,17 @@ if (isset($_POST['inputName'])) :
   endif;
 endif;
 
-// Gestión de la paginación de registros
-include "admin/pagination.php";
-// Calculo el total de paginas
-$row = $db->send("SELECT Count(*) as total FROM treatments_categories;");
-$numResult = $row[0]['total'];
-$total_pages = ceil($numResult / $maxRow);
-$records = $db->select("treatments_categories", "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " . $maxRow);
 
-//Descargar los datos de la base de datos
-$categories =  $db->send("SELECT * FROM treatments_categories;"); //descargo la tabla categorias
-$categoriesNames = array();
 ?>
 
 <!--Tabla para las categorias-->
 <h2><?= __('sect_treatments', $lang) ?>: <?= __('sect_categories', $lang) ?></h2>
 <div class="table-responsive">
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-end">
-      <?php if ($total_pages >= 1) {
-        if ($page != 1) { ?>
-          <li class="page-item"><a class="page-link" href="admin.php?section=treatmentsCategories&page=<?= ($page - 1) ?>">&laquo;</a></li>
-          <?php }
 
-        for ($i = 1; $i <= $total_pages; $i++) {
-          if ($page == $i) { ?>
-            <li class="page-item"><a class="page-link" href="#"><?= $i ?></a></li>
-          <?php } else { ?>
-            <li class="page-item"><a class="page-link" href="admin.php?section=treatmentsCategories&page=<?= $i ?>"><?= $i ?></a>
-            </li>
-          <?php }
-        }
+  <?php
+  include "admin/pagination.php";
+  ?>
 
-        if ($page != $total_pages) { ?>
-          <li class="page-item"><a class="page-link" href="admin.php?section=treatmentsCategories&page=<?= $page + 1 ?>">&raquo;</a></li>
-      <?php }
-      } ?>
-    </ul>
-  </nav>
   <table class="table table-striped table-sm table-hover">
     <thead>
       <tr>
@@ -76,10 +49,9 @@ $categoriesNames = array();
       </tr>
     </thead>
     <tbody>
-      <?php if (!empty($categories)) :
+      <?php if (!empty($records)) :
         $cont = 0;
-        foreach ($categories as $record) :
-          array_push($categoriesNames, $record['name']);
+        foreach ($records as $record) :
           if (isset($_GET['edit']) && $record['id'] == $_GET['edit']) :
             $class = " fw-bold";
           else :
@@ -113,7 +85,7 @@ if (isset($_GET['edit'])) :
     $fields[0]["info"] = $info;
 
   else :
-    $fields = $db->send("SELECT * FROM treatments_categories WHERE id = " . $_GET['edit']);
+    $fields = $db->send("SELECT * FROM treatmentsCategories WHERE id = " . $_GET['edit']);
   endif;
 ?>
   <a name="form"></a>

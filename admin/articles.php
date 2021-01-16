@@ -61,40 +61,14 @@ if (isset($_POST['inputTitle'])) :
   endif;
 endif;
 
-// Gestión de la paginación de registros
-include "admin/pagination.php";
-// Calculo el total de paginas
-$row = $db->send("SELECT Count(*) as total FROM articles;");
-$numResult = $row[0]['total'];
-$total_pages = ceil($numResult / $maxRow);
-$records = $db->select("articles", "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " . $maxRow);
 ?>
 
 <h2><?= __('sect_articles', $lang) ?></h2>
 <div class="table-responsive">
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-end">
-      <?php if ($total_pages >= 1) {
-        if ($page != 1) { ?>
-          <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?= ($page - 1) ?>">&laquo;</a>
-          </li>
-          <?php }
 
-        for ($i = 1; $i <= $total_pages; $i++) {
-          if ($page == $i) { ?>
-            <li class="page-item"><a class="page-link" href="#"><?= $i ?></a></li>
-          <?php } else { ?>
-            <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?= $i ?>"><?= $i ?></a></li>
-          <?php }
-        }
-
-        if ($page != $total_pages) { ?>
-          <li class="page-item"><a class="page-link" href="admin.php?section=articles&page=<?= $page + 1 ?>">&raquo;</a>
-          </li>
-      <?php }
-      } ?>
-    </ul>
-  </nav>
+  <?php
+  include "admin/pagination.php";
+  ?>
 
   <table class="table table-striped table-sm table-hover">
     <thead>

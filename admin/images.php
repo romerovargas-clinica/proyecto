@@ -14,7 +14,7 @@ if (isset($_POST['inputName'])) :
     $anarray["lastname"] = $lastname;
     $anarray["email"] = $email;
     $anarray["roles"] = $rol;
-    $recordset = $db->update("users", $anarray, "id = " . $id);
+    $recordset = $db->update("images", $anarray, "id = " . $id);
     if (!$recordset) :
       $error = "Error al actualizar los datos"; // To-Do Translate
     endif;
@@ -23,39 +23,14 @@ if (isset($_POST['inputName'])) :
   endif;
 endif;
 
-// Gestión de la paginación de registros
-include "admin/pagination.php";
-
-// Calculo el total de paginas
-$row = $db->send("SELECT Count(*) as total FROM images;");
-$numResult = $row[0]['total'];
-$total_pages = ceil($numResult / $maxRow);
-$records = $db->select("images", "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " . $maxRow);
 ?>
 
 <h2><?= __('sect_gallery', $lang) ?></h2>
 <div class="table-responsive">
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-end">
-      <?php if ($total_pages >= 1) {
-        if ($page != 1) { ?>
-          <li class="page-item"><a class="page-link" href="admin.php?section=users&page=<?= ($page - 1) ?>">&laquo;</a></li>
-          <?php }
 
-        for ($i = 1; $i <= $total_pages; $i++) {
-          if ($page == $i) { ?>
-            <li class="page-item"><a class="page-link" href="#"><?= $i ?></a></li>
-          <?php } else { ?>
-            <li class="page-item"><a class="page-link" href="admin.php?section=users&page=<?= $i ?>"><?= $i ?></a></li>
-          <?php }
-        }
-
-        if ($page != $total_pages) { ?>
-          <li class="page-item"><a class="page-link" href="admin.php?section=users&page=<?= $page + 1 ?>">&raquo;</a></li>
-      <?php }
-      } ?>
-    </ul>
-  </nav>
+  <?php
+  include "admin/pagination.php";
+  ?>
 
   <table class="table table-striped table-sm table-hover">
     <thead>
@@ -71,7 +46,7 @@ $records = $db->select("images", "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " 
             $cont = 0; ?>
             <div class="d-flex p-2 bd-highlight">
               <?php foreach ($records as $record) : ?>
-                <div class="card mb-3" onclick="window.location='admin.php?section=gallery&page=<?= ($page) ?>&edit=<?= $record['id'] ?>';">
+                <div class="card mb-3" onclick="window.location='admin.php?section=images&page=<?= ($page) ?>&edit=<?= $record['id'] ?>';">
                   <div class="card-header"><?= "[IMG:" . $record['id'] . "]" ?></div>
                   <div class="card-img-top"><img src="<?= $record['src'] ?>" class="crop rounded d-block" alt="<?= $record['id'] ?>" height="50"></div>
                   <div class="card-title small text-truncate" style="max-width:150px"><?= $record['name'] ?></div>
@@ -101,7 +76,7 @@ if (isset($_GET['edit'])) :
 ?>
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
-    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frmUser_close()"></button>
+    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()"></button>
     <form id="userform" action="admin.php?section=users&page=<?= $_GET['page'] ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
       <div class="mb-6 row">
         <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_Name', $lang) ?></label>
@@ -172,7 +147,7 @@ if (isset($_GET['edit'])) :
     document.getElementById("userform").submit();
   }
 
-  function frmUser_close() {
-    window.location.href = "http://clinica.com/admin.php?section=users&page=<?= $page ?>";
+  function frm_close() {
+    window.location.href = "http://clinica.com/admin.php?section=images&page=<?= $page ?>";
   }
 </script>
