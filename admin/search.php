@@ -25,13 +25,16 @@ switch ($table) {
     array_push($array_fields, "subtitle");
     array_push($array_fields, "text");
     break;
-  case 'treatmentscategories':
+  case 'treatmentsCategories':
     array_push($array_fields, "name");
     array_push($array_fields, "info");
     break;
-  case 'treatmentinterventions':
+  case 'treatmentsInterventions':
     array_push($array_fields, "name");
     array_push($array_fields, "info");
+    break;
+  case 'images':
+    array_push($array_fields, "name");
     break;
 }
 
@@ -44,9 +47,9 @@ foreach ($array_fields as $where) :
   $sqlCons .= $where . " LIKE '%{$valueSearch}%'";
   $cont++;
 endforeach;
-print_r($_POST);
-print_r($array_fields);
-echo $sqlCons;
+//print_r($_POST);
+//print_r($array_fields);
+//echo $sqlCons;
 //  $consulta = mysqli_query($conexion, "SELECT * FROM mmv001
 //	WHERE nombre COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%' 
 //	OR apellido COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
@@ -55,4 +58,19 @@ echo $sqlCons;
 
 $consulta = mysqli_query($connection, $sqlCons);
 
-echo json_encode(mysqli_fetch_array($consulta));
+$return = array();
+while ($return[] = mysqli_fetch_assoc($consulta)) {
+}
+$stringReturn = "";
+if (count($return) > 1) {
+  unset($return[count($return) - 1]); // destruimos último valor que es 'vacio'  
+  foreach ($return as $key => $row) :
+    $stringReturn .= "#";
+    foreach ($row as $clave => $valor) :
+      if (in_array($clave, $array_fields)) {
+        $stringReturn .= ";" . $valor . " ";
+      }
+    endforeach;
+  endforeach;
+}
+echo $stringReturn;

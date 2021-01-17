@@ -52,34 +52,45 @@ $records = $db->select($adm_pag, "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " 
     </ul>
   </nav>
 </div>
-<div class="list-group" id="resultSearch">
-  <!--<a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-    Cras justo odio
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>-->
-</div>
+<select id="resultSearch" class="form-select" aria-label=".form-select-sm"></select>
+<div class="list-group"></div>
 <script>
   function search() {
     var textSearch = $("input#search").val();
     var div = document.getElementById("resultSearch");
+    while (div.firstChild) {
+      div.removeChild(div.lastChild);
+    }
     if (textSearch != "") {
       $.post("admin/search.php", {
         valueSearch: textSearch,
         table: '<?= $adm_pag ?>'
       }, function(message) {
         //$("#resultSearch").html(message);        
-        //$("input#search").attr('data-bs-content', message);        
-        var a = div.appendChild(document.createElement('a'));
-        var a = document.getElementById('resultSearch')
-        a.innerHTML = message
-        a.setAttribute('class', 'list-group-item list-group-item-action');
+        //$("input#search").attr('data-bs-content', message);
+        console.log(message);
+        var row = message.split("#");
+
+        row.forEach(element => {
+          if (element != "") {
+            let option = document.createElement("option");
+            div.appendChild(option);
+            let field = element.split(";");
+            let texto = "";
+            field.forEach(value => {
+              texto = texto + value;
+              //texto = texto + value.substr(0, 25) + " ";
+            })
+            option.innerHTML = texto;
+            //a.setAttribute('class', 'list-group-item list-group-item-action');
+          }
+        });
       });
     } else {
-      //$("#resultSearch").html('');      
-      while (div.firstChild) {
-        div.removeChild(div.lastChild);
-      }
-      div
+      div.setAttribute('arial-label', 'Disabled size 0');
+      div.setAttribute('size', '0');
+      //$("#resultSearch").html(''); 
+
     };
   };
 </script>
