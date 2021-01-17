@@ -81,7 +81,7 @@ if (isset($_GET['edit'])) :
 ?>
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
-    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frmUser_close()"></button>
+    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
     <form id="userform" action="admin.php?section=settings&page=<?= $_GET['page'] ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
       <div class="mb-6 row">
         <label for="inputType" class="col-sm-2 col-form-label"><?= __('frm_Type', $lang) ?></label>
@@ -135,7 +135,7 @@ if (isset($_GET['edit'])) :
     document.getElementById("userform").submit();
   }
 
-  function frmUser_close() {
-    window.location.href = "http://clinica.com/admin.php?section=settings&page=<?= $page ?>";
+  function frm_close() {
+    window.location.href = "<?= $urlsite ?>/admin.php?section=settings&page=<?= $page ?>";
   }
 </script>

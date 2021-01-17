@@ -33,6 +33,10 @@ $texts = array(
   'frm_Duration' => "Duración",
   'frm_Price' => "Precio",
   'frm_Categorie' => "Categoría",
+  'frm_lblImages' => "Nombre",
+  'frm_Src' => "Ubicación",
+  'frm_lblLong' => "Texto pie de imagen",
+  'frm_Style' => "Style-CSS",
   // Buttons
   'btn_Update' => "Actualizar",
   'btn_Deleted' => "Eliminar",
@@ -41,7 +45,6 @@ $texts = array(
   'Learn_more' => 'Leer Más',
   'btn_AddUser' => 'Añadir nuevo usuario',
   'btn_Add' => 'Añadir',
-
   // Admin
   'sect_gallery' => "Galería",
   'sect_users' => "Usuarios",
@@ -59,7 +62,6 @@ $texts = array(
   'err_NotAutenticates' => "Usuario no registrado",
   'err_UpdateInfo' => "Fallo al actualizar los datos",
   'err_MissingData' => "Faltan datos por cumplimentar",
-
   // Labels
   'date_Published' => "Fecha de publicación",
 );

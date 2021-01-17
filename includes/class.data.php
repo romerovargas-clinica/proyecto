@@ -6,7 +6,7 @@ class DataBase
     var $connection;
 
     public function __construct()
-    {        
+    {
         if (DB_PASS == NULL)
             $this->connection = mysqli_connect(DB_SERVER, DB_USER, DB_NAME);
         else
@@ -27,8 +27,9 @@ class DataBase
         //var_dump($sql);
         if ($type == 'ARRAY')
             while (($return[] = mysqli_fetch_array($result))) {
-            } else
-            while (($return[] = mysqli_fetch_assoc($result))) { 
+            }
+        else
+            while (($return[] = mysqli_fetch_assoc($result))) {
             }
         if (count($return) > 1)
             unset($return[count($return) - 1]);
@@ -47,10 +48,9 @@ class DataBase
         $return = array();
         if ($type == 'ARRAY')
             while (($return[] = mysqli_fetch_array($result))) {
-                
-            } else
+            }
+        else
             while (($return[] = mysqli_fetch_assoc($result))) {
-                
             }
         if (count($return) > 1)
             unset($return[count($return) - 1]);
@@ -65,29 +65,28 @@ class DataBase
     { // well done
         $fields = $this->getFields($table);
         //if (count($fields) == count($data)) { // Comentado para que permita distinto número de campos
-            $fields = implode(",", $fields);
-            $sdata = array();
-            //foreach ($data as $value) {
-                //$sdata[] = $this->secure($value); //Checking SQL injection                
-            //}
-            $fields = array();
-            foreach ($data as $key=>$value){
-                $sdata[] = $this->secure($value); //Checking SQL injection
-                $fields[] = $key;
-            }
-            $fields = implode(", ", $fields);
-            $sdata = implode(", ", $sdata);
-            $sql = "INSERT INTO " . $table . " (" . $fields . ") VALUES (" . $sdata . ")";
-            if (mysqli_query($this->connection, $sql)){
-                //echo $sql."<br/>";
-                return true;
-            }
-            else {
-                throw new Exception("0004:Error de sintaxis al ejecutar consulta INSERT SQL[on class DataBase->insert database.php from PHPcore]:$sql");
-                return false;
-            }
+        $fields = implode(",", $fields);
+        $sdata = array();
+        //foreach ($data as $value) {
+        //$sdata[] = $this->secure($value); //Checking SQL injection                
+        //}
+        $fields = array();
+        foreach ($data as $key => $value) {
+            $sdata[] = $this->secure($value); //Checking SQL injection
+            $fields[] = $key;
+        }
+        $fields = implode(", ", $fields);
+        $sdata = implode(", ", $sdata);
+        $sql = "INSERT INTO " . $table . " (" . $fields . ") VALUES (" . $sdata . ")";
+        if (mysqli_query($this->connection, $sql)) {
+            //echo $sql."<br/>";
+            return true;
+        } else {
+            throw new Exception("0004:Error de sintaxis al ejecutar consulta INSERT SQL[on class DataBase->insert database.php from PHPcore]:$sql");
+            return false;
+        }
         //} else
-            //return false;
+        //return false;
         //Example
         // insert('myTable', $anarray)
     }
@@ -145,10 +144,10 @@ class DataBase
 
     public function getNumberRows($table)
     { //well done
-        $temp = @mysqli_query($con, "SELECT SQL_CALC_FOUND_ROWS * FROM $table LIMIT 1");
+        $temp = @mysqli_query($this->connection, "SELECT SQL_CALC_FOUND_ROWS * FROM $table LIMIT 1");
         if (!$temp)
             throw new Exception("0008:Cannot execute query, syntax error [on class DataBase->getNumberRows database.php from PHPcore]");
-        $result = @mysqli_query($con, "SELECT FOUND_ROWS()");
+        $result = @mysqli_query($this->connection, "SELECT FOUND_ROWS()");
         if (!$result)
             throw new Exception("0009:Cannot execute query, syntax error [on class DataBase->getNumberRows database.php from PHPcore]");
         $total = @mysqli_fetch_row($result);
@@ -164,10 +163,10 @@ class DataBase
     }
 
     public function table_to_array($table)
-    {//well done{
+    { //well done{
         $columns = array();
         $array = array();
-        $result_all = @mysqli_query($con, "SELECT * FROM $table");
+        $result_all = @mysqli_query($this->connection, "SELECT * FROM $table");
         $columns = $this->getFields($table);
         while ($data = mysqli_fetch_assoc($result_all)) {
             foreach ($columns as $column_name)
@@ -186,5 +185,4 @@ class DataBase
     {
         @mysqli_close($this->connection);
     }
-
 }

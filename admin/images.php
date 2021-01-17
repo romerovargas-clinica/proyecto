@@ -32,6 +32,8 @@ endif;
   include "admin/pagination.php";
   ?>
 
+
+
   <table class="table table-striped table-sm table-hover">
     <thead>
       <tr>
@@ -49,7 +51,7 @@ endif;
                 <div class="card mb-3" onclick="window.location='admin.php?section=images&page=<?= ($page) ?>&edit=<?= $record['id'] ?>';">
                   <div class="card-header"><?= "[IMG:" . $record['id'] . "]" ?></div>
                   <div class="card-img-top"><img src="<?= $record['src'] ?>" class="crop rounded d-block" alt="<?= $record['id'] ?>" height="50"></div>
-                  <div class="card-title small text-truncate" style="max-width:150px"><?= $record['name'] ?></div>
+                  <div class="card-title small text-truncate text-center" style="max-width:150px"><?= $record['name'] ?></div>
                 </div>
               <?php endforeach; ?>
             </div>
@@ -71,46 +73,35 @@ if (isset($_GET['edit'])) :
     $fields[0]["email"] = $email;
     $fields[0]["roles"] = $rol;
   else :
-    $fields = $db->send("SELECT * FROM users WHERE id = " . $_GET['edit']);
+    $fields = $db->send("SELECT * FROM $adm_pag WHERE id = '" . $_GET['edit'] . "';");
   endif;
 ?>
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
-    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()"></button>
-    <form id="userform" action="admin.php?section=users&page=<?= $_GET['page'] ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
+    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
+    <form id="userform" action="admin.php?section=images&page=<?= $_GET['page'] ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
       <div class="mb-6 row">
-        <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_Name', $lang) ?></label>
+        <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_lblImages', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" readonly class="form-control form-control-sm" name="inputName" id="inputName" value="<?= $fields[0]["name"] ?>">
+          <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" value="<?= $fields[0]["name"] ?>">
         </div>
       </div>
       <div class="mb-6 row">
-        <label for="inputFirstName" class="col-sm-2 col-form-label"><?= __('frm_FirstName', $lang) ?></label>
+        <label for="inputSrc" class="col-sm-2 col-form-label"><?= __('frm_Src', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputFirstName" id="inputFirstName" value="<?= $fields[0]["firstname"] ?>">
+          <input type="text" readonly class="form-control form-control-sm" name="inputSrc" id="inputSrc" value="<?= $fields[0]["src"] ?>">
         </div>
       </div>
       <div class="mb-6 row">
-        <label for="inputLastName" class="col-sm-2 col-form-label"><?= __('frm_LastName', $lang) ?></label>
+        <label for="inputAlt" class="col-sm-2 col-form-label"><?= __('frm_lblLong', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputLastName" id="inputLastName" value="<?= $fields[0]["lastname"] ?>">
+          <input type="text" class="form-control form-control-sm" name="inputSrc" id="inputSrc" value="<?= $fields[0]["alt"] ?>">
         </div>
       </div>
       <div class="mb-6 row">
-        <label for="inputEmail" class="col-sm-2 col-form-label"><?= __('frm_Email', $lang) ?></label>
+        <label for="inputStyle" class="col-sm-2 col-form-label"><?= __('frm_Style', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="email" class="form-control form-control-sm" name="inputEmail" id="inputEmail" value="<?= $fields[0]["email"] ?>">
-        </div>
-      </div>
-      <div class="mb-6 row">
-        <label for="inputRoles" class="col-sm-2 col-form-label"><?= __('frm_Roles', $lang) ?></label>
-        <div class="col-sm-6">
-          <select class="form-select" aria-label="Default select" name="inputRol">
-            <?php $roles = array("[ADMIN-USER]", "[AUTHOR]", "[CUSTOMER]", "[USER]", "[NONE]");
-            foreach ($roles as $key) : ?>
-              <option value="<?= $key ?>" <?= $fields[0]["roles"] == $key ? " selected" : "" ?>><?= $key ?></option>
-            <?php endforeach; ?>
-          </select>
+          <input type="text" class="form-control form-control-sm" name="inputStyle" id="inputStyle" value="<?= $fields[0]["style"] ?>">
         </div>
       </div>
       <input type="hidden" id="inputId" name="inputId" value="<?= $fields[0]["id"] ?>">
@@ -148,6 +139,6 @@ if (isset($_GET['edit'])) :
   }
 
   function frm_close() {
-    window.location.href = "http://clinica.com/admin.php?section=images&page=<?= $page ?>";
+    window.location.href = "<?= $urlsite ?>/admin.php?section=images&page=<?= $page ?>";
   }
 </script>

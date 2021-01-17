@@ -33,6 +33,10 @@ $texts = array(
   'frm_Duration' => "Duration",
   'frm_Price' => "Price",
   'frm_Categorie' => "Categorie",
+  'frm_lblImages' => "Name",
+  'frm_Src' => "url",
+  'frm_lblLong' => "Text in image-footer",
+  'frm_Style' => "Style-CSS",
   // Buttons
   'btn_Update' => "Update",
   'btn_Deleted' => "Deleted",
@@ -41,7 +45,6 @@ $texts = array(
   'Learn_more' => 'Learn more',
   'btn_AddUser' => 'Add new user',
   'btn_Add' => 'Add',
-
   // Admin
   'sect_gallery' => "Gallery",
   'sect_users' => "Users",
@@ -59,7 +62,6 @@ $texts = array(
   'err_NotAutenticates' => "Unregistered user",
   'err_UpdateInfo' => "Failure updating data",
   'err_MissingData' => "missing data, need to complete it",
-
   // Labels
   'date_Published' => "Date published",
 );

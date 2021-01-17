@@ -129,7 +129,7 @@ if (isset($_GET['edit'])) :
 ?>
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
-    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()"></button>
+    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
     <form id="userform" action="admin.php?section=articles&page=<?= $_GET['page'] ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
       <div class="mb-6 row">
         <label for="inputTitle" class="col-sm-2 col-form-label"><?= __('frm_Title', $lang) ?></label>
@@ -266,6 +266,6 @@ if (isset($_GET['edit'])) :
   }
 
   function frm_close() {
-    window.location.href = "/admin.php?section=articles&page=<?= $page ?>";
+    window.location.href = "<?= $urlsite ?>/admin.php?section=articles&page=<?= $page ?>";
   }
 </script>

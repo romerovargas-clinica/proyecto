@@ -1,6 +1,5 @@
 <?php
 // Si hay algún error, descomentar las siguiente líneas
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -27,7 +26,8 @@ endif;
 // Datos
 $db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
 $param = $db->send("SELECT * FROM settings;");
-
+//print_r($param);
+$urlsite = $param[1]['value']; // value of urlsite in settings table
 ?>
 <!DOCTYPE html>
 <html lang="<?= $lang ?>">

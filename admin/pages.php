@@ -14,8 +14,9 @@ if (isset($_POST['inputName'])) :
   $image = $_POST['inputImage'];
   $info = $_POST['inputInfo'];
   $duration = $_POST['inputDuration'];
-  $price = $_POST['inputPrice'];
-  //TO-DO: hay que adaptar la comprobacion de los datos para esta parte
+  $price = $_POST['inputPrice'];              //TO-DO: hay que adaptar la comprobacion de los datos para esta parte
+  // if ($id != "" && $name != "" && $categorie != "" && $image != "" && $info != "" && $duration != "" && $price != ""):
+  //update($table, $update, $where, $SQLInyection = 'YES')
   $anarray = array();
   $anarray["name"] = $name;
   $anarray["categorie"] = $categorie;
@@ -24,9 +25,9 @@ if (isset($_POST['inputName'])) :
   $anarray["duration"] = $duration;
   $anarray["Price"] = $price;
   $recordset = $db->update("treatmentsInterventions", $anarray, "id = " . $id);
+
 endif;
 
-// SQL for ForeignKey table
 $categories = $db->send("SELECT name FROM treatmentsCategories;");
 $categoriesNames = array(); //nombre de las
 foreach ($categories as $categorie) {

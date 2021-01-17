@@ -12,20 +12,20 @@
               <div class="p-3 border bg-light text-center text-primary">
                 <?php
                 $db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
-                $social = $db->send("SELECT * FROM config WHERE label like 'fab %' AND value<>'';");
-                if(!empty($social)):
+                $social = $db->send("SELECT * FROM settings WHERE label like 'fab %' AND value<>'';");
+                if (!empty($social)) :
                   $cont = 0;
-                  foreach($social as $key):
+                  foreach ($social as $key) :
                     $cont++;
-                    if($cont>1) echo "|";?>
-                <a href="<?=$key['value']?>" target="_blank" style="text-decoration:none;">
-                  <i class="fab <?=$key['label']?> my-2 my-sm-0"></i>
-                </a>
-                <?php endforeach;
+                    if ($cont > 1) echo "|"; ?>
+                    <a href="<?= $key['value'] ?>" target="_blank" style="text-decoration:none;">
+                      <i class="fab <?= $key['label'] ?> my-2 my-sm-0"></i>
+                    </a>
+                  <?php endforeach;
                 endif;
-                $email = $db->select("config", "type = 'email' AND value <>''");
-                if(!empty($email)):?>
-                   | <a href="mailto:<?=$email[0]['value']?>"><i class="fas <?=$email[0]['label']?> my-2 my-sm-0"></i></a>
+                $email = $db->select("settings", "type = 'email' AND value <>''");
+                if (!empty($email)) : ?>
+                  | <a href="mailto:<?= $email[0]['value'] ?>"><i class="fas <?= $email[0]['label'] ?> my-2 my-sm-0"></i></a>
                 <?php endif;
                 $db->close();
                 ?>
@@ -35,14 +35,14 @@
             <div class="col">
               <div class="p-3 border bg-light text-center text-success">
 
-                <?php if(!isAuthenticated()):?>
-                <i class="fas fa-users my-2 my-sm-0"></i> | <a href="login.php"><?=__('mn_Login', $lang)?></a>
-                <?php else: ?>
-                <i class="fas fa-user my-2 my-sm-0"></i> | <?=$_SESSION['name']?>
-                <?php endif;?>
+                <?php if (!isAuthenticated()) : ?>
+                  <i class="fas fa-users my-2 my-sm-0"></i> | <a href="login.php"><?= __('mn_Login', $lang) ?></a>
+                <?php else : ?>
+                  <i class="fas fa-user my-2 my-sm-0"></i> | <?= $_SESSION['name'] ?>
+                <?php endif; ?>
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>

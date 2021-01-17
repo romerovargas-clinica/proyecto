@@ -26,8 +26,6 @@ if (isset($_POST['inputName'])) :
     $error = __('err_MissingData', $lang);
   endif;
 endif;
-
-
 ?>
 
 <!--Tabla para las categorias-->
@@ -90,7 +88,7 @@ if (isset($_GET['edit'])) :
 ?>
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
-    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frmUser_close()"></button>
+    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
     <form id="categoriesform" action="admin.php?section=treatmentsCategories&page=<?= $page ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
 
       <div class="mb-6 row">
@@ -148,6 +146,6 @@ if (isset($_GET['edit'])) :
   }
 
   function frmUser_close() {
-    window.location.href = "http://clinica.es/admin.php?section=treatmentsCategories&page=<?= $page ?>";
+    window.location.href = "<?= $urlsite ?>/admin.php?section=treatmentsCategories&page=<?= $page ?>";
   }
 </script>
