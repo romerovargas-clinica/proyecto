@@ -2,7 +2,7 @@
 
 // Procesamiento de formulario
 $error = "";
-if (isset($_POST['inputName'])) :
+if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   echo "<h1> SI esto se ve esta funcionando el submit</h1>";  //COMPROBACION <-
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
     echo "Pendiente: Eliminar";
@@ -25,6 +25,26 @@ if (isset($_POST['inputName'])) :
   else :
     $error = __('err_MissingData', $lang);
   endif;
+endif; 
+//añadir
+if (isset($_POST['InputNew'])) :
+  $name = $_POST['inputName'];
+  $image = $_POST['inputImage'];
+  $info = $_POST['inputInfo'];
+
+  $repeat = $db->send("SELECT Count(*) as repetidos FROM treatmentscategories a WHERE name='$name' ;");
+  if($repeat[0]['repetidos'])
+  {
+    $error = __('err_RepeatCategorie', $lang);
+  }
+  else
+  {
+    echo "estoy funcionando";
+    $db -> send("INSERT INTO `treatmentscategories` (`name`, `info`, `image`) VALUES
+    ('$name', '$image', '$info');");
+  
+  }
+  
 endif;
 ?>
 
@@ -73,8 +93,41 @@ endif;
 
 <div class="container text-warning bg-danger"><?php if ($error != "") echo $error; ?></div>
 
-<!-- /////////////////////TO DO: el botón de submit no me está funcionando , Buscar razón////////////////////// -->
-<?php //formulario para editar
+
+<?php 
+//Añadir nueva categoria
+if (isset($_GET['AddNew'])): ?>
+<div class="container-md border position-relative p-3">
+    <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
+    <form id="categoriesform" action="admin.php?section=treatmentsCategories&page=<?= $page ?>" method="POST">
+
+      <div class="mb-6 row">
+        <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_FirstName', $lang) ?></label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" required>
+        </div>
+      </div>
+      <div class="mb-6 row">
+        <label for="inputImage" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control form-control-sm" name="inputImage" id="inputImage" required>
+        </div>
+      </div>
+      <div class="mb-6 row">
+        <label for="inputInfo" class="col-sm-2 col-form-label"><?= __('frm_Desc', $lang) ?></label>
+        <div class="col-sm-6">
+          <input type="inputInfo" class="form-control form-control-sm" name="inputInfo" id="inputInfo" required>
+        </div>
+      </div>
+
+      <input type="hidden" name="InputNew">
+      <button type="submit" class="btn btn-primary" name="bttn1"><?= __('btn_Add', $lang) ?></button>
+    </form>
+  </div>
+
+  <?php endif;
+
+//formulario para editar
 if (isset($_GET['edit'])) :
   if (isset($name)) :
     $fields[0]["id"] = $id;
@@ -145,7 +198,7 @@ if (isset($_GET['edit'])) :
     document.getElementById("categoriesform").submit();
   }
 
-  function frmUser_close() {
+  function frm_close() {
     window.location.href = "<?= $urlsite ?>/admin.php?section=treatmentsCategories&page=<?= $page ?>";
   }
 </script>

@@ -37,6 +37,8 @@ $texts = array(
   'frm_Src' => "Ubicación",
   'frm_lblLong' => "Texto pie de imagen",
   'frm_Style' => "Style-CSS",
+  'frm_Lenguage' => "Idioma",
+
   // Buttons
   'btn_Update' => "Actualizar",
   'btn_Deleted' => "Eliminar",
@@ -62,6 +64,8 @@ $texts = array(
   'err_NotAutenticates' => "Usuario no registrado",
   'err_UpdateInfo' => "Fallo al actualizar los datos",
   'err_MissingData' => "Faltan datos por cumplimentar",
+  'err_RepeatData' => "Datos répetidos, el email y el nick deben ser únicos",
+
   // Labels
   'date_Published' => "Fecha de publicación",
 );
