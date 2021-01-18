@@ -48,6 +48,11 @@ if (isset($_POST['InputNew'])) :
   {
     $db->send("INSERT INTO users ( id ,name, pass, last_login, roles, auth_key, lang, firstname, lastname, email, enabled) VALUES
     ( '','$name', '', null, '$rol', '', '$lenguage', '$firstname', '$lastname', '$email' , 1);");
+    
+    $url = "'esta sera la url que tendra para cambiar su contraseña, pasar cosas por get'"; //ToDo
+    $message = "Bienvenido a SonriseClinic " + $firstname + ". Estamos encantados de tenerte con nosotros. \n" +
+    "Ahora para confirmar tu cuenta tendrás que entrar a este link y asignar tu contraseña : " + $url;
+    mail($email,"Confirmación de cuenta " + $name, $message);
   }
   
 endif;
