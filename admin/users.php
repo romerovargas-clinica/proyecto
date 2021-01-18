@@ -35,8 +35,19 @@ if (isset($_POST['InputNew'])) :
   $lastname = $_POST['inputLastName'];
   $email = $_POST['inputEmail'];
   $rol = $_POST['inputRol'];
-  $db->send("INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-  (null, '$name', null, null, '$rol', '', 'es', '$firstname', '$lastname', '$email' , 1);");
+  $lenguage = $_POST['inputLenguage'];
+
+  $repeat = $db->send("SELECT Count(*) as repetidos FROM users a WHERE a.email='$email' OR a.name='$name';");
+  if($repeat[0]['repetidos'])
+  {
+    $error = __('err_RepeatData', $lang);
+  }
+  else
+  {
+    $db->send("INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
+    (null, '$name', '', null, '$rol', '', '$lenguage', '$firstname', '$lastname', '$email' , 1);");
+  }
+  
 endif;
 ?>
 
@@ -128,6 +139,12 @@ if (isset($_GET['AddNew'])) :
               <option value="<?= $key ?>"><?= $key ?></option>
             <?php endforeach; ?>
           </select>
+        </div>
+      </div>
+      <div class="mb-6 row">
+        <label for="inputLenguage" class="col-sm-2 col-form-label"><?= __('frm_Lenguage', $lang) ?></label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control form-control-sm" name="inputLenguage" id="inputLenguage">
         </div>
       </div>
       <input type="hidden" name="InputNew">

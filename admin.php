@@ -12,8 +12,8 @@ initiate();
 // TITLE DE LA PÁGINA ACTUAL //
 $PG_NAME = "Admin";
 $nav_style = "alt";
-if (!isAuthenticated() && $_SESSION["roles"] != ["ADMIN-USER"]) {
-  // fuera de aquí!!
+if (!(isAuthenticated() && $_SESSION["roles"] == "[ADMIN-USER]"))
+{// fuera de aquí!!
   header("location:index.php");
 }
 // Página del main

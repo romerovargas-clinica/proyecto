@@ -1,0 +1,3 @@
+- Lenguage tables
+- Send confirmation email and changePassword(page) when addmin add new user.
+- Add and delete button 

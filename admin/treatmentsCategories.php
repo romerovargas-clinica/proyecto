@@ -73,7 +73,7 @@ endif;
 
 <div class="container text-warning bg-danger"><?php if ($error != "") echo $error; ?></div>
 
-<!-- /////////////////////TO DO: el botón de submit no me está funcionando , Buscar razón////////////////////// -->
+
 <?php //formulario para editar
 if (isset($_GET['edit'])) :
   if (isset($name)) :

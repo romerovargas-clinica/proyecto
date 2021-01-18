@@ -37,6 +37,8 @@ $texts = array(
   'frm_Src' => "url",
   'frm_lblLong' => "Text in image-footer",
   'frm_Style' => "Style-CSS",
+  'frm_Lenguage' => "Lenguage",
+  
   // Buttons
   'btn_Update' => "Update",
   'btn_Deleted' => "Deleted",
@@ -62,6 +64,8 @@ $texts = array(
   'err_NotAutenticates' => "Unregistered user",
   'err_UpdateInfo' => "Failure updating data",
   'err_MissingData' => "missing data, need to complete it",
+  'err_RepeatData' => "Repeat data, email and nick must be unique",
+
   // Labels
   'date_Published' => "Date published",
 );
