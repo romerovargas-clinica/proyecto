@@ -2,12 +2,11 @@
 
 // Procesamiento de formulario #TO DO: esta copiado de users
 $error = "";
-if (isset($_POST['inputName'])) :
+if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
     echo "Pendiente: Eliminar usuario";
   endif;
   // Campos Obligatorios
-  /*id name"]categorie"image""info""duration""price"*/
   $id = $_POST['inputId'];
   $name = $_POST['inputName'];
   $categorie = $_POST['inputCategorie'];
@@ -25,6 +24,20 @@ if (isset($_POST['inputName'])) :
   $anarray["Price"] = $price;
   $recordset = $db->update("treatmentsInterventions", $anarray, "id = " . $id);
 endif;
+ //añadir
+if (isset($_POST['InputNew'])) :
+  $name = $_POST['inputName'];
+  $categorie = $_POST['inputCategorie'];
+  $image = $_POST['inputImage'];
+  $info = $_POST['inputInfo'];
+  $duration = $_POST['inputDuration'];
+  $price = $_POST['inputPrice'];
+
+  $db->send("INSERT INTO `treatmentsinterventions` ( `name`, `categorie`, `duration`, `price`, `info`, `image`) VALUES
+  ( '$name', $categorie, $duration, $price, '$info', 1);");
+endif;
+
+
 
 // SQL for ForeignKey table
 $categories = $db->send("SELECT name FROM treatmentsCategories;");
@@ -87,8 +100,66 @@ foreach ($categories as $categorie) {
 <div class="container text-warning bg-danger"><?php if ($error != "") echo $error; ?></div>
 
 
-<?php //formulario para editar
-/*id name"]categorie"image""info""duration""price"*/
+
+<?php 
+//Añadir nueva Intervencion
+if (isset($_GET['AddNew'])): ?>
+  <div class="container-md border position-relative p-3">
+      <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
+      <form id="interventionsform" action="admin.php?section=treatmentsInterventions&page=<?= $page ?>" method="POST">
+  
+      <div class="mb-6 row">
+        <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_FirstName', $lang) ?></label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" required>
+        </div>
+      </div>
+      <div class="mb-6 row">
+        <label for="inputCategorie" class="col-sm-2 col-form-label"><?= __('frm_Categorie', $lang) ?></label>
+        <div class="col-sm-6">
+          <select class="form-select" aria-label="Default select" name="inputCategorie" required>
+            <?php
+            for ($i = 0; $i < count($categoriesNames); $i++) {
+              $key = $categoriesNames[$i];
+            ?>
+              <option value="<?= $i + 1 ?>"><?= $key ?> </option>
+            <?php }; ?>
+          </select>
+        </div>
+      </div>
+      <div class="mb-6 row">
+        <label for="inputImage" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control form-control-sm" name="inputImage" id="inputImage" required>
+        </div>
+      </div>
+      <div class="mb-6 row">
+        <label for="inputInfo" class="col-sm-2 col-form-label"><?= __('frm_Desc', $lang) ?></label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control form-control-sm" name="inputInfo" id="inputInfo" required>
+        </div>
+      </div>
+      <div class="mb-6 row">
+        <label for="inputDuration" class="col-sm-2 col-form-label"><?= __('frm_Duration', $lang) ?></label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control form-control-sm" name="inputDuration" id="inputDuration" min="0" required>
+        </div>
+      </div>
+      <div class="mb-6 row">
+        <label for="inputPrice" class="col-sm-2 col-form-label"><?= __('frm_Price', $lang) ?></label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control form-control-sm" name="inputPrice" id="inputPrice" min="0" step=".01" required>
+        </div>
+      </div>
+  
+        <input type="hidden" name="InputNew">
+        <button type="submit" class="btn btn-primary" name="bttn1"><?= __('btn_Add', $lang) ?></button>
+      </form>
+    </div>
+  
+    <?php endif;
+
+//formulario para editar
 if (isset($_GET['edit'])) :
   if (isset($name)) :
     $fields[0]["id"] = $id;
@@ -106,7 +177,7 @@ if (isset($_GET['edit'])) :
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
     <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
-    <form id="userform" action="admin.php?section=treatmentsInterventions&page=<?= $page ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
+    <form id="interventionsform" action="admin.php?section=treatmentsInterventions&page=<?= $page ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
 
       <div class="mb-6 row">
         <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_FirstName', $lang) ?></label>
@@ -187,7 +258,7 @@ if (isset($_GET['edit'])) :
     document.getElementById("userform").submit();
   }
 
-  function frmUser_close() {
-    window.location.href = "<?= $urlsite ?>/admin.php?section=users&page=<?= $page ?>";
+  function frm_close() {
+    window.location.href = "<?= $urlsite ?>/admin.php?section=treatmentsInterventions&page=<?= $page ?>";
   }
 </script>

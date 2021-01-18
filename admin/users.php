@@ -44,8 +44,8 @@ if (isset($_POST['InputNew'])) :
   }
   else
   {
-    $db->send("INSERT INTO `users` (`id`, `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-    (null, '$name', '', null, '$rol', '', '$lenguage', '$firstname', '$lastname', '$email' , 1);");
+    $db->send("INSERT INTO `users` ( `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
+    ( '$name', '', null, '$rol', '', '$lenguage', '$firstname', '$lastname', '$email' , 1);");
   }
   
 endif;
@@ -109,31 +109,31 @@ if (isset($_GET['AddNew'])) :
       <div class="mb-6 row">
         <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_Name', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputName" id="inputName">
+          <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" required>
         </div>
       </div>
       <div class="mb-6 row">
         <label for="inputFirstName" class="col-sm-2 col-form-label"><?= __('frm_FirstName', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputFirstName" id="inputFirstName">
+          <input type="text" class="form-control form-control-sm" name="inputFirstName" id="inputFirstName" required>
         </div>
       </div>
       <div class="mb-6 row">
         <label for="inputLastName" class="col-sm-2 col-form-label"><?= __('frm_LastName', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputLastName" id="inputLastName">
+          <input type="text" class="form-control form-control-sm" name="inputLastName" id="inputLastName"  required>
         </div>
       </div>
       <div class="mb-6 row">
         <label for="inputEmail" class="col-sm-2 col-form-label"><?= __('frm_Email', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="email" class="form-control form-control-sm" name="inputEmail" id="inputEmail">
+          <input type="email" class="form-control form-control-sm" name="inputEmail" id="inputEmail"  required>
         </div>
       </div>
       <div class="mb-6 row">
         <label for="inputRoles" class="col-sm-2 col-form-label"><?= __('frm_Roles', $lang) ?></label>
         <div class="col-sm-6">
-          <select class="form-select" aria-label="Default select" name="inputRol">
+          <select class="form-select" aria-label="Default select" name="inputRol"  required>
             <?php $roles = array("[ADMIN-USER]", "[AUTHOR]", "[CUSTOMER]", "[USER]", "[NONE]");
             foreach ($roles as $key) : ?>
               <option value="<?= $key ?>"><?= $key ?></option>
@@ -144,7 +144,7 @@ if (isset($_GET['AddNew'])) :
       <div class="mb-6 row">
         <label for="inputLenguage" class="col-sm-2 col-form-label"><?= __('frm_Lenguage', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputLenguage" id="inputLenguage">
+          <input type="text" class="form-control form-control-sm" name="inputLenguage" id="inputLenguage"  required>
         </div>
       </div>
       <input type="hidden" name="InputNew">
