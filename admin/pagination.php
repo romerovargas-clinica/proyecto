@@ -52,7 +52,7 @@ $records = $db->select($adm_pag, "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " 
     </ul>
   </nav>
 </div>
-<select id="resultSearch" class="form-select" aria-label=".form-select-sm"></select>
+<ul id="resultSearch" class="list-group"></ul>
 <div class="list-group"></div>
 <script>
   function search() {
@@ -70,27 +70,36 @@ $records = $db->select($adm_pag, "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " 
         //$("input#search").attr('data-bs-content', message);
         console.log(message);
         var row = message.split("#");
-
         row.forEach(element => {
           if (element != "") {
-            let option = document.createElement("option");
+            let option = document.createElement("a");
             div.appendChild(option);
             let field = element.split(";");
             let texto = "";
+            colores = new Array('bg-light', 'bg-light', 'bg-primary', 'bg-secondary', 'bg-success', 'bg-warning text-dark', 'bg-info text-dark', 'bg-dark', 'bg-light text-dark', 'bg-danger');
+            let cont = 0;
             field.forEach(value => {
-              texto = texto + value;
-              //texto = texto + value.substr(0, 25) + " ";
+              let txt = String(value);
+              var temporal = document.createElement("div");
+              temporal.innerHTML = txt;
+              txt = temporal.textContent || temporal.innerText || "";
+              if (cont == 1) id = txt;
+              let l = txt.length;
+              if (l > 50) {
+                txt = txt.substr(0, 50) + "...";
+              }
+              texto = texto + " <span class='badge " + colores[cont] + "'>" + txt + "</span> ";
+              cont++;
             })
+            option.setAttribute('class', 'list-group-item list-group-item-action');
+            option.setAttribute('href', 'admin.php?section=<?= $adm_pag ?>&edit=' + id);
             option.innerHTML = texto;
-            //a.setAttribute('class', 'list-group-item list-group-item-action');
           }
         });
       });
     } else {
       div.setAttribute('arial-label', 'Disabled size 0');
-      div.setAttribute('size', '0');
-      //$("#resultSearch").html(''); 
-
+      div.setAttribute('visible', 'hidden');
     };
   };
 </script>

@@ -7,12 +7,13 @@ $table = $_POST['table'];
 $return = "";
 
 $array_fields = array();
-
+array_push($array_fields, "id");
 switch ($table) {
   case 'settings':
     array_push($array_fields, "value");
     break;
   case 'users':
+    array_push($array_fields, "name");
     array_push($array_fields, "firstname");
     array_push($array_fields, "lastname");
     array_push($array_fields, "email");
@@ -47,15 +48,7 @@ foreach ($array_fields as $where) :
   $sqlCons .= $where . " LIKE '%{$valueSearch}%'";
   $cont++;
 endforeach;
-//print_r($_POST);
-//print_r($array_fields);
-//echo $sqlCons;
-//  $consulta = mysqli_query($conexion, "SELECT * FROM mmv001
-//	WHERE nombre COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%' 
-//	OR apellido COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-//	OR CONCAT(nombre,' ', apellido) COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-//  ");
-
+$sqlCons .= " LIMIT 0, 10";
 $consulta = mysqli_query($connection, $sqlCons);
 
 $return = array();
