@@ -60,12 +60,14 @@ function login($username, $password, $remember, $password_hashed = TRUE)
 function logout()
 {
     // Es necesario borrar la auth key de la base de datos de modo que la cookie deje ser válida
-    $name = $_SESSION['name'];
-    setcookie("auth_key", "", time() - 3600);
-    $db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
-    $anarray = array("auth_key" => "");
-    $auth_query = $db->update("users", $anarray, "name = '" . $name . "'");
-    // If auth key is deleted from database proceed to unset all session variables
+    if (isset($_SESSION['name'])) {
+        $name = $_SESSION['name'];
+        setcookie("auth_key", "", time() - 3600);
+        $db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
+        $anarray = array("auth_key" => "");
+        $auth_query = $db->update("users", $anarray, "name = '" . $name . "'");
+        // If auth key is deleted from database proceed to unset all session variables
+    } else $auth_query = FALSE;
     session_unset();
     session_destroy();
     if ($auth_query) {
