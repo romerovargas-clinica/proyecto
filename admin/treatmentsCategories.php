@@ -5,7 +5,10 @@ $error = "";
 if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   echo "<h1> SI esto se ve esta funcionando el submit</h1>";  //COMPROBACION <-
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
-    echo "Pendiente: Eliminar";
+    $id = $_POST['inputId'];
+    $db->send("DELETE FROM treatmentscategories
+    WHERE id = $id;");
+    header("url= <?= $urlsite ?>/admin.php?section=treatmentsCategories&page=<?= $page ?>" );
   endif;
   // Campos Obligatorios
   $id = $_POST['inputId'];
@@ -99,7 +102,7 @@ endif;
 if (isset($_GET['AddNew'])): ?>
 <div class="container-md border position-relative p-3">
     <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
-    <form id="categoriesform" action="admin.php?section=treatmentsCategories&page=<?= $page ?>" method="POST">
+    <form id="categoriesAddform" action="admin.php?section=treatmentsCategories&page=<?= $page ?>" method="POST">
 
       <div class="mb-6 row">
         <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_FirstName', $lang) ?></label>
@@ -121,7 +124,7 @@ if (isset($_GET['AddNew'])): ?>
       </div>
 
       <input type="hidden" name="InputNew">
-      <button type="submit" class="btn btn-primary" name="bttn1"><?= __('btn_Add', $lang) ?></button>
+      <button type="submit"  class="btn btn-primary" name="bttn1"><?= __('btn_Add', $lang) ?></button>
     </form>
   </div>
 
@@ -142,7 +145,7 @@ if (isset($_GET['edit'])) :
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
     <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
-    <form id="categoriesform" action="admin.php?section=treatmentsCategories&page=<?= $page ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
+    <form id="categoriesEditform" action="admin.php?section=treatmentsCategories&page=<?= $page ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
 
       <div class="mb-6 row">
         <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_FirstName', $lang) ?></label>
@@ -195,7 +198,7 @@ if (isset($_GET['edit'])) :
   function aceptar() {
     document.getElementById("inputDelete").value = "1";
     //$('#myModal').modal('hide');
-    document.getElementById("categoriesform").submit();
+    document.getElementById("categoriesEditform").submit();
   }
 
   function frm_close() {

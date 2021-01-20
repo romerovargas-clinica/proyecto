@@ -38,6 +38,10 @@ $texts = array(
   'frm_lblLong' => "Text in image-footer",
   'frm_Style' => "Style-CSS",
   'frm_Lenguage' => "Lenguage",
+  'frm_Password' => "Password",
+  'frm_ConfirmPassword' => "Confrim password",
+
+
   
   // Buttons
   'btn_Update' => "Update",

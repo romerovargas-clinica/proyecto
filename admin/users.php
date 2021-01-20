@@ -4,7 +4,9 @@
 $error = "";
 if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
-    echo "Pendiente: Eliminar usuario";
+    $id = $_POST['inputId'];
+    $db->send("DELETE FROM users
+    WHERE id = $id;");
   endif;
   // Campos Obligatorios
   $id = $_POST['inputId'];
@@ -41,8 +43,16 @@ if (isset($_POST['InputNew'])) :
   if ($repeat[0]['repetidos']) {
     $error = __('err_RepeatData', $lang);
   } else {
-    $db->send("INSERT INTO users (id, name, pass, last_login, roles, auth_key, lang, firstname, lastname, email, enabled) VALUES
-    (null, '$name', '', null, '$rol', '', '$lenguage', '$firstname', '$lastname', '$email' , 1);");
+    $clave = uniqid(); //clave unica
+
+    $db->send("INSERT INTO users ( id ,name, confirmKey ,pass, last_login, roles, auth_key, lang, firstname, lastname, email, enabled) VALUES
+    ( '','$name', '$clave', '', null, '$rol', '', '$lenguage', '$firstname', '$lastname', '$email' , 0);");
+
+    $url = "$urlsite/confirmAccount.php?clave=$clave"; //ToDo
+    //por la url hay que pasar la clave, la añado a la base de datos para acceder luego al campo
+    $message = "Bienvenido a SonriseClinic " . $firstname . ". Estamos encantados de tenerte con nosotros. \n" .
+      "Ahora para confirmar tu cuenta tendrás que entrar a este link y asignar tu contraseña:\n " . $url;
+    mail($email, "Confirmación de cuenta " . $name, $message, "From: SonriseClinic. \n No conteste a este email por favor.");
   }
 
 endif;
@@ -102,7 +112,7 @@ if (isset($_GET['AddNew'])) :
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
     <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
-    <form id="userform" action="admin.php?section=users&page=<?= $_GET['page'] ?>" method="POST">
+    <form id="userAddform" action="admin.php?section=users&page=<?= $_GET['page'] ?>" method="POST">
       <div class="mb-6 row">
         <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_Name', $lang) ?></label>
         <div class="col-sm-6">
@@ -166,7 +176,7 @@ if (isset($_GET['edit'])) :
   <a name="form"></a>
   <div class="container-md border position-relative p-3">
     <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
-    <form id="userform" action="admin.php?section=users&page=<?= $_GET['page'] ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
+    <form id="userEditform" action="admin.php?section=users&page=<?= $_GET['page'] ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
       <div class="mb-6 row">
         <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_Name', $lang) ?></label>
         <div class="col-sm-6">
@@ -233,7 +243,9 @@ if (isset($_GET['edit'])) :
   function aceptar() {
     document.getElementById("inputDelete").value = "1";
     //$('#myModal').modal('hide');
-    document.getElementById("userform").submit();
+    document.getElementById("userEditform").submit();
+
+
   }
 
   function frm_close() {
