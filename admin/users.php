@@ -38,16 +38,13 @@ if (isset($_POST['InputNew'])) :
   $lenguage = $_POST['inputLenguage'];
 
   $repeat = $db->send("SELECT Count(*) as repetidos FROM users a WHERE a.email='$email' OR a.name='$name';");
-  if($repeat[0]['repetidos'])
-  {
+  if ($repeat[0]['repetidos']) {
     $error = __('err_RepeatData', $lang);
+  } else {
+    $db->send("INSERT INTO users (id, name, pass, last_login, roles, auth_key, lang, firstname, lastname, email, enabled) VALUES
+    (null, '$name', '', null, '$rol', '', '$lenguage', '$firstname', '$lastname', '$email' , 1);");
   }
-  else
-  {
-    $db->send("INSERT INTO `users` ( `name`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-    ( '$name', '', null, '$rol', '', '$lenguage', '$firstname', '$lastname', '$email' , 1);");
-  }
-  
+
 endif;
 ?>
 
@@ -121,19 +118,19 @@ if (isset($_GET['AddNew'])) :
       <div class="mb-6 row">
         <label for="inputLastName" class="col-sm-2 col-form-label"><?= __('frm_LastName', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputLastName" id="inputLastName"  required>
+          <input type="text" class="form-control form-control-sm" name="inputLastName" id="inputLastName" required>
         </div>
       </div>
       <div class="mb-6 row">
         <label for="inputEmail" class="col-sm-2 col-form-label"><?= __('frm_Email', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="email" class="form-control form-control-sm" name="inputEmail" id="inputEmail"  required>
+          <input type="email" class="form-control form-control-sm" name="inputEmail" id="inputEmail" required>
         </div>
       </div>
       <div class="mb-6 row">
         <label for="inputRoles" class="col-sm-2 col-form-label"><?= __('frm_Roles', $lang) ?></label>
         <div class="col-sm-6">
-          <select class="form-select" aria-label="Default select" name="inputRol"  required>
+          <select class="form-select" aria-label="Default select" name="inputRol" required>
             <?php $roles = array("[ADMIN-USER]", "[AUTHOR]", "[CUSTOMER]", "[USER]", "[NONE]");
             foreach ($roles as $key) : ?>
               <option value="<?= $key ?>"><?= $key ?></option>
@@ -144,7 +141,7 @@ if (isset($_GET['AddNew'])) :
       <div class="mb-6 row">
         <label for="inputLenguage" class="col-sm-2 col-form-label"><?= __('frm_Lenguage', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputLenguage" id="inputLenguage"  required>
+          <input type="text" class="form-control form-control-sm" name="inputLenguage" id="inputLenguage" required>
         </div>
       </div>
       <input type="hidden" name="InputNew">
