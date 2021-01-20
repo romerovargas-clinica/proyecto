@@ -38,6 +38,8 @@ $texts = array(
   'frm_lblLong' => "Texto pie de imagen",
   'frm_Style' => "Style-CSS",
   'frm_Lenguage' => "Idioma",
+  'frm_Password' => "Contraseña",
+  'frm_ConfirmPassword' => "Confirme la contraseña",
 
   // Buttons
   'btn_Update' => "Actualizar",
