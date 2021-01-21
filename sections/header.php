@@ -34,12 +34,15 @@
 
             <div class="col">
               <div class="p-3 border bg-light text-center text-success">
-
                 <?php if (!isAuthenticated()) : ?>
-                  <i class="fas fa-users my-2 my-sm-0"></i> | <a href="login.php"><?= __('mn_Login', $lang) ?></a>
+                  <i class="fas fa-users"></i> | <a class="small" href="login.php"><?= __('mn_Login', $lang) ?></a>
                 <?php else : ?>
                   <i class="fas fa-user my-2 my-sm-0"></i> | <?= $_SESSION['name'] ?>
-                <?php endif; ?>
+                <?php endif; ?> |
+                <select class="w-25 d-inline small" id="selectlang">
+                  <option value="es" <?= $lang == 'es' ? ' selected' : '' ?>>es</option>
+                  <option value="en" <?= $lang == 'en' ? ' selected' : '' ?>>en</option>
+                </select>
               </div>
             </div>
 

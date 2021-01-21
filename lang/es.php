@@ -40,7 +40,9 @@ $texts = array(
   'frm_Lenguage' => "Idioma",
   'frm_Password' => "Contraseña",
   'frm_ConfirmPassword' => "Confirme la contraseña",
-
+  'frm_Register' => "Regístrate",
+  'frm_RegisterEmail' => "Por favor, confirme su dirección de correo haciendo click en el enlace que le acabamos de enviar. (Compruebe su carpeta Spam)",
+  'frm_Policies' => "Acepta nuestras <a href='privacypolicies.php' target='_blank'>políticas de privacidad</a>",
   // Buttons
   'btn_Update' => "Actualizar",
   'btn_Deleted' => "Eliminar",
@@ -66,8 +68,8 @@ $texts = array(
   'err_NotAutenticates' => "Usuario no registrado",
   'err_UpdateInfo' => "Fallo al actualizar los datos",
   'err_MissingData' => "Faltan datos por cumplimentar",
-  'err_RepeatData' => "Datos répetidos, el email y el nick deben ser únicos",
-
+  'err_RepeatData' => "Datos repetidos, el email y el nick deben ser únicos",
+  'err_RepeatEmail' => "El email ya se encuentra registrado en nuestros sistemas",
   // Labels
   'date_Published' => "Fecha de publicación",
 );

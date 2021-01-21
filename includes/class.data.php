@@ -25,12 +25,14 @@ class DataBase
         $return = array();
         //var_dump($return);
         //var_dump($sql);
+
         if ($type == 'ARRAY')
             while (($return[] = mysqli_fetch_array($result))) {
             }
-        else
+        else {
             while (($return[] = mysqli_fetch_assoc($result))) {
             }
+        }
         if (count($return) > 1)
             unset($return[count($return) - 1]);
         else

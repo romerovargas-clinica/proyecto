@@ -45,8 +45,8 @@ if (isset($_POST['InputNew'])) :
   } else {
     $clave = uniqid(); //clave unica
 
-    $db->send("INSERT INTO users ( id ,name, confirmKey ,pass, last_login, roles, auth_key, lang, firstname, lastname, email, enabled) VALUES
-    ( '','$name', '$clave', '', null, '$rol', '', '$lenguage', '$firstname', '$lastname', '$email' , 0);");
+    $db->send("INSERT INTO users (name, confirmKey, pass, last_login, roles, auth_key, lang, firstname, lastname, email, enabled) VALUES
+    ('$name', '$clave', null, null, '$rol', null, '$lenguage', '$firstname', '$lastname', '$email' , 0);");
 
     $url = "$urlsite/confirmAccount.php?clave=$clave"; //ToDo
     //por la url hay que pasar la clave, la añado a la base de datos para acceder luego al campo

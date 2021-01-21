@@ -40,9 +40,9 @@ $texts = array(
   'frm_Lenguage' => "Lenguage",
   'frm_Password' => "Password",
   'frm_ConfirmPassword' => "Confrim password",
-
-
-  
+  'frm_Register' => 'Sign up',
+  'frm_RegisterEmail' => "Please confirm your email address by clicking on the link we just sent you. (Check your Spam folder)",
+  'frm_Policies' => "Accept our <a href='privacypolicies.php' target='_blank'>privacy policies</a>",
   // Buttons
   'btn_Update' => "Update",
   'btn_Deleted' => "Deleted",
@@ -69,7 +69,7 @@ $texts = array(
   'err_UpdateInfo' => "Failure updating data",
   'err_MissingData' => "missing data, need to complete it",
   'err_RepeatData' => "Repeat data, email and nick must be unique",
-
+  'err_RepeatEmail' => "The email is already registered in our systems",
   // Labels
   'date_Published' => "Date published",
 );
