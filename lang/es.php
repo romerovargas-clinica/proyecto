@@ -72,4 +72,5 @@ $texts = array(
   'err_RepeatEmail' => "El email ya se encuentra registrado en nuestros sistemas",
   // Labels
   'date_Published' => "Fecha de publicación",
+  'lbl_chat' => "Contacta con la clínica",
 );

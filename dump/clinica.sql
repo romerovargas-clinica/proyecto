@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-01-2021 a las 11:07:07
+-- Tiempo de generación: 22-01-2021 a las 19:40:36
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -115,6 +115,34 @@ INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `chat`
+--
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `session_id` varchar(26) NOT NULL,
+  `user_id` int(9) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `date_read` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `chat`
+--
+
+INSERT INTO `chat` (`id`, `session_id`, `user_id`, `name`, `message`, `created_on`, `date_read`) VALUES
+(25, 'tsm28s6u50eq917kog03dane2c', 3, 'david', 'Hola Clínica, soy David', '2021-01-22 18:36:10', '2021-01-22 18:36:10'),
+(26, 'tsm28s6u50eq917kog03dane2c', 3, 'david', 'Querría saber si me pueden sacar una muela?', '2021-01-22 18:36:10', '2021-01-22 18:36:10'),
+(34, 'tsm28s6u50eq917kog03dane2c', 2, 'system', 'Keep waiting. An operator will briefly contact you.', '2021-01-22 18:36:10', '2021-01-22 18:36:10'),
+(35, 'tsm28s6u50eq917kog03dane2c', 3, 'david', 'Disculpe... No tengo ni puta idea de inglés', '2021-01-22 18:36:52', NULL),
+(36, 'lkbv86u4p30cvehr2idfs2ekv9', 3, 'david', 'Hola, caracola', '2021-01-22 18:38:49', '2021-01-22 18:38:49'),
+(37, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'system', 'Keep waiting. An operator will briefly contact you.', '2021-01-22 18:38:49', '2021-01-22 18:38:49');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `content`
 --
 
@@ -172,6 +200,30 @@ INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `register`
+--
+
+CREATE TABLE `register` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `number` varchar(255) NOT NULL,
+  `address` text NOT NULL,
+  `modified_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `register`
+--
+
+INSERT INTO `register` (`id`, `name`, `email`, `password`, `number`, `address`, `modified_on`) VALUES
+(1, 'david', 'davidbermudez@jerez.es', '1234', '987', '987', '2021-01-22 10:18:02'),
+(2, 'pepe', 'pepe@pepe.es', '1234', '32132', '321321', '2021-01-22 10:19:02');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `settings`
 --
 
@@ -196,7 +248,8 @@ INSERT INTO `settings` (`id`, `type`, `label`, `value`) VALUES
 (7, 'social', 'fab fa-youtube-square', ''),
 (8, 'social', 'pinterest_usefa-pinterest', ''),
 (9, 'social', 'fab fa-whatsapp-square', ''),
-(10, 'email', 'fas fa-envelope-square', 'admin@sonriseclinic.es');
+(10, 'email', 'fas fa-envelope-square', 'admin@sonriseclinic.es'),
+(11, 'chat', 'response_bot', 'Keep waiting. An operator will briefly contact you.');
 
 -- --------------------------------------------------------
 
@@ -268,7 +321,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `confirmKey` varchar(15) NOT NULL,
-  `pass` varchar(50) NOT NULL,
+  `pass` varchar(50) DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
   `roles` varchar(100) DEFAULT '[USER]',
   `auth_key` varchar(100) DEFAULT NULL,
@@ -285,9 +338,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
 (2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-01-19 09:31:46', '[ADMIN-USER]', '57c29cde3686ab7391052cf260c71af0', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
-(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-09 13:37:44', '[CUSTOMER]', '', 'en', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
+(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-22 19:37:59', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
 (4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-18 20:51:18', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1),
-(28, 'asd', '6006adf3c7581', '', NULL, '[ADMIN-USER]', '', 'es', 'Cintia', 'Cabrera', 'lasupercintia@gmail.com', 0);
+(28, 'asd', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[ADMIN-USER]', '', 'es', 'Cintia', 'Cabrera', 'lasupercintia@gmail.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -315,6 +368,12 @@ ALTER TABLE `blocks`
   ADD UNIQUE KEY `name` (`name`);
 
 --
+-- Indices de la tabla `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `content`
 --
 ALTER TABLE `content`
@@ -330,6 +389,12 @@ ALTER TABLE `images`
 -- Indices de la tabla `pages`
 --
 ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `register`
+--
+ALTER TABLE `register`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -382,6 +447,12 @@ ALTER TABLE `blocks`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
 -- AUTO_INCREMENT de la tabla `content`
 --
 ALTER TABLE `content`
@@ -394,10 +465,16 @@ ALTER TABLE `pages`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `register`
+--
+ALTER TABLE `register`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `treatmentscategories`
@@ -415,7 +492,7 @@ ALTER TABLE `treatmentsinterventions`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Restricciones para tablas volcadas
