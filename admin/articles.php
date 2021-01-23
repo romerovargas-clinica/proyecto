@@ -67,6 +67,7 @@ endif;
 <div class="table-responsive">
 
   <?php
+  $table = "articles";
   include "admin/pagination.php";
   ?>
 

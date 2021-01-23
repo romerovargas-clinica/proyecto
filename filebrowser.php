@@ -113,6 +113,7 @@ $LANG_header = preg_replace('/(?:(?<=([a-z]{2}))).*/', '', $LANG);
   <!-- nuevo -->
   <?php
   $db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
+  $table = "images";
   include "admin/pagination.php";
   // Calculo el total de paginas
   $row = $db->send("SELECT Count(*) as total FROM images;");

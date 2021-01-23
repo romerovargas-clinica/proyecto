@@ -29,6 +29,7 @@ endif;
 <div class="table-responsive">
 
   <?php
+  $table = "images";
   include "admin/pagination.php";
   ?>
 

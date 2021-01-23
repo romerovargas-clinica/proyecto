@@ -61,6 +61,7 @@ $texts = array(
   'sect_treatments' => "Tratamientos",
   'sect_treatmentsCategories' => "Tipos de tratamientos",
   'sect_Interventions' => "Intervenciones",
+  'sect_Chat' => "Mensajería",
   // Modal
   'modal_title_confirm' => "Confirme opción",
   'modal_text_confirm' => "Esta opción no es posible deshacerla. Si realmente está seguro/a pulse en 'Aceptar'",

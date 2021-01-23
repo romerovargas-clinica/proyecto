@@ -1,7 +1,7 @@
 <?php
 $maxRow = 5; // Número de registros a mostrar
 
-$row = $db->send("SELECT Count(*) as total FROM $adm_pag;");
+$row = $db->send("SELECT Count(*) as total FROM $table;");
 
 $page = false;
 if (isset($_GET["page"])) {
@@ -17,13 +17,15 @@ if (!$page) {
 
 $numResult = $row[0]['total'];
 $total_pages = ceil($numResult / $maxRow);
-$records = $db->select($adm_pag, "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " . $maxRow);
+$records = $db->select($table, "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " . $maxRow);
 ?>
 <div class="d-flex bd-highlight">
   <div class="p-2 w-100 row row-cols-lg-auto g-3 align-items-center">
-    <div class="col-12">
-      <button type="button" class="page-link btn-sm bg-primary text-white" onclick="window.location='admin.php?section=<?= $adm_pag ?>&page=<?= ($page) ?>&AddNew';"><?= __('btn_Add', $lang) ?></button>
-    </div>
+    <?php if ($adm_pag != "chat") : ?>
+      <div class="col-12">
+        <button type="button" class="page-link btn-sm bg-primary text-white" onclick="window.location='admin.php?section=<?= $adm_pag ?>&page=<?= ($page) ?>&AddNew';"><?= __('btn_Add', $lang) ?></button>
+      </div>
+    <?php endif; ?>
     <div class="col-12">
       <input type="text" class="page-link btn-sm" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" id="search" name="search" onKeyUp="search();">
     </div>
@@ -64,7 +66,7 @@ $records = $db->select($adm_pag, "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " 
     if (textSearch != "") {
       $.post("admin/search.php", {
         valueSearch: textSearch,
-        table: '<?= $adm_pag ?>'
+        table: '<?= $table ?>'
       }, function(message) {
         //$("#resultSearch").html(message);        
         //$("input#search").attr('data-bs-content', message);

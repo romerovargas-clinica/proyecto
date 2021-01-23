@@ -61,6 +61,7 @@ $texts = array(
   'sect_treatments' => "Treatments",
   'sect_treatmentsCategories' => "treatments types",
   'sect_Interventions' => "Interventions",
+  'sect_Chat' => "Messages",
   // Modal
   'modal_title_confirm' => "Confirm selection",
   'modal_text_confirm' => "It is not possible to undo. If you really intend to continue with it, click on 'OK'",

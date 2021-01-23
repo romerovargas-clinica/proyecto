@@ -62,6 +62,7 @@ endif;
 <div class="table-responsive">
 
   <?php
+  $table = "users";
   include "admin/pagination.php";
   ?>
 

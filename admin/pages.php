@@ -40,6 +40,7 @@ foreach ($categories as $categorie) {
 <div class="table-responsive">
 
   <?php
+  $table = "pages";
   include "admin/pagination.php";
   ?>
 

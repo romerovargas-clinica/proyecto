@@ -16,6 +16,9 @@ if (!(isAuthenticated())) {
   // Sólo usuarios identificados
   header("location:index.php");
 }
+if (isset($_SESSION['roles']) && $_SESSION['roles'] == "[ADMIN-USER]") {
+  header("location:admin.php");
+}
 
 // comprobamos fecha último mensaje
 $db = new DataBase();
@@ -38,17 +41,17 @@ $sql = $db->select("chat", "session_id = '" . session_id() . "'");
 
     <label class="mt-5"><?= __('lbl_chat', $lang) ?></label>
 
-    <div class="container-md w-50 bg-white m-5 p-3 position-relative display-chat" id="display-chat" style="width: 120px; background-color: rgba(0, 0, 255, .1); height: 300px; overflow: auto">
+    <div class="container-md w-50 bg-white m-5 p-3 position-relative display-chat clearfix" id="display-chat" style="width: 120px; background-color: rgba(0, 0, 255, .1); height: 300px; overflow: auto">
       <?php if ($sql) : ?>
         <?php foreach ($sql as $row) : ?>
           <?php if ($row['user_id'] == $_SESSION['id']) : ?>
-            <div class="container w-50" style="float:right; clear: both; background-color: #c616e469; color: yellow; border-radius: 5px; padding: 5px; margin-bottom: 3%;">
+            <div class="container w-50 clearfix" style="float:right; background-color: #c616e469; color: yellow; border-radius: 5px; padding: 5px; margin-bottom: 3%;">
             <?php else : ?>
-              <div class="container w-50" style="float:left; clear: both; background-color: #22A797; color: white; border-radius: 5px; padding: 5px; margin-bottom: 3%;">
+              <div class="container w-50 clearfix" style="float:left; background-color: #22A797; color: white; border-radius: 5px; padding: 5px; margin-bottom: 3%;">
               <?php endif; ?>
               <p>
-                <span class="small text-dark" style="float: right; display:block; clear: both;"><?php echo $row['name']; ?> :</span>
-                <span style="float: left; display:block; clear: both;"><?php echo $row['message']; ?></span>
+                <span class="small text-dark clearfix"><?php echo $row['name']; ?> :</span>
+                <span class="clearfix" style="float: left;"><?php echo $row['message']; ?></span>
               </p>
               </div>
             <?php endforeach; ?>

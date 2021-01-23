@@ -34,18 +34,26 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
 <?php require "admin/head.php"; ?>
 
 <body>
-
-
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php"><?= $param[0]["value"] ?></a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <input class="form-control form-control-dark w-50" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3" style="flex-direction: row;">
       <li class="nav-item text-nowrap">
         <a class="nav-link mx-3" href="#"><?= $_SESSION['name'] ?></a>
       </li>
+      <?php
+      // comprueba la existencia de sesiones de chat pendientes
+      $pendientes = $db->send("SELECT Count(DISTINCT session_id) as m FROM chat WHERE date_read IS NULL");
+      if ($pendientes) : ?>
+        <li class="nav-item btn btn-primary position-relative">
+
+          Chat <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?= $pendientes[0]['m'] ?></span>
+
+        </li>
+      <?php endif; ?>
       <li class="nav-item text-nowrap">
         <a class="nav-link" href="logout.php"><?= __('mn_Logout', $lang) ?></a>
       </li>
@@ -105,9 +113,13 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
                 <?= __('sect_gallery', $lang) ?>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link<?= $adm_pag == 'chat' ? ' active' : '' ?>" href="admin.php?section=chat">
+                <span data-feather="message-square"></span>
+                <?= __('sect_Chat', $lang) ?>
+              </a>
+            </li>
           </ul>
-
-
         </div>
       </nav>
 
@@ -144,6 +156,9 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
           case ("images"):
             $sectTitle = __('sect_gallery', $lang);
             include "admin/images.php";
+          case ("chat"):
+            $sectTitle = __('sect_Chat', $lang);
+            include "admin/chat.php";
         endswitch;
         ?>
       </main>
