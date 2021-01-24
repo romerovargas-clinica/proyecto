@@ -22,7 +22,8 @@ if (isset($_SESSION['roles']) && $_SESSION['roles'] == "[ADMIN-USER]") {
 
 // comprobamos fecha último mensaje
 $db = new DataBase();
-$sql = $db->select("chat", "session_id = '" . session_id() . "'");
+$sql = $db->send("SELECT * FROM chat WHERE session_id IN (SELECT session_id FROM chat WHERE user_id = " . $_SESSION['id'] . ");");
+//$sql = $db->select("chat", "session_id = '" . session_id() . "'");
 
 ?>
 
@@ -31,6 +32,7 @@ $sql = $db->select("chat", "session_id = '" . session_id() . "'");
 <?php require "sections/head.php"; ?>
 
 <body class="bg-light">
+  <meta http-equiv="refresh" content="20">
   <?php
   include "sections/header.php";
   include "sections/navbar.php";
@@ -40,14 +42,13 @@ $sql = $db->select("chat", "session_id = '" . session_id() . "'");
   <div class="container" id="content">
 
     <label class="mt-5"><?= __('lbl_chat', $lang) ?></label>
-
-    <div class="container-md w-50 bg-white m-5 p-3 position-relative display-chat clearfix" id="display-chat" style="width: 120px; background-color: rgba(0, 0, 255, .1); height: 300px; overflow: auto">
+    <div id="display-chat" class="tab-content overflow-auto border-end border-bottom border-start p-3 position-relative w-75 m-auto" style="height:450px; background-color: #FFF3CD">
       <?php if ($sql) : ?>
         <?php foreach ($sql as $row) : ?>
           <?php if ($row['user_id'] == $_SESSION['id']) : ?>
-            <div class="container w-50 clearfix" style="float:right; background-color: #c616e469; color: yellow; border-radius: 5px; padding: 5px; margin-bottom: 3%;">
+            <div class="container w-75 clearfix" style="float:right; background-color: #c616e469; color: yellow; border-radius: 5px; padding: 5px; margin-bottom: 3%;">
             <?php else : ?>
-              <div class="container w-50 clearfix" style="float:left; background-color: #22A797; color: white; border-radius: 5px; padding: 5px; margin-bottom: 3%;">
+              <div class="container w-75 clearfix" style="float:left; background-color: #22A797; color: white; border-radius: 5px; padding: 5px; margin-bottom: 3%;">
               <?php endif; ?>
               <p>
                 <span class="small text-dark clearfix"><?php echo $row['name']; ?> :</span>
@@ -59,7 +60,7 @@ $sql = $db->select("chat", "session_id = '" . session_id() . "'");
             // En espera de respuesta  
             if ($row['date_read'] == null) :
             ?>
-              <div class="spinner-border position-absolute bottom-0 start-0 " role="status">
+              <div class="spinner-border position-absolute bottom-100 start-0 " role="status">
                 <span class="visually-hidden">Loading...</span>
               </div>
             <?php endif; ?>
@@ -70,10 +71,10 @@ $sql = $db->select("chat", "session_id = '" . session_id() . "'");
           <?php endif; ?>
             </div>
 
-            <form class="form-horizontal" method="post" action="chat/send.php">
+            <form class="form-horizontal m-auto w-75 mt-2" method="post" action="chat/send.php">
               <div class="form-group">
                 <div class="col-sm-10">
-                  <textarea name="msg" class="form-control" placeholder="Ingresa tu mensaje acá..."></textarea>
+                  <textarea name="msg" class="form-control" placeholder="Escribe tu mensaje..."></textarea>
                 </div>
 
                 <div class="col-sm-2">

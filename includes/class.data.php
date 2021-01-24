@@ -112,7 +112,7 @@ class DataBase
         else
             throw new Exception("0005:Error de sintaxis al ejecutar consulta UPDATE SQL [on class DataBase->update database.php from PHPcore]:$sql");
         //Example
-        // update('myTable', $anarray, "type = 'main'")
+        // update('myTable', $anarray, $where, "type = 'main'")
     }
 
     public function delete($table, $where)

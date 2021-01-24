@@ -48,7 +48,7 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
       // comprueba la existencia de sesiones de chat pendientes
       $pendientes = $db->send("SELECT Count(DISTINCT session_id) as m FROM chat WHERE date_read IS NULL");
       if ($pendientes) : ?>
-        <li class="nav-item btn btn-primary position-relative">
+        <li class="nav-item btn btn-primary position-relative" onclick="">
 
           Chat <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?= $pendientes[0]['m'] ?></span>
 

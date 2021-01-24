@@ -11,7 +11,7 @@
             <div class="col ">
               <div class="p-3 border bg-light text-center text-primary">
                 <?php
-                $db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
+                $db = new DataBase();
                 $social = $db->send("SELECT * FROM settings WHERE label like 'fab %' AND value<>'';");
                 if (!empty($social)) :
                   $cont = 0;

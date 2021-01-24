@@ -1,8 +1,13 @@
 <?php
-// Procesamiento de formulario #TO DO: esta copiado de users
+// To Do: Buscar código javascript para que el scroll del div muestre los últimos mensajes al cargar la página
 $error = "";
+if (isset($_GET['user'])) :
+  $chat_user_id = $_GET['user'];
+else :
+  $chat_user_id = null;
+endif;
 ?>
-
+<meta http-equiv="refresh" content="20">
 <h2><?= __('sect_Chat', $lang) ?></h2>
 <div class="table-responsive">
 
@@ -11,37 +16,37 @@ $error = "";
   include "admin/pagination.php";
   ?>
 
-  <div class="col-12 nav nav-pills mt-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+  <div class="container">
     <!-- class="nav flex-column nav-pills me-3" -->
-    <?php
 
-    if (!empty($records)) :
-      $cont = 0;
-      foreach ($records as $record) :
-        if ($record['id'] != $_SESSION['id']) : ?>
-          <?php
-          // comprueba la existencia de sesiones de chat pendientes
-          $pendientes = $db->send("SELECT Count(DISTINCT session_id) as m FROM chat WHERE date_read IS NULL AND user_id = " . $record['id']);
-          $p = 0;
-          if ($pendientes) :
-            $p = $pendientes[0]['m'];
-          endif;
-          ?>
-          <a class="nav-link position-relative border ms-2" id="v-pills-<?= $record['id'] ?>-tab" data-bs-toggle="pill" href="#v-pills-<?= $record['id'] ?>" role="tab" aria-controls="v-pills-<?= $record['id'] ?>"><?= $record['lastname'] ?>
-            <?= $p > 0 ? '<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">' . $p . '</span>' : '' ?>
-          </a>
-        <?php endif; ?>
-      <?php endforeach; ?>
-  </div>
-  <div class="tab-content overflow-auto border border-primary mt-1 p-3" id="v-pills-tabContent" style="height:500px; background-color: #FFF3CD">
-    <?php foreach ($records as $record) :
-        $chats = $db->send("SELECT * FROM chat WHERE session_id IN (SELECT session_id FROM chat WHERE user_id = " . $record['id'] . ");");
-    ?>
-      <div class="tab-pane fade" id="v-pills-<?= $record['id'] ?>" role="tabpanel" aria-labelledby="v-pills-<?= $record['id'] ?>-tab">
-        <?php
-        if ($chats) :
-          foreach ($chats as $row) : ?>
-            <?php if ($row['user_id'] == $record['id']) : ?>
+    <ul class="nav nav-tabs">
+      <?php
+      if (!empty($records)) :
+        $cont = 0;
+        foreach ($records as $record) :
+          if ($record['id'] != $_SESSION['id']) : ?>
+            <?php
+            // comprueba la existencia de sesiones de chat pendientes
+            $pendientes = $db->send("SELECT Count(DISTINCT session_id) as m FROM chat WHERE date_read IS NULL AND user_id = " . $record['id']);
+            $p = 0;
+            if ($pendientes) :
+              $p = $pendientes[0]['m'];
+            endif;
+            ?>
+            <li class="nav-item position-relative">
+              <a class="border border-end border-start nav-link<?= $chat_user_id == $record['id'] ? ' active" aria-current="page" style="background-color: #FFF3CD"' : '"' ?> href=" admin.php?section=<?= $adm_pag ?>&user=<?= $record['id'] ?>"><?= $record['lastname'] ?><?= $p > 0 ? '<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">' . $p . '</span>' : '' ?></a>
+            </li>
+          <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+
+    <div class="tab-content overflow-auto border-end border-bottom border-start p-3" style="height:450px; background-color: #FFF3CD">
+      <?php
+        if ($chat_user_id) :
+          $chats = $db->send("SELECT * FROM chat WHERE session_id IN (SELECT session_id FROM chat WHERE user_id = " . $chat_user_id . ");");
+          if ($chats) :
+            foreach ($chats as $row) : ?>
+            <?php if ($row['user_id'] == $chat_user_id) : ?>
               <div class="container w-75 clearfix mt-2" style="float:right; background-color: #c616e469; color: yellow; border-radius: 5px; padding: 5px; margin-bottom: 3%;">
               <?php else : ?>
                 <div class="container w-75 clearfix mt-2" style="float:left; background-color: #22A797; color: white; border-radius: 5px; padding: 5px; margin-bottom: 3%;">
@@ -52,39 +57,32 @@ $error = "";
                 <span class="clearfix"><?php echo $row['message']; ?></span>
                 </div>
                 <div class="clear:both"></div>
-            <?php endforeach;
-        // To-Do: Hacer una llamada a una función para marcar los mensajes no leídos del usuario $record['id] como leídos
-        else :
-          echo "No conversations";
-        endif;
-            ?>
+          <?php
+              $session_id = $row['session_id'];
+            endforeach;
+            // marcar como leídos todos los mensajes con el usuario $chat_user_id
+            $valores = array();
+            $dateread['date_read'] = date("Y-m-d H:i:s");
+            $update = $db->update("chat", $dateread, "date_read IS NULL && session_id='" . $session_id . "'");
+          else :
+            echo "Not conversations";
+          endif;
+        endif; ?>
               </div>
-              <div class="clearfix"></div>
-            <?php endforeach; ?>
-      </div>
-    <?php endif; ?>
-  </div>
-  <script>
-
-  </script>
-  <div class="container text-warning bg-danger"><?php if ($error != "") echo $error; ?></div>
-</div>
-<!-- Modal -->
-<?php
-
-?>
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><?= __('modal_title_confirm', $lang) ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body"><?= __('modal_text_confirm', $lang) ?></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= __('btn_Close', $lang) ?></button>
-        <button type="button" class="btn btn-primary" onclick="aceptar();"><?= __('btn_Ok', $lang) ?></button>
-      </div>
+            <?php endif; ?>
     </div>
+    <form class="form-horizontal" method="post" action="admin/send.php">
+      <input type="hidden" name="chat_id" value="<?= $session_id ?>">
+      <input type="hidden" name="user_id" value="<?= $chat_user_id ?>">
+      <div class="form-group">
+        <div class="col-sm-10">
+          <textarea name="msg" class="form-control" placeholder="Ingresa tu mensaje acá..."></textarea>
+        </div>
+
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+
+      </div>
+    </form>
   </div>
-</div>
