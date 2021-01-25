@@ -1,6 +1,6 @@
 <div class="container" style="border-top: 8px solid black">
   <div class="row align-items-start" style="border-top: 8px solid #00A797">
-    <nav class="navbar navbar-expand-lg bg-primary shadow navbar-dark" style="padding-top: 0">
+    <nav class="navbar navbar-expand-lg shadow navbar-dark" style="padding-top: 0; background-color:#0ee3d8"  >
       <a class="navbar-brand" href="index.php"><?= __('app_Title', $lang) ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

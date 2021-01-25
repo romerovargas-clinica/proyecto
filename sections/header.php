@@ -1,8 +1,8 @@
 <div class="container ">
   <div class="row" style="border-top: 8px solid black"></div>
   <div class="row align-items-start" style="border-top: 8px solid #00A797">
-    <div class="col">
-      <img class="rounded float-start" src="images/logo.png" width="300" height="175">
+    <div class="col" style="margin-left:10%" >
+      <img class="rounded float-start" src="images/logo2.svg" width="300" height="175"  >
     </div>
     <div class="col">
       <div class="social">

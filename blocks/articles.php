@@ -9,7 +9,7 @@
     $recordset = $db->send("SELECT * FROM articles WHERE enabled = 1 ORDER BY date_created DESC LIMIT 0, $num_articles");
   ?>
   <div class="row" style="border-top: 8px solid #00A797">
-    <nav class="navbar navbar-expand-lg bg-primary shadow navbar-dark" style="padding-top: 0">
+    <nav class="navbar navbar-expand-lg shadow navbar-dark" style="padding-top: 0; background-color:#0ee3d8">
       <a class="navbar-brand" href="#"><?=$name_block?></a>
     </nav>
   </div>
