@@ -1,5 +1,5 @@
 <a name="article"></a>
-<div class="container bg-light" style="border-top: 8px solid black">
+<div class="container " style="border-top: 8px solid black">
   <?php
     // Parámetros de configuración del bloque
     $articles = $db->select("block", "name = '".$name_block."'");

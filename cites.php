@@ -16,7 +16,7 @@ $nav_style = "alt";
 <html lang="<?=$lang?>">
 <?php require "sections/head.php";?>
 
-<body class="bg-light">
+<body >
   <?php 
     include "sections/header.php";
     include "sections/navbar.php";

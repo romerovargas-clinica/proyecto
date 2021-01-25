@@ -31,7 +31,7 @@ $sql = $db->send("SELECT * FROM chat WHERE session_id IN (SELECT session_id FROM
 <html lang="<?= $lang ?>">
 <?php require "sections/head.php"; ?>
 
-<body class="bg-light">
+<body>
   <meta http-equiv="refresh" content="20">
   <?php
   include "sections/header.php";

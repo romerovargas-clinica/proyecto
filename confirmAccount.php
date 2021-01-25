@@ -30,7 +30,7 @@ if (!$account) $error = "ERROR: La clave de validación no es válida"; // To-Do
   <?php include "sections/header.php" ?>
   <?php include "sections/navbar.php" ?>
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="container bg-light">
+    <div class="container ">
       <div class="container-fluid px-3 py-3" style="background-color: white">
         <div class="alert alert-secondary" style="grid-column:1/3">
           <p id="display"><?= isset($error) && $error != '' ? $error : '' ?></p>

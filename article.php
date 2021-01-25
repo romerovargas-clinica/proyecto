@@ -23,12 +23,12 @@ $db->close();
 <html lang="<?= $lang ?>">
 <?php require "sections/head.php"; ?>
 
-<body class="bg-light">
+<body >
   <?php
     include "sections/header.php";
     include "sections/navbar.php";
   ?>
-  <div class="container bg-light">
+  <div class="container">
     <div class="container-fluid px-3 py-3" style="background-color: white">
       <div class="position-relative">
         <div class="position-absolute top-0 end-0"><?=__("date_Published", $lang)?>

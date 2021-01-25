@@ -4,7 +4,7 @@
   //    1. Usuario Identificado  
 
 ?>
-<div class="container bg-light">
+<div class="container ">
   <div class="container-fluid px-3 py-3 " style="background-color: white">
     <p class="lead"><?=__('lbl_Agenda', $lang)?></p>
     <?php if(isAuthenticated()):?>

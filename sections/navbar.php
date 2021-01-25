@@ -1,4 +1,4 @@
-<div class="container bg-light" style="border-top: 8px solid black">
+<div class="container" style="border-top: 8px solid black">
   <div class="row align-items-start" style="border-top: 8px solid #00A797">
     <nav class="navbar navbar-expand-lg bg-primary shadow navbar-dark" style="padding-top: 0">
       <a class="navbar-brand" href="index.php"><?= __('app_Title', $lang) ?></a>

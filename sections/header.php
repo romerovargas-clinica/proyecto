@@ -1,4 +1,4 @@
-<div class="container bg-light">
+<div class="container ">
   <div class="row" style="border-top: 8px solid black"></div>
   <div class="row align-items-start" style="border-top: 8px solid #00A797">
     <div class="col">
@@ -9,7 +9,7 @@
         <div class="container px-4">
           <div class="row gx-5">
             <div class="col ">
-              <div class="p-3 border bg-light text-center text-primary">
+              <div class="p-3 border  text-center text-primary">
                 <?php
                 $db = new DataBase();
                 $social = $db->send("SELECT * FROM settings WHERE label like 'fab %' AND value<>'';");
@@ -33,7 +33,7 @@
             </div>
 
             <div class="col">
-              <div class="p-3 border bg-light text-center text-success">
+              <div class="p-3 border  text-center text-success">
                 <?php if (!isAuthenticated()) : ?>
                   <i class="fas fa-users"></i> | <a class="small" href="login.php"><?= __('mn_Login', $lang) ?></a>
                 <?php else : ?>
