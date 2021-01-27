@@ -12,11 +12,9 @@ initiate();
 $PG_NAME = "Specialitie";
 $nav_style = "alt";
 //CARGAR EL ÁRTICULO DE LA BASE DE DATOS//
-$db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
+$db = new DataBase();
 $categorie = $_GET['categorie'];
-$interventions = $db->send("SELECT * FROM treatmentsInterventions WHERE  categorie = $categorie");
-
-
+$categories = $db->send("SELECT * FROM treatmentscategories WHERE id = $categorie");
 
 $db->close();
 ?>
@@ -24,39 +22,56 @@ $db->close();
 <html lang="<?= $lang ?>">
 <?php require "sections/head.php"; ?>
 
-<body >
-    <?php
-    include "sections/header.php";
-    include "sections/navbar.php";
-    ?>
+<body>
+<?php
+include "sections/header.php";
+include "sections/navbar.php";
+?>
 
-    <div class="d-flex p-2 bd-highlight flex-wrap justify-content-around">
-        <?php foreach ($interventions as $intervention) : ?>
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="images/interventions/<?= $intervention['image'] ?>" class="t-opacity"> <!--TODO imagenes -->
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $intervention['name'] ?></h5>
-                            <p class="card-text"><?= $intervention['info'] ?> </p>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><?= __('frm_Duration',$lang).': '. $intervention['duration'] ?> </li>
-                                <li class="list-group-item"><?= __('frm_Price',$lang).': '. $intervention['price'].'€'?> </li>
+<div class="d-flex p-2 bd-highlight flex-wrap justify-content-around">
+    <?php if ($categories): ?>
+        <div class="card mb-3 w-75" style="">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="images/interventions/<?= $categories[0]['image'] ?>" class="t-opacity">
+                    <!--TODO imagenes -->
+                </div>
+                <div class="col-md-8 p-2">
+                    <div class="container">
+                        <h5 class="card-title"><?= $categories[0]['name'] ?></h5>
+                        <p class="card-text"><?= $categories[0]['info'] ?> </p>
+                        <?php
+                        $ndb = new DataBase();
+                        $interventions = $ndb->select('treatmentsinterventions', "categorie = " . $categories[0]['id']); ?>
+
+                        <?php foreach ($interventions as $intervention) : ?>
+                            <ul class="list-group list-group-flush border mb-3">
+                                <li class="list-group-item text-primary "><?= $intervention['name'] ?> </li>
+                                <li class="list-group-item text-truncate"><span
+                                            class="text-secondary"><?= __('frm_Desc', $lang) . ':</span> ' . $intervention['info'] ?>
+                                </li>
+                                <li class="list-group-item"><span
+                                            class="text-secondary"><?= __('frm_Duration', $lang) . ':</span> ' . $intervention['duration'] ?>
+                                </li>
+                                <li class="list-group-item"><span
+                                            class="text-secondary"><?= __('frm_Price', $lang) . ':</span> ' . $intervention['price'] . '€' ?>
+                                </li>
                             </ul>
-                        </div>
+
+                        <?php endforeach; ?>
+
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
-    </div>
+        </div>
+    <?php endif; ?>
+</div>
 
-    <?php
-    $db->close();
-    include "sections/footer.php";
-    include "includes/scripts.php";
-    ?>
+<?php
+$db->close();
+include "sections/footer.php";
+include "includes/scripts.php";
+?>
 </body>
 
 </html>

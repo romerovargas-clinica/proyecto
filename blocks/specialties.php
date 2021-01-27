@@ -6,7 +6,7 @@
   //$num_articles = $articles[0]['num#1'];
   //$truncate = 0;
   //if($articles[0]['num#2']==1) $truncate = $articles[0]['num#3'];
-  $recordset = $db->send("SELECT * FROM treatmentsCategories;");
+  $recordset = $db->send("SELECT * FROM treatmentscategories;");
   ?>
   <div class="row" style="border-top: 8px solid #00A797">
     <nav class="navbar navbar-expand-lg  shadow navbar-dark" style="padding-top: 0; background-color:#0ee3d8">
@@ -18,12 +18,12 @@
     <?php foreach ($recordset as $specialty) : ?>
       <div class="p-2 bd-highlight text-center">
         <div class="card " onclick="window.location='../categorieInterventions.php?categorie=<?= $specialty['id'] ?>';">
-          <figure class="figure" style="margin-top:5px">
+          <figure class="figure mt-2">
             <?php if (isset($specialty['image']) && $specialty['image'] != "") : ?>
               <img src="images/specialties/<?= $specialty['image'] ?>" class="t-opacity">
             <?php endif; ?>
           </figure>
-          <div class="card-header"><?= $specialty['name'] ?></div>
+          <div class="card-header" style="font-size: 1vw"><?= $specialty['name'] ?></div>
 
         </div>
       </div>
