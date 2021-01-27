@@ -1,16 +1,16 @@
 <a name="article"></a>
-<div class="container " style="border-top: 8px solid black">
+<div class="container " style="border-top: 8px solid white">
   <?php
     // Parámetros de configuración del bloque
-    $articles = $db->select("block", "name = '".$name_block."'");
-    $num_articles = $articles[0]['num#1'];
-    $truncate = 0;
-    if($articles[0]['num#2']==1) $truncate = $articles[0]['num#3'];
+   
+    $num_articles =$db->send("SELECT Count(*) FROM articles");
+    $num_articles = $num_articles[0][0];
+   
     $recordset = $db->send("SELECT * FROM articles WHERE enabled = 1 ORDER BY date_created DESC LIMIT 0, $num_articles");
   ?>
-  <div class="row" style="border-top: 8px solid #00A797">
+  <div class="row" style="border-top: 8px solid black">
     <nav class="navbar navbar-expand-lg shadow navbar-dark" style="padding-top: 0; background-color:#0ee3d8">
-      <a class="navbar-brand" href="#"><?=$name_block?></a>
+      <a class="navbar-brand" href="#"><?= __('mn_News', $lang)?></a>
     </nav>
   </div>
   <?php

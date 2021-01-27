@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-01-2021 a las 19:40:36
+-- Tiempo de generación: 27-01-2021 a las 14:09:45
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -84,7 +84,6 @@ CREATE TABLE `block` (
 --
 
 INSERT INTO `block` (`id`, `name`, `description`, `label#01`, `num#1`, `label#02`, `num#2`, `label#03`, `num#3`, `label#04`, `num#4`, `label#05`, `num#5`, `label#06`, `text#1`, `label#0`, `text#2`, `label#08`, `text#3`, `label#09`, `text#4`, `label#10`, `text#5`, `css`) VALUES
-(1, 'Novedades', 'Listado de artículos que aparecen en portada', 'num_max_articles', 3, 'truncate_text', 1, 'truncate_lenght', 56, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'carousel#1', 'Carrusel de imagenes que aparecen en portada', 'num_images', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'imagen1', 'doctor-563429_640.jpg', 'imagen2', 'chair-2589771_640.jpg', 'imagen3', 'chair-2584260_640.jpg', NULL, NULL, NULL, NULL, NULL),
 (3, 'Especialidades', 'Bloque de presentación de las especialidades médicas', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -108,7 +107,6 @@ CREATE TABLE `blocks` (
 
 INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`) VALUES
 (1, 1, 'carousel#1', 'carousel', 1),
-(2, 1, 'Novedades', 'articles', 2),
 (3, 3, 'schedule', 'schedule', 1),
 (4, 1, 'Especialidades', 'specialties', 3);
 
@@ -138,7 +136,13 @@ INSERT INTO `chat` (`id`, `session_id`, `user_id`, `name`, `message`, `created_o
 (34, 'tsm28s6u50eq917kog03dane2c', 2, 'system', 'Keep waiting. An operator will briefly contact you.', '2021-01-22 18:36:10', '2021-01-22 18:36:10'),
 (35, 'tsm28s6u50eq917kog03dane2c', 3, 'david', 'Disculpe... No tengo ni puta idea de inglés', '2021-01-22 18:36:52', NULL),
 (36, 'lkbv86u4p30cvehr2idfs2ekv9', 3, 'david', 'Hola, caracola', '2021-01-22 18:38:49', '2021-01-22 18:38:49'),
-(37, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'system', 'Keep waiting. An operator will briefly contact you.', '2021-01-22 18:38:49', '2021-01-22 18:38:49');
+(37, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'system', 'Keep waiting. An operator will briefly contact you.', '2021-01-22 18:38:49', '2021-01-22 18:38:49'),
+(38, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'kn', '2021-01-25 07:32:24', '2021-01-25 07:32:24'),
+(39, 'ur1ug3s0r7j36kse4rjbpip28a', 4, 'cintia', 'probando\r\n', '2021-01-25 08:47:36', '2021-01-25 08:47:36'),
+(40, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'zxcz\r\n', '2021-01-25 08:48:09', '2021-01-25 08:48:09'),
+(41, 'im7kb1ea3veh3hogvd5f8ffof9', 4, 'cintia', 'Hola me podrian atender?\r\n', '2021-01-26 17:30:00', '2021-01-26 17:30:00'),
+(42, 'so83nh2bc85dnod571lmae2ru8', 4, 'cintia', 'Hola me poueden atender', '2021-01-26 17:31:58', '2021-01-26 17:31:58'),
+(43, 'so83nh2bc85dnod571lmae2ru8', 2, 'admin', 'Pues si claro que te puedo atender\r\n', '2021-01-26 17:32:10', '2021-01-26 17:32:10');
 
 -- --------------------------------------------------------
 
@@ -273,8 +277,7 @@ INSERT INTO `treatmentscategories` (`id`, `name`, `info`, `image`) VALUES
 (2, 'Estética', 'La Estética Dental es la especialidad de la Odontología que se encarga de mejorar la apariencia de la boca para que tenga un aspecto más armónico y saludable. Para ello, ponemos a disposición de nuestros pacientes los tratamientos de carillas, blanqueamiento y coronas de zirconio.', 'estetica.jpg'),
 (3, 'Ortodoncia', 'La ortodoncia es una especialidad de la odontología que estudia, previene y corrige las alteraciones del desarrollo, las formas de las arcadas dentarias y la posición de los maxilares, con el objetivo de restablecer el equilibrio tanto en forma como en función de la boca y de la cara, mejorando también la estética', 'ortodoncia.jpg'),
 (4, 'Cirugía', 'La cirugía bucal es un campo amplio que abarca diferentes tipos de tratamientos. Sin embargo, las técnicas que se llevan a cabo para realizar las intervenciones quirúrgicas son muy similares: requieren anestesia y abordar el procedimiento desde una pequeña incisión en la encía.', 'cirugia.jpg'),
-(5, 'Odontopediatría', 'Aunque tu hijo/a no presente problemas de salud oral, es recomendable que acudas con él al odontopediatra cuando cumpla su primer año. De esta manera, el profesional podrá detectar posibles patologías que compremeterían su desarrollo más adelante.', 'odontopediatria.jpeg'),
-(9, 'asdas', 'asdas', 'asdasd');
+(5, 'Odontopediatría', 'Aunque tu hijo/a no presente problemas de salud oral, es recomendable que acudas con él al odontopediatra cuando cumpla su primer año. De esta manera, el profesional podrá detectar posibles patologías que compremeterían su desarrollo más adelante.', 'odontopediatria.jpeg');
 
 -- --------------------------------------------------------
 
@@ -337,10 +340,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-01-19 09:31:46', '[ADMIN-USER]', '57c29cde3686ab7391052cf260c71af0', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-01-27 14:07:39', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
 (3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-22 19:37:59', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
-(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-18 20:51:18', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1),
-(28, 'asd', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[ADMIN-USER]', '', 'es', 'Cintia', 'Cabrera', 'lasupercintia@gmail.com', 1);
+(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-26 18:31:31', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -450,7 +452,7 @@ ALTER TABLE `blocks`
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `content`
@@ -480,7 +482,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT de la tabla `treatmentscategories`
 --
 ALTER TABLE `treatmentscategories`
-  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `treatmentsinterventions`
@@ -492,7 +494,7 @@ ALTER TABLE `treatmentsinterventions`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Restricciones para tablas volcadas
