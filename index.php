@@ -25,10 +25,6 @@ $nav_style = "alt";
   $sql = "SELECT * FROM pages a INNER JOIN blocks b ON a.id = b.id_page WHERE a.page = '" . $PG_NAME . "' ORDER BY order_n ASC";
   $blocks = $db->send($sql);
   
-  echo "<h1>about us aqui TO:DO</h1>";//TO DO
-  echo "<p>somos una clinica con mas de 20 años de experieicncia blablabla, esto conectar con base de
-   datos para que el admin ponga lo que quiera</p>";
-
 
   foreach ($blocks as $block) :
     $name_block = $block['name'];

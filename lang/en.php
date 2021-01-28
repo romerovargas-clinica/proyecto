@@ -74,4 +74,7 @@ $texts = array(
   // Labels
   'date_Published' => "Date published",
   'lbl_chat' => "Contact the clinic",
+  'aboutUs' => "About us",
+
+  
 );

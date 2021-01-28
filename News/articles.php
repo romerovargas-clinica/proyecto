@@ -5,6 +5,7 @@
    
     $num_articles =$db->send("SELECT Count(*) FROM articles");
     $num_articles = $num_articles[0][0];
+    $truncate = 0;
    
     $recordset = $db->send("SELECT * FROM articles WHERE enabled = 1 ORDER BY date_created DESC LIMIT 0, $num_articles");
   ?>
