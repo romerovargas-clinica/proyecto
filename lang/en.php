@@ -4,7 +4,7 @@ $texts = array(
   'app_Title' => "SonriseClinic",
   // Menú Buttons
   'mn_Home' => "Home",
-  'mn_News' => "Noticias",
+  'mn_News' => "News",
   'mn_Categories' => "Categories",
   'mn_Meeting' => "Managed Meeting",
   'mn_Chat' => "Chat",
