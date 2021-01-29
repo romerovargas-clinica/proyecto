@@ -1,7 +1,7 @@
 <div class="container ">
   <div class="row" style="border-top: 8px solid black"></div>
   <div class="row align-items-start" style="border-top: 8px solid #00A797">
-    <div class="col" style="margin-left:10%" >
+    <div class="col" style >
       <img class="rounded float-start" src="images/logo2.svg" width="300" height="175"  >
     </div>
     <div class="col">
