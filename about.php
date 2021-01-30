@@ -9,26 +9,21 @@ include("includes/sessions.php");
 // Recuperar la sesión anterior
 initiate();
 // TITLE DE LA PÁGINA ACTUAL //
-$PG_NAME = "Specialitie";
+$PG_NAME = "About";
+$tt_name_int = "Bl_About";
 $nav_style = "alt";
-//CARGAR EL ÁRTICULO DE LA BASE DE DATOS//
-$db = new DataBase();
-$categorie = $_GET['categorie'];
-$categories = $db->send("SELECT * FROM treatmentscategories WHERE id = $categorie");
-
-$db->close();
 ?>
 <!DOCTYPE html>
 <html lang="<?= $lang ?>">
 <?php require "sections/head.php"; ?>
 
 <body>
-    <?php
-    include "sections/header.php";
-    include "includes/blocks.php";
-    include "sections/footer.php";
-    include "includes/scripts.php";
-    ?>
+<?php
+include "sections/header.php";
+include "includes/blocks.php";
+include "sections/footer.php";
+include "includes/scripts.php";
+?>
 </body>
 
 </html>

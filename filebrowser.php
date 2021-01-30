@@ -63,7 +63,7 @@ $LANG_header = preg_replace('/(?:(?<=([a-z]{2}))).*/', '', $LANG);
   <title>FILE_BROWSER</title>
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles_.css">
   <style>
     .wrapper,
     #maincontent,

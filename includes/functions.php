@@ -32,12 +32,21 @@ function rand_string()
 function labelToImage($label)
 {
 	// [IMG:8949566]
-	$db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
+	$db = new DataBase();
 	$code = strstr($label, ":");
 	$code = substr($code, 1, 8);
-	$recordset = $db->select("images", "id = '$code'");
+	$recordset = $db->select("images", "id = '$label'");
 	$html = "<img alt='" . $recordset[0]['alt'] . "' src='" . $recordset[0]['src'] . "' style='" . $recordset[0]['style'] . "' idunique='" . $code . "'>";
 	return $html;
+}
+
+function idToImage($label)
+{
+    // 8949566
+    $db = new DataBase();
+    $recordset = $db->select("images", "id = '$label'");
+    $html = $recordset[0]['src'];
+    return $html;
 }
 
 function getFiles($path)

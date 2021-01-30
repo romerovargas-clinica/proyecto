@@ -13,6 +13,10 @@ $texts = array(
   'mn_Logout' => "Cerrar Sesión",
   'mn_Admin' => "Panel de Control",
   'mn_Cites' => "Mis citas",
+  'mn_AboutUs' => "Sobre Nosotros",
+  // Block
+  'Bl_About' => "Sobre nosotros",
+  'Bl_Login' => "Iniciar Sesión",
   // Forms
   'frm_Email' => "Dirección de correo electrónico",
   'frm_Pass' => "Clave",
@@ -74,6 +78,8 @@ $texts = array(
   // Labels
   'date_Published' => "Fecha de publicación",
   'lbl_chat' => "Contacta con la clínica",
-  'aboutUs' => "Sobre nosotros",
-
+  'aboutUs' => "Sobre Nosotros",
+  'lbl_QuestionNotRegister' => "¿No estás registrado?",
+  'lbl_CitesHistory' => "Historial de citas",
+  'lbl_CitesPending' => "Próximas Citas",
 );

@@ -13,6 +13,10 @@ $texts = array(
   'mn_Logout' => "Logout",
   'mn_Admin' => "CPanel",
   'mn_Cites' => "My Cites",
+  'mn_AboutUs' => "About",
+  // Block
+  'Bl_About' => "About us",
+  'Bl_Login' => "Login",
   // Forms
   'frm_Email' => "Email address",
   'frm_Pass' => "Password",
@@ -75,6 +79,7 @@ $texts = array(
   'date_Published' => "Date published",
   'lbl_chat' => "Contact the clinic",
   'aboutUs' => "About us",
-
-  
+  'lbl_QuestionNotRegister' => "You not registered?",
+  'lbl_CitesHistory' => "Cites history",
+  'lbl_CitesPending' => "Pending Cites",
 );

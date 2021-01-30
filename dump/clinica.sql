@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2021 a las 09:09:00
+-- Tiempo de generación: 30-01-2021 a las 20:35:48
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `clinica`
 --
-CREATE DATABASE IF NOT EXISTS `clinica` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `clinica`;
 
 -- --------------------------------------------------------
 
@@ -31,9 +29,11 @@ USE `clinica`;
 
 CREATE TABLE `articles` (
   `id` int(9) NOT NULL,
+  `category` int(9) NOT NULL,
   `title` varchar(255) NOT NULL,
   `subtitle` varchar(255) NOT NULL,
   `text` text NOT NULL,
+  `image_id` varchar(8) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_published` datetime DEFAULT NULL,
   `date_modifiqued` datetime DEFAULT NULL,
@@ -45,8 +45,10 @@ CREATE TABLE `articles` (
 -- Volcado de datos para la tabla `articles`
 --
 
-INSERT INTO `articles` (`id`, `title`, `subtitle`, `text`, `date_created`, `date_published`, `date_modifiqued`, `enabled`, `author`) VALUES
-(1, '#1 Hola, Mundo!', 'Un subtítulo de muestra, para un artículo de muestra', '<hr />\r\n<p>[IMG:754f4263]Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.</p>\r\n', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2);
+INSERT INTO `articles` (`id`, `category`, `title`, `subtitle`, `text`, `image_id`, `date_created`, `date_published`, `date_modifiqued`, `enabled`, `author`) VALUES
+(1, 1, '#1 Hola, Mundo!', 'Un subtítulo de muestra, para un artículo de muestra', '<hr />\r\n<p>[IMG:754f4263]Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.</p>\r\n', '0', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
+(7, 2, 'La Clínica', '', '<p>En SonriseClinic cuidamos tu salud y estética dental utilizando la tecnología más avanzada para lograr los mejores resultados.</p>\r\n\r\n<p>Contamos con un equipo profesionales que harán que por fin consigas sonreír. </p>\r\n\r\n<p>Hoy en día, están en expansión los modelos de Clínicas Dentales, en muchos casos franquicias, las cuales “obligan” al paciente a realizarse costosos tratamientos finalizados en tiempos récords, los cuales a medio plazo fracasan. Fracasan no sólo por los tiempos inadecuados que emplean e ellos, sino también por la incorporación a su plantilla principal de Odontólogos sin experiencia en el campo, además sometidos a usar materiales “low cost”, que en muchas ocasiones acaparan tratamientos de gran envergadura atraídos por la repercusión económica que les aporta sin evaluar si están preparados para realizarlos. Esto deja desamparados a numerosos pacientes que, bien por principios no están dispuestos a ser manejados al antojo de estas clínicas, o por incapacidad económica desisten de realizarse los tratamientos propuestos en estos tipos de clínicas. Son en estos pacientes y en todos los demás en los que volcaremos nuestros esfuerzos para atenderlos de la mejor manera que se merecen.</p>', '8fe5abc6', '2021-01-29 20:38:54', NULL, NULL, 0, 2),
+(8, 2, 'Mensaje del Director', 'Dr. D. Juan Juan Juan', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', 'cb5af32', '2021-01-29 21:21:00', NULL, NULL, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -68,16 +70,16 @@ CREATE TABLE `block` (
   `num#4` int(9) DEFAULT NULL,
   `label#05` varchar(256) DEFAULT NULL,
   `num#5` int(9) DEFAULT NULL,
-  `label#06` varchar(256) DEFAULT NULL,
-  `text#1` varchar(56) DEFAULT NULL,
-  `label#0` varchar(256) DEFAULT NULL,
-  `text#2` varchar(56) DEFAULT NULL,
-  `label#08` varchar(256) DEFAULT NULL,
-  `text#3` varchar(56) DEFAULT NULL,
-  `label#09` varchar(256) DEFAULT NULL,
-  `text#4` varchar(56) DEFAULT NULL,
-  `label#10` varchar(256) DEFAULT NULL,
-  `text#5` varchar(56) DEFAULT NULL,
+  `label#06` varchar(50) DEFAULT NULL,
+  `text#1` varchar(200) DEFAULT NULL,
+  `label#07` varchar(50) DEFAULT NULL,
+  `text#2` varchar(200) DEFAULT NULL,
+  `label#08` varchar(50) DEFAULT NULL,
+  `text#3` varchar(200) DEFAULT NULL,
+  `label#09` varchar(50) DEFAULT NULL,
+  `text#4` varchar(200) DEFAULT NULL,
+  `label#10` varchar(50) DEFAULT NULL,
+  `text#5` varchar(200) DEFAULT NULL,
   `css` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -85,10 +87,11 @@ CREATE TABLE `block` (
 -- Volcado de datos para la tabla `block`
 --
 
-INSERT INTO `block` (`id`, `name`, `description`, `label#01`, `num#1`, `label#02`, `num#2`, `label#03`, `num#3`, `label#04`, `num#4`, `label#05`, `num#5`, `label#06`, `text#1`, `label#0`, `text#2`, `label#08`, `text#3`, `label#09`, `text#4`, `label#10`, `text#5`, `css`) VALUES
-(2, 'carousel#1', 'Carrusel de imagenes que aparecen en portada', 'num_images', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'imagen1', 'doctor-563429_640.jpg', 'imagen2', 'chair-2589771_640.jpg', 'imagen3', 'chair-2584260_640.jpg', NULL, NULL, NULL, NULL, NULL),
+INSERT INTO `block` (`id`, `name`, `description`, `label#01`, `num#1`, `label#02`, `num#2`, `label#03`, `num#3`, `label#04`, `num#4`, `label#05`, `num#5`, `label#06`, `text#1`, `label#07`, `text#2`, `label#08`, `text#3`, `label#09`, `text#4`, `label#10`, `text#5`, `css`) VALUES
+(2, 'carousel#1', 'Carrusel de imagenes que aparecen en portada', 'num_images', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Titulo_Imagen_1', 'doctor-563429_640.jpg', 'Titulo_imagen_2', 'chair-2589771_640.jpg', 'Titulo_imagen_3', 'chair-2584260_640.jpg', NULL, NULL, NULL, NULL, NULL),
 (3, 'Especialidades', 'Bloque de presentación de las especialidades médicas', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'aboutUs', 'Información acerca de nuestra clínica', 'num_images', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'image1', 'aboutUsImage1.png', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proid', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(4, 'aboutUs', 'Información acerca de nuestra clínica', 'num_images', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'image1', 'aboutUsImage1.png', 'Lorem ipsum dolor sit amet, consectetur adipiscin', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam in voluptate velit esse cillum dolore eu fugiat null', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'portada', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -109,10 +112,31 @@ CREATE TABLE `blocks` (
 --
 
 INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`) VALUES
-(1, 1, 'carousel#1', 'carousel', 1),
-(2, 1, 'aboutUs', 'aboutUs', 1),
+(1, 1, 'portada', 'headerimage', 1),
+(2, 5, 'aboutUs', 'aboutUs', 2),
 (3, 3, 'schedule', 'schedule', 1),
-(4, 1, 'Especialidades', 'specialties', 3);
+(4, 1, 'Especialidades', 'specialties', 3),
+(6, 6, 'interventions', 'interventions', 1),
+(7, 2, 'login', 'login', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'news'),
+(2, 'about');
 
 -- --------------------------------------------------------
 
@@ -146,7 +170,29 @@ INSERT INTO `chat` (`id`, `session_id`, `user_id`, `name`, `message`, `created_o
 (40, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'zxcz\r\n', '2021-01-25 08:48:09', '2021-01-25 08:48:09'),
 (41, 'im7kb1ea3veh3hogvd5f8ffof9', 4, 'cintia', 'Hola me podrian atender?\r\n', '2021-01-26 17:30:00', '2021-01-26 17:30:00'),
 (42, 'so83nh2bc85dnod571lmae2ru8', 4, 'cintia', 'Hola me poueden atender', '2021-01-26 17:31:58', '2021-01-26 17:31:58'),
-(43, 'so83nh2bc85dnod571lmae2ru8', 2, 'admin', 'Pues si claro que te puedo atender\r\n', '2021-01-26 17:32:10', '2021-01-26 17:32:10');
+(43, 'so83nh2bc85dnod571lmae2ru8', 2, 'admin', 'Pues si claro que te puedo atender\r\n', '2021-01-26 17:32:10', '2021-01-26 17:32:10'),
+(44, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'lkj', '2021-01-29 19:50:11', '2021-01-29 19:50:11');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cites`
+--
+
+CREATE TABLE `cites` (
+  `id` int(9) NOT NULL,
+  `date` date NOT NULL,
+  `time_from` time NOT NULL,
+  `time_until` time NOT NULL,
+  `user_id` int(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `cites`
+--
+
+INSERT INTO `cites` (`id`, `date`, `time_from`, `time_until`, `user_id`) VALUES
+(1, '2021-01-17', '19:00:00', '20:00:00', 3);
 
 -- --------------------------------------------------------
 
@@ -180,7 +226,9 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `name`, `src`, `alt`, `style`) VALUES
-('754f4263', 'autobus', '../../images/uploads/compartecoche.png', '', 'float:left; height:32px; width:32px');
+('754f4263', 'autobus', '../../images/uploads/compartecoche.png', 'autobus', 'float:left; height:32px; width:32px'),
+('8fe5abc6', 'diente', '../../images/uploads/aboutUsImage1.png', 'diente', ''),
+('cb5af32', 'Director', '../../images/uploads/juanjuanjuan.jpg', 'director', '');
 
 -- --------------------------------------------------------
 
@@ -203,7 +251,9 @@ INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
 (1, 'HOME', '2021-01-01 07:01:12', 1),
 (2, 'LOGIN', '2021-01-02 07:01:12', 1),
 (3, 'CITES', '2021-01-09 13:35:36', 1),
-(4, 'ARTICLE', '2021-01-11 08:37:54', 1);
+(4, 'ARTICLE', '2021-01-11 08:37:54', 1),
+(5, 'ABOUT', '2021-01-29 19:45:07', 1),
+(6, 'SPECIALITIE', '2021-01-30 19:00:49', 1);
 
 -- --------------------------------------------------------
 
@@ -344,8 +394,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-01-28 17:52:54', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
-(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-22 19:37:59', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-01-30 19:23:44', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-30 20:02:11', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
 (4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-26 18:31:31', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
 --
@@ -357,7 +407,8 @@ INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, 
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `author` (`author`);
+  ADD KEY `author` (`author`),
+  ADD KEY `imagen_id` (`image_id`);
 
 --
 -- Indices de la tabla `block`
@@ -374,9 +425,21 @@ ALTER TABLE `blocks`
   ADD UNIQUE KEY `name` (`name`);
 
 --
+-- Indices de la tabla `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `chat`
 --
 ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `cites`
+--
+ALTER TABLE `cites`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -438,25 +501,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `block`
 --
 ALTER TABLE `block`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT de la tabla `cites`
+--
+ALTER TABLE `cites`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `content`
@@ -468,7 +543,7 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT de la tabla `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `register`
@@ -509,10 +584,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `articles`
   ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`author`) REFERENCES `users` (`id`) ON DELETE NO ACTION;
---
--- Base de datos: `daw2`
---
-CREATE DATABASE IF NOT EXISTS `daw2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `daw2`;
+COMMIT;
 
--- --------------------------------------------------------
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

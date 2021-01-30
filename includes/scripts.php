@@ -13,4 +13,12 @@
     url = url.replace(regex, '');
     window.location.href = url + '?lang=' + selectElement.value;
   });
+
+  $(window).scroll(function () {
+      if($("#barramenuprincipal").offset().top > 56) {
+          $("#barramenuprincipal").addClass("bg-inverse");
+      } else {
+          $("#barramenuprincipal").removeClass("bg-inverse");
+      }
+  });
 </script>

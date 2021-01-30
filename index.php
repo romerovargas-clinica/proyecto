@@ -16,21 +16,10 @@ $nav_style = "alt";
 <html lang="<?= $lang ?>">
 <?php require "sections/head.php"; ?>
 
-<body >
+<body>
   <?php
   include "sections/header.php";
-  include "sections/navbar.php";
-  // cargar los bloques desde la configuración
-  $db = new DataBase(DB_SERVER, DB_USER, DB_PASS, DB_NAME, 1);
-  $sql = "SELECT * FROM pages a INNER JOIN blocks b ON a.id = b.id_page WHERE a.page = '" . $PG_NAME . "' ORDER BY order_n ASC";
-  $blocks = $db->send($sql);
-  
-
-  foreach ($blocks as $block) :
-    $name_block = $block['name'];
-    include "blocks/" . $block['block'] . ".php";
-  endforeach;
-  $db->close();
+  include "includes/blocks.php";
   include "sections/footer.php";
   include "includes/scripts.php";
   ?>

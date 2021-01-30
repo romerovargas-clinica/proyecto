@@ -1,8 +1,7 @@
-<div class="container" style="border-top: 8px solid black"></div>
-<div class="container py-5" style="border-top: 8px solid #00A797">
 
-    <div class="row align-items-center">
-        <div class="col">
+<div class="container py-5">
+    <div class="row justify-content-evenly">
+        <div class="col-3">
             <div class="card" style="width: 18rem;">
                 <img src="images/map.png" class="card-img-top" alt="map">
                 <div class="card-body">
@@ -12,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-3">
         <div class="card" style="width: 18rem;">
                 <img src="images/contact.png" class="card-img-top" alt="contact">
                 <div class="card-body">
@@ -21,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-3">
         <div class="card" style="width: 18rem;">
             <figure class="figure">
                 <img class="rounded float-start" src="images/logoAzul.svg" width="300" height="175">

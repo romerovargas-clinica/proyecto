@@ -1,31 +1,31 @@
-<a name="specialties"></a>
-<div class="container" style="border-top: 8px solid white">
-    <?php
-  // Parámetros de configuración del bloque
-  $specialties = $db->select("block", "name = '" . $name_block . "'");
-  //$num_articles = $articles[0]['num#1'];
-  //$truncate = 0;
-  //if($articles[0]['num#2']==1) $truncate = $articles[0]['num#3'];
-  $recordset = $db->send("SELECT * FROM block where name = '$name_block';");
-  ?>
-    <div class="row" style="border-top: 8px solid black">
-        <nav class="navbar navbar-expand-lg  shadow navbar-dark" style="padding-top: 0;  background-color:#0ee3d8">
-            <a class="navbar-brand" href="#"><?= __($name_block,$lang) ?></a>
-        </nav>
-    </div>
+<div class="container-fluid bg-light p-2">
+    <a name="aboutus"></a>
+    <div class="container p-2 mt-2 mb-2 bg-white">
+        <div class="h1"><?= __($tt_name_int, $lang) ?></div>
+        <!-- about -->
+        <?php
+        // Parámetros de configuración del bloque
+        // El contenido de esta sección se extrae de la tabla articles (categoría=2)
+        $specialties = $db->select("block", "name = '" . $name_block . "'");
+        $recordset = $db->send("SELECT * FROM block where name = '$name_block';");
+        $articles = $db->select("articles", "category=2"); ?>
+        <?php foreach ($articles as $article) : ?>
+            <div class="row">
+                <div class="col-lg">
+                    <div class="container-fluid container-sm p-5" style="width: 20rem;">
+                        <div class="col-sm">
+                            <img class="img-thumbnail" src="<?= idToImage($article["image_id"]) ?>">
+                        </div>
+                    </div>
+                </div>
 
-    <div class="container">
-        <div class="row align-items-start">
-            <div class="col-9">
-                
-                <p><?=$recordset[0][15]?></p>
+                <div class="col-8">
+                    <div class="bd-highlight fs-2"><?= $article["title"] ?></div>
+                    <hr>
+                    <div class="container p-1 mb-2"><?= $article["subtitle"] ?></div>
+                    <div class="container"><?= $article["text"] ?></div>
+                </div>
             </div>
-            <div class="col-3">
-                
-                <img class="d-line w-50" src="../images/aboutUs/<?=$recordset[0][14]?>" style="display: inline;">
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
-
-
 </div>

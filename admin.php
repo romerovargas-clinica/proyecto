@@ -156,9 +156,11 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
           case ("images"):
             $sectTitle = __('sect_gallery', $lang);
             include "admin/images.php";
+            break;
           case ("chat"):
             $sectTitle = __('sect_Chat', $lang);
             include "admin/chat.php";
+            break;
         endswitch;
         ?>
       </main>
