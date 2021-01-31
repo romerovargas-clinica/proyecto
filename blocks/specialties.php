@@ -14,7 +14,7 @@
             <div class="card card-shadow" style="width:140px;" onclick="window.location='../categorieInterventions.php?categorie=<?= $specialty['id'] ?>';">
               <figure class="figure mt-2">
                 <?php if (isset($specialty['image']) && $specialty['image'] != "") : ?>
-                  <img src="images/specialties/<?= $specialty['image'] ?>" class="t-opacity">
+                  <img src="images/specialities/<?= $specialty['image'] ?>" class="t-opacity">
                 <?php endif; ?>
               </figure>
               <div class="card-header text-wrap" style="font-size: 12px"><?= $specialty['name'] ?></div>

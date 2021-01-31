@@ -55,6 +55,7 @@ $texts = array(
   'Learn_more' => 'Learn more',
   'btn_AddUser' => 'Add new user',
   'btn_Add' => 'Add',
+  'btn_NewCite' => 'Pedir cita',
   // Admin
   'sect_gallery' => "Gallery",
   'sect_users' => "Users",
