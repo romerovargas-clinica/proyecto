@@ -19,13 +19,15 @@ endif;
 
 if (isset($_SESSION["cite"]["step"])) :
   $step = $_SESSION["cite"]["step"];
+else :
+  $step = 0;
 endif;
 
 if (isset($_GET["tab"])) :
   $_SESSION["cite"]["step"] = $_GET["tab"];
 endif;
 
-switch ($_SESSION["cite"]["step"]):
+switch ($step):
   case 0:
     $tab[0] = $tabActive;
     if (!isset($_SESSION["cite"]["intervention"])) $tab[1] = $tabDisabled;
@@ -87,14 +89,17 @@ endswitch;
         </div>
         <div class="col-4 border border-2">
           <?php
-          $ndb = new DataBase();
-          $trataiments = $ndb->select("treatmentsinterventions", "id = " . $_SESSION["cite"]["intervention"]);
-          if ($trataiments) : ?>
-            <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $trataiments[0]["name"] ?></a></span></h4>
-          <?php endif;
-          if (isset($_SESSION["cite"]["date"])) : ?>
-            <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $_SESSION["cite"]["date"] ?></a></span></h4>
-          <?php endif;
+          if (isset($_SESSION["cite"]["intervention"])) :
+            $ndb = new DataBase();
+            $trataiments = $ndb->select("treatmentsinterventions", "id = " . $_SESSION["cite"]["intervention"]);
+            if ($trataiments) : ?>
+              <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $trataiments[0]["name"] ?></a></span></h4>
+            <?php endif;
+            if (isset($_SESSION["cite"]["date"])) : ?>
+              <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $_SESSION["cite"]["date"] ?></a></span></h4>
+          <?php
+            endif;
+          endif;
           ?>
 
         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-01-2021 a las 20:35:48
+-- Tiempo de generación: 01-02-2021 a las 11:44:30
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -258,6 +258,28 @@ INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `publi`
+--
+
+CREATE TABLE `publi` (
+  `id` int(9) NOT NULL,
+  `title` varchar(300) NOT NULL,
+  `block1` varchar(300) NOT NULL,
+  `block2` varchar(300) NOT NULL,
+  `enable` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `publi`
+--
+
+INSERT INTO `publi` (`id`, `title`, `block1`, `block2`, `enable`) VALUES
+(1, 'TRATAMIENTO DE IMPLANTOLOGÍA', 'Durante el mes de marzo', '199,99€', 1),
+(2, 'prueba', 'asd', 'asd', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `register`
 --
 
@@ -394,9 +416,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-01-30 19:23:44', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-01 10:15:56', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
 (3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-30 20:02:11', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
-(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-26 18:31:31', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
+(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-01 08:25:39', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -458,6 +480,12 @@ ALTER TABLE `images`
 -- Indices de la tabla `pages`
 --
 ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `publi`
+--
+ALTER TABLE `publi`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -544,6 +572,12 @@ ALTER TABLE `content`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `publi`
+--
+ALTER TABLE `publi`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `register`
