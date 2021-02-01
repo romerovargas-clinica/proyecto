@@ -59,6 +59,7 @@ $texts = array(
   // Admin
   'sect_gallery' => "Galería",
   'sect_users' => "Usuarios",
+  'sect_announce' => "Anunciar",
   'sect_settings' => "Configuración",
   'sect_categories' => "Categorías",
   'sect_articles' => "Artículos",

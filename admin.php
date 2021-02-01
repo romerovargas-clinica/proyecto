@@ -84,6 +84,13 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
               </a>
             </li>
             <li class="nav-item">
+              <!-- editando -->
+              <a class="nav-link<?= $adm_pag == 'announce' ? ' active' : '' ?>" href="admin.php?section=announce">
+                <span data-feather="airplay"></span>
+                <?= __('sect_announce', $lang) ?>
+              </a>
+            </li> <!-- editando -->
+            <li class="nav-item">
               <a class="nav-link<?= $adm_pag == 'articles' ? ' active' : '' ?>" href="admin.php?section=articles">
                 <span data-feather="file-text"></span>
                 <?= __('sect_articles', $lang) ?>
@@ -140,6 +147,10 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
           case ("users"):
             $sectTitle = __('sect_users', $lang);
             include "admin/users.php";
+            break;
+          case ("announce"):
+            $sectTitle = __('announce', $lang);
+            include "admin/announce.php";
             break;
           case ("articles"):
             $sectTitle = __('sect_articles', $lang);
