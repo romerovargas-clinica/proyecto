@@ -84,13 +84,47 @@ if ($trataiments) :
           $posible = false;
         }
       endforeach;
+    /*
       if ($posible) {
         echo "<div class='badge bg-primary me-1'><a class='text-decoration-none text-white' href='cites.php?new&time_from=" . $libre["desde"]->format("H:i") . "&time_until=" . $libre["hasta"]->format("H:i") . "'>" . $libre["desde"]->format("H:i") . "-" . $libre["hasta"]->format("H:i") . "</a></div>";
       } else {
         echo "<div class='badge bg-secondary me-1'>" . $libre["desde"]->format("H:i") . "-" . $libre["hasta"]->format("H:i") . "</div>";
       }
+      */
     endforeach;
 
     ?>
   </div>
 <?php endif; ?>
+<div class="container mt-2">
+  <table class="table">
+    <tr>
+      <td>
+        <div class='badge bg-primary me-1'><?= $trataiments[0]['name'] ?></div>
+        <div class='badge bg-primary me-1' id="duration" value="<?= $trataiments[0]['duration'] ?>"><?= $trataiments[0]['duration'] . " minutos" ?></div>
+
+        <?php
+        if ($citas) :
+          $cont = 0;
+          foreach ($citas as $ocupado) :
+            $ocupped[] = ["desde" => strtotime($ocupado["time_from"]), "hasta" => strtotime($ocupado["time_until"])];
+        ?>
+            <div class="visually-hidden from" value="<?= $ocupado["time_from"] ?>"></div>
+            <div class="visually-hidden until" value="<?= $ocupado["time_until"] ?>"></div>
+        <?php
+            $cont++;
+          endforeach;
+        endif;
+        ?>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class='badge bg-secondary me-1' id="lbl"></div>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="range" class="form-range" min="0" max="600" step="15" id="customRange3"></td>
+    </tr>
+  </table>
+</div>

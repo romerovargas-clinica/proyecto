@@ -71,6 +71,7 @@ $texts = array(
   // Modal
   'modal_title_confirm' => "Confirme opción",
   'modal_text_confirm' => "Esta opción no es posible deshacerla. Si realmente está seguro/a pulse en 'Aceptar'",
+  'modal_cite_confirm' => "Por favor, asegúrate de que las opciones de tu cita son correctas",
   // Error Messages
   'err_NotAutenticates' => "Usuario no registrado",
   'err_UpdateInfo' => "Fallo al actualizar los datos",

@@ -54,6 +54,12 @@
         background-color: white;
         /* #1C2331*/
       }
+
+      .header {
+        background-position: center bottom;
+        background-size: 900px 100%;
+        transition: all 1s ease;
+      }
     }
 
     @media (min-width: 800px) and (max-width: 850px) {

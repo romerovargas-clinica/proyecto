@@ -4,6 +4,12 @@ if (isset($_GET['new'])) :
 else :
 ?>
   <div class="container-fluid bg-light p-2">
+    <?php if ($exito) : ?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Cita fijada correctamente</strong> Se ha enviado un email a su correo a modo de recordatorio
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php endif ?>
     <a name="schedule"></a>
     <div class="container p-2 mt-2 mb-2 bg-white">
       <div class="h1"><?= __('mn_Cites', $lang) ?></div>
@@ -22,7 +28,7 @@ else :
                     <div class="accordion-body">
                       <?php
                       $db = new DataBase();
-                      $citas = $db->select("cites", "user_id = " . $_SESSION['id']);
+                      $citas = $db->select("cites", "user_id = " . $_SESSION['id'] . " ORDER BY date, time_from;");
                       $historial = array();
                       $pendiente = array();
                       if ($citas) :

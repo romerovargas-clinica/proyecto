@@ -1,8 +1,16 @@
 <?php
+
+
+
 $tab = array();
 $tabDisabled = " disabled\" aria-disabled=\"true";
 $tabActive = " active\" aria-current=\"page";
 $tabEnabled = "";
+
+if (isset($_GET['hourfrom'])) :
+  $_SESSION["cite"]["hourfrom"] = $_GET['hourfrom'];
+  $_SESSION["cite"]["houruntil"] = $_GET['houruntil'];
+endif;
 
 if (isset($_GET["intervention"])) :
   $_SESSION["cite"]["step"] = 1;
@@ -44,6 +52,10 @@ switch ($step):
     $tab[1] = $tabEnabled;
     $tab[2] = $tabActive;
     break;
+  case 3:
+    $tab[0] = $tabEnabled;
+    $tab[1] = $tabEnabled;
+    $tab[2] = $tabActive;
 endswitch;
 ?>
 
@@ -70,7 +82,7 @@ endswitch;
             // Son tres acciones, guardamos cada una en una variable de sesión (vaciar en el último paso).
             // Si el usuario pierde el foco o se equivoca de enlace, al volver aquí recupera las opciones que hubiera elegido antes
             // En este punto valoramos en qué apartado está, ofreciendo las opciones correspondientes
-            switch ($_SESSION["cite"]["step"]):
+            switch ($step):
               case 0:
                 include("blocks/schedule-specialties.php");
                 break;
@@ -83,25 +95,35 @@ endswitch;
             endswitch;
             ?>
             <div>
-              <!-- <a class="btn btn-primary btn-md m-5" href="cites.php?new" role="button"><?= __('btn_NewCite', $lang) ?></a> -->
+
             </div>
           </div>
         </div>
         <div class="col-4 border border-2">
-          <?php
-          if (isset($_SESSION["cite"]["intervention"])) :
-            $ndb = new DataBase();
-            $trataiments = $ndb->select("treatmentsinterventions", "id = " . $_SESSION["cite"]["intervention"]);
-            if ($trataiments) : ?>
-              <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $trataiments[0]["name"] ?></a></span></h4>
+          <div class="bd-highlight fs-2">Tu cita</div><!-- to-do traducir -->
+          <form id="frmCites" method="POST" action="cites.php?new">
+            <?php
+            if (isset($_SESSION["cite"]["intervention"])) :
+              $ndb = new DataBase();
+              $trataiments = $ndb->select("treatmentsinterventions", "id = " . $_SESSION["cite"]["intervention"]);
+              if ($trataiments) : ?>
+                <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $trataiments[0]["name"] ?></a></span></h4>
+              <?php endif;
+              if (isset($_SESSION["cite"]["date"])) : ?>
+                <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $_SESSION["cite"]["date"] ?></a></span></h4>
+              <?php
+              endif;
+              if (isset($_SESSION["cite"]["hourfrom"])) : ?>
+                <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $_SESSION["cite"]["hourfrom"] . " - " . $_SESSION["cite"]["houruntil"] ?></a></span></h4>
+                <input type="hidden" name="trataiments" value="<?= $_SESSION["cite"]["intervention"] ?>">
+                <input type="hidden" name="date" value="<?= $_SESSION["cite"]["date"] ?>">
+                <input type="hidden" name="hourfrom" value="<?= $_SESSION["cite"]["hourfrom"] ?>">
+                <input type="hidden" name="houruntil" value="<?= $_SESSION["cite"]["houruntil"] ?>">
+                <button type="button" class="btn btn-primary btn-md m-5" data-bs-toggle="modal" data-bs-target="#myModal"><?= __('btn_NewCite', $lang) ?></button>
             <?php endif;
-            if (isset($_SESSION["cite"]["date"])) : ?>
-              <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $_SESSION["cite"]["date"] ?></a></span></h4>
-          <?php
             endif;
-          endif;
-          ?>
-
+            ?>
+          </form>
         </div>
       <?php else : ?>
         <!-- el usuario no está identificado, mostrar mensaje -->
@@ -116,3 +138,32 @@ endswitch;
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<?php
+
+?>
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><?= __('modal_title_confirm', $lang) ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"><?= __('modal_cite_confirm', $lang) ?></div>
+      <div class="modal-body">
+        <?= $trataiments[0]["name"] ?> <br /> <?= $_SESSION["cite"]["date"] ?> <br> <?= $_SESSION["cite"]["hourfrom"] . " - " . $_SESSION["cite"]["houruntil"] ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= __('btn_Close', $lang) ?></button>
+        <button type="button" class="btn btn-primary" onclick="aceptar();"><?= __('btn_Ok', $lang) ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function aceptar() {
+    document.getElementById("frmCites").submit();
+  }
+</script>
