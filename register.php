@@ -16,19 +16,20 @@ $PG_NAME = "Register";
 $nav_style = "alt";
 // Procesado de formulario
 if (isset($_POST['frmInputEmail'])) :
+  $name = $_POST['inputName'];
   $firstname = $_POST['frmInputFirstName'];
   $lastname = $_POST['frmInputLastName'];
   $email = $_POST['frmInputEmail'];
   $lenguage = $lang;
   $db = new DataBase();
-  $repeat = $db->send("SELECT Count(*) as repetido FROM users a WHERE a.email='$email';");
+  $repeat = $db->send("SELECT Count(*) as repetido FROM users a WHERE a.email='$email'  OR a.name='$name';");
   if ($repeat[0]['repetido']) {
-    $error = __('err_RepeatEmail', $lang);
+    $error = __('err_RepeatData', $lang);
   } else {
     $clave = uniqid(); //clave unica
 
     $sql = "INSERT INTO users (name, confirmKey, roles, lang, firstname, lastname, email, enabled) VALUES
-    ('$clave', '$clave', '[CUSTOMER]', '$lenguage', '$firstname', '$lastname', '$email' , '0');";
+    ('$name', '$clave', '[CUSTOMER]', '$lenguage', '$firstname', '$lastname', '$email' , '0');";
     $result = $db->send($sql, "");
     $param = $db->send("SELECT * FROM settings;");
     $urlsite = $param[1]['value']; // value of urlsite in settings table
@@ -37,7 +38,7 @@ if (isset($_POST['frmInputEmail'])) :
 
     $message = "Bienvenido a SonriseClinic " . $firstname . ".\nEstamos encantados de tenerte con nosotros. \n" .
       "Ahora para confirmar tu cuenta tienes que acceder a este link y asignar tu contraseña:\n " . $url;
-    mail($email, "Confirmación de cuenta " . $clave, $message, "From: SonriseClinic. \n No conteste a este email por favor.");
+    mail($email, "Confirmación de cuenta " . $name, $message, "From: SonriseClinic. \n No conteste a este email por favor.");
   }
   $ok = true;
 endif;
@@ -66,6 +67,10 @@ endif;
     <!-- login -->
     <form id="frmLogin" method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
       <div class="container-fluid container p-5" style="width: 30rem;">
+        <div class="mb-3">
+          <label for="inputName" class="form-label"><?= __('frm_Name', $lang) ?></label>
+          <input type="text" class="form-control" name="inputName" id="inputName" placeholder="<?= __('frm_Name', $lang) ?>" required>
+        </div>
         <div class="mb-3">
           <label for="frmInputFirstName" class="form-label"><?= __('frm_FirstName', $lang) ?></label>
           <input type="text" class="form-control" name="frmInputFirstName" id="frmInputFirstName" placeholder="<?= __('frm_FirstName', $lang) ?>" required>
