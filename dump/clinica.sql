@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-02-2021 a las 19:31:21
+-- Tiempo de generación: 12-02-2021 a las 13:36:51
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -171,7 +171,9 @@ INSERT INTO `chat` (`id`, `session_id`, `user_id`, `name`, `message`, `created_o
 (41, 'im7kb1ea3veh3hogvd5f8ffof9', 4, 'cintia', 'Hola me podrian atender?\r\n', '2021-01-26 17:30:00', '2021-01-26 17:30:00'),
 (42, 'so83nh2bc85dnod571lmae2ru8', 4, 'cintia', 'Hola me poueden atender', '2021-01-26 17:31:58', '2021-01-26 17:31:58'),
 (43, 'so83nh2bc85dnod571lmae2ru8', 2, 'admin', 'Pues si claro que te puedo atender\r\n', '2021-01-26 17:32:10', '2021-01-26 17:32:10'),
-(44, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'lkj', '2021-01-29 19:50:11', '2021-01-29 19:50:11');
+(44, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'lkj', '2021-01-29 19:50:11', '2021-01-29 19:50:11'),
+(45, '8bj71a8439s2di7fi7ck1dped8', 4, 'cintia', 'asdasdasda', '2021-02-10 14:17:18', '2021-02-10 14:17:18'),
+(46, '8bj71a8439s2di7fi7ck1dped8', 2, 'admin', 'asdasd', '2021-02-10 14:17:22', '2021-02-10 14:17:22');
 
 -- --------------------------------------------------------
 
@@ -192,13 +194,8 @@ CREATE TABLE `cites` (
 --
 
 INSERT INTO `cites` (`id`, `date`, `time_from`, `time_until`, `user_id`) VALUES
-(1, '2021-02-13', '19:00:00', '20:00:00', 3),
-(2, '2021-02-13', '12:00:00', '13:00:00', 2),
-(9, '2021-02-13', '13:15:00', '17:30:00', 3),
-(10, '2021-02-12', '18:30:00', '21:00:00', 3),
-(11, '2021-02-20', '15:15:00', '16:00:00', 3),
-(12, '2021-02-11', '10:15:00', '12:15:00', 3),
-(14, '2021-02-26', '18:00:00', '18:45:00', 3);
+(1, '2021-01-17', '19:00:00', '20:00:00', 3),
+(2, '2021-02-11', '14:00:00', '14:50:00', 4);
 
 -- --------------------------------------------------------
 
@@ -264,6 +261,28 @@ INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `professionals`
+--
+
+CREATE TABLE `professionals` (
+  `id` int(3) NOT NULL,
+  `image` varchar(150) NOT NULL,
+  `info` text NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `degree` varchar(150) NOT NULL,
+  `job` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `professionals`
+--
+
+INSERT INTO `professionals` (`id`, `image`, `info`, `name`, `degree`, `job`) VALUES
+(1, 'businessman-310819_1280.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies quam a ex tristique, id convallis ipsum molestie. Cras congue ultricies enim. Sed finibus porta est commodo volutpat. Nunc sed tristique dui. Praesent mattis ante eu nibh scelerisque pulvinar ac a ipsum. In interdum nisi at odio volutpat tincidunt. Aliquam elementum neque at ex tincidunt ultricies. Duis dapibus scelerisque maximus. Vestibulum eu accumsan nisi, ut accumsan mauris. Vivamus eget tincidunt mauris. Vestibulum eleifend viverra metus, ac tempor lectus. Aliquam ullamcorper porttitor sodales. Integer luctus metus sem, et interdum nisi facilisis et. Donec ut neque eu nunc mollis blandit venenatis sit amet odio.Nam malesuada, dui sit amet bibendum aliquam, nulla dui consequat orci, nec consequat dolor lectus ac dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent pharetra tempor molestie. Maecenas ac purus a libero efficitur rutrum. Pellentesque imperdiet arcu tortor. Nam nisi dui, eleifend et blandit non, commodo eget nisi. Vestibulum porttitor vestibulum nulla sit amet efficitur. Curabitur ac nibh turpis.', 'Juan Jesús Bernal asd', 'graduado en nosequé de cual', 'Nuestro dentista profesioanal');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `publi`
 --
 
@@ -280,8 +299,7 @@ CREATE TABLE `publi` (
 --
 
 INSERT INTO `publi` (`id`, `title`, `block1`, `block2`, `enable`) VALUES
-(1, 'TRATAMIENTO DE IMPLANTOLOGÍA', 'Durante el mes de marzo', '199,99€', 0),
-(2, 'prueba', 'asd', 'asd', 1);
+(1, 'TRATAMIENTO DE IMPLANTOLOGÍA', 'Durante el mes de marzo', '199,99€', 1);
 
 -- --------------------------------------------------------
 
@@ -382,19 +400,19 @@ CREATE TABLE `treatmentsinterventions` (
 --
 
 INSERT INTO `treatmentsinterventions` (`id`, `name`, `categorie`, `duration`, `price`, `info`, `image`) VALUES
-(1, 'Obturacion', 1, 45, 45.00, 'LorYm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit', '1'),
+(1, 'Obturacion', 1, 50, 45.00, 'LorYm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit', '1'),
 (2, 'Tratamiento endodóntico', 1, 90, 235.00, 'LoreM ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor', '1'),
 (3, 'Blanqueamiento', 2, 45, 220.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ', '1'),
 (4, 'Carillas dentales', 1, 120, 270.00, 'Loremzo ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit', '1'),
-(5, 'Coronas de circonio', 2, 135, 700.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ', '1'),
+(5, 'Coronas de circonio', 2, 140, 700.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ', '1'),
 (6, 'Brackets estéticos', 3, 90, 3500.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit', '1'),
 (7, 'Sistema damon', 3, 75, 2300.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreuptaborum', '1'),
 (8, 'Invisalign', 3, 45, 4780.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repre voluptate um', '1'),
 (9, 'Implantes dentales ', 4, 90, 1300.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vest laborum', '1'),
-(10, 'Extracción de cordales', 4, 45, 15.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolorhenderit ind est laborum', '1'),
-(11, 'Regeneración oseas', 1, 60, 60.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu laborum', '1'),
-(12, 'Pulpotomía ', 5, 30, 40.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate um', '1'),
-(13, 'Mantenedores de espacioo', 1, 45, 90.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit iid est laborum', '1');
+(10, 'Extracción de cordales', 4, 40, 15.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolorhenderit ind est laborum', '1'),
+(11, 'Regeneración oseas', 1, 50, 60.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu laborum', '1'),
+(12, 'Pulpotomía ', 5, 35, 40.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate um', '1'),
+(13, 'Mantenedores de espacioo', 1, 40, 90.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit iid est laborum', '1');
 
 -- --------------------------------------------------------
 
@@ -422,9 +440,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-01 11:47:12', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
-(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-08 16:38:47', '[CUSTOMER]', '7e556deb0dd5a1540cd8f26fcd826e71', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
-(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-01 08:25:39', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-12 13:25:17', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-30 20:02:11', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
+(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -486,6 +504,12 @@ ALTER TABLE `images`
 -- Indices de la tabla `pages`
 --
 ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `professionals`
+--
+ALTER TABLE `professionals`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -559,13 +583,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `cites`
 --
 ALTER TABLE `cites`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `content`
@@ -580,10 +604,16 @@ ALTER TABLE `pages`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `professionals`
+--
+ALTER TABLE `professionals`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `publi`
 --
 ALTER TABLE `publi`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `register`
@@ -601,7 +631,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT de la tabla `treatmentscategories`
 --
 ALTER TABLE `treatmentscategories`
-  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `treatmentsinterventions`
@@ -613,7 +643,7 @@ ALTER TABLE `treatmentsinterventions`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- Restricciones para tablas volcadas

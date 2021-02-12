@@ -126,6 +126,12 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
                 <?= __('sect_Chat', $lang) ?>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link<?= $adm_pag == 'professionals' ? ' active' : '' ?>" href="admin.php?section=professionals">
+                <span data-feather="briefcase"></span>
+                <?= __('sect_professionals', $lang) ?>
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -171,6 +177,10 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
           case ("chat"):
             $sectTitle = __('sect_Chat', $lang);
             include "admin/chat.php";
+            break;
+          case ("professionals"):
+            $sectTitle = __('sect_professionals', $lang);
+            include "admin/professionals.php";
             break;
         endswitch;
         ?>

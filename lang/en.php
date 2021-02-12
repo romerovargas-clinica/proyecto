@@ -47,6 +47,10 @@ $texts = array(
   'frm_Register' => 'Sign up',
   'frm_RegisterEmail' => "Please confirm your email address by clicking on the link we just sent you. (Check your Spam folder)",
   'frm_Policies' => "Accept our <a href='privacypolicies.php' target='_blank'>privacy policies</a>",
+  'frm_Job' => "Job",
+  'frm_Degree' => "Degree",
+
+
   // Buttons
   'btn_Update' => "Update",
   'btn_Deleted' => "Deleted",
@@ -68,6 +72,9 @@ $texts = array(
   'sect_treatmentsCategories' => "treatments types",
   'sect_Interventions' => "Interventions",
   'sect_Chat' => "Messages",
+  'sect_professionals' => "Professionals",
+
+  
   // Modal
   'modal_title_confirm' => "Confirm selection",
   'modal_text_confirm' => "It is not possible to undo. If you really intend to continue with it, click on 'OK'",

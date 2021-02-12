@@ -47,6 +47,10 @@ $texts = array(
   'frm_Register' => "Regístrate",
   'frm_RegisterEmail' => "Por favor, confirme su dirección de correo haciendo click en el enlace que le acabamos de enviar. (Compruebe su carpeta Spam)",
   'frm_Policies' => "Acepta nuestras <a href='privacypolicies.php' target='_blank'>políticas de privacidad</a>",
+  'frm_Job' => "Puesto",
+  'frm_Degree' => "Titulación",
+
+
   // Buttons
   'btn_Update' => "Actualizar",
   'btn_Deleted' => "Eliminar",
@@ -68,6 +72,7 @@ $texts = array(
   'sect_treatmentsCategories' => "Tipos de tratamientos",
   'sect_Interventions' => "Intervenciones",
   'sect_Chat' => "Mensajería",
+  'sect_professionals' => "Profesionales",
   // Modal
   'modal_title_confirm' => "Confirme opción",
   'modal_text_confirm' => "Esta opción no es posible deshacerla. Si realmente está seguro/a pulse en 'Aceptar'",
