@@ -83,7 +83,7 @@ endif;
             <td><?= $record["name"] ?></td>
             <td><?= $record["degree"] ?></td>
             <td><?= $record["job"] ?></td>
-            <td><?= $record["image"] ?></td>
+            <td> <img src="images/professionals/<?= $record["image"]?>" width="200px" ></td>
             <td><?= $record["info"] ?></td>
           </tr>
       <?php
