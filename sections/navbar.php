@@ -3,25 +3,21 @@
         <a href="index.php">
             <img class="rounded float-start" src="images/logo-dark.png" width="300">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <!-- left -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="<?= $PG_NAME == "About" ? 'nav-link active bd-highlight" aria-current="page' : 'nav-link' ?>"
-                       href="about.php"><?= __('mn_AboutUs', $lang) ?></a>
+                    <a class="<?= $PG_NAME == "About" ? 'nav-link active bd-highlight" aria-current="page' : 'nav-link' ?>" href="about.php"><?= __('mn_AboutUs', $lang) ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="<?= $PG_NAME == "Cites" ? 'nav-link active bd-highlight" aria-current="page' : 'nav-link' ?>"
-                       href="cites.php"><?= __('mn_Cites', $lang) ?></a>
+                    <a class="<?= $PG_NAME == "Cites" ? 'nav-link active bd-highlight" aria-current="page' : 'nav-link' ?>" href="cites.php"><?= __('mn_Cites', $lang) ?></a>
                 </li>
                 <?php if (!isAuthenticated()) : ?>
                     <li class="nav-item">
-                        <a class="<?= $PG_NAME == "Login" ? 'nav-link active bd-highlight" aria-current="page' : 'nav-link' ?>"
-                           href="login.php"><?= __('mn_Login', $lang) ?></a>
+                        <a class="<?= $PG_NAME == "Login" ? 'nav-link active bd-highlight" aria-current="page' : 'nav-link' ?>" href="login.php"><?= __('mn_Login', $lang) ?></a>
                     </li>
                 <?php else : ?>
                     <?php if (isset($_SESSION["roles"]) && $_SESSION["roles"] == "[ADMIN-USER]") : ?>
@@ -30,9 +26,8 @@
                         </li>
                     <?php else : ?>
                         <li class="nav-item<?= $PG_NAME == "Chat" ? ' active' : '' ?>">
-                            <a class="nav-link"
-                               href="chat.php"><?= __('mn_Chat', $lang) ?><?php if ($PG_NAME == "Chat") : ?>
-                                    <span class="sr-only">(current)</span><?php endif; ?>
+                            <a class="nav-link" href="chat.php"><?= __('mn_Chat', $lang) ?><?php if ($PG_NAME == "Chat") : ?>
+                                <span class="sr-only">(current)</span><?php endif; ?>
                             </a>
                         </li>
                     <?php endif; ?>
@@ -48,10 +43,9 @@
                 $db = new DataBase();
                 $social = $db->send("SELECT * FROM settings WHERE label like 'fab %' AND value<>'';");
                 if (!empty($social)) :
-                    foreach ($social as $key) :?>
+                    foreach ($social as $key) : ?>
                         <li class="nav-item">
-                            <a href="<?= $key['value'] ?>" class="nav-link" target="_blank"
-                               style="text-decoration:none;">
+                            <a href="<?= $key['value'] ?>" class="nav-link" target="_blank" style="text-decoration:none;">
                                 <i class="fab <?= $key['label'] ?> my-2 my-sm-0"></i>
                             </a>
                         </li>
@@ -60,8 +54,7 @@
                 $email = $db->select("settings", "type = 'email' AND value <>''");
                 if (!empty($email)) : ?>
                     <li class="nav-item">
-                        <a href="mailto:<?= $email[0]['value'] ?>" class="nav-link"><i
-                                    class="fas <?= $email[0]['label'] ?> my-2 my-sm-0"></i></a>
+                        <a href="mailto:<?= $email[0]['value'] ?>" class="nav-link"><i class="fas <?= $email[0]['label'] ?> my-2 my-sm-0"></i></a>
                     </li>
                 <?php endif;
                 $db->close();

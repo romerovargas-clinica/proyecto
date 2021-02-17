@@ -18,8 +18,10 @@
   $(window).scroll(function() {
     if ($("#barramenuprincipal").offset().top > 56) {
       $("#barramenuprincipal").addClass("bg-inverse");
+      $('#navbarNavAltMarkup').addClass("text-white");
     } else {
       $("#barramenuprincipal").removeClass("bg-inverse");
+      $('#navbarNavAltMarkup').removeClass("text-white");
     }
   });
 

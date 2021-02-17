@@ -96,7 +96,10 @@ $LANG_header = preg_replace('/(?:(?<=([a-z]{2}))).*/', '', $LANG);
   </style>
   <script type='text/javascript'>
     function submitLink($funcNum, $url) {
-      window.opener.CKEDITOR.tools.callFunction(1, $url);
+      var _open1 = window.opener.document.getElementById("img_base");
+      var _open2 = window.opener.document.getElementById("img_base_hd");
+      _open1.setAttribute("src", $url);
+      _open2.setAttribute("value", $url);
       window.close();
     }
   </script>

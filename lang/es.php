@@ -49,8 +49,7 @@ $texts = array(
   'frm_Policies' => "Acepta nuestras <a href='privacypolicies.php' target='_blank'>políticas de privacidad</a>",
   'frm_Job' => "Puesto",
   'frm_Degree' => "Titulación",
-
-
+  'frm_Publish' => "Fecha Publicación",
   // Buttons
   'btn_Update' => "Actualizar",
   'btn_Deleted' => "Eliminar",

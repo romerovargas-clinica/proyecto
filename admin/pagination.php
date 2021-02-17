@@ -1,9 +1,18 @@
 <?php
 $maxRow = 5; // Número de registros a mostrar
 
-$row = $db->send("SELECT Count(*) as total FROM $table;");
+$sql = "SELECT Count(*) as total FROM " . $table;
+
+if(isset($where)):
+    $sql = $sql . " WHERE " . $where . ";";
+else:
+    $sql = $sql . ";";
+endif;
+
+$row = $db->send($sql);
 
 $page = false;
+
 if (isset($_GET["page"])) {
   $page = $_GET["page"];
 }
@@ -17,7 +26,14 @@ if (!$page) {
 
 $numResult = $row[0]['total'];
 $total_pages = ceil($numResult / $maxRow);
-$records = $db->select($table, "1 = 1 ORDER BY id ASC LIMIT " . $start . ", " . $maxRow);
+
+if(isset($where)):
+    $sql = $where;
+else:
+    $sql = "1 = 1";
+endif;
+
+$records = $db->select($table, $sql . " ORDER BY id ASC LIMIT " . $start . ", " . $maxRow);
 ?>
 <div class="d-flex bd-highlight">
   <div class="p-2 w-100 row row-cols-lg-auto g-3 align-items-center">

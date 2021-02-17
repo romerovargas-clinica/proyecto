@@ -29,17 +29,6 @@ function rand_string()
 	return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
 }
 
-function labelToImage($label)
-{
-	// [IMG:8949566]
-	$db = new DataBase();
-	$code = strstr($label, ":");
-	$code = substr($code, 1, 8);
-	$recordset = $db->select("images", "id = '$label'");
-	$html = "<img alt='" . $recordset[0]['alt'] . "' src='" . $recordset[0]['src'] . "' style='" . $recordset[0]['style'] . "' idunique='" . $code . "'>";
-	return $html;
-}
-
 function idToImage($label)
 {
     // 8949566

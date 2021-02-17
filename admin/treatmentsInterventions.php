@@ -36,7 +36,7 @@ if (isset($_POST['InputNew'])) :
   $price = $_POST['inputPrice'];
 
   $db->send("INSERT INTO `treatmentsinterventions` ( `name`, `categorie`, `duration`, `price`, `info`, `image`) VALUES
-  ( '$name', $categorie, $duration, $price, '$info', 1);");
+  ( '$name', $categorie, $duration, $price, '$info', '$image');");
 endif;
 
 
@@ -86,7 +86,13 @@ foreach ($categories as $categorie) {
             <td><?= $recordT["id"] ?></td>
             <td><?= $recordT["name"] ?></td>
             <td><?= $categoriesNames[$recordT["categorie"] - 1] ?></td>
-            <td><?= $recordT["image"] ?></td>
+            <td>
+              <?php if ($recordT["image"] != null) : ?>
+                <img src="<?= $recordT["image"] ?>" class="crop rounded d-block" alt="" height="25">
+              <?php else : ?>
+                <img src="images/blank.png" class="crop rounded d-block" alt="" height="25">
+              <?php endif; ?>
+            </td>
             <td><?= $recordT["info"] ?></td>
             <td><?= $recordT["duration"] ?></td>
             <td><?= $recordT["price"] ?></td>
@@ -133,7 +139,8 @@ if (isset($_GET['AddNew'])) : ?>
       <div class="mb-6 row">
         <label for="inputImage" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputImage" id="inputImage" required>
+          <div class="card-img-top"><img src="images/blank.png" class="crop rounded d-block" alt="" height="50" onclick="changeImg();" id="img_base"></div>
+          <input type="hidden" name="inputImage" value="<?= $fields[0]["image"] ?>" id="img_base_hd">
         </div>
       </div>
       <div class="mb-6 row">
@@ -201,10 +208,17 @@ if (isset($_GET['edit'])) :
           </select>
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputImage" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputImage" id="inputImage" value="<?= $fields[0]["image"] ?>">
+          <?php if ($fields[0]["image"] == null) :
+            $_img = "images/blank.png";
+          else :
+            $_img = $fields[0]["image"];
+          endif; ?>
+          <div class="card-img-top"><img src="<?= $_img ?>" class="crop rounded d-block" alt="" height="50" onclick="changeImg();" id="img_base"></div>
+          <input type="hidden" name="inputImage" value="<?= $fields[0]["image"] ?>" id="img_base_hd">
         </div>
       </div>
       <div class="mb-6 row">
@@ -255,6 +269,13 @@ if (isset($_GET['edit'])) :
 </div>
 
 <script>
+  function changeImg() {
+    console.log("Activo");
+    var configuracion_ventana = "menubar=no,toolbar=no,location=yes,resizable=no,scrollbars=yes,status=no,height=500,width=800";
+    var anotherwindow = window.open("filebrowser.php", "test", configuracion_ventana);
+    //anotherwindow.bgColor = "black";
+  }
+
   function aceptar() {
     document.getElementById("inputDelete").value = "1";
     //$('#myModal').modal('hide');
