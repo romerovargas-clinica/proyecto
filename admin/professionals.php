@@ -83,7 +83,7 @@ endif;
             <td><?= $record["name"] ?></td>
             <td><?= $record["degree"] ?></td>
             <td><?= $record["job"] ?></td>
-            <td> <img src="images/professionals/<?= $record["image"]?>" width="200px" ></td>
+            <td> <img src="images/professionals/<?= $record["image"] ?>" width="200px"></td>
             <td><?= $record["info"] ?></td>
           </tr>
       <?php
@@ -104,10 +104,10 @@ if (isset($_GET['AddNew'])) : ?>
   <div class="container-md border position-relative p-3">
     <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
     <form id="professionalsAddform" action="admin.php?section=professionals&page=<?= $page ?>" method="POST">
-    <div class="mb-6 row">
+      <div class="mb-6 row">
         <label for="inputName" class="col-sm-2 col-form-label"><?= __('frm_FirstName', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" required >
+          <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" required>
         </div>
       </div>
       <div class="mb-6 row">

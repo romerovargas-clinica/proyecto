@@ -49,7 +49,14 @@ $texts = array(
   'frm_Policies' => "Accept our <a href='privacypolicies.php' target='_blank'>privacy policies</a>",
   'frm_Job' => "Job",
   'frm_Degree' => "Degree",
-  'frm_Publish' => "Date published",
+  'frm_Block1' => "Block 1",
+  'frm_Block2' => "Block 2",
+  'frm_Active' => "Status",
+
+
+  //Cases
+  'Case_Disable' => "Disable",
+  'Case_Enable' => "Enable",
 
   // Buttons
   'btn_Update' => "Update",
@@ -74,7 +81,6 @@ $texts = array(
   'sect_Chat' => "Messages",
   'sect_professionals' => "Professionals",
 
-  
   // Modal
   'modal_title_confirm' => "Confirm selection",
   'modal_text_confirm' => "It is not possible to undo. If you really intend to continue with it, click on 'OK'",

@@ -2,11 +2,11 @@
 
 // Procesamiento de formulario #TO DO: esta copiado de users
 $error = "";
-if (isset($_POST['inputName']) && isset($_GET['edit'])) :
+if (isset($_POST['inputTitle']) && isset($_GET['edit'])) :
+    echo "LLEGO HASTA AQUI";
     if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
         $id = $_POST['inputId'];
-        $db->send("DELETE FROM publi
-    WHERE id = $id;");
+        $db->send("DELETE FROM publi WHERE id = $id;");
     endif;
     // Campos Obligatorios
     $id = $_POST['inputId'];
@@ -14,8 +14,11 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
     $block1 = $_POST['inputBlock1'];
     $block2 = $_POST['inputBlock2'];
     $enable = $_POST['inputEnable'];
+    if ($enable == 1) {
+        $db->send("UPDATE publi SET enable = 0");
+    }
 
-    if ($title != '') :
+    if (isset($title)) :
         //update()
         $anarray = array();
         $anarray["title"] = $title;
@@ -37,6 +40,9 @@ if (isset($_POST['InputNew'])) :
     $block1 = $_POST['inputBlock1'];
     $block2 = $_POST['inputBlock2'];
     $enable = $_POST['inputEnable'];
+    if ($enable == 1) {
+        $db->send("UPDATE publi SET enable = 0");
+    }
 
     $db->send("INSERT INTO `publi`(`title`, `block1`, `block2`, `enable`) VALUES 
     ('$title','$block1','$block2',$enable)");
@@ -48,7 +54,7 @@ $isEnable[1] = "Case_Enable";
 ?>
 
 <!--Tabla para los tratamientos-->
-<h2><?= __('sect_treatments', $lang) ?></h2>
+<h2><?= __('sect_announce', $lang) ?></h2>
 <div class="table-responsive">
 
     <?php
@@ -130,8 +136,8 @@ if (isset($_GET['AddNew'])) : ?>
                 <label for="inputEnable" class="col-sm-2 col-form-label"><?= __('frm_Active', $lang) ?></label>
                 <div class="col-sm-6">
                     <select class="form-select" aria-label="Default select" name="inputEnable" required>
-                        <option value="0"><?=__($isEnable[0], $lang)?></option>
-                        <option value="1"><?=__($isEnable[1], $lang)?></option>
+                        <option value="0"><?= __($isEnable[0], $lang) ?></option>
+                        <option value="1"><?= __($isEnable[1], $lang) ?></option>
                     </select>
                 </div>
             </div>
@@ -160,7 +166,7 @@ if (isset($_GET['edit'])) :
         <button type="button" class="btn-close p-3 position-absolute top-0 end-0" aria-label="Close" onclick="frm_close()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?= __('btn_Close', $lang) ?>"></button>
         <form id="announceEditform" action="admin.php?section=announce&page=<?= $page ?>&edit=<?= $_GET['edit'] ?>#form" method="POST">
 
-        <div class="mb-6 row">
+            <div class="mb-6 row">
                 <label for="inputTitle" class="col-sm-2 col-form-label"><?= __('frm_Title', $lang) ?></label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control form-control-sm" name="inputTitle" id="inputTitle" required value="<?= $fields[0]["title"] ?>">
@@ -182,8 +188,8 @@ if (isset($_GET['edit'])) :
                 <label for="inputEnable" class="col-sm-2 col-form-label"><?= __('frm_Active', $lang) ?></label>
                 <div class="col-sm-6">
                     <select class="form-select" aria-label="Default select" name="inputEnable" required>
-                        <option value="0"><?=__($isEnable[0], $lang)?></option>
-                        <option value="1"><?=__($isEnable[1], $lang)?></option>
+                        <option value="0"><?= __($isEnable[0], $lang) ?></option>
+                        <option value="1"><?= __($isEnable[1], $lang) ?></option>
                     </select>
                 </div>
             </div>
