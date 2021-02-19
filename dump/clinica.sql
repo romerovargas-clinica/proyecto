@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-02-2021 a las 14:30:58
+-- Tiempo de generación: 19-02-2021 a las 21:47:57
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -113,12 +113,20 @@ CREATE TABLE `blocks` (
 --
 
 INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`) VALUES
-(1, 1, 'portada', 'headerimage', 1),
+(1, 1, 'portada', 'we-do-section', 2),
 (2, 5, 'aboutUs', 'aboutUs', 2),
 (3, 3, 'schedule', 'schedule', 1),
-(4, 1, 'Especialidades', 'specialties', 3),
+(4, 1, 'service-section', 'service-section', 4),
 (6, 6, 'interventions', 'interventions', 1),
-(7, 2, 'login', 'login', 1);
+(7, 2, 'login-block', 'login-block', 1),
+(8, 1, 'about-section', 'about-section', 3),
+(9, 1, 'testimonial-section', 'testimonial-section', 5),
+(10, 1, 'faq-section', 'faq-section', 6),
+(11, 1, 'team-section', 'team-section', 7),
+(12, 1, 'subscribe-section', 'subscribe-section', 8),
+(13, 1, 'blog-section', 'blog-section', 9),
+(14, 1, 'contact-section', 'contact-section', 10),
+(15, 1, 'slider-section', 'slider-section', 1);
 
 -- --------------------------------------------------------
 
@@ -349,15 +357,16 @@ CREATE TABLE `settings` (
 INSERT INTO `settings` (`id`, `type`, `label`, `value`) VALUES
 (1, 'general', 'namesite', 'SonriseClinic3'),
 (2, 'general', 'urlsite', 'http://clinica.es'),
-(3, 'social', 'fab fa-twitter-square', 'https://twitter.com/sonriseclinic'),
-(4, 'social', 'fab fa-facebook-square', 'https://facebook.com/sonriseclinic'),
-(5, 'social', 'fab fa-instagram-square', 'Instagrammer'),
-(6, 'social', 'fab fa-google-plus-square', ''),
+(3, 'social', 'lni lni-twitter-filled', 'https://twitter.com/sonriseclinic'),
+(4, 'social', 'lni lni-facebook-filled', 'https://facebook.com/sonriseclinic'),
+(5, 'social', 'lni lni-instagram-filled', 'Instagrammer'),
+(6, 'social', 'lni lni-linkedin-original', 'linkedin'),
 (7, 'social', 'fab fa-youtube-square', ''),
 (8, 'social', 'pinterest_usefa-pinterest', ''),
 (9, 'social', 'fab fa-whatsapp-square', ''),
-(10, 'email', 'fas fa-envelope-square', 'admin@sonriseclinic.es'),
-(11, 'chat', 'response_bot', 'Keep waiting. An operator will briefly contact you.');
+(10, 'email', 'lni lni-envelope', 'admin@sonriseclinic.es'),
+(11, 'chat', 'response_bot', 'Keep waiting. An operator will briefly contact you.'),
+(12, 'phone', 'lni lni-phone', '956875858');
 
 -- --------------------------------------------------------
 
@@ -444,8 +453,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-17 12:45:58', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
-(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-01-30 20:02:11', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-19 18:28:09', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-19 19:53:23', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
 (4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1),
 (53, 'asd', '602a55c01037f', NULL, NULL, '[ADMIN-USER]', NULL, 'es', 'asd', 'asdsa', 'asfdafa@asdsad.es', 0);
 
@@ -576,7 +585,7 @@ ALTER TABLE `block`
 -- AUTO_INCREMENT de la tabla `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `category`
@@ -636,7 +645,7 @@ ALTER TABLE `register`
 -- AUTO_INCREMENT de la tabla `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `treatmentscategories`
