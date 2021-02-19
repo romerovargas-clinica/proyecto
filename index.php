@@ -17,10 +17,34 @@ $nav_style = "alt";
 <?php require "sections/head.php"; ?>
 
 <body>
+  <!-- ========================= preloader start ========================= -->
+  <div class="preloader">
+    <div class="loader">
+      <div class="ytp-spinner">
+        <div class="ytp-spinner-container">
+          <div class="ytp-spinner-rotator">
+            <div class="ytp-spinner-left">
+              <div class="ytp-spinner-circle"></div>
+            </div>
+            <div class="ytp-spinner-right">
+              <div class="ytp-spinner-circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- preloader end -->
   <?php
-  include "sections/header.php";
-  include "includes/blocks.php";
-  include "sections/footer.php";
+  if (isAuthenticated()) :
+    include "sections/header.php";
+    include "includes/blocks.php";
+    include "sections/footer.php";
+  else :
+    include "sections/header.php";
+    include "includes/blocks.php";
+    include "sections/footer.php";
+  endif;
   include "includes/scripts.php";
   ?>
 </body>

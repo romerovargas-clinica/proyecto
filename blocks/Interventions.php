@@ -1,46 +1,57 @@
-<div class="container-fluid bg-light p-2">
-  <a name="specialities"></a>
-  <div class="container p-2 mt-2 mb-2 bg-white">
-    <?php
-    //CARGAR EL ÁRTICULO DE LA BASE DE DATOS//
-    $db = new DataBase();
-    $categorie = $_GET['categorie'];
-    $categories = $db->send("SELECT * FROM treatmentscategories WHERE id = $categorie");
-    if ($categories) : ?>
-      <div class="h1"><?= $categories[0]['name'] ?></div>
-      <div class="row justify-content-evenly">
-        <div class="col-2">
-          <img src="images/specialities/<?= $categories[0]['image'] ?>" class="img-thumbnail">
-        </div>
-        <div class="col-10">
-          <div class="h4"><?= $categories[0]['info'] ?></div>
-        </div>
-      </div>
+<?php
+$db = new DataBase();
+$categorie = $_GET['categorie'];
+$categories = $db->send("SELECT * FROM treatmentscategories WHERE id = $categorie");
+?>
 
-      <div class="row">
-        <div class="col-2">
+<!--========================= interventions-block start ========================= -->
+<section class="faq-section theme-bg">
+  <div class="faq-video-wrapper">
+    <div class="faq-video">
+      <img src="images/specialities/<?= $categories[0]['image'] ?>" alt="">
 
-        </div>
+    </div>
+    <div class="shape">
+      <img src="assets/img/shapes/shape-8.svg" alt="" class="shape-faq">
+    </div>
+  </div>
 
-        <div class="col-10">
-          <div class="container-fluid container p-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-6 offset-xl-6 col-lg-8 col-md-10">
+        <div class="faq-content-wrapper pt-90 pb-90">
+          <div class="section-title">
+            <span class="text-white wow fadeInDown" data-wow-delay=".2s"><?= __('mn_Speciality', $lang) ?></span>
+            <h2 class="text-white mb-35 wow fadeInUp" data-wow-delay=".4s"><?= $categories[0]["name"] ?></h2>
+          </div>
+          <div class="faq-wrapper accordion" id="accordionExample">
             <?php
             $ndb = new DataBase();
-            $interventions = $ndb->select('treatmentsinterventions', "categorie = " . $categories[0]['id']); ?>
+            $interventions = $ndb->select('treatmentsinterventions', "categorie = " . $categorie);
+            $collapsed = array("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Teen");
+            $cont = 0;
+            ?>
             <?php foreach ($interventions as $intervention) : ?>
-              <ul class="list-group list-group-flush border mb-3">
-                <li class="list-group-item text-primary "><?= $intervention['name'] ?> </li>
-                <li class="list-group-item text-truncate"><span class="text-secondary"><?= __('frm_Desc', $lang) . ':</span> ' . $intervention['info'] ?>
-                </li>
-                <li class="list-group-item"><span class="text-secondary"><?= __('frm_Duration', $lang) . ':</span> ' . $intervention['duration'] ?>
-                </li>
-                <li class="list-group-item"><span class="text-secondary"><?= __('frm_Price', $lang) . ':</span> ' . $intervention['price'] . '€' ?>
-                </li>
-              </ul>
+              <div class="faq-item mb-20">
+                <div id="heading<?= $collapsed[$cont] ?>">
+                  <h5 class="mb-0">
+                    <button class="faq-btn btn <?= $cont != 0 ? " collapsed" : "" ?> " type="button" data-toggle="collapse" data-target="#collapse<?= $collapsed[$cont] ?>" aria-expanded="true" aria-controls="collapse<?= $collapsed[$cont] ?>">
+                      <?= $intervention['name'] ?>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse<?= $collapsed[$cont] ?>" class="collapse <?= $cont == 0 ? " show" : "" ?>" aria-labelledby=" heading<?= $collapsed[$cont] ?>" data-parent="#accordionExample">
+                  <div class="faq-content">
+                    <?= $intervention['info'] ?>
+                  </div>
+                </div>
+              </div>
+              <?php $cont++ ?>
             <?php endforeach; ?>
           </div>
         </div>
       </div>
-    <?php endif; ?>
+    </div>
   </div>
-</div>
+</section>
+<!--========================= interventions-block end ========================= -->

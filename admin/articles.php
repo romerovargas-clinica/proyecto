@@ -235,7 +235,7 @@ if (isset($_GET['edit'])) :
     //filebrowserUploadUrl: 'js/ckeditor/ck_upload.php',
     //extraAllowedContent: 'img[idunique]',
     //filebrowserBrowseUrl: 'admin/filebrowserv.php?type=all',
-    filebrowserImageBrowseUrl: 'filebrowser.php?type=images',
+    filebrowserImageBrowseUrl: 'filebrowser2.php?type=images',
     filebrowserWindowWidth: '730',
     filebrowserWindowHeight: '500',
     removeDialogTabs: "image:advanced",
