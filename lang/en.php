@@ -19,6 +19,26 @@ $texts = array(
   // Block
   'Bl_About' => "About us",
   'Bl_Login' => "Login",
+  // About
+  'about-section-title' => "About us",
+  'about-section-subtitle' => "Welcome to Our Dental Clinic",
+  'about-section-text' => "At SonriseClinic you will have the care you need with the best specialists. We want to be your family dental clinic and that is why we are committed to never disappoint our patients. We offer you an effective solution at an unbeatable price. Do not stop consulting us",
+  // Service
+  'service-section-title' => "Speciality",
+  'service-section-subtitle' => "Experience and Professionalism",
+  'service-section-text' => "Know what the most modern techniques that we apply in our clinic for your dental health consist of",
+  // Contact
+  'contact-section-title' => "Contact",
+  'contact-section-subtitle' => "Tell us what you need",
+  'contact-section-text' => "If you cannot find what you are looking for on our website, write to us and we will answer you as soon as possible",
+  // Team section
+  'team-section-title' => "Team",
+  'team-section-subtitle' => "Meet Our Doctors",
+  'team-section-text' => "We introduce you to all our professionals. Click on him or her to learn more information",
+  // Footer section
+  'footer-location' => "Location",
+  'footer-quick-link' => "Quick Link",
+  'footer-text' => "Your Family Clinic",
   // Forms
   'frm_Email' => "Email address",
   'frm_Pass' => "Password",

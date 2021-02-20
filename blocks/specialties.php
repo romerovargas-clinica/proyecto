@@ -77,4 +77,9 @@ $recordset = $db->send("SELECT * FROM treatmentscategories;"); ?>
               </div>
             </div>
           </div>
-          <!--========================= specialties-block end ========================= -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--========================= specialties-block end ========================= -->

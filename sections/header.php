@@ -66,12 +66,13 @@
                 <span class="toggler-icon"></span>
                 <span class="toggler-icon"></span>
               </button>
-              <?php if (!isAuthenticated()) :
-                if ($_SERVER['PHP_SELF'] == "/index.php") :
-                  $href = "";
-                else :
-                  $href = "index.php";
-                endif;
+              <?php
+              if ($_SERVER['PHP_SELF'] == "/index.php") :
+                $href = "";
+              else :
+                $href = "index.php";
+              endif;
+              if (!isAuthenticated()) :
               ?>
                 <nav class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                   <ul id="nav" class="navbar-nav ml-auto">
@@ -102,7 +103,7 @@
                       <a class="active" href="<?= $href ?>#home">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a href="<?= $href ?>chat.php"><?= __('mn_Chat', $lang) ?></a>
+                      <a href="chat.php"><?= __('mn_Chat', $lang) ?></a>
                     </li>
                     <li class="nav-item">
                       <a href="<?= $href ?>cites.php"><?= __('mn_Cites', $lang) ?></a>

@@ -2217,7 +2217,147 @@ p {
   transform: scale(1.3) rotate(-7deg);
 }
 
+/*===========================
+   team css
+============================*/
 
+.team-section {
+  position:relative
+ }
+ .team-section .shape-5 {
+  right:25px;
+  top:122px
+ }
+ .team-section .shape-6 {
+  bottom:25px;
+  left:-40px
+ }
+ .team-section .team-slider-wrapper {
+  position:relative
+ }
+ .team-section .team-slider-wrapper .team-active .single-team {
+  padding:15px 15px 30px;
+  border-radius:20px;
+  border:2px solid rgba(112,112,112,.18);
+  background:#fff;
+  -webkit-transition:all .3s ease-out 0s;
+  transition:all .3s ease-out 0s
+ }
+ .team-section .team-slider-wrapper .team-active .single-team .team-img {
+  border-radius:20px 20px 0 0;
+  position:relative
+ }
+ .team-section .team-slider-wrapper .team-active .single-team .team-img img {
+  width:100%
+ }
+ .team-section .team-slider-wrapper .team-active .single-team .team-img .specialist {
+  width:45px;
+  height:45px;
+  line-height:37px;
+  text-align:center;
+  border-radius:50%;
+  background:#00adb5;
+  border:2px solid #fff;
+  margin:auto;
+  position:absolute;
+  bottom:-23px;
+  left:0;
+  right:0;
+  z-index:1
+ }
+ .team-section .team-slider-wrapper .team-active .single-team .team-info h5 {
+  margin-bottom:8px
+ }
+ .team-section .team-slider-wrapper .team-active .single-team .team-info span {
+  font-size:14px
+ }
+ .team-section .team-slider-wrapper .team-active .single-team:hover {
+  border-color:#00adb5;
+  -webkit-box-shadow:0 10px 35px rgba(0,173,181,.14);
+  box-shadow:0 10px 35px rgba(0,173,181,.14)
+ }
+
+/*===========================
+   contact css
+============================*/
+
+.contact-section {
+  position:relative
+ }
+ .contact-section .shape {
+  top:250px;
+  left:-120px
+ }
+ .contact-section .contact-img {
+  position:absolute;
+  left:0;
+  width:50%;
+  bottom:130px
+ }
+ @media only screen and (min-width:1200px) and (max-width:1399px) {
+  .contact-section .contact-img {
+   bottom:165px
+  }
+ }
+ @media only screen and (min-width:992px) and (max-width:1199px) {
+  .contact-section .contact-img {
+   bottom:180px
+  }
+ }
+ .contact-section .contact-img img {
+  width:100%
+ }
+ @media only screen and (min-width:768px) and (max-width:991px) {
+  .contact-section .contact-wrapper {
+   text-align:center
+  }
+ }
+ @media only screen and (min-width:768px) and (max-width:991px) {
+  .contact-section .contact-wrapper h2,
+  .contact-section .contact-wrapper p {
+   padding:0 60px
+  }
+ }
+ @media(max-width:767px) {
+  .contact-section .contact-wrapper {
+   text-align:center
+  }
+ }
+ .contact-section .contact-form .selectr-selected,
+ .contact-section .contact-form input,
+ .contact-section .contact-form textarea {
+  width:100%;
+  border:1px solid #8c96a7;
+  border-radius:10px;
+  padding:16px 25px;
+  margin-bottom:30px;
+  font-size:16px;
+  line-height:25px;
+  color:#8c96a7;
+  -webkit-transition:all .3s ease-out 0s;
+  transition:all .3s ease-out 0s
+ }
+ .contact-section .contact-form .selectr-selected:focus,
+ .contact-section .contact-form input:focus,
+ .contact-section .contact-form textarea:focus {
+  border-color:#00adb5;
+  outline:none
+ }
+ .contact-section .contact-form .selectr-selected {
+  height:auto
+ }
+ .contact-section .contact-form .selectr-selected::after {
+  height:10px;
+  margin-top:-7px;
+  right:25px;
+  width:10px
+ }
+ .contact-section .contact-form .selectr-selected .list {
+  width:100%
+ }
+ .contact-section .contact-form .btn {
+  padding:16px 38px
+ }
 
 /*===========================
     footer css 

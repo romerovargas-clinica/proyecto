@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-02-2021 a las 21:47:57
+-- Tiempo de generación: 20-02-2021 a las 20:14:17
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -105,28 +105,31 @@ CREATE TABLE `blocks` (
   `id_page` int(9) NOT NULL,
   `name` varchar(56) NOT NULL,
   `block` varchar(56) NOT NULL,
-  `order_n` int(9) NOT NULL
+  `order_n` int(9) NOT NULL,
+  `title` varchar(56) DEFAULT NULL,
+  `subtitle` varchar(56) DEFAULT NULL,
+  `text` varchar(56) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `blocks`
 --
 
-INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`) VALUES
-(1, 1, 'portada', 'we-do-section', 2),
-(2, 5, 'aboutUs', 'aboutUs', 2),
-(3, 3, 'schedule', 'schedule', 1),
-(4, 1, 'service-section', 'service-section', 4),
-(6, 6, 'interventions', 'interventions', 1),
-(7, 2, 'login-block', 'login-block', 1),
-(8, 1, 'about-section', 'about-section', 3),
-(9, 1, 'testimonial-section', 'testimonial-section', 5),
-(10, 1, 'faq-section', 'faq-section', 6),
-(11, 1, 'team-section', 'team-section', 7),
-(12, 1, 'subscribe-section', 'subscribe-section', 8),
-(13, 1, 'blog-section', 'blog-section', 9),
-(14, 1, 'contact-section', 'contact-section', 10),
-(15, 1, 'slider-section', 'slider-section', 1);
+INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`, `title`, `subtitle`, `text`) VALUES
+(1, 1, 'portada', 'we-do-section', 2, NULL, NULL, NULL),
+(2, 5, 'aboutUs', 'aboutUs', 2, NULL, NULL, NULL),
+(3, 3, 'schedule', 'schedule', 1, NULL, NULL, NULL),
+(4, 1, 'service-section', 'service-section', 4, 'service-section-title', 'service-section-subtitle', 'service-section-text'),
+(6, 6, 'interventions', 'interventions', 1, NULL, NULL, NULL),
+(7, 2, 'login-block', 'login-block', 1, NULL, NULL, NULL),
+(8, 1, 'about-section', 'about-section', 3, 'about-section-title', 'about-section-subtitle', 'about-section-text'),
+(9, 1, 'testimonial-section', 'testimonial-section', 5, NULL, NULL, NULL),
+(10, 1, 'faq-section', 'faq-section', 6, NULL, NULL, NULL),
+(11, 1, 'team-section', 'team-section', 7, 'team-section-title', 'team-section-subtitle', 'team-section-text'),
+(12, 1, 'subscribe-section', 'subscribe-section', 8, NULL, NULL, NULL),
+(13, 1, 'blog-section', 'blog-section', 9, NULL, NULL, NULL),
+(14, 1, 'contact-section', 'contact-section', 10, 'contact-section-title', 'contact-section-subtitle', 'contact-section-text'),
+(15, 1, 'slider-section', 'slider-section', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -182,7 +185,8 @@ INSERT INTO `chat` (`id`, `session_id`, `user_id`, `name`, `message`, `created_o
 (43, 'so83nh2bc85dnod571lmae2ru8', 2, 'admin', 'Pues si claro que te puedo atender\r\n', '2021-01-26 17:32:10', '2021-01-26 17:32:10'),
 (44, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'lkj', '2021-01-29 19:50:11', '2021-01-29 19:50:11'),
 (45, '8bj71a8439s2di7fi7ck1dped8', 4, 'cintia', 'asdasdasda', '2021-02-10 14:17:18', '2021-02-10 14:17:18'),
-(46, '8bj71a8439s2di7fi7ck1dped8', 2, 'admin', 'asdasd', '2021-02-10 14:17:22', '2021-02-10 14:17:22');
+(46, '8bj71a8439s2di7fi7ck1dped8', 2, 'admin', 'asdasd', '2021-02-10 14:17:22', '2021-02-10 14:17:22'),
+(47, 'n12nko1udb2q6ufbvf2mpmj1uv', 3, 'david', 'hola', '2021-02-20 18:53:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -279,17 +283,20 @@ CREATE TABLE `professionals` (
   `id` int(3) NOT NULL,
   `image` varchar(150) NOT NULL,
   `info` text NOT NULL,
+  `tr` varchar(15) DEFAULT NULL,
   `name` varchar(150) NOT NULL,
   `degree` varchar(150) NOT NULL,
-  `job` varchar(150) NOT NULL
+  `job` varchar(150) NOT NULL,
+  `enabled` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `professionals`
 --
 
-INSERT INTO `professionals` (`id`, `image`, `info`, `name`, `degree`, `job`) VALUES
-(1, 'businessman-310819_1280.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies quam a ex tristique, id convallis ipsum molestie. Cras congue ultricies enim. Sed finibus porta est commodo volutpat. Nunc sed tristique dui. Praesent mattis ante eu nibh scelerisque pulvinar ac a ipsum. In interdum nisi at odio volutpat tincidunt. Aliquam elementum neque at ex tincidunt ultricies. Duis dapibus scelerisque maximus. Vestibulum eu accumsan nisi, ut accumsan mauris. Vivamus eget tincidunt mauris. Vestibulum eleifend viverra metus, ac tempor lectus. Aliquam ullamcorper porttitor sodales. Integer luctus metus sem, et interdum nisi facilisis et. Donec ut neque eu nunc mollis blandit venenatis sit amet odio.Nam malesuada, dui sit amet bibendum aliquam, nulla dui consequat orci, nec consequat dolor lectus ac dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent pharetra tempor molestie. Maecenas ac purus a libero efficitur rutrum. Pellentesque imperdiet arcu tortor. Nam nisi dui, eleifend et blandit non, commodo eget nisi. Vestibulum porttitor vestibulum nulla sit amet efficitur. Curabitur ac nibh turpis.', 'Juan Jesús Bernal asd', 'graduado en nosequé de cual', 'Nuestro dentista profesioanal');
+INSERT INTO `professionals` (`id`, `image`, `info`, `tr`, `name`, `degree`, `job`, `enabled`) VALUES
+(1, 'team-1.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies quam a ex tristique, id convallis ipsum molestie. Cras congue ultricies enim. Sed finibus porta est commodo volutpat. Nunc sed tristique dui. Praesent mattis ante eu nibh scelerisque pulvinar ac a ipsum. In interdum nisi at odio volutpat tincidunt. Aliquam elementum neque at ex tincidunt ultricies. Duis dapibus scelerisque maximus. Vestibulum eu accumsan nisi, ut accumsan mauris. Vivamus eget tincidunt mauris. Vestibulum eleifend viverra metus, ac tempor lectus. Aliquam ullamcorper porttitor sodales. Integer luctus metus sem, et interdum nisi facilisis et. Donec ut neque eu nunc mollis blandit venenatis sit amet odio.Nam malesuada, dui sit amet bibendum aliquam, nulla dui consequat orci, nec consequat dolor lectus ac dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent pharetra tempor molestie. Maecenas ac purus a libero efficitur rutrum. Pellentesque imperdiet arcu tortor. Nam nisi dui, eleifend et blandit non, commodo eget nisi. Vestibulum porttitor vestibulum nulla sit amet efficitur. Curabitur ac nibh turpis.', 'Dr.', 'Juan Jesús Bernal García', 'Ortodentista', 'Nuestro dentista profesioanal', 1),
+(3, 'team-2.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies quam a ex tristique, id convallis ipsum molestie. Cras congue ultricies enim. Sed finibus porta est commodo volutpat. Nunc sed tristique dui. Praesent mattis ante eu nibh scelerisque pulvinar ac a ipsum. In interdum nisi at odio volutpat tincidunt. Aliquam elementum neque at ex tincidunt ultricies. Duis dapibus scelerisque maximus. Vestibulum eu accumsan nisi, ut accumsan mauris. Vivamus eget tincidunt mauris. Vestibulum eleifend viverra metus, ac tempor lectus. Aliquam ullamcorper porttitor sodales. Integer luctus metus sem, et interdum nisi facilisis et. Donec ut neque eu nunc mollis blandit venenatis sit amet odio.Nam malesuada, dui sit amet bibendum aliquam, nulla dui consequat orci, nec consequat dolor lectus ac dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent pharetra tempor molestie. Maecenas ac purus a libero efficitur rutrum. Pellentesque imperdiet arcu tortor. Nam nisi dui, eleifend et blandit non, commodo eget nisi. Vestibulum porttitor vestibulum nulla sit amet efficitur. Curabitur ac nibh turpis.', 'Dra.', 'Ana Bernal García', 'Mecánico dentista', 'lorem ipsum', 1);
 
 -- --------------------------------------------------------
 
@@ -425,7 +432,8 @@ INSERT INTO `treatmentsinterventions` (`id`, `name`, `categorie`, `duration`, `p
 (10, 'Extracción de cordales', 4, 40, 15.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolorhenderit ind est laborum', NULL),
 (11, 'Regeneración oseas', 1, 50, 60.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu laborum', NULL),
 (12, 'Pulpotomía ', 1, 35, 40.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate um', 'http://clinica.es/images/uploads/compartecoche.png'),
-(13, 'Mantenedores de espacioo', 1, 40, 90.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit iid est laborum', NULL);
+(13, 'Mantenedores de espacioo', 1, 40, 90.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit iid est laborum', NULL),
+(29, 'Estudio', 5, 30, 30.00, 'Analizamos el crecimiento y formación dentaria de niños menores de 16 años, elaborando un exhaustivo informe sobre el estado y las incidencias con mayor probabilidad ', '<br />\r\n<b>Notice</b>:  Undefined variable: fields in <b>E:xamppmyProjectsclinicaadmin	reatmentsInterventions.php</b> on line <b>143</b><br />\r\n<br />\r\n<b>Notice</b>:  Trying to access array offset on value of type null in <b>E:xamppmyProjectsclinicaadmin	');
 
 -- --------------------------------------------------------
 
@@ -453,8 +461,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-19 18:28:09', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
-(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-19 19:53:23', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-20 19:58:37', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
+(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-20 20:13:08', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
 (4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1),
 (53, 'asd', '602a55c01037f', NULL, NULL, '[ADMIN-USER]', NULL, 'es', 'asd', 'asdsa', 'asfdafa@asdsad.es', 0);
 
@@ -597,7 +605,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `cites`
@@ -627,7 +635,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT de la tabla `professionals`
 --
 ALTER TABLE `professionals`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `publi`
@@ -657,7 +665,7 @@ ALTER TABLE `treatmentscategories`
 -- AUTO_INCREMENT de la tabla `treatmentsinterventions`
 --
 ALTER TABLE `treatmentsinterventions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

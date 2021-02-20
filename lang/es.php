@@ -19,6 +19,26 @@ $texts = array(
   // Block
   'Bl_About' => "Sobre nosotros",
   'Bl_Login' => "Iniciar Sesión",
+  // About
+  'about-section-title' => "Sobre nosotros",
+  'about-section-subtitle' => "Bienvenidos a tu Clínica Dental",
+  'about-section-text' => "En SonriseClinic tendrás la atención que necesitas con los mejores especialistas. Queremos ser tu clínica dental familiar y por eso apostamos por no defraudar nunca a nuestros pacientes. Te ofrecemos una solución eficaz a un precio inmejorable. No dejes de consultarnos",
+  // Service
+  'service-section-title' => "Especialidades",
+  'service-section-subtitle' => "Experiencia y Profesionalidad",
+  'service-section-text' => "Conoce en qué consisten las técnicas más modernas que aplicamos en nuestra clínica para tu salud dental",
+  // Contact
+  'contact-section-title' => "Contacta",
+  'contact-section-subtitle' => "Cuéntanos lo que necesitas",
+  'contact-section-text' => "Si no encuentras lo que buscas en nuestra web, escríbenos y te contestaremos a la mayor brevedad",
+  // Team section
+  'team-section-title' => "El Equipo",
+  'team-section-subtitle' => "Conoce a nuestros profesionales",
+  'team-section-text' => "Te presentamos a todos nuestros profesionales. Pulsa sobre él o ella conocer más datos",
+  // Footer section
+  'footer-location' => "Localización",
+  'footer-quick-link' => "Enlaces",
+  'footer-text' => "Tú clínica familiar de confianza",
   // Forms
   'frm_Email' => "Dirección de correo electrónico",
   'frm_Pass' => "Clave",
