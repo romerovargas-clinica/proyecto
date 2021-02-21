@@ -35,12 +35,12 @@ $categories = $db->send("SELECT * FROM treatmentscategories WHERE id = $categori
               <div class="faq-item mb-20">
                 <div id="heading<?= $collapsed[$cont] ?>">
                   <h5 class="mb-0">
-                    <button class="faq-btn btn <?= $cont != 0 ? " collapsed" : "" ?> " type="button" data-toggle="collapse" data-target="#collapse<?= $collapsed[$cont] ?>" aria-expanded="true" aria-controls="collapse<?= $collapsed[$cont] ?>">
-                      <?= $intervention['name'] ?>
+                    <button class="faq-btn btn<?= $cont != 0 ? " collapsed" : "" ?>" type="button" data-toggle="collapse" data-target="#collapse<?= $collapsed[$cont] ?>" aria-expanded="true" aria-controls="collapse<?= $collapsed[$cont] ?>">
+                      <?= $intervention['name'] ?><i class="lni"></i>
                     </button>
                   </h5>
                 </div>
-                <div id="collapse<?= $collapsed[$cont] ?>" class="collapse <?= $cont == 0 ? " show" : "" ?>" aria-labelledby=" heading<?= $collapsed[$cont] ?>" data-parent="#accordionExample">
+                <div id="collapse<?= $collapsed[$cont] ?>" class="collapse<?= $cont == 0 ? " show" : "" ?>" aria-labelledby=" heading<?= $collapsed[$cont] ?>" data-parent="#accordionExample">
                   <div class="faq-content">
                     <?= $intervention['info'] ?>
                   </div>

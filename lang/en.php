@@ -37,6 +37,12 @@ $texts = array(
   'team-section-title' => "Team",
   'team-section-subtitle' => "Meet Our Doctors",
   'team-section-text' => "We introduce you to all our professionals. Click on him or her to learn more information",
+  // Faq section
+  'faq-section-title' => "Frequently Asked Questions",
+  'faq-section-subtitle' => "Get all the answers there if you want",
+  // Testimonial section
+  'testimonial-section-title' => "Testimonial",
+  'testimonial-section-subtitle' => "What Our Patients Says",
   // Footer section
   'footer-location' => "Location",
   'footer-quick-link' => "Quick Link",

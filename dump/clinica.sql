@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-02-2021 a las 20:14:17
+-- Tiempo de generación: 21-02-2021 a las 20:19:56
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -123,8 +123,8 @@ INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`, `title`, `sub
 (6, 6, 'interventions', 'interventions', 1, NULL, NULL, NULL),
 (7, 2, 'login-block', 'login-block', 1, NULL, NULL, NULL),
 (8, 1, 'about-section', 'about-section', 3, 'about-section-title', 'about-section-subtitle', 'about-section-text'),
-(9, 1, 'testimonial-section', 'testimonial-section', 5, NULL, NULL, NULL),
-(10, 1, 'faq-section', 'faq-section', 6, NULL, NULL, NULL),
+(9, 1, 'testimonial-section', 'testimonial-section', 5, 'testimonial-section-title', 'testimonial-section-subtitle', 'testimonial-section-text'),
+(10, 1, 'faq-section', 'faq-section', 6, 'faq-section-title', 'faq-section-subtitle', 'faq-section-text'),
 (11, 1, 'team-section', 'team-section', 7, 'team-section-title', 'team-section-subtitle', 'team-section-text'),
 (12, 1, 'subscribe-section', 'subscribe-section', 8, NULL, NULL, NULL),
 (13, 1, 'blog-section', 'blog-section', 9, NULL, NULL, NULL),
@@ -222,6 +222,28 @@ CREATE TABLE `content` (
   `content` text NOT NULL,
   `last_modify` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `faq`
+--
+
+CREATE TABLE `faq` (
+  `id` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `response` text NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `faq`
+--
+
+INSERT INTO `faq` (`id`, `question`, `response`, `enabled`) VALUES
+(1, '¿Dónde se encuentra la clínica?', 'Nuestra ubicación es C/ XXXX, nº XX de la localidad de El Puerto de Santa María. En la parte inferior de la página podrás ver un mapa con la localización exacta.', 1),
+(2, 'Se aceptan pacientes de mutuas y sanidad privada', 'Por supuesto. En la actualidad mantenemos convenios con ASISA, ADESLAS y SANITAS para la atención preferencial de sus afiliados en nuestra clínica', 1),
+(3, '¿Participan en el programa de salud dental infantil?', 'Los niños hasta 9 años que se acojan al plan de salud dental infantil aprobado por la Junta de Andalucía tendrán asistencia gratuita en odontología y odontopediatría.', 1);
 
 -- --------------------------------------------------------
 
@@ -378,6 +400,29 @@ INSERT INTO `settings` (`id`, `type`, `label`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `testimonial`
+--
+
+CREATE TABLE `testimonial` (
+  `id` int(11) NOT NULL,
+  `name` varchar(56) NOT NULL,
+  `occupation` varchar(56) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `comment` text NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `testimonial`
+--
+
+INSERT INTO `testimonial` (`id`, `name`, `occupation`, `image`, `comment`, `enabled`) VALUES
+(1, 'David Bermudez', 'Funcionario', '', 'Una clínica espectacular en cuanto a organización y equipamiento con los mejores profesionales que he conocido. A partir de ahora recomendaré SonriseClinic a familia y amigos. Gracias', 1),
+(2, 'Cintia Cabrera', 'Estudiante', '', 'Pues a mi no me gusta nada!!', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `treatmentscategories`
 --
 
@@ -517,6 +562,12 @@ ALTER TABLE `content`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `faq`
+--
+ALTER TABLE `faq`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `images`
 --
 ALTER TABLE `images`
@@ -550,6 +601,12 @@ ALTER TABLE `register`
 -- Indices de la tabla `settings`
 --
 ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `testimonial`
+--
+ALTER TABLE `testimonial`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -620,6 +677,12 @@ ALTER TABLE `content`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `faq`
+--
+ALTER TABLE `faq`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
@@ -654,6 +717,12 @@ ALTER TABLE `register`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `testimonial`
+--
+ALTER TABLE `testimonial`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `treatmentscategories`
