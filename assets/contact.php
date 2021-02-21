@@ -1,7 +1,26 @@
 <?php
 
+function __($str, $lang = null)
+{
+  if (!isset($lang)) :
+    $lang = "es";
+  endif;
+  if (file_exists('../lang/' . $lang . '.php')) :
+    include('../lang/' . $lang . '.php');
+    if (isset($texts[$str])) {
+      $str = $texts[$str];
+    }
+  endif;
+  return $str;
+}
+
+
+$lang = $_POST["lang"];
+$msgOk = __('contact-section-sendOk', $lang);
+$msgBad = __('contact-section-sendBad', $lang);
 // Only process POST reqeusts.
-$jsondata = "Nothing";
+$jsondata = array();
+$jsondata["mensaje"] = "Nothing";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Get the form fields and remove whitespace.
@@ -16,8 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Set the recipient email address.
   // FIXME: Update this to your desired email address.
   $recipient = "davidbermudezmoreno@fp.iesromerovargas.com";
-
-
 
   // Build the email content.
   $email_content = "Full Name: $name\n";
@@ -36,11 +53,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Send the email.
   if (mail($recipient, $subject, $email_content, $email_headers)) {
-    $jsondata = 'Nos pondremos en contacto contigo lo antes posible';
+    $jsondata["code"] = 200;
+    $jsondata["mensaje"] = $msgOk;
   } else {
-    $jsondata = "Oops! Something went wrong and we couldn't send your message.";
+    $jsondata["code"] = 300;
+    $jsondata["mensaje"] = $msgBad;
   }
 } else {
-  $jsondata = "There was a problem with your submission, please try again.";
+  $jsondata["code"] = 300;
+  $jsondata["mensaje"] = $msgBad;
 }
-echo $jsondata;
+header('Content-type: application/json; charset=utf-8');
+echo json_encode($jsondata);
+exit();

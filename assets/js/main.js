@@ -39,18 +39,6 @@
 
 	// Get the navbar
 
-	//======= tiny slider for slider-active
-	tns({
-		container: '.slider-active',
-		items: 1,
-		slideBy: 'page',
-		autoplay: true,
-		mouseDrag: true,
-		gutter: 0,
-		nav: true,
-		controls: false,
-		autoplayButtonOutput: false,
-	});
 
 	// for menu scroll 
 	var pageLink = document.querySelectorAll('.page-scroll');
@@ -101,13 +89,85 @@
 		navbarToggler.classList.toggle("active");
 	})
 
+	//======= tiny slider for slider-active
+	tns({
+		container: '.slider-active',
+		items: 1,
+		slideBy: 'page',
+		autoplay: true,
+		mouseDrag: true,
+		gutter: 0,
+		nav: true,
+		controls: false,
+		autoplayButtonOutput: false,
+	});
 
-
+	//======== tiny slider for testimonial
+	tns({
+		slideBy: 'page',
+		autoplay: false,
+		mouseDrag: true,
+		gutter: 0,
+		nav: true,
+		controls: false,
+		"container": "#customize",
+		"items": 1,
+		"center": true,
+		"navContainer": "#customize-thumbnails",
+		"navAsThumbnails": true,
+		"autoplayTimeout": 5000,
+		"swipeAngle": false,
+		"speed": 400,
+	});
 
 	//======== WOW active
 	new WOW().init();
 
+	//======== tiny slider for team active
+	tns({
+		container: '.team-active',
+		items: 4,
+		slideBy: 'page',
+		autoplay: false,
+		mouseDrag: true,
+		gutter: 15,
+		nav: true,
+		controls: false,
+		responsive: {
+			0: {
+				items: 1,
+			},
+			768: {
+				items: 2,
+			},
+			992: {
+				items: 3,
+			},
+			1200: {
+				items: 4,
+			},
+		}
+	});
 
 
+	//========= glightbox
+	const myGallery = GLightbox({
+		'href': 'https://www.youtube.com/watch?v=LXb3EKWsInQ',
+		'type': 'video',
+		'source': 'youtube', //vimeo, youtube or local
+		'width': 900,
+		'autoplayVideos': true,
+	});
 
+	//======== select js
+	new Selectr('#doctor', {
+		searchable: false,
+		width: 300
+	});
+/*
+	//======== datepicker 
+	var picker = new Pikaday({
+		field: document.getElementById('input_date')
+	});
+*/
 })();	

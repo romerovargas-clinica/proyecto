@@ -1,7 +1,11 @@
 	<!-- ========================= JS here ========================= -->
 	<script src="assets/js/bootstrap.bundle-5.0.0.alpha-min.js"></script>
+	<script src="assets/js/contact-form.js"></script>
+	<script src="assets/js/selectr.min.js"></script>
 	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/date.js"></script>
 	<script src="assets/js/tiny-slider.js"></script>
+	<script src="assets/js/glightbox.min.js"></script>
 	<script src="assets/js/main.js"></script>
 
 	<!-- JQuery -->

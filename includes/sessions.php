@@ -25,6 +25,10 @@ function isAuthenticated()
     } else return FALSE;
 }
 
+if (!isset($lang)) :
+    $lang = "es";
+endif;
+
 function login($username, $password, $remember, $password_hashed = TRUE)
 {
     // Función que inicia sesión desde el formulario de login o desde las cookies

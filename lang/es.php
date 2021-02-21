@@ -31,6 +31,8 @@ $texts = array(
   'contact-section-title' => "Contacta",
   'contact-section-subtitle' => "Cuéntanos lo que necesitas",
   'contact-section-text' => "Si no encuentras lo que buscas en nuestra web, escríbenos y te contestaremos a la mayor brevedad",
+  'contact-section-sendOk' => "Tu mensaje ha sido enviado. Nos pondremos en contacto contigo lo antes posible",
+  'contact-section-sendBad' => "¡UPS! Algo salió mal y no pudimos enviar su mensaje.",
   // Team section
   'team-section-title' => "El Equipo",
   'team-section-subtitle' => "Conoce a nuestros profesionales",

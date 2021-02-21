@@ -19,7 +19,7 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 		</div>
 		<div class="row">
 			<div class="col-xl-8 mx-auto">
-				<div id="mail-status"></div>
+				<div id="mail-status" style="visibility: hidden;"></div>
 			</div>
 		</div>
 		<div class="row">
@@ -27,6 +27,7 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 				<div class="contact-form">
 					<div id="contact-form" class="contact-form">
 						<div class="row">
+							<span id="userName-info" class="info"></span>
 							<div class="col-md-6">
 								<input type="text" id="name" name="name" placeholder="Name" required>
 							</div>
@@ -59,21 +60,60 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 <script>
 	function sendContact() {
 		var valid = true;
-		//valid = validateContact();
+		valid = validateContact();
 		if (valid) {
 			$.post("assets/contact.php", {
 				name: $("#name").val(),
 				email: $("#email").val(),
 				subject: $("#subject").val(),
-				message: $("#message").val()
+				message: $("#message").val(),
+				lang: '<?= $lang ?>'
 			}, function(m) {
-				alert(m);
-				$('#name').val("");
-				$('#email').val("");
-				$('#subject').val("");
-				$('#message').val("");
+				if (m["code"] == 200) {
+					$('#mail-status').html(m["mensaje"]);
+					$('#mail-status').attr("class", "alert alert-success");
+					$('#mail-status').attr("style", "visibility = visible");
+					$('#name').empty();
+					$('#email').empty();
+					$('#subject').empty();
+					$('#message').empty();
+					$("#name").css('background-color', '#FFFFFF');
+					$("#email").css('background-color', '#FFFFFF');
+					$("#subject").css('background-color', '#FFFFFF');
+					$("#message").css('background-color', '#FFFFFF');
+				} else {
+					$('#mail-status').html(m["mensaje"]);
+					$('#mail-status').attr("class", "alert alert-warning");
+					$('#mail-status').attr("style", "visibility = visible");
+				}
 			})
 		}
+	}
+
+	function validateContact() {
+		var valid = true;
+		$(".info").html('');
+		if (!$("#name").val()) {
+			$("#name").css('background-color', '#FFFFDF');
+			valid = false;
+		}
+		if (!$("#email").val()) {
+			$("#email").css('background-color', '#FFFFDF');
+			valid = false;
+		}
+		if (!$("#email").val().match(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/)) {
+			$("#email").css('background-color', '#FFFFDF');
+			valid = false;
+		}
+		if (!$("#subject").val()) {
+			$("#subject").css('background-color', '#FFFFDF');
+			valid = false;
+		}
+		if (!$("#message").val()) {
+			$("#message").css('background-color', '#FFFFDF');
+			valid = false;
+		}
+		return valid;
 	}
 </script>
 <?php $db->close() ?>
