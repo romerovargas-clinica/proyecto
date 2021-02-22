@@ -105,9 +105,15 @@
                     <li class="nav-item">
                       <a href="chat.php"><?= __('mn_Chat', $lang) ?></a>
                     </li>
-                    <li class="nav-item">
-                      <a href="<?= $href ?>cites.php"><?= __('mn_Cites', $lang) ?></a>
-                    </li>
+                    <?php if (isset($_SESSION["roles"]) && $_SESSION["roles"] == "[ADMIN-USER]") : ?>
+                      <li class="nav-item">
+                        <a class="text-warning" href="admin.php"><?= __('mn_Admin', $lang) ?></a>
+                      </li>
+                    <?php else : ?>
+                      <li class="nav-item">
+                        <a href="cites.php"><?= __('mn_Cites', $lang) ?></a>
+                      </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                       <i class="lni lni-cart"></i>
                     </li>

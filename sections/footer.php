@@ -9,30 +9,45 @@
 							<p><?= __('footer-text', $lang) ?></p>
 							<div class="footer-social-links">
 								<ul>
-									<li><a href="#"><i class="lni lni-facebook-filled"></i></a></li>
-									<li><a href="#"><i class="lni lni-twitter-filled"></i></a></li>
-									<li><a href="#"><i class="lni lni-linkedin-original"></i></a></li>
-									<li><a href="#"><i class="lni lni-instagram-original"></i></a></li>
+									<?php
+									$db->close();
+									$db = new DataBase();
+									$social = $db->send("SELECT * FROM settings WHERE type = 'social' AND value<>'';");
+									if (!empty($social)) :
+										foreach ($social as $key) : ?>
+											<li><a href="<?= $key['value'] ?>"><i class="<?= $key['label'] ?>"></i></a></li>
+									<?php endforeach;
+									endif;
+									$mapSRC = $db->send("SELECT value FROM settings WHERE type = 'map';");
+									$db->close();
+									?>
 								</ul>
 							</div>
 						</div>
 					</div>
+					<?php
+					if ($_SERVER['PHP_SELF'] == "/index.php") :
+						$href = "";
+					else :
+						$href = "index.php";
+					endif;
+					?>
 					<div class="col-xl-2 col-lg-3 col-md-6">
 						<div class="footer-widget mb-30">
 							<h4><?= __('footer-quick-link', $lang) ?></h4>
 							<ul class="footer-links">
 								<li><a href="#">Home</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Services</a></li>
-								<li><a href="#">Doctor</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Contact</a></li>
+								<li><a href="<?= $href ?>#about"><?= __('mn_AboutUs', $lang) ?></a></li>
+								<li><a href="<?= $href ?>#services"><?= __('mn_Speciality', $lang) ?></a></li>
+								<li><a href="<?= $href ?>#team"><?= __('mn_Team', $lang) ?></a></li>
+								<li><a href="<?= $href ?>#blog"><?= __('mn_News', $lang) ?></a></li>
+								<li><a href="<?= $href ?>#contact"><?= __('mn_Contact', $lang) ?></a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-xl-2 col-lg-3 col-md-5">
 						<div class="footer-widget mb-30">
-							<h4><?= __('footer-quick-link', $lang) ?></h4>
+							<h4><?= __('footer-quick-link', $lang)?> por utilizar</h4>
 							<ul class="footer-links">
 								<li><a href="#">Cardiology</a></li>
 								<li><a href="#">Neurology</a></li>
@@ -47,7 +62,7 @@
 						<div class="footer-widget mb-30">
 							<h4><?= __('footer-location', $lang) ?></h4>
 							<div class="map-canvas">
-								<iframe class="map" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51249.88551714757!2d-6.28643238339175!3d36.599470727418385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0dd011d731c25b%3A0x929c66b8e1876e00!2sEl%20Puerto%20de%20Sta%20Mar%C3%ADa%2C%20C%C3%A1diz!5e0!3m2!1ses!2ses!4v1613841399397!5m2!1ses!2ses"></iframe>
+								<iframe class="map" id="gmap_canvas" src="<?= $mapSRC[0][0] ?>"></iframe>
 							</div>
 						</div>
 					</div>
