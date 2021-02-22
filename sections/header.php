@@ -59,7 +59,7 @@
           <div class="col-lg-12">
             <div class="navbar navbar-expand-lg">
               <a class="navbar-brand" href="index.php">
-                <img src="assets/img/logo/logo-dark.png" alt="Logo">
+                <img src="assets/img/logo/logo-dark.png" style="width:280px" alt="Logo">
               </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="toggler-icon"></span>
@@ -109,14 +109,17 @@
                       <a href="<?= $href ?>cites.php"><?= __('mn_Cites', $lang) ?></a>
                     </li>
                     <li class="nav-item">
-                      <i class="lni lni-cart"></i>
-                    </li>
-                    <li class="nav-item">
                       <a href="<?= $href ?>#blog"><?= __('mn_News', $lang) ?></a>
                     </li>
-                    <li class="nav-item">
-                      <a href="<?= $href ?>#contact"><?= __('mn_Contact', $lang) ?></a>
-                    </li>
+                    <?php
+                    if (isset($_SESSION['roles']) && $_SESSION['roles'] == "[ADMIN-USER]") : ?>
+                      <li class="nav-item">
+                        <a href="budget.php"><?= __('mn_budget', $lang) ?></a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="admin.php"><?= __('mn_Admin', $lang) ?></a>
+                      </li>
+                    <?php endif ?>
                   </ul>
                 </nav> <!-- navbar collapse -->
               <?php endif ?>

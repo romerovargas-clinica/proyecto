@@ -16,6 +16,7 @@ $texts = array(
   'mn_Admin' => "Panel de Control",
   'mn_Cites' => "Mis citas",
   'mn_AboutUs' => "Sobre Nosotros",
+  'mn_budget' => "Presupuestos",
   // Block
   'Bl_About' => "Sobre nosotros",
   'Bl_Login' => "Iniciar Sesión",
@@ -47,6 +48,32 @@ $texts = array(
   'footer-location' => "Localización",
   'footer-quick-link' => "Enlaces",
   'footer-text' => "Tú clínica familiar de confianza",
+  // Budget
+  // Menu 
+  'budget-menu-new' => "Nuevo",
+  'budget-menu-search' => "Recuperar",
+  'budget-menu-clients' => "Clientes",
+  'budget-menu-list' => "Presupuestos",
+  // Client section
+  'budget-client-title' => "Cliente",
+  'budget-client-subtitle' => "Presupuesto",
+  'budget-client-text' => "",
+  // List section
+  'budget-list-title' => "Presupuestos",
+  'budget-list-date' => "Fecha",
+  'budget-list-customer' => "Cliente",
+  'budget-list-treatments' => "Tratamientos",
+  'budget-list-amount' => "Precio",
+  'budget-list-discount' => "Discount",
+  'budget-list-action' => "Acciones",
+  'budget-list-none' => "No existen presupuestos anteriores",
+  // New section
+  'budget-new-title' => "Nuevo Presupuesto",
+  'budget-new-text' => "Complete los datos y pulse aceptar para crear un nuevo presupuesto",
+
+  // Clients section
+  'budget-clients-title' => "Nuevo Cliente",
+  'budget-clients-text' => "Complete los datos y pulse aceptar para crear un nuevo cliente",
   // Forms
   'frm_Email' => "Dirección de correo electrónico",
   'frm_Pass' => "Clave",
@@ -55,6 +82,11 @@ $texts = array(
   'frm_Name' => "Nick",
   'frm_FirstName' => "Nombre",
   'frm_LastName' => "Apellidos",
+  'frm_Phone' => "Teléfono",
+  'frm_Address' => "Dirección",
+  'frm_PostalCode' => "Código Postal",
+  'frm_City' => "Localidad",
+  'frm_Province' => "Provincia",
   'frm_Roles' => "Rol",
   'frm_Type' => "Grupo",
   'frm_Label' => "Etiqueta",
@@ -82,7 +114,7 @@ $texts = array(
   'frm_Block1' => "Bloque 1",
   'frm_Block2' => "Bloque 2",
   'frm_Active' => "Estado",
-
+  'frm_ButtonSend' => "Alta nuevo Usuario",
 
   //Cases
   'Case_Disable' => "Desactivado",

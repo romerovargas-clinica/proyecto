@@ -8,6 +8,8 @@
 	<script src="assets/js/glightbox.min.js"></script>
 	<script src="assets/js/main.js"></script>
 
+	<script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
 	<!-- JQuery -->
 	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
@@ -16,14 +18,16 @@
 
 	<script>
 		// cambios de idioma
+		/*
 		const selectElement = document.getElementById('selectlang');
 		selectElement.addEventListener('change', (event) => {
 			let url = window.location.href.toString();
-			const regex = /\?lang\=[a-z]*/g;
-			url = url.replace(regex, '');
-			window.location.href = url + '?lang=' + selectElement.value;
-		});
-
+			const regex = /\?lang\=[a-z]\*/
+		/*g;
+					url = url.replace(regex, '');
+					window.location.href = url + '?lang=' + selectElement.value;
+				});
+				*/
 		// selector horario para citas
 		const selectHour = document.getElementById('customRange3');
 		const lblHours = document.getElementById("lbl");
@@ -106,4 +110,34 @@
 				lblHours.innerHTML = horas(hi) + ":" + minutos(mi) + " - " + horas(hf) + ":" + minutos(mf);
 			}
 		})
+	</script>
+	<script>
+		// autocompletado
+		$(document).ready(function() {
+			$('#client').on('keyup', function() {
+				var key = $(this).val();
+				var dataString = 'client=' + key;
+				$.ajax({
+					type: "POST",
+					url: "admin/customers.php",
+					data: dataString,
+					success: function(data) {
+						//Escribimos los nombres de clientes en 
+						$('#suggestions').fadeIn(1000).html(data);
+						//Al hacer click en alguna de las sugerencias
+						$('.suggest-element').on('click', function() {
+							//Obtenemos la id unica de la sugerencia pulsada
+							var id = $(this).attr('id');
+							//Editamos el valor del input con data de la sugerencia pulsada
+							$('#client').val($(this).attr('data'));
+							$('#client').attr("data", $(this).attr('id'))
+							//Hacemos desaparecer el resto de sugerencias
+							$('#suggestions').fadeOut(1000);
+							//alert('Has seleccionado el ' + id + ' ' + $('#' + id).attr('data'));
+							return false;
+						});
+					}
+				});
+			});
+		});
 	</script>

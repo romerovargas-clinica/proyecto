@@ -1105,7 +1105,7 @@ p {
  padding:0
 }
 .navbar-brand img {
- max-width:150px
+ max-width:280px
 }
 .navbar-toggler {
  padding:0
@@ -2011,6 +2011,7 @@ p {
 }
 .contact-section .contact-form .selectr-selected,
 .contact-section .contact-form input,
+.contact-section .contact-form select,
 .contact-section .contact-form textarea {
  width:100%;
  border:1px solid #8c96a7;
@@ -2022,6 +2023,14 @@ p {
  color:#8c96a7;
  -webkit-transition:all .3s ease-out 0s;
  transition:all .3s ease-out 0s
+}
+
+.contact-section .contact-form select::selection {
+  color: blue;
+}
+
+.contact-section .contact-form select:disabled {
+  color: red;
 }
 .contact-section .contact-form .selectr-selected:focus,
 .contact-section .contact-form input:focus,

@@ -17,4 +17,24 @@
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="assets/css/tiny-slider.css">
   <link rel="stylesheet" href="assets/css/main.css">
+  <!-- -->
+  <style>
+    #suggestions {
+      box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, .2);
+      height: auto;
+      position: absolute;
+      top: 45px;
+      z-index: 9999;
+      width: 400px;
+    }
+
+    #suggestions .suggest-element {
+      background-color: #EEEEEE;
+      border-top: 1px solid #d6d4d4;
+      cursor: pointer;
+      padding: 8px;
+      width: 100%;
+      float: left;
+    }
+  </style>
 </head>

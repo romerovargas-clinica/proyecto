@@ -24,43 +24,42 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 		</div>
 		<div class="row">
 			<div class="col-xl-12">
-				<div class="contact-form">
-					<div id="contact-form" class="contact-form">
-						<div class="row">
-							<span id="userName-info" class="info"></span>
-							<div class="col-md-6">
-								<input type="text" id="name" name="name" placeholder="Name" required>
-							</div>
-							<div class="col-md-6">
-								<input type="email" id="email" name="email" placeholder="Email" required>
-							</div>
+
+				<div id="contact-form" class="contact-form">
+					<div class="row">
+						<span id="userName-info" class="info"></span>
+						<div class="col-md-6">
+							<input type="text" id="name" name="name" placeholder="Name" required>
 						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<input type="text" name="subject" id="subject" placeholder="Subject" required>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xl-12">
-								<button class="btn theme-btn" onClick="sendContact()">Send Message</button>
-							</div>
+						<div class="col-md-6">
+							<input type="email" id="email" name="email" placeholder="Email" required>
 						</div>
 					</div>
-					<p class="form-message pt-15"></p>
+					<div class="row">
+						<div class="col-md-12">
+							<input type="text" name="subject" id="subject" placeholder="Subject" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xl-12">
+							<button class="btn theme-btn" onClick="sendContact()">Send Message</button>
+						</div>
+					</div>
 				</div>
+				<p class="form-message pt-15"></p>
+
 			</div>
 		</div>
 	</div>
 </section>
 <script>
 	function sendContact() {
-		var valid = true;
-		valid = validateContact();
+		var valid = validateContact();
 		if (valid) {
 			$.post("assets/contact.php", {
 				name: $("#name").val(),

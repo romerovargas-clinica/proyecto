@@ -47,6 +47,25 @@ $texts = array(
   'footer-location' => "Location",
   'footer-quick-link' => "Quick Link",
   'footer-text' => "Your Family Clinic",
+  // Budget
+  // Menu 
+  'budget-menu-new' => "Nuevo",
+  'budget-menu-search' => "Recuperar",
+  'budget-menu-clients' => "Clientes",
+  'budget-menu-list' => "Presupuestos",
+  // Client section
+  'budget-client-title' => "Cliente",
+  'budget-client-subtitle' => "Presupuesto",
+  'budget-client-text' => "",
+  // List section
+  'budget-list-title' => "Presupuestos",
+  'budget-list-date' => "Fecha",
+  'budget-list-customer' => "Cliente",
+  'budget-list-treatments' => "Tratamientos",
+  'budget-list-amount' => "Precio",
+  'budget-list-discount' => "Discount",
+  'budget-list-action' => "Acciones",
+  'budget-list-none' => "No existen presupuestos anteriores",
   // Forms
   'frm_Email' => "Email address",
   'frm_Pass' => "Password",
