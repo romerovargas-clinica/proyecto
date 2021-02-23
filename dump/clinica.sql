@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-02-2021 a las 20:19:56
+-- Tiempo de generación: 23-02-2021 a las 21:24:11
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -84,16 +84,6 @@ CREATE TABLE `block` (
   `css` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `block`
---
-
-INSERT INTO `block` (`id`, `name`, `description`, `label#01`, `num#1`, `label#02`, `num#2`, `label#03`, `num#3`, `label#04`, `num#4`, `label#05`, `num#5`, `label#06`, `text#1`, `label#07`, `text#2`, `label#08`, `text#3`, `label#09`, `text#4`, `label#10`, `text#5`, `css`) VALUES
-(2, 'carousel#1', 'Carrusel de imagenes que aparecen en portada', 'num_images', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Titulo_Imagen_1', 'doctor-563429_640.jpg', 'Titulo_imagen_2', 'chair-2589771_640.jpg', 'Titulo_imagen_3', 'chair-2584260_640.jpg', NULL, NULL, NULL, NULL, NULL),
-(3, 'Especialidades', 'Bloque de presentación de las especialidades médicas', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'aboutUs', 'Información acerca de nuestra clínica', 'num_images', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'image1', 'aboutUsImage1.png', 'Lorem ipsum dolor sit amet, consectetur adipiscin', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam in voluptate velit esse cillum dolore eu fugiat null', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'portada', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -129,7 +119,36 @@ INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`, `title`, `sub
 (12, 1, 'subscribe-section', 'subscribe-section', 8, NULL, NULL, NULL),
 (13, 1, 'blog-section', 'blog-section', 9, NULL, NULL, NULL),
 (14, 1, 'contact-section', 'contact-section', 10, 'contact-section-title', 'contact-section-subtitle', 'contact-section-text'),
-(15, 1, 'slider-section', 'slider-section', 1, NULL, NULL, NULL);
+(15, 1, 'slider-section', 'slider-section', 1, NULL, NULL, NULL),
+(16, 7, 'budget-section', 'budget-section', 1, 'budget-section-title', 'budget-client-subtitle', 'budget-section-text'),
+(17, 8, 'register-section', 'register-section', 1, 'register-section-title', 'register-section-subtitle', 'register-section-text');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `budgets`
+--
+
+CREATE TABLE `budgets` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `customer-id` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  `discount` float NOT NULL,
+  `enabled` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `budgets-treatments`
+--
+
+CREATE TABLE `budgets-treatments` (
+  `id` int(11) DEFAULT NULL,
+  `id_budget` int(11) NOT NULL,
+  `id_treatments` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -293,7 +312,9 @@ INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
 (3, 'CITES', '2021-01-09 13:35:36', 1),
 (4, 'ARTICLE', '2021-01-11 08:37:54', 1),
 (5, 'ABOUT', '2021-01-29 19:45:07', 1),
-(6, 'SPECIALITIE', '2021-01-30 19:00:49', 1);
+(6, 'SPECIALITIE', '2021-01-30 19:00:49', 1),
+(7, 'BUDGET', '2021-02-22 10:20:53', 1),
+(8, 'REGISTER', '2021-02-23 17:29:59', 1);
 
 -- --------------------------------------------------------
 
@@ -376,7 +397,7 @@ CREATE TABLE `settings` (
   `id` int(9) NOT NULL,
   `type` varchar(10) NOT NULL,
   `label` varchar(25) NOT NULL,
-  `value` varchar(255) NOT NULL
+  `value` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -388,14 +409,15 @@ INSERT INTO `settings` (`id`, `type`, `label`, `value`) VALUES
 (2, 'general', 'urlsite', 'http://clinica.es'),
 (3, 'social', 'lni lni-twitter-filled', 'https://twitter.com/sonriseclinic'),
 (4, 'social', 'lni lni-facebook-filled', 'https://facebook.com/sonriseclinic'),
-(5, 'social', 'lni lni-instagram-filled', 'Instagrammer'),
-(6, 'social', 'lni lni-linkedin-original', 'linkedin'),
+(5, 'social', 'lni lni-instagram-filled', 'https://www.instagram.com/sonriseClinic/'),
+(6, 'social', 'lni lni-linkedin-original', 'https://es.linkedin.com/sonriseClinic'),
 (7, 'social', 'fab fa-youtube-square', ''),
 (8, 'social', 'pinterest_usefa-pinterest', ''),
 (9, 'social', 'fab fa-whatsapp-square', ''),
 (10, 'email', 'lni lni-envelope', 'admin@sonriseclinic.es'),
 (11, 'chat', 'response_bot', 'Keep waiting. An operator will briefly contact you.'),
-(12, 'phone', 'lni lni-phone', '956875858');
+(12, 'phone', 'lni lni-phone', '956875858'),
+(13, 'map', 'location', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51249.88551714757!2d-6.28643238339175!3d36.599470727418385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0dd011d731c25b%3A0x929c66b8e1876e00!2sEl%20Puerto%20de%20Sta%20Mar%C3%ADa%2C%20C%C3%A1diz!5e0!3m2!1ses!2ses!4v1613841399397!5m2!1ses!2ses');
 
 -- --------------------------------------------------------
 
@@ -498,6 +520,11 @@ CREATE TABLE `users` (
   `firstname` varchar(100) DEFAULT NULL,
   `lastname` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
+  `address` varchar(256) DEFAULT NULL,
+  `postalcode` varchar(5) DEFAULT NULL,
+  `city` varchar(56) DEFAULT NULL,
+  `province` varchar(56) DEFAULT NULL,
+  `phone` varchar(9) DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -505,11 +532,10 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-20 19:58:37', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', 1),
-(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-20 20:13:08', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 1),
-(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', 1),
-(53, 'asd', '602a55c01037f', NULL, NULL, '[ADMIN-USER]', NULL, 'es', 'asd', 'asdsa', 'asfdafa@asdsad.es', 0);
+INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `address`, `postalcode`, `city`, `province`, `phone`, `enabled`) VALUES
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-22 21:18:13', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
+(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-20 20:13:08', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
+(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1);
 
 --
 -- Índices para tablas volcadas
@@ -536,6 +562,12 @@ ALTER TABLE `block`
 ALTER TABLE `blocks`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Indices de la tabla `budgets`
+--
+ALTER TABLE `budgets`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `category`
@@ -650,7 +682,13 @@ ALTER TABLE `block`
 -- AUTO_INCREMENT de la tabla `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT de la tabla `budgets`
+--
+ALTER TABLE `budgets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `category`
@@ -692,7 +730,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT de la tabla `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `professionals`
@@ -716,7 +754,7 @@ ALTER TABLE `register`
 -- AUTO_INCREMENT de la tabla `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `testimonial`
@@ -740,7 +778,7 @@ ALTER TABLE `treatmentsinterventions`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Restricciones para tablas volcadas

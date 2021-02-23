@@ -67,5 +67,6 @@ switch ($action):
 		break;
 	case "clients":
 		include "blocks/budget-clients-section.php";
+		include "blocks/budget-clients-script-section.php";
 		break;
 endswitch;

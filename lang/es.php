@@ -70,10 +70,12 @@ $texts = array(
   // New section
   'budget-new-title' => "Nuevo Presupuesto",
   'budget-new-text' => "Complete los datos y pulse aceptar para crear un nuevo presupuesto",
-
   // Clients section
   'budget-clients-title' => "Nuevo Cliente",
   'budget-clients-text' => "Complete los datos y pulse aceptar para crear un nuevo cliente",
+  // Register section
+  'budget-clients-title' => "Nuevo Usuario",
+  'budget-clients-text' => "Complete los datos y pulse aceptar para registrarse",
   // Forms
   'frm_Email' => "Dirección de correo electrónico",
   'frm_Pass' => "Clave",
