@@ -102,30 +102,49 @@
                     <li class="nav-item active">
                       <a class="active" href="<?= $href ?>#home">Home</a>
                     </li>
-                    <li class="nav-item">
-                      <a href="chat.php"><?= __('mn_Chat', $lang) ?></a>
-                    </li>
+
                     <?php if (isset($_SESSION["roles"]) && $_SESSION["roles"] == "[ADMIN-USER]") : ?>
                       <li class="nav-item">
                         <a class="text-warning" href="admin.php"><?= __('mn_Admin', $lang) ?></a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="budget.php"><?= __('mn_budget', $lang) ?></a>
                       </li>
                     <?php else : ?>
                       <li class="nav-item">
                         <a href="cites.php"><?= __('mn_Cites', $lang) ?></a>
                       </li>
+                      <li class="nav-item">
+                        <a href="chat.php"><?= __('mn_Chat', $lang) ?></a>
+                      </li>
                     <?php endif; ?>
+
                     <li class="nav-item">
-                      <a href="<?= $href ?>#blog"><?= __('mn_News', $lang) ?></a>
+                      <div class="dropdown">
+                        <button style="border: none; background-color:white;" class="dropdown-toggle " id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2"> 
+                          <li class="dropdown-item">
+                            <a href="<?= $href ?>#about"><?= __('mn_AboutUs', $lang) ?></a>
+                          </li>
+                          <li class="dropdown-item">
+                            <a href="<?= $href ?>#services"><?= __('mn_Speciality', $lang) ?></a>
+                          </li>
+                          <li class="dropdown-item">
+                            <a href="<?= $href ?>#team"><?= __('mn_Team', $lang) ?></a>
+                          </li>
+                          <li class="dropdown-item">
+                            <a href="<?= $href ?>#blog"><?= __('mn_News', $lang) ?></a>
+                          </li>
+                          <li class="dropdown-item">
+                            <a href="<?= $href ?>#contact"><?= __('mn_Contact', $lang) ?></a>
+                          </li>
+
+                        </ul>
                     </li>
-                    <?php
-                    if (isset($_SESSION['roles']) && $_SESSION['roles'] == "[ADMIN-USER]") : ?>
-                      <li class="nav-item">
-                        <a href="budget.php"><?= __('mn_budget', $lang) ?></a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="admin.php"><?= __('mn_Admin', $lang) ?></a>
-                      </li>
-                    <?php endif ?>
+
+
                   </ul>
                 </nav> <!-- navbar collapse -->
               <?php endif ?>
