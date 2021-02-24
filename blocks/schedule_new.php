@@ -1,7 +1,5 @@
 <?php
 
-
-
 $tab = array();
 $tabDisabled = " disabled\" aria-disabled=\"true";
 $tabActive = " active\" aria-current=\"page";

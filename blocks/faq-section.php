@@ -3,7 +3,7 @@ $db = new DataBase();
 $result = $db->select("blocks", "id = " . $block["id"]);
 ?>
 <!--========================= faq-section start ========================= -->
-<section class="faq-section theme-bg">
+<section id="faq" class="faq-section theme-bg">
 	<div class="faq-video-wrapper">
 		<div class="faq-video">
 			<img src="assets/img/faq/faq-img.jpg" alt="">

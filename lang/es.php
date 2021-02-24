@@ -24,6 +24,9 @@ $texts = array(
   'about-section-title' => "Sobre nosotros",
   'about-section-subtitle' => "Bienvenidos a tu Clínica Dental",
   'about-section-text' => "En SonriseClinic tendrás la atención que necesitas con los mejores especialistas. Queremos ser tu clínica dental familiar y por eso apostamos por no defraudar nunca a nuestros pacientes. Te ofrecemos una solución eficaz a un precio inmejorable. No dejes de consultarnos",
+  // About more section
+  'about-more-section-title' => "Mapa Web",
+  'about-more-section-text' => "Diagrama de contenidos de la web SonriseClinic",
   // Service
   'service-section-title' => "Especialidades",
   'service-section-subtitle' => "Experiencia y Profesionalidad",
@@ -38,6 +41,10 @@ $texts = array(
   'team-section-title' => "El Equipo",
   'team-section-subtitle' => "Conoce a nuestros profesionales",
   'team-section-text' => "Te presentamos a todos nuestros profesionales. Pulsa sobre él o ella conocer más datos",
+  // Blog section
+  'blog-section-title' => "Novedades",
+  'blog-section-subtitle' => "Accede a las últimas noticias",
+  'blog-section-text' => "Publicamos las noticias más interesantes relacionadas con la salud dental",
   // Faq section
   'faq-section-title' => "Preguntas Más Frecuentes",
   'faq-section-subtitle' => "Obtenga una respuesta rápida a las preguntas más usuales",
@@ -54,6 +61,10 @@ $texts = array(
   'budget-menu-search' => "Recuperar",
   'budget-menu-clients' => "Clientes",
   'budget-menu-list' => "Presupuestos",
+  // Cites section
+  'schedule-section-title' => "",
+  'schedule-section-subtitle' => "Citas",
+  'schedule-section-text' => "Te ofrecemos un sistema para solicitar y gestionar todas tus citas de manera rápida y sencilla.",
   // Client section
   'budget-client-title' => "Cliente",
   'budget-client-subtitle' => "Presupuesto",
@@ -117,13 +128,9 @@ $texts = array(
   'frm_Block2' => "Bloque 2",
   'frm_Active' => "Estado",
   'frm_ButtonSend' => "Alta nuevo Usuario",
-
   //Cases
   'Case_Disable' => "Desactivado",
   'Case_Enable' => "Activo",
-
-
-
   // Buttons
   'btn_Update' => "Actualizar",
   'btn_Deleted' => "Eliminar",
@@ -133,6 +140,7 @@ $texts = array(
   'btn_AddUser' => 'Añadir nuevo usuario',
   'btn_Add' => 'Añadir',
   'btn_NewCite' => 'Pedir cita',
+  'btn_mapweb' => 'Mapa Web',
   // Admin
   'sect_gallery' => "Galería",
   'sect_users' => "Usuarios",

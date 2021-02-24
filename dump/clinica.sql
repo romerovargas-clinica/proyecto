@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-02-2021 a las 14:17:17
+-- Tiempo de generación: 24-02-2021 a las 18:24:02
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -49,7 +49,9 @@ INSERT INTO `articles` (`id`, `category`, `title`, `subtitle`, `text`, `image_id
 (1, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '0', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
 (7, 2, 'La Clínica', '', '<p>En SonriseClinic cuidamos tu salud y estética dental utilizando la tecnología más avanzada para lograr los mejores resultados.</p>\r\n\r\n<p>Contamos con un equipo profesionales que harán que por fin consigas sonreír. </p>\r\n\r\n<p>Hoy en día, están en expansión los modelos de Clínicas Dentales, en muchos casos franquicias, las cuales “obligan” al paciente a realizarse costosos tratamientos finalizados en tiempos récords, los cuales a medio plazo fracasan. Fracasan no sólo por los tiempos inadecuados que emplean e ellos, sino también por la incorporación a su plantilla principal de Odontólogos sin experiencia en el campo, además sometidos a usar materiales “low cost”, que en muchas ocasiones acaparan tratamientos de gran envergadura atraídos por la repercusión económica que les aporta sin evaluar si están preparados para realizarlos. Esto deja desamparados a numerosos pacientes que, bien por principios no están dispuestos a ser manejados al antojo de estas clínicas, o por incapacidad económica desisten de realizarse los tratamientos propuestos en estos tipos de clínicas. Son en estos pacientes y en todos los demás en los que volcaremos nuestros esfuerzos para atenderlos de la mejor manera que se merecen.</p>', '8fe5abc6', '2021-01-29 20:38:54', NULL, NULL, 0, 2),
 (8, 2, 'Mensaje del Director', 'Dr. D. Juan Juan Juan', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', 'cb5af32', '2021-01-29 21:21:00', NULL, NULL, 1, 2),
-(9, 1, 'asdsa', 'sadasd', '<p>easdasd sad sa asdsadsadas</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<hr />\r\n<p>hoka jaosja a d</p>\r\n', '', '2021-02-15 12:45:18', NULL, NULL, 0, 2);
+(9, 1, 'asdsa', 'sadasd', '<p>easdasd sad sa asdsadsadas</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<hr />\r\n<p>hoka jaosja a d</p>\r\n', '', '2021-02-15 12:45:18', NULL, NULL, 0, 2),
+(10, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '0', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
+(11, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '0', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -107,8 +109,8 @@ CREATE TABLE `blocks` (
 
 INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`, `title`, `subtitle`, `text`) VALUES
 (1, 1, 'portada', 'we-do-section', 2, NULL, NULL, NULL),
-(2, 5, 'aboutUs', 'aboutUs', 2, NULL, NULL, NULL),
-(3, 3, 'schedule', 'schedule', 1, NULL, NULL, NULL),
+(2, 5, 'about-more-section', 'about-more-section', 2, 'about-more-section-title', 'about-more-section-subtitle', 'about-more-section-text'),
+(3, 3, 'schedule-section', 'schedule-section', 1, 'schedule-section-title', 'schedule-section-subtitle', 'schedule-section-text'),
 (4, 1, 'service-section', 'service-section', 4, 'service-section-title', 'service-section-subtitle', 'service-section-text'),
 (6, 6, 'interventions', 'interventions', 1, NULL, NULL, NULL),
 (7, 2, 'login-block', 'login-block', 1, NULL, NULL, NULL),
@@ -117,7 +119,7 @@ INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`, `title`, `sub
 (10, 1, 'faq-section', 'faq-section', 6, 'faq-section-title', 'faq-section-subtitle', 'faq-section-text'),
 (11, 1, 'team-section', 'team-section', 7, 'team-section-title', 'team-section-subtitle', 'team-section-text'),
 (12, 1, 'subscribe-section', 'subscribe-section', 8, NULL, NULL, NULL),
-(13, 1, 'blog-section', 'blog-section', 9, NULL, NULL, NULL),
+(13, 1, 'blog-section', 'blog-section', 9, 'blog-section-title', 'blog-section-subtitle', 'blog-section-text'),
 (14, 1, 'contact-section', 'contact-section', 10, 'contact-section-title', 'contact-section-subtitle', 'contact-section-text'),
 (15, 1, 'slider-section', 'slider-section', 1, NULL, NULL, NULL),
 (16, 7, 'budget-section', 'budget-section', 1, 'budget-section-title', 'budget-client-subtitle', 'budget-section-text'),
@@ -242,7 +244,8 @@ CREATE TABLE `cites` (
 
 INSERT INTO `cites` (`id`, `date`, `time_from`, `time_until`, `user_id`) VALUES
 (1, '2021-01-17', '19:00:00', '20:00:00', 3),
-(2, '2021-02-11', '14:00:00', '14:50:00', 4);
+(2, '2021-02-11', '14:00:00', '14:50:00', 4),
+(3, '2021-02-26', '11:00:00', '11:45:00', 3);
 
 -- --------------------------------------------------------
 
@@ -326,7 +329,7 @@ INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
 (2, 'LOGIN', '2021-01-02 07:01:12', 1),
 (3, 'CITES', '2021-01-09 13:35:36', 1),
 (4, 'ARTICLE', '2021-01-11 08:37:54', 1),
-(5, 'ABOUT', '2021-01-29 19:45:07', 1),
+(5, 'ABOUTMORE', '2021-01-29 19:45:07', 1),
 (6, 'SPECIALITIE', '2021-01-30 19:00:49', 1),
 (7, 'BUDGET', '2021-02-22 10:20:53', 1),
 (8, 'REGISTER', '2021-02-23 17:29:59', 1);
@@ -548,8 +551,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `address`, `postalcode`, `city`, `province`, `phone`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-24 11:51:45', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
-(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-20 20:13:08', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-24 16:55:50', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
+(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-24 16:57:56', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (38, '60362cdb001c6', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[CUSTOMER]', NULL, 'es', 'David', 'Bermudez', 'davidbermudez@jerez.es', 'Calle Parque de Doñana', '11400', 'Jerez', 'Cádiz', '654654654', 1);
 
@@ -692,7 +695,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `block`
@@ -734,7 +737,7 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `cites`
 --
 ALTER TABLE `cites`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `content`
