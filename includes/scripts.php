@@ -111,33 +111,3 @@
 			}
 		})
 	</script>
-	<script>
-		// autocompletado
-		$(document).ready(function() {
-			$('#client').on('keyup', function() {
-				var key = $(this).val();
-				var dataString = 'client=' + key;
-				$.ajax({
-					type: "POST",
-					url: "admin/customers.php",
-					data: dataString,
-					success: function(data) {
-						//Escribimos los nombres de clientes en 
-						$('#suggestions').fadeIn(1000).html(data);
-						//Al hacer click en alguna de las sugerencias
-						$('.suggest-element').on('click', function() {
-							//Obtenemos la id unica de la sugerencia pulsada
-							var id = $(this).attr('id');
-							//Editamos el valor del input con data de la sugerencia pulsada
-							$('#client').val($(this).attr('data'));
-							$('#client').attr("data", $(this).attr('id'))
-							//Hacemos desaparecer el resto de sugerencias
-							$('#suggestions').fadeOut(1000);
-							//alert('Has seleccionado el ' + id + ' ' + $('#' + id).attr('data'));
-							return false;
-						});
-					}
-				});
-			});
-		});
-	</script>

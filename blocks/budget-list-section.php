@@ -14,7 +14,7 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xl-12 mx-auto">
+		<div class="col-xl-8 mx-auto">
 			<?php
 			$ndb = new DataBase();
 			$list = $ndb->select("budgets", "enabled = 1");
@@ -22,22 +22,28 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">#
-							<th>
-							<th scope="col"><?= __('budget-list-date', $lang) ?>
-							<th>
-							<th scope="col"><?= __('budget-list-customer', $lang) ?>
-							<th>
-							<th scope="col"><?= __('budget-list-treatments', $lang) ?>
-							<th>
-							<th scope="col"><?= __('budget-list-amount', $lang) ?>
-							<th>
-							<th scope="col"><?= __('budget-list-discount', $lang) ?>
-							<th>
-							<th scope="col"><?= __('budget-list-action', $lang) ?>
-							<th>
+							<th>#</th>
+							<th><?= __('budget-list-date', $lang) ?></th>
+							<th><?= __('budget-list-customer', $lang) ?></th>
+							<th><?= __('budget-list-treatments', $lang) ?></th>
+							<th><?= __('budget-list-amount', $lang) ?></th>
+							<th><?= __('budget-list-discount', $lang) ?></th>
+							<th><?= __('budget-list-action', $lang) ?></th>
 						</tr>
 					</thead>
+					<tbody>
+						<?php foreach ($list as $budget) : ?>
+							<tr>
+								<td><?= $budget["id"] ?></td>
+								<td><?= $budget["date"] ?></td>
+								<td><?= $budget["customer_id"] ?></td>
+								<td><?= $budget["date"] ?></td>
+								<td><?= $budget["amount"] ?></td>
+								<td><?= $budget["discount"] ?></td>
+								<td></td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
 				</table>
 			<?php else : ?>
 				<div class="section-title text-center mb-25"><?= __('budget-list-none', $lang) ?></div>

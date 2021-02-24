@@ -19,30 +19,37 @@
 		$('#warning').attr("style", "visibility: hidden");
 		var valid = true;
 		valid = validateUser();
-		if (valid) {
-			$.post("admin/newUser.php", {
-				firstname: $("#firstname").val(),
-				lastname: $("#lastname").val(),
-				email: $("#email").val(),
-				phone: $("#phone").val(),
-				address: $("#address").val(),
-				postalCode: $("#postalCode").val(),
-				city: $("#city").val(),
-				province: $("#province").val(),
-				hash: '_' + Math.random().toString(36).substr(2, 9),
-				lang: '<?= $lang ?>'
-			}, function(m) {
-				if (m["code"] === 200) {
-					$('#warning').html("Se ha enviado un email de verificación a " + $('#email').val());
-					$('#warning').attr("class", "alert alert-success");
-					$('#warning').attr("style", "visibility: visible");
-					resetfields();
-				} else {
-					$('#warning').html("Ha ocurrido un error");
-					$('#warning').attr("class", "alert alert-danger");
-					$('#warning').attr("style", "visibility: visible");
-				}
-			})
+		// si no hay check, no continuar
+		if ($('#loader').html() == '<i class="lni lni-checkmark text-success"></i>') {
+			if (valid) {
+				$.post("admin/newUser.php", {
+					firstname: $("#firstname").val(),
+					lastname: $("#lastname").val(),
+					email: $("#email").val(),
+					phone: $("#phone").val(),
+					address: $("#address").val(),
+					postalCode: $("#postalCode").val(),
+					city: $("#city").val(),
+					province: $("#province").val(),
+					hash: '_' + Math.random().toString(36).substr(2, 9),
+					lang: '<?= $lang ?>'
+				}, function(m) {
+					if (m["code"] == 200) {
+						$('#warning').html("Se ha enviado un email de verificación a " + $('#email').val());
+						$('#warning').attr("class", "alert alert-success");
+						$('#warning').attr("style", "visibility: visible");
+						resetfields();
+					} else {
+						$('#warning').html("Ha ocurrido un error");
+						$('#warning').attr("class", "alert alert-danger");
+						$('#warning').attr("style", "visibility: visible");
+					}
+				})
+			}
+		} else { // loader not check
+			$('#warning').html("Introduzca otro email");
+			$('#warning').attr("class", "alert alert-danger");
+			$('#warning').attr("style", "visibility: visible");
 		}
 	}
 
@@ -107,6 +114,7 @@
 
 	function validaEmail(email) {
 		if (email != "") {
+			$('#loader').html('<div class="loading"><img src="images/loader.gif" alt="loading" /></div>');
 			var response = $.post("admin/verifymail.php", {
 				email: email
 			}, function(m) {
@@ -116,9 +124,12 @@
 					$('#warning').attr("class", "alert alert-warning");
 					$('#warning').attr("style", "visibility: visible");
 					$('#email').attr("flag", "no");
+					$('#loader').html('<i class="lni lni-close text-danger"></i>');
 				} else {
 					$('#email').attr("flag", "yes");
 					$('#warning').attr("style", "visibility: hidden");
+					$("#email").css('background-color', '#FFFFFF');
+					$('#loader').html('<i class="lni lni-checkmark text-success"></i>');
 				}
 			})
 		}

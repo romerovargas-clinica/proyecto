@@ -82,7 +82,7 @@ class DataBase
         $sql = "INSERT INTO " . $table . " (" . $fields . ") VALUES (" . $sdata . ")";
         if (mysqli_query($this->connection, $sql)) {
             //echo $sql."<br/>";
-            return true;
+            return mysqli_insert_id($this->connection);
         } else {
             throw new Exception("0004:Error de sintaxis al ejecutar consulta INSERT SQL[on class DataBase->insert database.php from PHPcore]:$sql");
             return false;

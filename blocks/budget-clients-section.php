@@ -29,8 +29,11 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 						</div>
 
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-5">
 								<input type="email" flag="no" name="email" id="email" placeholder="<?= __('frm_Email', $lang) ?>*" required>
+							</div>
+							<div class="col-md-1">
+								<div id="loader"></div>
 							</div>
 							<div class="col-md-6">
 								<input type="text" name="phone" id="phone" placeholder="<?= __('frm_Phone', $lang) ?>*" required>

@@ -16,7 +16,7 @@ $datos["pass"] = md5($pass);
 $datos["confirmKey"] = "";
 $price = $ndb->update("users", $datos, "id = $id AND confirmKey = '" . $token . "'");
 if ($price) :
-  $jsondata['code'] = '300';
+  $jsondata['code'] = '200';
 endif;
 header('Content-type: application/json; charset=utf-8');
 echo json_encode($jsondata);

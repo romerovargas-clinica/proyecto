@@ -82,13 +82,13 @@ if (!$account) die("ERROR: La clave de validación no es válida"); // To-Do tra
                 <input type="password" id="pass2" name="pass2" placeholder="Repeat Password" required>
                 <input type="hidden" id="id" name="id" value="<?= $account[0]["id"] ?>">
                 <input type="hidden" id="token" name="token" value="<?= $confirmKey ?>">
-
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-xl-12">
               <button class="btn theme-btn" onClick="verifyPass()">Send Password</button>
+              <div id="loader"></div>
             </div>
           </div>
         </div>
@@ -100,6 +100,7 @@ if (!$account) die("ERROR: La clave de validación no es válida"); // To-Do tra
 
   <script>
     function verifyPass() {
+      $('#loader').html('<div class="loading"><img src="images/loader.gif" alt="loading" /></div>');
       console.log("si");
       let p1 = $("#pass1").val();
       let p2 = $("#pass2").val();
@@ -117,12 +118,10 @@ if (!$account) die("ERROR: La clave de validación no es válida"); // To-Do tra
           id: $('#id').val(),
           token: $("#token").val(),
         }, function(m) {
-          if (m["code"] === 200) {
-            $('#warning').html("Se ha enviado un email de verificación a " + $('#email').val());
-            $('#warning').attr("class", "alert alert-success");
-            $('#warning').attr("style", "visibility: visible");
-            window.open("login.php");
+          if (m["code"] == 200) {
+            window.open("login.php", "_self");
           }
+          $('#loader').html('');
         });
       } else {
         // desbloquear
