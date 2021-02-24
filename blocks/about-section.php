@@ -16,7 +16,7 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 						<h2 class="mb-15 wow fadeInUp" data-wow-delay=".4s"><?= __($result[0]["subtitle"], $lang) ?></h2>
 					</div>
 					<p class="mb-35 wow fadeInUp" data-wow-delay=".6s"><?= __($result[0]["text"], $lang) ?></p>
-					<a href="#" class="btn theme-btn wow fadeInUp" data-wow-delay=".8s">Learn More</a>
+					<a href="about-more.php" class="btn theme-btn wow fadeInUp" data-wow-delay=".8s"><?= __('btn_mapweb', $lang) ?></a>
 				</div>
 			</div>
 		</div>

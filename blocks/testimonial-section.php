@@ -3,7 +3,7 @@ $db = new DataBase();
 $result = $db->select("blocks", "id = " . $block["id"]);
 ?>
 <!-- ========================= testimonial-section start ========================= -->
-<section class="testimonial-section pt-120 pb-150">
+<section id="testimonial" class="testimonial-section pt-120 pb-150">
 	<div class="shape shape-4">
 		<img src="assets/img/shapes/shape-4.svg" alt="">
 	</div>
