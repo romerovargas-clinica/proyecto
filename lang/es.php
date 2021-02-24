@@ -140,12 +140,8 @@ $texts = array(
   'btn_AddUser' => 'Añadir nuevo usuario',
   'btn_Add' => 'Añadir',
   'btn_NewCite' => 'Pedir cita',
-<<<<<<< HEAD
   'btn_More' => 'Más sitios',
-
-=======
   'btn_mapweb' => 'Mapa Web',
->>>>>>> 99e67866cb6f789ea6432c265e207e8e7e2a3385
   // Admin
   'sect_gallery' => "Galería",
   'sect_users' => "Usuarios",
