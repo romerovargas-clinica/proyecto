@@ -122,7 +122,7 @@
                     <li class="nav-item">
                       <div class="dropdown">
                         <button style="border: none; background-color:white;" class="dropdown-toggle " id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        
+                        <?= __('btn_More', $lang) ?>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2"> 
                           <li class="dropdown-item">

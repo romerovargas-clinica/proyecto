@@ -116,6 +116,8 @@ $texts = array(
   'btn_AddUser' => 'Add new user',
   'btn_Add' => 'Add',
   'btn_NewCite' => 'Pedir cita',
+  'btn_More' => 'More sites',
+
   // Admin
   'sect_gallery' => "Gallery",
   'sect_users' => "Users",

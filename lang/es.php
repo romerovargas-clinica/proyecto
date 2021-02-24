@@ -133,6 +133,8 @@ $texts = array(
   'btn_AddUser' => 'Añadir nuevo usuario',
   'btn_Add' => 'Añadir',
   'btn_NewCite' => 'Pedir cita',
+  'btn_More' => 'Más sitios',
+
   // Admin
   'sect_gallery' => "Galería",
   'sect_users' => "Usuarios",
