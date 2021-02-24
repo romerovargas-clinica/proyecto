@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-02-2021 a las 21:24:11
+-- Tiempo de generación: 24-02-2021 a las 14:17:17
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -132,23 +132,38 @@ INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`, `title`, `sub
 CREATE TABLE `budgets` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `customer-id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
   `amount` float NOT NULL,
   `discount` float NOT NULL,
-  `enabled` tinyint(1) NOT NULL
+  `enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `budgets`
+--
+
+INSERT INTO `budgets` (`id`, `date`, `customer_id`, `amount`, `discount`, `enabled`) VALUES
+(6, '2021-02-05', 3, 505, 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `budgets-treatments`
+-- Estructura de tabla para la tabla `budgets_treatments`
 --
 
-CREATE TABLE `budgets-treatments` (
-  `id` int(11) DEFAULT NULL,
+CREATE TABLE `budgets_treatments` (
+  `id` int(11) NOT NULL,
   `id_budget` int(11) NOT NULL,
   `id_treatments` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `budgets_treatments`
+--
+
+INSERT INTO `budgets_treatments` (`id`, `id_budget`, `id_treatments`) VALUES
+(1, 6, 2),
+(2, 6, 4);
 
 -- --------------------------------------------------------
 
@@ -533,9 +548,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `address`, `postalcode`, `city`, `province`, `phone`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-22 21:18:13', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-24 11:51:45', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
 (3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-20 20:13:08', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
-(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1);
+(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
+(38, '60362cdb001c6', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[CUSTOMER]', NULL, 'es', 'David', 'Bermudez', 'davidbermudez@jerez.es', 'Calle Parque de Doñana', '11400', 'Jerez', 'Cádiz', '654654654', 1);
 
 --
 -- Índices para tablas volcadas
@@ -567,6 +583,12 @@ ALTER TABLE `blocks`
 -- Indices de la tabla `budgets`
 --
 ALTER TABLE `budgets`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `budgets_treatments`
+--
+ALTER TABLE `budgets_treatments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -688,7 +710,13 @@ ALTER TABLE `blocks`
 -- AUTO_INCREMENT de la tabla `budgets`
 --
 ALTER TABLE `budgets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `budgets_treatments`
+--
+ALTER TABLE `budgets_treatments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `category`
@@ -778,7 +806,7 @@ ALTER TABLE `treatmentsinterventions`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Restricciones para tablas volcadas
