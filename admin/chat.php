@@ -13,6 +13,7 @@ endif;
 
   <?php
   $table = "users";
+  $maxRow = 5; // Número de registros a mostrar
   include "admin/pagination.php";
   ?>
 

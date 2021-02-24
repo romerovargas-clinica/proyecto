@@ -62,6 +62,7 @@ endif;
   <?php
   $table = "articles";
   $where = "category = 1";
+  $maxRow = 5; // Número de registros a mostrar
   include "admin/pagination.php";
   ?>
 
@@ -71,8 +72,9 @@ endif;
         <th>#</th>
         <th><?= __('frm_Title', $lang) ?></th>
         <th id="subtitle"><?= __('frm_Subtitle', $lang) ?></th>
-        <th><?= __('frm_Publish', $lang) ?></th>
+        <th><?= __('date_Published', $lang) ?></th>
         <th><?= __('frm_Text', $lang) ?></th>
+        <th><?= __('frm_Enabled', $lang) ?></th>
       </tr>
     </thead>
     <tbody>
@@ -91,6 +93,7 @@ endif;
             <td class="d-inline-block text-truncate" style="max-width: 200px"><?= $record["subtitle"] ?></td>
             <td><?= $record["date_published"] ?></td>
             <td class="d-inline-block text-truncate" style="max-width: 300px"><?= strip_tags($record["text"]) ?></td>
+            <td class="" style=""><?= $record["enabled"] == 1 ? __('Case_Enable', $lang) : __('Case_Disable', $lang) ?></td>
           </tr>
       <?php
           $cont++;

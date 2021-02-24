@@ -1,6 +1,6 @@
 <?php
 
-// Procesamiento de formulario #TO DO: esta copiado de users
+
 $error = "";
 if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
@@ -12,7 +12,8 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   $id = $_POST['inputId'];
   $name = $_POST['inputName'];
   $categorie = $_POST['inputCategorie'];
-  $image = $_POST['inputImage'];
+  $imageFile = $_POST['inputImageFile'];
+  $imageDir = $_POST['inputImageDir'];
   $info = $_POST['inputInfo'];
   $duration = $_POST['inputDuration'];
   $price = $_POST['inputPrice'];
@@ -20,23 +21,24 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   $anarray = array();
   $anarray["name"] = $name;
   $anarray["categorie"] = $categorie;
-  $anarray["image"] = $image;
+  $anarray["image"] = $imageFile;
   $anarray["info"] = $info;
   $anarray["duration"] = $duration;
   $anarray["Price"] = $price;
   $recordset = $db->update("treatmentsInterventions", $anarray, "id = " . $id);
 endif;
+
 //añadir
 if (isset($_POST['InputNew'])) :
   $name = $_POST['inputName'];
   $categorie = $_POST['inputCategorie'];
-  $image = $_POST['inputImage'];
+  $imageFile = $_POST['inputImageFile'];
   $info = $_POST['inputInfo'];
   $duration = $_POST['inputDuration'];
   $price = $_POST['inputPrice'];
 
   $db->send("INSERT INTO `treatmentsinterventions` ( `name`, `categorie`, `duration`, `price`, `info`, `image`) VALUES
-  ( '$name', $categorie, $duration, $price, '$info', '$image');");
+  ( '$name', $categorie, $duration, $price, '$info', '$imageFile');");
 endif;
 
 
@@ -55,6 +57,7 @@ foreach ($categories as $categorie) {
 
   <?php
   $table = "treatmentsinterventions";
+  $maxRow = 10; // Número de registros a mostrar
   include "admin/pagination.php";
   ?>
 
@@ -88,12 +91,12 @@ foreach ($categories as $categorie) {
             <td><?= $categoriesNames[$recordT["categorie"] - 1] ?></td>
             <td>
               <?php if ($recordT["image"] != null) : ?>
-                <img src="<?= $recordT["image"] ?>" class="crop rounded d-block" alt="" height="25">
+                <img src="images/uploads/<?= $recordT["image"] ?>" class="crop rounded d-block" alt="" height="25">
               <?php else : ?>
                 <img src="images/blank.png" class="crop rounded d-block" alt="" height="25">
               <?php endif; ?>
             </td>
-            <td><?= $recordT["info"] ?></td>
+            <td><?= strlen($recordT['info']) > 200 ? substr($recordT["info"], 0, 200) . "..." : $recordT["info"] ?></td>
             <td><?= $recordT["duration"] ?></td>
             <td><?= $recordT["price"] ?></td>
           </tr>
@@ -140,7 +143,8 @@ if (isset($_GET['AddNew'])) : ?>
         <label for="inputImage" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
           <div class="card-img-top"><img src="images/blank.png" class="crop rounded d-block" alt="" height="50" onclick="changeImg();" id="img_base"></div>
-          <input type="hidden" name="inputImage" value="<?= $fields[0]["image"] ?>" id="img_base_hd">
+          <input type="hidden" name="inputImageFile" value="" id="img_file">
+          <input type="hidden" name="inputImageDir" value="" id="img_dir">
         </div>
       </div>
       <div class="mb-6 row">
@@ -175,7 +179,7 @@ if (isset($_GET['edit'])) :
     $fields[0]["id"] = $id;
     $fields[0]["name"] = $name;
     $fields[0]["categorie"] = $categorie;
-    $fields[0]["image"] = $image;
+    $fields[0]["image"] = $imageFile;
     $fields[0]["info"] = $info;
     $fields[0]["duration"] = $duration;
     $fields[0]["price"] = $price;
@@ -215,16 +219,17 @@ if (isset($_GET['edit'])) :
           <?php if ($fields[0]["image"] == null) :
             $_img = "images/blank.png";
           else :
-            $_img = $fields[0]["image"];
+            $_img = "images/uploads/" . $fields[0]["image"];
           endif; ?>
           <div class="card-img-top"><img src="<?= $_img ?>" class="crop rounded d-block" alt="" height="50" onclick="changeImg();" id="img_base"></div>
-          <input type="hidden" name="inputImage" value="<?= $fields[0]["image"] ?>" id="img_base_hd">
+          <input type="hidden" name="inputImageFile" value="" id="inputImageFile">
+          <input type="hidden" name="inputImageDir" value="" id="inputImageDir">
         </div>
       </div>
       <div class="mb-6 row">
         <label for="inputInfo" class="col-sm-2 col-form-label"><?= __('frm_Desc', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputInfo" id="inputInfo" value="<?= $fields[0]["info"] ?>">
+          <textarea cols="100" name="inputInfo" id="inputInfo"><?= $fields[0]["info"] ?></textarea>
         </div>
       </div>
       <div class="mb-6 row">
@@ -270,7 +275,6 @@ if (isset($_GET['edit'])) :
 
 <script>
   function changeImg() {
-    console.log("Activo");
     var configuracion_ventana = "menubar=no,toolbar=no,location=yes,resizable=no,scrollbars=yes,status=no,height=500,width=800";
     var anotherwindow = window.open("filebrowser.php", "test", configuracion_ventana);
     //anotherwindow.bgColor = "black";

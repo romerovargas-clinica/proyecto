@@ -9,11 +9,9 @@
               <div class="slider-content">
                 <h1 data-animation="fadeInDown" data-duration="1.5s" data-delay=".5s">Diseñamos tu mejor sonrisa
                 </h1>
-                <p data-animation="fadeInLeft" data-duration="1.5s" data-delay=".7s">Lorem ipsum
-                  dolor sit amet, consetetur sadipscing elitr, sed dinonumy eirmod tempor invidunt
-                  ut labore et dolore magna aliquyam erat. Lorem ipsum dolor sit amet, consetetur
-                  sadipscing elitr.</p>
-                <a href="#about" class="btn theme-btn page-scroll" data-animation="fadeInUp" data-duration="1.5s" data-delay=".9s">Learn More</a>
+                <p data-animation="fadeInLeft" data-duration="1.5s" data-delay=".7s">Tanto si es por cuestiones de salud, como si es por simple estética, en SonriseClinic no tienes que
+                  preocuparte de nada. Estás en manos de los mejores profesionales y harán de tu sonrisa tu mejor carta de presentación</p>
+                <a href="#team" class="btn theme-btn page-scroll" data-animation="fadeInUp" data-duration="1.5s" data-delay=".9s">Nuestro Equipo</a>
               </div>
             </div>
           </div>
@@ -26,12 +24,10 @@
               <div class="slider-content">
                 <h1 data-animation="fadeInDown" data-duration="1.5s" data-delay=".5s">A la vanguardia de la tecnología
                 </h1>
-                <p data-animation="fadeInLeft" data-duration="1.5s" data-delay=".7s">Lorem ipsum
-                  dolor sit amet, consetetur sadipscing elitr, sed dinonumy eirmod tempor invidunt
-                  ut labore et dolore magna aliquyam erat. Lorem ipsum dolor sit amet, consetetur
-                  sadipscing elitr.</p>
-                <a href="#contact" class="btn theme-btn page-scroll" data-animation="fadeInUp" data-duration="1.5s" data-delay=".9s">Make
-                  Appoinment</a>
+                <p data-animation="fadeInLeft" data-duration="1.5s" data-delay=".7s">En SonriseClinic estamos
+                  preparados para asumir las grandes transformaciones en el campo de la salud dental. Contamos con los medios más modernos
+                  y eficaces para cada uno de nuestros tratamientos.</p>
+                <a href="#services" class="btn theme-btn page-scroll" data-animation="fadeInUp" data-duration="1.5s" data-delay=".9s">Ver tratamientos</a>
               </div>
             </div>
           </div>
@@ -44,11 +40,9 @@
               <div class="slider-content">
                 <h1 data-animation="fadeInDown" data-duration="1.5s" data-delay=".5s">Te ayudamos, te enseñamos...
                 </h1>
-                <p data-animation="fadeInLeft" data-duration="1.5s" data-delay=".7s">Lorem ipsum
-                  dolor sit amet, consetetur sadipscing elitr, sed dinonumy eirmod tempor invidunt
-                  ut labore et dolore magna aliquyam erat. Lorem ipsum dolor sit amet, consetetur
-                  sadipscing elitr.</p>
-                <a href="#services" class="btn theme-btn page-scroll" data-animation="fadeInUp" data-duration="1.5s" data-delay=".9s">Our Services</a>
+                <p data-animation="fadeInLeft" data-duration="1.5s" data-delay=".7s">Porque tu dentista no sólo está para curarte. En SonriseClinic asesoramos
+                  a nuestros pacientes de manera gratuita teniendo en cuenta siempre que unos buenos hábitos de higiene son la principal garantía para una boca sana</p>
+                <a href="#faq" class="btn theme-btn page-scroll" data-animation="fadeInUp" data-duration="1.5s" data-delay=".9s">Preguntas frecuentes...</a>
               </div>
             </div>
           </div>

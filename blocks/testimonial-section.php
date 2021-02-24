@@ -42,15 +42,20 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 							</div>
 						<?php endforeach; ?>
 					</div>
-
+					<?php
+					$ndb->close();
+					$ndb = new DataBase();
+					$opiniones = $ndb->select('testimonial', "enabled = 1");
+					print_r($opiniones);
+					?>
 					<div class="customize-tools">
 						<ul class="thumbnails d-flex justify-content-center" id="customize-thumbnails">
 							<?php foreach ($opiniones as $opinion) : ?>
 								<li class="testimonial-img">
 									<?php if (file_exists($opinion["image"])) : ?>
-										<img src="<?php $opinion["image"] ?>" alt="">
+										<img src="<?= $opinion["image"] ?>" alt="">
 									<?php else : ?>
-										<img src="<?php $opinion["image"] ?>" alt="">
+										<img src="<?= $opinion["image"] ?>" alt="">
 									<?php endif; ?>
 								</li>
 							<?php endforeach; ?>

@@ -30,7 +30,7 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 						<div class="col-xl-3 col-lg-3">
 							<div class="single-team text-center mb-85">
 								<div class="team-img mb-50">
-									<img src="assets/img/team/<?= $person['image'] ?>" alt="">
+									<img src="images/uploads/<?= $person['image'] ?>" alt="">
 									<div class="specialist">
 										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="23" viewBox="0 0 51.275 58.44">
 											<g id="" transform="translate(-4.423 -0.572)">

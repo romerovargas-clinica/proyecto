@@ -52,6 +52,7 @@ endif;
 
   <?php
   $table = "treatmentscategories";
+  $maxRow = 5; // Número de registros a mostrar
   include "admin/pagination.php";
   ?>
 

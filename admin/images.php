@@ -38,7 +38,7 @@ if (isset($_POST['inputNew'])) :
   $anarray = array();
   $anarray['name'] = $_POST['inputName'];
   $anarray['alt'] = $_POST['inputAlt'];
-  $anarray['style'] = $_POST['inputStyle'];
+  //$anarray['style'] = $_POST['inputStyle'];
   // Archivos
   if (isset($_FILES['inputSrc'])) :
     $errores = array();
@@ -79,6 +79,7 @@ endif;
 
   <?php
   $table = "images";
+  $maxRow = 8; // Número de registros a mostrar
   include "admin/pagination.php";
   ?>
 
@@ -98,7 +99,7 @@ endif;
               <?php foreach ($records as $record) : ?>
                 <div class="card mb-3" onclick="window.location='admin.php?section=images&page=<?= ($page) ?>&edit=<?= $record['id'] ?>';">
                   <div class="card-header"><?= $record['name'] ?></div>
-                  <div class="card-img-top"><img src="<?= $record['src'] ?>" class="crop rounded d-block" alt="<?= $record['id'] ?>" height="50"></div>
+                  <div class="card-img-top"><img src="/images/uploads/<?= $record['src'] ?>" class="crop rounded d-block" alt="<?= $record['id'] ?>" height="50"></div>
                   <div class="card-title small text-truncate text-center" style="max-width:150px"><?= $record['alt'] ?></div>
                 </div>
               <?php endforeach; ?>
@@ -140,7 +141,7 @@ if (isset($_GET['AddNew'])) : ?>
       <div class="mb-6 row">
         <label for="inputStyle" class="col-sm-2 col-form-label"><?= __('frm_Style', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputStyle" id="inputStyle" value="">
+          <input type="text" class="form-control form-control-sm" name="inputStyle" id="inputStyle" value="" disabled>
         </div>
       </div>
       <input type="hidden" name="inputNew">
@@ -154,7 +155,7 @@ if (isset($_GET['edit'])) :
     $fields[0]["name"] = $name;
     $fields[0]["src"] = $src;
     $fields[0]["alt"] = $alt;
-    $fields[0]["style"] = $style;
+    $fields[0]["dir"] = $dir;
   else :
     $fields = $db->send("SELECT * FROM $adm_pag WHERE id = '" . $_GET['edit'] . "';");
   endif;

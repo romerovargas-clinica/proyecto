@@ -59,6 +59,7 @@ $isEnable[1] = "Case_Enable";
 
     <?php
     $table = "publi";
+    $maxRow = 5; // Número de registros a mostrar
     include "admin/pagination.php";
     ?>
 

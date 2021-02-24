@@ -1,12 +1,12 @@
 <?php
-$maxRow = 5; // Número de registros a mostrar
+
 
 $sql = "SELECT Count(*) as total FROM " . $table;
 
-if(isset($where)):
-    $sql = $sql . " WHERE " . $where . ";";
-else:
-    $sql = $sql . ";";
+if (isset($where)) :
+  $sql = $sql . " WHERE " . $where . ";";
+else :
+  $sql = $sql . ";";
 endif;
 
 $row = $db->send($sql);
@@ -27,17 +27,17 @@ if (!$page) {
 $numResult = $row[0]['total'];
 $total_pages = ceil($numResult / $maxRow);
 
-if(isset($where)):
-    $sql = $where;
-else:
-    $sql = "1 = 1";
+if (isset($where)) :
+  $sql = $where;
+else :
+  $sql = "1 = 1";
 endif;
 
 $records = $db->select($table, $sql . " ORDER BY id ASC LIMIT " . $start . ", " . $maxRow);
 ?>
 <div class="d-flex bd-highlight">
   <div class="p-2 w-100 row row-cols-lg-auto g-3 align-items-center">
-    <?php if ($adm_pag != "chat") : ?>
+    <?php if (isset($adm_pag) && $adm_pag != "chat") : ?>
       <div class="col-12">
         <button type="button" class="page-link btn-sm bg-primary text-white" onclick="window.location='admin.php?section=<?= $adm_pag ?>&page=<?= ($page) ?>&AddNew';"><?= __('btn_Add', $lang) ?></button>
       </div>

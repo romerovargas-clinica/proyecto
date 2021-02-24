@@ -13,12 +13,12 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   $name = $_POST['inputName'];
   $degree = $_POST['inputDegree'];
   $job = $_POST['inputJob'];
-  $image = $_POST['inputImage'];
+  $imageFile = $_POST['inputImageFile'];
   $info = $_POST['inputInfo'];
-  if ($name != "" && $image != "" && $info != "") :
+  if ($name != "" && $imageFile != "" && $info != "") :
     //update
     $anarray = array();
-    $anarray["image"] = $image;
+    $anarray["image"] = $imageFile;
     $anarray["info"] = $info;
     $anarray["name"] = $name;
     $anarray["degree"] = $degree;
@@ -54,6 +54,7 @@ endif;
 
   <?php
   $table = "professionals";
+  $maxRow = 5; // Número de registros a mostrar
   include "admin/pagination.php";
   ?>
 
@@ -83,7 +84,13 @@ endif;
             <td><?= $record["name"] ?></td>
             <td><?= $record["degree"] ?></td>
             <td><?= $record["job"] ?></td>
-            <td> <img src="images/professionals/<?= $record["image"] ?>" width="200px"></td>
+            <td>
+              <?php if ($record["image"] != null) : ?>
+                <img src="images/uploads/<?= $record["image"] ?>" class="crop rounded d-block" alt="" height="25">
+              <?php else : ?>
+                <img src="images/blank.png" class="crop rounded d-block" alt="" height="25">
+              <?php endif; ?>
+            </td>
             <td><?= $record["info"] ?></td>
           </tr>
       <?php
@@ -125,7 +132,9 @@ if (isset($_GET['AddNew'])) : ?>
       <div class="mb-6 row">
         <label for="inputImage" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputImage" id="inputImage" required>
+          <div class="card-img-top"><img src="images/blank.png" class="crop rounded d-block" alt="" height="50" onclick="changeImg();" id="img_base"></div>
+          <input type="hidden" name="inputImageFile" value="" id="img_file">
+          <input type="hidden" name="inputImageDir" value="" id="img_dir">
         </div>
       </div>
       <div class="mb-6 row">
@@ -150,7 +159,7 @@ if (isset($_GET['edit'])) :
     $fields[0]["name"] = $name;
     $fields[0]["degree"] = $degree;
     $fields[0]["job"] = $job;
-    $fields[0]["image"] = $image;
+    $fields[0]["image"] = $imageFile;
     $fields[0]["info"] = $info;
 
   else :
@@ -183,20 +192,26 @@ if (isset($_GET['edit'])) :
       <div class="mb-6 row">
         <label for="inputImage" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputImage" id="inputImage" value="<?= $fields[0]["image"] ?>">
+          <?php if ($fields[0]["image"] == null) :
+            $_img = "images/blank.png";
+          else :
+            $_img = "images/uploads/" . $fields[0]["image"];
+          endif; ?>
+          <div class="card-img-top"><img src="<?= $_img ?>" class="crop rounded d-block" alt="" height="50" onclick="changeImg();" id="img_base"></div>
+          <input type="hidden" name="inputImageFile" value="" id="inputImageFile">
+          <input type="hidden" name="inputImageDir" value="" id="inputImageDir">
         </div>
-      </div>
-      <div class="mb-6 row">
-        <label for="inputInfo" class="col-sm-2 col-form-label"><?= __('frm_Desc', $lang) ?></label>
-        <div class="col-sm-6">
-          <input type="inputInfo" class="form-control form-control-sm" name="inputInfo" id="inputInfo" value="<?= $fields[0]["info"] ?>">
+        <div class="mb-6 row">
+          <label for="inputInfo" class="col-sm-2 col-form-label"><?= __('frm_Desc', $lang) ?></label>
+          <div class="col-sm-6">
+            <input type="inputInfo" class="form-control form-control-sm" name="inputInfo" id="inputInfo" value="<?= $fields[0]["info"] ?>">
+          </div>
         </div>
-      </div>
 
-      <input type="hidden" id="inputId" name="inputId" value="<?= $fields[0]["id"] ?>">
-      <input type="hidden" id="inputDelete" name="inputDelete" value="0">
-      <button type="submit" class="btn btn-primary" name="bttn1"><?= __('btn_Update', $lang) ?></button>
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal"><?= __('btn_Deleted', $lang) ?></button>
+        <input type="hidden" id="inputId" name="inputId" value="<?= $fields[0]["id"] ?>">
+        <input type="hidden" id="inputDelete" name="inputDelete" value="0">
+        <button type="submit" class="btn btn-primary" name="bttn1"><?= __('btn_Update', $lang) ?></button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal"><?= __('btn_Deleted', $lang) ?></button>
     </form>
   </div>
 <?php endif; ?>
@@ -222,6 +237,12 @@ if (isset($_GET['edit'])) :
 </div>
 
 <script>
+  function changeImg() {
+    var configuracion_ventana = "menubar=no,toolbar=no,location=yes,resizable=no,scrollbars=yes,status=no,height=500,width=800";
+    var anotherwindow = window.open("filebrowser.php", "test", configuracion_ventana);
+    //anotherwindow.bgColor = "black";
+  }
+
   function aceptar() {
     document.getElementById("inputDelete").value = "1";
     //$('#myModal').modal('hide');

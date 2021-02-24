@@ -128,6 +128,7 @@ $texts = array(
   'frm_Block2' => "Bloque 2",
   'frm_Active' => "Estado",
   'frm_ButtonSend' => "Alta nuevo Usuario",
+  'frm_Enabled' => "Habilitado",
   //Cases
   'Case_Disable' => "Desactivado",
   'Case_Enable' => "Activo",
