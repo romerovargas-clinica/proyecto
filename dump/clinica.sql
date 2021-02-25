@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-02-2021 a las 18:24:02
+-- Tiempo de generación: 25-02-2021 a las 19:14:32
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -33,7 +33,7 @@ CREATE TABLE `articles` (
   `title` varchar(255) NOT NULL,
   `subtitle` varchar(255) NOT NULL,
   `text` text NOT NULL,
-  `image_id` varchar(8) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_published` datetime DEFAULT NULL,
   `date_modifiqued` datetime DEFAULT NULL,
@@ -45,13 +45,14 @@ CREATE TABLE `articles` (
 -- Volcado de datos para la tabla `articles`
 --
 
-INSERT INTO `articles` (`id`, `category`, `title`, `subtitle`, `text`, `image_id`, `date_created`, `date_published`, `date_modifiqued`, `enabled`, `author`) VALUES
-(1, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '0', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
-(7, 2, 'La Clínica', '', '<p>En SonriseClinic cuidamos tu salud y estética dental utilizando la tecnología más avanzada para lograr los mejores resultados.</p>\r\n\r\n<p>Contamos con un equipo profesionales que harán que por fin consigas sonreír. </p>\r\n\r\n<p>Hoy en día, están en expansión los modelos de Clínicas Dentales, en muchos casos franquicias, las cuales “obligan” al paciente a realizarse costosos tratamientos finalizados en tiempos récords, los cuales a medio plazo fracasan. Fracasan no sólo por los tiempos inadecuados que emplean e ellos, sino también por la incorporación a su plantilla principal de Odontólogos sin experiencia en el campo, además sometidos a usar materiales “low cost”, que en muchas ocasiones acaparan tratamientos de gran envergadura atraídos por la repercusión económica que les aporta sin evaluar si están preparados para realizarlos. Esto deja desamparados a numerosos pacientes que, bien por principios no están dispuestos a ser manejados al antojo de estas clínicas, o por incapacidad económica desisten de realizarse los tratamientos propuestos en estos tipos de clínicas. Son en estos pacientes y en todos los demás en los que volcaremos nuestros esfuerzos para atenderlos de la mejor manera que se merecen.</p>', '8fe5abc6', '2021-01-29 20:38:54', NULL, NULL, 0, 2),
-(8, 2, 'Mensaje del Director', 'Dr. D. Juan Juan Juan', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', 'cb5af32', '2021-01-29 21:21:00', NULL, NULL, 1, 2),
-(9, 1, 'asdsa', 'sadasd', '<p>easdasd sad sa asdsadsadas</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<hr />\r\n<p>hoka jaosja a d</p>\r\n', '', '2021-02-15 12:45:18', NULL, NULL, 0, 2),
-(10, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '0', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
-(11, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '0', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2);
+INSERT INTO `articles` (`id`, `category`, `title`, `subtitle`, `text`, `image`, `date_created`, `date_published`, `date_modifiqued`, `enabled`, `author`) VALUES
+(1, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
+(7, 2, 'La Clínica', '', '<p>En SonriseClinic cuidamos tu salud y estética dental utilizando la tecnología más avanzada para lograr los mejores resultados.</p>\r\n\r\n<p>Contamos con un equipo profesionales que harán que por fin consigas sonreír. </p>\r\n\r\n<p>Hoy en día, están en expansión los modelos de Clínicas Dentales, en muchos casos franquicias, las cuales “obligan” al paciente a realizarse costosos tratamientos finalizados en tiempos récords, los cuales a medio plazo fracasan. Fracasan no sólo por los tiempos inadecuados que emplean e ellos, sino también por la incorporación a su plantilla principal de Odontólogos sin experiencia en el campo, además sometidos a usar materiales “low cost”, que en muchas ocasiones acaparan tratamientos de gran envergadura atraídos por la repercusión económica que les aporta sin evaluar si están preparados para realizarlos. Esto deja desamparados a numerosos pacientes que, bien por principios no están dispuestos a ser manejados al antojo de estas clínicas, o por incapacidad económica desisten de realizarse los tratamientos propuestos en estos tipos de clínicas. Son en estos pacientes y en todos los demás en los que volcaremos nuestros esfuerzos para atenderlos de la mejor manera que se merecen.</p>', NULL, '2021-01-29 20:38:54', NULL, NULL, 0, 2),
+(8, 2, 'Mensaje del Director', 'Dr. D. Juan Juan Juan', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', NULL, '2021-01-29 21:21:00', NULL, NULL, 1, 2),
+(9, 1, 'asdsa', 'sadasd', '<p>easdasd sad sa asdsadsadas</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<hr />\r\n<p>hoka jaosja a d</p>\r\n', '', '2021-02-15 12:45:18', '2021-02-25 19:08:25', NULL, 1, 2),
+(10, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
+(11, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
+(12, 1, 'Este Artículo pretende ser una muestra para poder tener más de tres', 'Este subtitulo acompaña al artículo que pretende ser una muestra para poder tener más de tres', '<p><strong>Ha aumentado la demanda de tratamientos sencillos, como limpiezas y revisiones, mientras que disminuye la de implantes, cirug&iacute;as y est&eacute;tica dental</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>El Observatorio de la Salud Oral (OSOE), puesto en marcha en 2015 por el Consejo General de Dentistas y la Fundaci&oacute;n Dental Espa&ntilde;ola, uno de los pocos que existen en el mundo, ha publicado los resultados del an&aacute;lisis que se ha realizado en el periodo 2015-2019 sobre la salud oral y la profesi&oacute;n de dentista en Espa&ntilde;a.<br />\r\n&nbsp;</p>\r\n\r\n<p>En el estudio ha participado una red de dentistas centinela que han hecho posible la recogida de datos para el OSOE bianualmente. De las encuestas realizadas se extraen varias conclusiones.<br />\r\n<br />\r\n<strong>Pacientes y tratamientos</strong><br />\r\n&nbsp;</p>\r\n\r\n<p>En cuanto al perfil de los pacientes, existe una mayor demanda de tratamientos odontol&oacute;gicos por parte de las mujeres (un 57%), cuando representan el 51% de la poblaci&oacute;n en Espa&ntilde;a. Por el contrario, existe una infra demanda por parte de los pacientes mayores de 65 a&ntilde;os, puesto que solo representan un 15% de los pacientes cuando su peso poblacional es del 21%.<br />\r\n&nbsp;</p>\r\n\r\n<p>En el periodo 2015-2019, se aprecia un incremento del 2-12% de las actividades cl&iacute;nicas m&aacute;s sencillas, como tartrectom&iacute;as (limpiezas dentales), revisiones, tratamientos restauradores y endodoncias. Sin embargo, los tratamientos est&eacute;ticos (blanqueamientos, carillas), cirug&iacute;a oral, prostodoncia e implantes, han disminuido un 18-20%.<br />\r\n&nbsp;</p>\r\n\r\n<p>Situaci&oacute;n de los dentistas<br />\r\n&nbsp;</p>\r\n\r\n<p>Seg&uacute;n los datos obtenidos, los dentistas trabajan un promedio de 120 horas mensuales y atienden a unos 190 pacientes. En este sentido, existe un mayor volumen de trabajo durante el primer semestre del a&ntilde;o. El 76% del tiempo laboral lo emplean en actividades asistenciales, un 13% a tareas administrativas y un 11% a otras actividades, como formaci&oacute;n. As&iacute;, de cada 10 horas de actividad asistencial, 6 se dedican a tratamientos curativos, 2 a actividades preventivas y 2 a revisiones de pacientes.<br />\r\n&nbsp;</p>\r\n\r\n<p>Con relaci&oacute;n a su situaci&oacute;n econ&oacute;mica, un 27% de los dentistas estiman que sus ingresos se redujeron de 2015 a 2019. En 2020, como consecuencia de la pandemia COVID-19, el impacto en los ingresos ser&aacute; muy significativo. El an&aacute;lisis de la encuesta realizada a cerca de 3.000 dentistas espa&ntilde;oles en noviembre de 2020 muestra que 9 de cada 10 dentistas encuestados esperaban una reducci&oacute;n de los ingresos. La cuant&iacute;a esperada de reducci&oacute;n es muy variable, predominando los que la estiman entre un 11-20% (27% de la muestra) y un 21-30% (27%).<br />\r\n<br />\r\nUno de cada 10 dentistas piensa que esta reducci&oacute;n incluso superar&aacute; el 40%. Estas cifras, unidas a la solicitud de ayudas (ERTEs) en cerca del 30% de las cl&iacute;nicas y al hecho de que durante el periodo hayan perdido su trabajo un 3% de los encuestados, muestran el alcance y el impacto de la crisis en la profesi&oacute;n dental.<br />\r\n&nbsp;</p>\r\n\r\n<p>Por &uacute;ltimo, el an&aacute;lisis confirma que las principales preocupaciones de los dentistas encuestados son la pl&eacute;tora profesional, la necesidad de legislar la publicidad sanitaria e incrementar los controles de las cl&iacute;nicas dentales por parte de la Administraci&oacute;n.</p>\r\n', 'juanjuanjuan.jpg', '2021-02-25 18:17:31', '2021-02-25 19:07:44', NULL, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -222,7 +223,7 @@ INSERT INTO `chat` (`id`, `session_id`, `user_id`, `name`, `message`, `created_o
 (44, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'lkj', '2021-01-29 19:50:11', '2021-01-29 19:50:11'),
 (45, '8bj71a8439s2di7fi7ck1dped8', 4, 'cintia', 'asdasdasda', '2021-02-10 14:17:18', '2021-02-10 14:17:18'),
 (46, '8bj71a8439s2di7fi7ck1dped8', 2, 'admin', 'asdasd', '2021-02-10 14:17:22', '2021-02-10 14:17:22'),
-(47, 'n12nko1udb2q6ufbvf2mpmj1uv', 3, 'david', 'hola', '2021-02-20 18:53:22', NULL);
+(47, 'n12nko1udb2q6ufbvf2mpmj1uv', 3, 'david', 'hola', '2021-02-24 19:13:39', '2021-02-24 19:13:39');
 
 -- --------------------------------------------------------
 
@@ -293,19 +294,27 @@ CREATE TABLE `images` (
   `name` varchar(255) NOT NULL,
   `src` varchar(255) NOT NULL,
   `alt` varchar(255) NOT NULL,
-  `style` varchar(255) DEFAULT NULL
+  `dir` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `images`
 --
 
-INSERT INTO `images` (`id`, `name`, `src`, `alt`, `style`) VALUES
-(8, 'diente', '../../images/uploads/aboutUsImage1.png', 'diente', ''),
-(754, 'autobus', '../../images/uploads/compartecoche.png', 'autobus', 'float:left; height:32px; width:32px'),
-(755, 'Director', '../../images/uploads/juanjuanjuan.jpg', 'director', ''),
-(758, 'YOYO', '../../images/uploads/1579004124255489.jpg', 'hitler', 'afas'),
-(759, 'Nueva Imagen', '../../images/uploads/40674904142_5c0c3c8676_o64.jpg', 'Perro', '');
+INSERT INTO `images` (`id`, `name`, `src`, `alt`, `dir`) VALUES
+(8, 'diente', 'aboutUsImage1.png', 'diente', 'uploads'),
+(754, 'autobus', 'compartecoche.png', 'autobus', 'uploads'),
+(755, 'Director', 'juanjuanjuan.jpg', 'director', 'uploads'),
+(758, 'YOYO', '1579004124255489.jpg', 'hitler', 'uploads'),
+(759, 'Nueva Imagen', '40674904142_5c0c3c8676_o64.jpg', 'Perro', 'uploads'),
+(760, 'Fuente', 'fuente2100.gif', 'Fuente', 'uploads'),
+(761, 'Juan Jesus Bernal Garcia', 'team-152.png', 'Juan Jesus', NULL),
+(762, 'Ana Bernal García', 'team-2100.png', 'Ana Bernal', NULL),
+(763, 'David', 'testimonial-125.png', '', NULL),
+(764, 'Doctor Pedro Sánchez', 'team-363.png', 'Pedro Sanchez', NULL),
+(765, 'Dra. Isabel Muñoz', 'team-413.png', 'Isabel Muñoz', NULL),
+(766, 'Personas Anónimas 1', 'testimonial-286.png', 'anonimo', NULL),
+(767, 'Personas Anónimas 2', 'testimonial-352.png', 'Anonimas 2', NULL);
 
 -- --------------------------------------------------------
 
@@ -356,8 +365,8 @@ CREATE TABLE `professionals` (
 --
 
 INSERT INTO `professionals` (`id`, `image`, `info`, `tr`, `name`, `degree`, `job`, `enabled`) VALUES
-(1, 'team-1.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies quam a ex tristique, id convallis ipsum molestie. Cras congue ultricies enim. Sed finibus porta est commodo volutpat. Nunc sed tristique dui. Praesent mattis ante eu nibh scelerisque pulvinar ac a ipsum. In interdum nisi at odio volutpat tincidunt. Aliquam elementum neque at ex tincidunt ultricies. Duis dapibus scelerisque maximus. Vestibulum eu accumsan nisi, ut accumsan mauris. Vivamus eget tincidunt mauris. Vestibulum eleifend viverra metus, ac tempor lectus. Aliquam ullamcorper porttitor sodales. Integer luctus metus sem, et interdum nisi facilisis et. Donec ut neque eu nunc mollis blandit venenatis sit amet odio.Nam malesuada, dui sit amet bibendum aliquam, nulla dui consequat orci, nec consequat dolor lectus ac dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent pharetra tempor molestie. Maecenas ac purus a libero efficitur rutrum. Pellentesque imperdiet arcu tortor. Nam nisi dui, eleifend et blandit non, commodo eget nisi. Vestibulum porttitor vestibulum nulla sit amet efficitur. Curabitur ac nibh turpis.', 'Dr.', 'Juan Jesús Bernal García', 'Ortodentista', 'Nuestro dentista profesioanal', 1),
-(3, 'team-2.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies quam a ex tristique, id convallis ipsum molestie. Cras congue ultricies enim. Sed finibus porta est commodo volutpat. Nunc sed tristique dui. Praesent mattis ante eu nibh scelerisque pulvinar ac a ipsum. In interdum nisi at odio volutpat tincidunt. Aliquam elementum neque at ex tincidunt ultricies. Duis dapibus scelerisque maximus. Vestibulum eu accumsan nisi, ut accumsan mauris. Vivamus eget tincidunt mauris. Vestibulum eleifend viverra metus, ac tempor lectus. Aliquam ullamcorper porttitor sodales. Integer luctus metus sem, et interdum nisi facilisis et. Donec ut neque eu nunc mollis blandit venenatis sit amet odio.Nam malesuada, dui sit amet bibendum aliquam, nulla dui consequat orci, nec consequat dolor lectus ac dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent pharetra tempor molestie. Maecenas ac purus a libero efficitur rutrum. Pellentesque imperdiet arcu tortor. Nam nisi dui, eleifend et blandit non, commodo eget nisi. Vestibulum porttitor vestibulum nulla sit amet efficitur. Curabitur ac nibh turpis.', 'Dra.', 'Ana Bernal García', 'Mecánico dentista', 'lorem ipsum', 1);
+(1, 'team-152.png', 'Dr. Juan es el Director de SonriseClinic con una amplia experiencia en el tratamiento de las correcciones.', 'Dr.', 'Juan Jesús Bernal García', 'Ortodentista', 'Director', 1),
+(3, 'team-2100.png', 'La Doctora Dª. Ana Bernal se ha formado en el prestigioso Institute Dental of Massachusetts adquiriendo una experiencia inmejorable en las intervenciones quirúrgicas y de corrección maxilofacial que realizamos en nuestra propia clínica con las máximas garantías.', 'Dra.', 'Ana Bernal García', 'Cirujía maxilofacial', 'Quirófano', 1);
 
 -- --------------------------------------------------------
 
@@ -457,8 +466,9 @@ CREATE TABLE `testimonial` (
 --
 
 INSERT INTO `testimonial` (`id`, `name`, `occupation`, `image`, `comment`, `enabled`) VALUES
-(1, 'David Bermudez', 'Funcionario', '', 'Una clínica espectacular en cuanto a organización y equipamiento con los mejores profesionales que he conocido. A partir de ahora recomendaré SonriseClinic a familia y amigos. Gracias', 1),
-(2, 'Cintia Cabrera', 'Estudiante', '', 'Pues a mi no me gusta nada!!', 1);
+(1, 'David Bermudez', 'Funcionario', 'testimonial-125.png', 'Una clínica espectacular en cuanto a organización y equipamiento con los mejores profesionales que he conocido. A partir de ahora recomendaré SonriseClinic a familia y amigos. Gracias', 1),
+(2, 'Cintia Cabrera', 'Estudiante', 'team-2100.png', 'Pues a mi no me gusta nada!!', 1),
+(3, 'John Smith', 'Asesor Fiscal', 'testimonial-286.png', 'Yo sólo quería que me sacasen una muela, pero salí sin muela y sin pasta', 1);
 
 -- --------------------------------------------------------
 
@@ -496,7 +506,7 @@ CREATE TABLE `treatmentsinterventions` (
   `categorie` int(1) NOT NULL,
   `duration` int(3) NOT NULL,
   `price` float(6,2) NOT NULL,
-  `info` varchar(400) NOT NULL,
+  `info` text NOT NULL,
   `image` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -505,20 +515,20 @@ CREATE TABLE `treatmentsinterventions` (
 --
 
 INSERT INTO `treatmentsinterventions` (`id`, `name`, `categorie`, `duration`, `price`, `info`, `image`) VALUES
-(1, 'Obturacion', 1, 50, 45.00, 'LorYm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit', 'http://clinica.es/images/uploads/juanjuanjuan.jpg'),
-(2, 'Tratamiento endodóntico', 1, 90, 235.00, 'LoreM ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor', NULL),
-(3, 'Blanqueamiento', 2, 45, 220.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ', NULL),
-(4, 'Carillas dentales', 1, 120, 270.00, 'Loremzo ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit', 'http://clinica.es/images/uploads/aboutUsImage1.png'),
-(5, 'Coronas de circonio', 1, 140, 700.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ', 'http://clinica.es/images/uploads/compartecoche.png'),
+(1, 'Obturacion', 1, 50, 45.00, 'LorYm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit', 'juanjuanjuan.jpg'),
+(2, 'Tratamiento endodóntico', 1, 90, 235.00, 'LoreM ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor', '1579004124255489.jpg'),
+(3, 'Blanqueamiento', 1, 45, 220.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ', 'aboutUsImage1.png'),
+(4, 'Carillas dentales', 1, 120, 270.00, 'Las carillas dentales son unas finas láminas de porcelana o composite que se adhieren a la cara visible del diente para mejorar su aspecto estético.\r\n\r\nDebido a su finalidad estética, estas láminas se colocan en la cara vestibular de los dientes frontales, por ser los más visibles cuando sonreímos.\r\n\r\nPor tanto, su objetivo no es el de mejorar la funcionalidad de las piezas dentales, solo el de darles un aspecto más armónico.\r\n\r\nSon elementos que se crean a medida de cada paciente con el fin de que tenga la mayor naturalidad posible al ser colocados junto al resto de dientes.', 'compartecoche.png'),
+(5, 'Coronas de circonio', 1, 140, 700.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ', 'juanjuanjuan.jpg'),
 (6, 'Brackets estéticos', 3, 90, 3500.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit', NULL),
 (7, 'Sistema damon', 3, 75, 2300.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreuptaborum', NULL),
 (8, 'Invisalign', 3, 45, 4780.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repre voluptate um', NULL),
-(9, 'Implantes dentales ', 4, 90, 1300.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vest laborum', NULL),
+(9, 'Implantes dentales ', 1, 90, 1300.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vest laborum', 'fuente2100.gif'),
 (10, 'Extracción de cordales', 4, 40, 15.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolorhenderit ind est laborum', NULL),
 (11, 'Regeneración oseas', 1, 50, 60.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu laborum', NULL),
-(12, 'Pulpotomía ', 1, 35, 40.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate um', 'http://clinica.es/images/uploads/compartecoche.png'),
+(12, 'Pulpotomía ', 1, 35, 40.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate um', 'compartecoche.png'),
 (13, 'Mantenedores de espacioo', 1, 40, 90.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit iid est laborum', NULL),
-(29, 'Estudio', 5, 30, 30.00, 'Analizamos el crecimiento y formación dentaria de niños menores de 16 años, elaborando un exhaustivo informe sobre el estado y las incidencias con mayor probabilidad ', '<br />\r\n<b>Notice</b>:  Undefined variable: fields in <b>E:xamppmyProjectsclinicaadmin	reatmentsInterventions.php</b> on line <b>143</b><br />\r\n<br />\r\n<b>Notice</b>:  Trying to access array offset on value of type null in <b>E:xamppmyProjectsclinicaadmin	');
+(29, 'Estudio', 5, 30, 30.00, 'Analizamos el crecimiento y formación dentaria de niños menores de 16 años, elaborando un exhaustivo informe sobre el estado y las incidencias con mayor probabilidad ', NULL);
 
 -- --------------------------------------------------------
 
@@ -551,7 +561,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `address`, `postalcode`, `city`, `province`, `phone`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-24 16:55:50', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-25 16:31:48', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
 (3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-24 16:57:56', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (38, '60362cdb001c6', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[CUSTOMER]', NULL, 'es', 'David', 'Bermudez', 'davidbermudez@jerez.es', 'Calle Parque de Doñana', '11400', 'Jerez', 'Cádiz', '654654654', 1);
@@ -565,8 +575,7 @@ INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, 
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `author` (`author`),
-  ADD KEY `imagen_id` (`image_id`);
+  ADD KEY `author` (`author`);
 
 --
 -- Indices de la tabla `block`
@@ -695,7 +704,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `block`
@@ -755,7 +764,7 @@ ALTER TABLE `faq`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=760;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=768;
 
 --
 -- AUTO_INCREMENT de la tabla `pages`
@@ -791,7 +800,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT de la tabla `testimonial`
 --
 ALTER TABLE `testimonial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `treatmentscategories`

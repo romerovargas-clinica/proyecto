@@ -12,13 +12,13 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   // Campos Obligatorios
   $id = $_POST['inputId'];
   $name = $_POST['inputName'];
-  $image = $_POST['inputImage'];
+  $imageFile = $_POST['inputImageFile'];
   $info = $_POST['inputInfo'];
-  if ($name != "" && $image != "" && $info != "") :
+  if ($name != "" && $imageFile != "" && $info != "") :
     //update($table, $update, $where, $SQLInyection = 'YES')
     $anarray = array();
     $anarray["name"] = $name;
-    $anarray["image"] = $image;
+    $anarray["image"] = $imageFile;
     $anarray["info"] = $info;
     $recordset = $db->update("treatmentsCategories", $anarray, "id = " . $id);
     if (!$recordset) :
@@ -31,18 +31,11 @@ endif;
 //añadir
 if (isset($_POST['InputNew'])) :
   $name = $_POST['inputName'];
-  $image = $_POST['inputImage'];
+  $imageFile = $_POST['inputImageFile'];
   $info = $_POST['inputInfo'];
 
-  $repeat = $db->send("SELECT Count(*) as repetidos FROM treatmentscategories a WHERE name='$name' ;");
-  if ($repeat[0]['repetidos']) {
-    $error = __('err_RepeatCategorie', $lang);
-  } else {
-    echo "estoy funcionando";
-    $db->send("INSERT INTO `treatmentscategories` (`name`, `info`, `image`) VALUES
-    ('$name', '$image', '$info');");
-  }
-
+  $db->send("INSERT INTO `treatmentscategories` (`name`, `info`, `image`) VALUES
+    ('$name', '$imageFile', '$info');");
 endif;
 ?>
 
@@ -61,9 +54,8 @@ endif;
       <tr>
         <th>#</th>
         <th><?= __('frm_FirstName', $lang) ?></th>
-        <th><?= __('frm_Image', $lang) ?></th>
+        <th><?= __('frm_Image', $lang) ?> (1:1)</th>
         <th><?= __('frm_Desc', $lang) ?></th>
-
       </tr>
     </thead>
     <tbody>
@@ -79,7 +71,14 @@ endif;
           <tr class="tbl-h<?= $class ?>" onclick="window.location='admin.php?section=treatmentsCategories&edit=<?= $record['id'] ?>';">
             <td><?= $record["id"] ?></td>
             <td><?= $record["name"] ?></td>
-            <td><?= $record["image"] ?></td>
+            <td>
+              <?php if ($record["image"] != null) : ?>
+                <img src="images/uploads/<?= $record["image"] ?>" class="crop rounded d-block" alt="" height="30">
+              <?php else : ?>
+                <img src="images/blank.png" class="crop rounded d-block" alt="" height="30">
+              <?php endif; ?>
+            </td>
+            </td>
             <td><?= $record["info"] ?></td>
 
           </tr>
@@ -107,16 +106,20 @@ if (isset($_GET['AddNew'])) : ?>
           <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" required>
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputImage" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputImage" id="inputImage" required>
+          <div class="card-img-top"><img src="images/blank.png" class="crop rounded d-block" alt="" height="50" onclick="changeImg();" id="img_base"></div>
+          <input type="hidden" name="inputImageFile" value="" id="inputImageFile">
+          <input type="hidden" name="inputImageDir" value="" id="inputImageDir">
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputInfo" class="col-sm-2 col-form-label"><?= __('frm_Desc', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="inputInfo" class="form-control form-control-sm" name="inputInfo" id="inputInfo" required>
+          <textarea class="form-control form-control-sm" name="inputInfo" id="inputInfo" required></textarea>
         </div>
       </div>
 
@@ -132,7 +135,7 @@ if (isset($_GET['edit'])) :
   if (isset($name)) :
     $fields[0]["id"] = $id;
     $fields[0]["name"] = $name;
-    $fields[0]["image"] = $image;
+    $fields[0]["image"] = $imageFile;
     $fields[0]["info"] = $info;
 
   else :
@@ -150,16 +153,25 @@ if (isset($_GET['edit'])) :
           <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" value="<?= $fields[0]["name"] ?>">
         </div>
       </div>
+
       <div class="mb-6 row">
-        <label for="inputImage" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
+        <label for="inputImageFile" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputImage" id="inputImage" value="<?= $fields[0]["image"] ?>">
+          <?php if ($fields[0]["image"] == null) :
+            $_img = "images/blank.png";
+          else :
+            $_img = "images/uploads/" . $fields[0]["image"];
+          endif; ?>
+          <div class="card-img-top"><img src="<?= $_img ?>" class="crop rounded d-block" alt="" height="50" onclick="changeImg();" id="img_base"></div>
+          <input type="hidden" name="inputImageFile" value="<?= $fields[0]["image"] ?>" id="inputImageFile">
+          <input type="hidden" name="inputImageDir" value="" id="inputImageDir">
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputInfo" class="col-sm-2 col-form-label"><?= __('frm_Desc', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="inputInfo" class="form-control form-control-sm" name="inputInfo" id="inputInfo" value="<?= $fields[0]["info"] ?>">
+          <textarea class="form-control form-control-sm" name="inputInfo" id="inputInfo" required><?= $fields[0]["info"] ?></textarea>
         </div>
       </div>
 
@@ -192,6 +204,13 @@ if (isset($_GET['edit'])) :
 </div>
 
 <script>
+  function changeImg() {
+    console.log("Activo");
+    var configuracion_ventana = "menubar=no,toolbar=no,location=yes,resizable=no,scrollbars=yes,status=no,height=500,width=800";
+    var anotherwindow = window.open("filebrowser.php", "test", configuracion_ventana);
+    //anotherwindow.bgColor = "black";
+  }
+
   function aceptar() {
     document.getElementById("inputDelete").value = "1";
     //$('#myModal').modal('hide');

@@ -27,7 +27,12 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 					<div class="col-xl-4 col-lg-4 col-md-6">
 						<div class="single-blog mb-30 wow fadeInUp" data-wow-delay=".<?= $cont * 2 ?>s">
 							<div class="blog-img">
-								<a href="#"><img src="assets/img/blog/blog-1.png" alt=""></a>
+								<?php if ($article["image"] == null) :
+									$_img = "images/blank.png";
+								else :
+									$_img = "images/uploads/" . $article["image"];
+								endif; ?>
+								<a href="#"><img src="<?= $_img ?>" alt=""></a>
 							</div>
 							<div class="blog-content">
 								<h4><a href="#"><?= $article["title"] ?></a></h4>

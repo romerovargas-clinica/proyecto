@@ -57,7 +57,7 @@ foreach ($categories as $categorie) {
 
   <?php
   $table = "treatmentsinterventions";
-  $maxRow = 10; // Número de registros a mostrar
+  $maxRow = 5; // Número de registros a mostrar
   include "admin/pagination.php";
   ?>
 
@@ -199,6 +199,7 @@ if (isset($_GET['edit'])) :
           <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" value="<?= $fields[0]["name"] ?>">
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputCategorie" class="col-sm-2 col-form-label"><?= __('frm_Categorie', $lang) ?></label>
         <div class="col-sm-6">
@@ -226,20 +227,21 @@ if (isset($_GET['edit'])) :
           <input type="hidden" name="inputImageDir" value="" id="inputImageDir">
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputInfo" class="col-sm-2 col-form-label"><?= __('frm_Desc', $lang) ?></label>
         <div class="col-sm-6">
-          <textarea cols="100" name="inputInfo" id="inputInfo"><?= $fields[0]["info"] ?></textarea>
+          <textarea class="form-control form-control-sm" name="inputInfo" id="inputInfo"><?= $fields[0]["info"] ?></textarea>
         </div>
       </div>
       <div class="mb-6 row">
-        <label for="inputDuration" class="col-sm-2 col-form-label"><?= __('frm_Duration', $lang) ?></label>
+        <label for="inputDuration" class="col-sm-2 col-form-label"><?= __('frm_Duration', $lang) ?> (min)</label>
         <div class="col-sm-6">
           <input type="number" class="form-control form-control-sm" name="inputDuration" id="inputDuration" min="0" value="<?= $fields[0]["duration"] ?>">
         </div>
       </div>
       <div class="mb-6 row">
-        <label for="inputPrice" class="col-sm-2 col-form-label"><?= __('frm_Price', $lang) ?></label>
+        <label for="inputPrice" class="col-sm-2 col-form-label"><?= __('frm_Price', $lang) ?> (€)</label>
         <div class="col-sm-6">
           <input type="number" class="form-control form-control-sm" name="inputPrice" id="inputPrice" min="0" step=".01" value="<?= $fields[0]["price"] ?>">
         </div>

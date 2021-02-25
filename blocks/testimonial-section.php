@@ -52,10 +52,10 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 							<?php if ($opiniones) :
 								foreach ($opiniones as $opinion) : ?>
 									<li class="testimonial-img">
-										<?php if (file_exists($opinion["image"])) : ?>
-											<img src="<?= $opinion["image"] ?>" alt="">
+										<?php if (file_exists("images/uploads/" . $opinion["image"])) : ?>
+											<img src="images/uploads/<?= $opinion["image"] ?>" alt="">
 										<?php else : ?>
-											<img src="<?= $opinion["image"] ?>" alt="">
+											<img src="images/blank.png" alt="">
 										<?php endif; ?>
 									</li>
 							<?php endforeach;

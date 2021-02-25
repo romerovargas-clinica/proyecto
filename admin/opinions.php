@@ -132,7 +132,7 @@ if (isset($_GET['AddNew'])) : ?>
       <div class="mb-6 row">
         <label for="inputComment" class="col-sm-2 col-form-label"><?= __('frm_Comment', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputComment" id="inputComment" required>
+          <textarea class="form-control form-control-sm" name="inputComment" id="inputComment" required></textarea>
         </div>
       </div>
 
@@ -177,12 +177,14 @@ if (isset($_GET['edit'])) :
           <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" required value="<?= $fields[0]["name"] ?>">
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputOccupation" class="col-sm-2 col-form-label"><?= __('frm_Occupation', $lang) ?></label>
         <div class="col-sm-6">
           <input type="text" class="form-control form-control-sm" name="inputOccupation" id="inputOccupation" required value="<?= $fields[0]["occupation"] ?>">
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputImageFile" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
@@ -196,10 +198,11 @@ if (isset($_GET['edit'])) :
           <input type="hidden" name="inputImageDir" value="" id="inputImageDir">
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputComment" class="col-sm-2 col-form-label"><?= __('frm_Comment', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputComment" id="inputComment" required value="<?= $fields[0]["comment"] ?>">
+          <textarea class="form-control form-control-sm" name="inputComment" id="inputComment" required><?= $fields[0]["comment"] ?></textarea>
         </div>
       </div>
       <div class="mb-6 row">

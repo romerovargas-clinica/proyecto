@@ -107,6 +107,7 @@ $texts = array(
   'frm_Title' => "Título",
   'frm_Subtitle' => "Subtítulo",
   'frm_Text' => "Texto",
+  'frm_Author' => "Autor",
   'frm_Image' => "Imagen",
   'frm_Desc' => "Descripción",
   'frm_Duration' => "Duración",
