@@ -9,14 +9,13 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   $id = $_POST['inputId'];
   $name = $_POST['inputName'];
   $alt = $_POST['inputAlt'];
-  $style = $_POST['inputStyle'];
-  $src = $_POST['inputSrc'];
+  $src = $_POST['inputImageFile'];
   if ($name != "" && $alt != "") :
     //update($table, $update, $where, $SQLInyection = 'YES')
     $anarray = array();
     $anarray["name"] = $name;
     $anarray["alt"] = $alt;
-    $anarray["style"] = $style;
+    $anarray["src"] = $src;
     $recordset = $db->update("images", $anarray, "id = " . $id);
     if (!$recordset) :
       $error = "Error al actualizar los datos"; // To-Do Translate
@@ -38,7 +37,6 @@ if (isset($_POST['inputNew'])) :
   $anarray = array();
   $anarray['name'] = $_POST['inputName'];
   $anarray['alt'] = $_POST['inputAlt'];
-  //$anarray['style'] = $_POST['inputStyle'];
   // Archivos
   if (isset($_FILES['inputSrc'])) :
     $errores = array();
@@ -65,9 +63,8 @@ if (isset($_POST['inputNew'])) :
       $nombreCompleto = $directorioSubida . $nombreArchivo . "." . $extension;
       move_uploaded_file($directorioTemp, $nombreCompleto);
       // mensaje de ok
-
       // actualizamos la base
-      $anarray["src"] = "../../" . $nombreCompleto;
+      $anarray["src"] = $nombreArchivo . "." . $extension;
       $recordset = $db->insert("images", $anarray);
     }
   endif;
@@ -79,7 +76,7 @@ endif;
 
   <?php
   $table = "images";
-  $maxRow = 8; // Número de registros a mostrar
+  $maxRow = 5; // Número de registros a mostrar
   include "admin/pagination.php";
   ?>
 
@@ -126,7 +123,7 @@ if (isset($_GET['AddNew'])) : ?>
         </div>
       </div>
       <div class="mb-6 row">
-        <label for="inputSrc" class="col-sm-2 col-form-label"><?= __('frm_Src', $lang) ?></label>
+        <label for="inputSrc" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
           <input type="file" name="inputSrc" id="inputSrc">
           <input type="hidden" name="MAX_FILE_SIZE" value="<?= $max_file_size; ?>" />
@@ -136,12 +133,6 @@ if (isset($_GET['AddNew'])) : ?>
         <label for="inputAlt" class="col-sm-2 col-form-label"><?= __('frm_lblLong', $lang) ?></label>
         <div class="col-sm-6">
           <input type="text" class="form-control form-control-sm" name="inputAlt" id="inputAlt" value="">
-        </div>
-      </div>
-      <div class="mb-6 row">
-        <label for="inputStyle" class="col-sm-2 col-form-label"><?= __('frm_Style', $lang) ?></label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputStyle" id="inputStyle" value="" disabled>
         </div>
       </div>
       <input type="hidden" name="inputNew">
@@ -155,7 +146,7 @@ if (isset($_GET['edit'])) :
     $fields[0]["name"] = $name;
     $fields[0]["src"] = $src;
     $fields[0]["alt"] = $alt;
-    $fields[0]["dir"] = $dir;
+  //$fields[0]["dir"] = $dir;
   else :
     $fields = $db->send("SELECT * FROM $adm_pag WHERE id = '" . $_GET['edit'] . "';");
   endif;
@@ -173,21 +164,22 @@ if (isset($_GET['edit'])) :
         </div>
       </div>
       <div class="mb-6 row">
-        <label for="inputSrc" class="col-sm-2 col-form-label"><?= __('frm_Src', $lang) ?></label>
+        <?php if ($fields[0]["src"] == null) :
+          $_img = "images/blank.png";
+        else :
+          $_img = "images/uploads/" . $fields[0]["src"];
+        endif; ?>
+        <label for="inputSrc" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
-          <input type="text" readonly class="form-control form-control-sm" name="inputSrc" id="inputSrc" value="<?= $fields[0]["src"] ?>">
+          <div class="card-img-top"><img src="<?= $_img ?>" class="crop rounded d-block" alt="" height="50" id="img_base"></div>
+          <input type="hidden" name="inputImageFile" value="<?= $fields[0]["src"] ?>" id="inputImageFile">
+          <input type="hidden" name="inputImageDir" value="" id="inputImageDir">
         </div>
       </div>
       <div class="mb-6 row">
         <label for="inputAlt" class="col-sm-2 col-form-label"><?= __('frm_lblLong', $lang) ?></label>
         <div class="col-sm-6">
           <input type="text" class="form-control form-control-sm" name="inputAlt" id="inputAlt" value="<?= $fields[0]["alt"] ?>">
-        </div>
-      </div>
-      <div class="mb-6 row">
-        <label for="inputStyle" class="col-sm-2 col-form-label"><?= __('frm_Style', $lang) ?></label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control form-control-sm" name="inputStyle" id="inputStyle" value="<?= $fields[0]["style"] ?>">
         </div>
       </div>
       <input type="hidden" id="inputId" name="inputId" value="<?= $fields[0]["id"] ?>">
