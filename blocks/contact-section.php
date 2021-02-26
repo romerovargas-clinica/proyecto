@@ -47,7 +47,7 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 					</div>
 					<div class="row">
 						<div class="col-xl-12">
-							<button class="btn theme-btn" onClick="sendContact()">Send Message</button>
+							<button class="btn theme-btn" onClick="sendContact()"><?= __('frm_Send', $lang) ?></button>
 						</div>
 					</div>
 				</div>
@@ -72,6 +72,10 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 					$('#mail-status').html(m["mensaje"]);
 					$('#mail-status').attr("class", "alert alert-success");
 					$('#mail-status').attr("style", "visibility = visible");
+					$('#name').val("");
+					$('#email').val("");
+					$('#subject').val("");
+					$('#message').val("");
 					$('#name').empty();
 					$('#email').empty();
 					$('#subject').empty();

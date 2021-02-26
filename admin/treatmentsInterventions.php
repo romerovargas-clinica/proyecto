@@ -17,7 +17,7 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   $info = $_POST['inputInfo'];
   $duration = $_POST['inputDuration'];
   $price = $_POST['inputPrice'];
-  //TO-DO: hay que adaptar la comprobacion de los datos para esta parte
+
   $anarray = array();
   $anarray["name"] = $name;
   $anarray["categorie"] = $categorie;
@@ -45,9 +45,9 @@ endif;
 
 // SQL for ForeignKey table
 $categories = $db->send("SELECT name FROM treatmentsCategories;");
-$categoriesNames = array(); //nombre de las
-foreach ($categories as $categorie) {
-  array_push($categoriesNames, $categorie['name']);
+$categoriesNames = array(); //nombre de las categorías
+foreach ($categories as $cat) {
+  array_push($categoriesNames, $cat['name']);
 }
 ?>
 
@@ -108,10 +108,7 @@ foreach ($categories as $categorie) {
   </table>
 </div>
 
-
 <div class="container text-warning bg-danger"><?php if ($error != "") echo $error; ?></div>
-
-
 
 <?php
 //Añadir nueva Intervencion
@@ -183,7 +180,6 @@ if (isset($_GET['edit'])) :
     $fields[0]["info"] = $info;
     $fields[0]["duration"] = $duration;
     $fields[0]["price"] = $price;
-
   else :
     $fields = $db->send("SELECT * FROM treatmentsInterventions WHERE id = " . $_GET['edit']);
   endif;
@@ -208,8 +204,8 @@ if (isset($_GET['edit'])) :
             for ($i = 0; $i < count($categoriesNames); $i++) {
               $key = $categoriesNames[$i];
             ?>
-              <option value="<?= $i + 1 ?>" <?= $fields[0]["categorie"] == $key ? " selected" : "" ?>> <?= $key ?> </option>
-            <?php }; ?>
+              <option value="<?= $i + 1 ?>" <?= $fields[0]["categorie"] == $i + 1 ? " selected" : "" ?>> <?= $key ?> </option>
+            <?php } ?>
           </select>
         </div>
       </div>
@@ -223,7 +219,7 @@ if (isset($_GET['edit'])) :
             $_img = "images/uploads/" . $fields[0]["image"];
           endif; ?>
           <div class="card-img-top"><img src="<?= $_img ?>" class="crop rounded d-block" alt="" height="50" onclick="changeImg();" id="img_base"></div>
-          <input type="hidden" name="inputImageFile" value="" id="inputImageFile">
+          <input type="hidden" name="inputImageFile" value="<?= $fields[0]["image"] ?>" id="inputImageFile">
           <input type="hidden" name="inputImageDir" value="" id="inputImageDir">
         </div>
       </div>

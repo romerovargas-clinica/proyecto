@@ -87,7 +87,7 @@ if (!$account) die("ERROR: La clave de validación no es válida"); // To-Do tra
           </div>
           <div class="row">
             <div class="col-xl-12">
-              <button class="btn theme-btn" onClick="verifyPass()">Send Password</button>
+              <button class="btn theme-btn" onClick="verifyPass()"><?= __("frm_Send", $lang) ?></button>
               <div id="loader"></div>
             </div>
           </div>

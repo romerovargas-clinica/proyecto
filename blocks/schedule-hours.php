@@ -100,8 +100,8 @@ if ($trataiments) :
   <table class="table">
     <tr>
       <td>
-        <div class='badge bg-primary me-1'><?= $trataiments[0]['name'] ?></div>
-        <div class='badge bg-primary me-1' id="duration" value="<?= $trataiments[0]['duration'] ?>"><?= $trataiments[0]['duration'] . " minutos" ?></div>
+        <div class='me-1'><?= $trataiments[0]['name'] ?>:</div>
+        <div class='me-1' id="duration" value="<?= $trataiments[0]['duration'] ?>"><?= $trataiments[0]['duration'] . " minutos" ?></div>
 
         <?php
         if ($citas) :

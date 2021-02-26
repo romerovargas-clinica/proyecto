@@ -96,7 +96,7 @@ endif;
               <?php foreach ($records as $record) : ?>
                 <div class="card mb-3" onclick="window.location='admin.php?section=images&page=<?= ($page) ?>&edit=<?= $record['id'] ?>';">
                   <div class="card-header"><?= $record['name'] ?></div>
-                  <div class="card-img-top"><img src="/images/uploads/<?= $record['src'] ?>" class="crop rounded d-block" alt="<?= $record['id'] ?>" height="50"></div>
+                  <div class="card-img-top"><img src="images/uploads/<?= $record['src'] ?>" class="crop rounded d-block" alt="<?= $record['id'] ?>" height="50"></div>
                   <div class="card-title small text-truncate text-center" style="max-width:150px"><?= $record['alt'] ?></div>
                 </div>
               <?php endforeach; ?>
@@ -136,7 +136,7 @@ if (isset($_GET['AddNew'])) : ?>
         </div>
       </div>
       <input type="hidden" name="inputNew">
-      <button type="submit" class="btn btn-primary" name="bttn1"><?= __('btn_Update', $lang) ?></button>
+      <button type="submit" class="btn btn-primary" name="bttn1"><?= __('btn_Add', $lang) ?></button>
     </form>
   </div>
 <?php endif; ?>

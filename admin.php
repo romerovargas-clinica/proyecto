@@ -144,7 +144,7 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-left:219px">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Dashboard</h1>
+          <h1 class="h2"><?= __('mn_Admin', $lang) ?></h1>
         </div>
         <?php
         switch ($adm_pag):
@@ -159,10 +159,6 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
           case ("users"):
             $sectTitle = __('sect_users', $lang);
             include "admin/users.php";
-            break;
-          case ("announce"):
-            $sectTitle = __('announce', $lang);
-            include "admin/announce.php";
             break;
           case ("articles"):
             $sectTitle = __('sect_articles', $lang);

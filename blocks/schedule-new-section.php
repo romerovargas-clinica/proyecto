@@ -60,9 +60,6 @@ endswitch;
 
 <!-- ========================= cites-new-section start ========================= -->
 <section id="faq" class="faq-section">
-
-
-
   <div class="container-fluid bg-light p-2">
     <a name="schedule"></a>
     <div class="container p-2 mt-2 mb-2 bg-white">
@@ -106,27 +103,31 @@ endswitch;
           <div class="col-4 border border-2">
             <div class="bd-highlight fs-2">Tu cita</div><!-- to-do traducir -->
             <form id="frmCites" method="POST" action="cites.php?new">
-              <?php
-              if (isset($_SESSION["cite"]["intervention"])) :
-                $ndb = new DataBase();
-                $trataiments = $ndb->select("treatmentsinterventions", "id = " . $_SESSION["cite"]["intervention"]);
-                if ($trataiments) : ?>
-                  <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $trataiments[0]["name"] ?></a></span></h4>
-                <?php endif;
-                if (isset($_SESSION["cite"]["date"])) : ?>
-                  <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $_SESSION["cite"]["date"] ?></a></span></h4>
-                <?php
-                endif;
-                if (isset($_SESSION["cite"]["hourfrom"])) : ?>
-                  <h4><span class="badge bg-secondary mt-2"><a href="cites.php?new" class="text-decoration-none text-white"><?= $_SESSION["cite"]["hourfrom"] . " - " . $_SESSION["cite"]["houruntil"] ?></a></span></h4>
+              <div class="card">
+                <div class="card-body">
+                  <?php
+                  if (isset($_SESSION["cite"]["intervention"])) :
+                    $ndb = new DataBase();
+                    $trataiments = $ndb->select("treatmentsinterventions", "id = " . $_SESSION["cite"]["intervention"]);
+                    if ($trataiments) : ?>
+                      <h5 class="card-title">
+                        <a href="cites.php?new" class="text-decoration-none"><?= $trataiments[0]["name"] ?></a>
+                      </h5>
+                    <?php endif;
+                    if (isset($_SESSION["cite"]["date"])) : ?>
+                      <p class="card-text"><a href="cites.php?new" class="text-decoration-none"><?= $_SESSION["cite"]["date"] ?></a></p>
+                    <?php endif; ?>
+                </div>
+                <?php if (isset($_SESSION["cite"]["hourfrom"])) : ?>
+                  <p class="card-text"><a href="cites.php?new" class="text-decoration-none"><?= $_SESSION["cite"]["hourfrom"] . " - " . $_SESSION["cite"]["houruntil"] ?></a></p>
                   <input type="hidden" name="trataiments" value="<?= $_SESSION["cite"]["intervention"] ?>">
                   <input type="hidden" name="date" value="<?= $_SESSION["cite"]["date"] ?>">
                   <input type="hidden" name="hourfrom" value="<?= $_SESSION["cite"]["hourfrom"] ?>">
                   <input type="hidden" name="houruntil" value="<?= $_SESSION["cite"]["houruntil"] ?>">
-                  <button type="button" class="btn btn-primary btn-md m-5" data-bs-toggle="modal" data-bs-target="#myModal"><?= __('btn_NewCite', $lang) ?></button>
+                  <button type="button" class="btn theme-btn wow fadeInUp" data-wow-delay=".8s" data-bs-toggle="modal" data-bs-target="#myModal"><?= __('btn_NewCite', $lang) ?></button>
               <?php endif;
-              endif;
-              ?>
+                  endif; ?>
+              </div>
             </form>
           </div>
         <?php else : ?>

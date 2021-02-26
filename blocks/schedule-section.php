@@ -33,8 +33,10 @@ else :
         <div class="row">
           <?php if (isAuthenticated()) : ?>
             <div class="col-lg-8 col-md-10">
+
               <div class="faq-content-wrapper pt-90 pb-90">
                 <div class="faq-wrapper accordion" id="accordionExample">
+
                   <div class="faq-item mb-20">
                     <div id="headingOne">
                       <h5 class="mb-0">
@@ -91,13 +93,18 @@ else :
                     </div>
                   </div>
                 </div>
+                <div class="col-xl-4 text-center">
+                  <div class="faq-content-wrapper">
+                    <div class="mt-5">
+                      <a href="cites.php?new" class="btn theme-btn wow fadeInUp" data-wow-delay=".8s"><?= __('btn_NewCite', $lang) ?></a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-xl-4 text-center border">
-              <div class="faq-content-wrapper">
-                <div class="mt-5">
-                  <a href="cites.php?new" class="btn theme-btn wow fadeInUp" data-wow-delay=".8s"><?= __('btn_NewCite', $lang) ?></a>
-                </div>
+              <div class="" style="background: url('images/carousel/doctor-563429_640.jpg') no-repeat bottom right; height:100%;">
+
               </div>
             </div>
           <?php else : ?>

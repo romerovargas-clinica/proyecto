@@ -53,107 +53,65 @@
         </div>
       </div>
     </div>
-    <div class="navbar-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="navbar navbar-expand-lg">
-              <a class="navbar-brand" href="index.php">
-                <img src="assets/img/logo/logo-dark.png" style="width:280px" alt="Logo">
-              </a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="toggler-icon"></span>
-                <span class="toggler-icon"></span>
-                <span class="toggler-icon"></span>
-              </button>
-              <?php
-              if ($_SERVER['PHP_SELF'] == "/index.php") :
-                $href = "";
-              else :
-                $href = "index.php";
-              endif;
-              if (!isAuthenticated()) :
-              ?>
-                <nav class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <ul id="nav" class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                      <a class="active" href="<?= $href ?>#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?= $href ?>#about"><?= __('mn_AboutUs', $lang) ?></a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?= $href ?>#services"><?= __('mn_Speciality', $lang) ?></a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?= $href ?>#team"><?= __('mn_Team', $lang) ?></a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?= $href ?>#blog"><?= __('mn_News', $lang) ?></a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?= $href ?>#contact"><?= __('mn_Contact', $lang) ?></a>
-                    </li>
-                  </ul>
-                </nav> <!-- navbar collapse -->
-              <?php else : ?>
-                <nav class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <ul id="nav" class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                      <a class="active" href="<?= $href ?>#home">Home</a>
-                    </li>
+    <?php
+    if ($_SERVER['PHP_SELF'] == "/index.php") :
+      $href = "";
+    else :
+      $href = "index.php";
+    endif;
+    ?>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.php">
+          <img src="assets/img/logo/logo-dark.png" style="width:280px" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    <?php if (isset($_SESSION["roles"]) && $_SESSION["roles"] == "[ADMIN-USER]") : ?>
-                      <li class="nav-item">
-                        <a class="text-warning" href="admin.php"><?= __('mn_Admin', $lang) ?></a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="budget.php"><?= __('mn_budget', $lang) ?></a>
-                      </li>
-                    <?php else : ?>
-                      <li class="nav-item">
-                        <a href="cites.php"><?= __('mn_Cites', $lang) ?></a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="chat.php"><?= __('mn_Chat', $lang) ?></a>
-                      </li>
-                    <?php endif; ?>
-
-                    <li class="nav-item">
-                      <div class="dropdown">
-                        <button style="border: none; background-color:white;" class="dropdown-toggle " id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?= __('btn_More', $lang) ?>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2"> 
-                          <li class="dropdown-item">
-                            <a href="<?= $href ?>#about"><?= __('mn_AboutUs', $lang) ?></a>
-                          </li>
-                          <li class="dropdown-item">
-                            <a href="<?= $href ?>#services"><?= __('mn_Speciality', $lang) ?></a>
-                          </li>
-                          <li class="dropdown-item">
-                            <a href="<?= $href ?>#team"><?= __('mn_Team', $lang) ?></a>
-                          </li>
-                          <li class="dropdown-item">
-                            <a href="<?= $href ?>#blog"><?= __('mn_News', $lang) ?></a>
-                          </li>
-                          <li class="dropdown-item">
-                            <a href="<?= $href ?>#contact"><?= __('mn_Contact', $lang) ?></a>
-                          </li>
-
-                        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="<?= $href ?>#about"><?= __('mn_AboutUs', $lang) ?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= $href ?>#services"><?= __('mn_Speciality', $lang) ?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= $href ?>#team"><?= __('mn_Team', $lang) ?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= $href ?>#blog"><?= __('mn_News', $lang) ?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= $href ?>#contact"><?= __('mn_Contact', $lang) ?></a>
+            </li>
+            <?php if (isAuthenticated()) : ?>
+              <!-- Menu Usuario -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <?= $_SESSION['firstname'] ?>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="cites.php"><?= __('mn_Cites', $lang) ?></a></li>
+                  <li><a class="dropdown-item" href="chat.php"><?= __('mn_Chat', $lang) ?></a></li>
+                  <?php if (isset($_SESSION["roles"]) && $_SESSION["roles"] == "[ADMIN-USER]") : ?>
+                    <li>
+                      <hr class="dropdown-divider">
                     </li>
-
-
-                  </ul>
-                </nav> <!-- navbar collapse -->
-              <?php endif ?>
-            </div> <!-- navbar -->
-          </div>
-        </div> <!-- row -->
-      </div> <!-- container -->
-    </div> <!-- navbar area -->
-
+                    <li><a class="dropdown-item" href="admin.php"><?= __('mn_Admin', $lang) ?></a></li>
+                    <li><a class="dropdown-item" href="budget.php"><?= __('mn_budget', $lang) ?></a></li>
+                  <?php endif; ?>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="logout.php"><?= __('mn_Logout', $lang) ?></a></li>
+                </ul>
+              </li>
+            <?php endif; ?>
+        </div>
+      </div>
+    </nav>
   </div>
 </header>
 <!-- ========================= header end ========================= -->

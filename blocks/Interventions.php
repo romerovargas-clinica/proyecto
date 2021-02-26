@@ -42,7 +42,23 @@ $categories = $db->send("SELECT * FROM treatmentscategories WHERE id = $categori
                 </div>
                 <div id="collapse<?= $collapsed[$cont] ?>" class="collapse<?= $cont == 0 ? " show" : "" ?>" aria-labelledby=" heading<?= $collapsed[$cont] ?>" data-parent="#accordionExample">
                   <div class="faq-content">
+
                     <?= $intervention['info'] ?>
+                  </div>
+                  <?php
+                  if (file_exists("images/uploads/" . $intervention['image'])) :
+                    $_img = "images/uploads/" . $intervention['image'];
+                  else :
+                    $_img = "images/blank.png";
+                  endif;
+                  ?>
+                  <div class="mx-auto">
+                    <div class="card mx-auto" style="width: 18rem;">
+                      <img class="card-img-top" src="<?= $_img ?>" class="crop rounded d-block" alt="">
+                      <div class="card-body">
+                        <p class="card-text"><?= $intervention['name'] ?></p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
