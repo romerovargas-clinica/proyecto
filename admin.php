@@ -188,6 +188,10 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
             $sectTitle = __('sect_opinions', $lang);
             include "admin/opinions.php";
             break;
+          case ("pages"):
+            $sectTitle = __('sect_opinions', $lang);
+            include "admin/pages.php";
+            break;
         endswitch;
         ?>
       </main>

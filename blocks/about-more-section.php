@@ -23,19 +23,20 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 
 			<div class="col-xl-8 col-lg-9 mx-auto">
 				<ul class="list-group">
+
 					<li class="list-group-item list-group-item-info">
 						<a class="list-group-item list-group-item-action text-light" style="background-color: #00ADB5" href="index.php"><?= __('mn_Home', $lang) ?></a>
 						<div class="list-group">
-							<a class="list-group-item list-group-item-action" href="index.php#we-do"><?= __('mn_We_Do', $lang) ?></a>
-							<a class="list-group-item list-group-item-action" href="index.php#about"><?= __('mn_AboutUs', $lang) ?></a>
-							<a class="list-group-item list-group-item-action" href="index.php#services"><?= __('mn_Speciality', $lang) ?></a>
-							<a class="list-group-item list-group-item-action" href="index.php#testimonial"><?= __('testimonial-section-title', $lang) ?></a>
-							<a class="list-group-item list-group-item-action" href="index.php#faq"><?= __('faq-section-title', $lang) ?></a>
-							<a class="list-group-item list-group-item-action" href="index.php#team"><?= __('mn_Team', $lang) ?></a>
-							<a class="list-group-item list-group-item-action" href="index.php#blog"><?= __('mn_News', $lang) ?></a>
-							<a class="list-group-item list-group-item-action" href="index.php#contact"><?= __('mn_Contact', $lang) ?></a>
+							<?php
+							$bloques = $db->select("blocks", "id_page = 1 ORDER BY order_n ASC");
+							if ($bloques) : ?>
+								<?php foreach ($bloques as $bloque) : ?>
+									<a class="list-group-item list-group-item-action" href="index.php#<?= $bloque["name"] ?>"><?= $bloque["label"] ?></a>
+								<?php endforeach; ?>
+							<?php endif; ?>
 						</div>
 					</li>
+
 					<li class="list-group-item list-group-item-info">
 						<a class="list-group-item list-group-item-action text-light" style="background-color: #00ADB5" href="login.php"><?= __('mn_Login', $lang) ?></a>
 						<div class="list-group">
@@ -43,6 +44,7 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 							<a class="list-group-item list-group-item-action" href="chat.php"><?= __('mn_Chat', $lang) ?></a>
 						</div>
 					</li>
+
 					<li class="list-group-item list-group-item-info">
 						<a class="list-group-item list-group-item-action text-light" style="background-color: #00ADB5" href="admin.php"><?= __('mn_Admin', $lang) ?></a>
 						<div class="list-group">

@@ -5,6 +5,6 @@ $sql = "SELECT * FROM pages a INNER JOIN blocks b ON a.id = b.id_page WHERE a.pa
 $blocks = $db->send($sql);
 foreach ($blocks as $block) :
     $name_block = $block['name'];
-    include "blocks/" . $block['block'] . ".php";
+    include "blocks/" . $block['name'] . ".php";
 endforeach;
 $db->close();

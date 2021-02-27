@@ -133,6 +133,10 @@ $texts = array(
   'frm_Enabled' => "Habilitado",
   'frm_Occupation' => "Profesión",
   'frm_Comment' => "Comentario",
+  'frm_Page' => "Página",
+  'frm_Block' => "Secciones",
+  'frm_BlockUp' => "Subir",
+  'frm_BlockDown' => "Bajar",
   //Cases
   'Case_Disable' => "Desactivado",
   'Case_Enable' => "Activo",
