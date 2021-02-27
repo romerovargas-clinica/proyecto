@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 26-02-2021 a las 21:46:52
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Servidor: mysqlc
+-- Tiempo de generación: 27-02-2021 a las 21:57:27
+-- Versión del servidor: 5.7.28
+-- Versión de PHP: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `articles` (
   `subtitle` varchar(255) NOT NULL,
   `text` text NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_published` datetime DEFAULT NULL,
   `date_modifiqued` datetime DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE `block` (
   `text#4` varchar(200) DEFAULT NULL,
   `label#10` varchar(50) DEFAULT NULL,
   `text#5` varchar(200) DEFAULT NULL,
-  `css` text DEFAULT NULL
+  `css` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -97,7 +97,7 @@ CREATE TABLE `blocks` (
   `id` int(9) NOT NULL,
   `id_page` int(9) NOT NULL,
   `name` varchar(56) NOT NULL,
-  `block` varchar(56) NOT NULL,
+  `label` varchar(56) DEFAULT NULL,
   `order_n` int(9) NOT NULL,
   `title` varchar(56) DEFAULT NULL,
   `subtitle` varchar(56) DEFAULT NULL,
@@ -108,23 +108,23 @@ CREATE TABLE `blocks` (
 -- Volcado de datos para la tabla `blocks`
 --
 
-INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`, `title`, `subtitle`, `text`) VALUES
-(1, 1, 'portada', 'we-do-section', 2, NULL, NULL, NULL),
-(2, 5, 'about-more-section', 'about-more-section', 2, 'about-more-section-title', 'about-more-section-subtitle', 'about-more-section-text'),
-(3, 3, 'schedule-section', 'schedule-section', 1, 'schedule-section-title', 'schedule-section-subtitle', 'schedule-section-text'),
-(4, 1, 'service-section', 'service-section', 4, 'service-section-title', 'service-section-subtitle', 'service-section-text'),
-(6, 6, 'interventions', 'interventions', 1, NULL, NULL, NULL),
-(7, 2, 'login-block', 'login-block', 1, NULL, NULL, NULL),
-(8, 1, 'about-section', 'about-section', 3, 'about-section-title', 'about-section-subtitle', 'about-section-text'),
-(9, 1, 'testimonial-section', 'testimonial-section', 5, 'testimonial-section-title', 'testimonial-section-subtitle', 'testimonial-section-text'),
-(10, 1, 'faq-section', 'faq-section', 6, 'faq-section-title', 'faq-section-subtitle', 'faq-section-text'),
-(11, 1, 'team-section', 'team-section', 7, 'team-section-title', 'team-section-subtitle', 'team-section-text'),
-(12, 1, 'subscribe-section', 'subscribe-section', 8, NULL, NULL, NULL),
-(13, 1, 'blog-section', 'blog-section', 9, 'blog-section-title', 'blog-section-subtitle', 'blog-section-text'),
-(14, 1, 'contact-section', 'contact-section', 10, 'contact-section-title', 'contact-section-subtitle', 'contact-section-text'),
-(15, 1, 'slider-section', 'slider-section', 1, NULL, NULL, NULL),
-(16, 7, 'budget-section', 'budget-section', 1, 'budget-section-title', 'budget-client-subtitle', 'budget-section-text'),
-(17, 8, 'register-section', 'register-section', 1, 'register-section-title', 'register-section-subtitle', 'register-section-text');
+INSERT INTO `blocks` (`id`, `id_page`, `name`, `label`, `order_n`, `title`, `subtitle`, `text`) VALUES
+(1, 1, 'we-do-section', 'section', 10, NULL, NULL, NULL),
+(2, 5, 'about-more-section', 'Mapa Web', 9, 'about-more-section-title', 'about-more-section-subtitle', 'about-more-section-text'),
+(3, 3, 'schedule-section', 'Gestión de Citas', 9, 'schedule-section-title', 'schedule-section-subtitle', 'schedule-section-text'),
+(4, 1, 'service-section', 'Especialidades', 3, 'service-section-title', 'service-section-subtitle', 'service-section-text'),
+(6, 6, 'interventions', 'Intervenciones', 9, NULL, NULL, NULL),
+(7, 2, 'login-block', 'Login', 9, NULL, NULL, NULL),
+(8, 1, 'about-section', 'Sobre Nosotros', 2, 'about-section-title', 'about-section-subtitle', 'about-section-text'),
+(9, 1, 'testimonial-section', 'Testimonios', 6, 'testimonial-section-title', 'testimonial-section-subtitle', 'testimonial-section-text'),
+(10, 1, 'faq-section', 'Faq', 8, 'faq-section-title', 'faq-section-subtitle', 'faq-section-text'),
+(11, 1, 'team-section', 'Equipo', 4, 'team-section-title', 'team-section-subtitle', 'team-section-text'),
+(12, 1, 'subscribe-section', 'Suscríbete', 7, NULL, NULL, NULL),
+(13, 1, 'blog-section', 'Novedades', 5, 'blog-section-title', 'blog-section-subtitle', 'blog-section-text'),
+(14, 1, 'contact-section', 'Contacto', 9, 'contact-section-title', 'contact-section-subtitle', 'contact-section-text'),
+(15, 1, 'slider-section', 'Carrusel', 1, NULL, NULL, NULL),
+(16, 7, 'budget-section', 'Presupuestos', 9, 'budget-section-title', 'budget-client-subtitle', 'budget-section-text'),
+(17, 8, 'register-section', 'Registro', 9, 'register-section-title', 'register-section-subtitle', 'register-section-text');
 
 -- --------------------------------------------------------
 
@@ -138,7 +138,7 @@ CREATE TABLE `budgets` (
   `customer_id` int(11) NOT NULL,
   `amount` float NOT NULL,
   `discount` float NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 1
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -198,8 +198,8 @@ CREATE TABLE `chat` (
   `session_id` varchar(26) NOT NULL,
   `user_id` int(9) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `message` text DEFAULT NULL,
-  `created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `message` text,
+  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `date_read` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -270,7 +270,7 @@ CREATE TABLE `faq` (
   `id` int(11) NOT NULL,
   `question` varchar(255) NOT NULL,
   `response` text NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 1
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -337,7 +337,7 @@ INSERT INTO `images` (`id`, `name`, `src`, `alt`, `dir`) VALUES
 CREATE TABLE `pages` (
   `id` int(9) NOT NULL,
   `page` varchar(56) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `enabled` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -369,7 +369,7 @@ CREATE TABLE `professionals` (
   `name` varchar(150) NOT NULL,
   `degree` varchar(150) NOT NULL,
   `job` varchar(150) NOT NULL,
-  `enabled` int(1) NOT NULL DEFAULT 1
+  `enabled` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -415,7 +415,7 @@ CREATE TABLE `register` (
   `password` varchar(255) NOT NULL,
   `number` varchar(255) NOT NULL,
   `address` text NOT NULL,
-  `modified_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `modified_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -470,7 +470,7 @@ CREATE TABLE `testimonial` (
   `occupation` varchar(56) NOT NULL,
   `image` varchar(255) NOT NULL,
   `comment` text NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 1
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -565,7 +565,7 @@ CREATE TABLE `users` (
   `city` varchar(56) DEFAULT NULL,
   `province` varchar(56) DEFAULT NULL,
   `phone` varchar(9) DEFAULT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 1
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -573,7 +573,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `address`, `postalcode`, `city`, `province`, `phone`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-26 17:28:21', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-27 22:44:07', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
 (3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-26 17:50:32', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (38, '60362cdb001c6', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[CUSTOMER]', NULL, 'es', 'David', 'Bermudez', 'davidbermudez@jerez.es', 'Calle Parque de Doñana', '11400', 'Jerez', 'Cádiz', '654654654', 1),
