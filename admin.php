@@ -85,9 +85,9 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
             </li>
             <li class="nav-item">
               <!-- editando -->
-              <a class="nav-link<?= $adm_pag == 'announce' ? ' active' : '' ?>" href="admin.php?section=announce">
+              <a class="nav-link<?= $adm_pag == 'cites' ? ' active' : '' ?>" href="admin.php?section=cites">
                 <span data-feather="airplay"></span>
-                <?= __('sect_announce', $lang) ?>
+                <?= __('mn_Meeting', $lang) ?>
               </a>
             </li> <!-- editando -->
             <li class="nav-item">
@@ -191,6 +191,10 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
           case ("pages"):
             $sectTitle = __('sect_opinions', $lang);
             include "admin/pages.php";
+            break;
+          case ("cites"):
+            $sectTitle = __('mn_Meeting', $lang);
+            include "admin/cites.php";
             break;
         endswitch;
         ?>

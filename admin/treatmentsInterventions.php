@@ -25,7 +25,7 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   $anarray["info"] = $info;
   $anarray["duration"] = $duration;
   $anarray["Price"] = $price;
-  $recordset = $db->update("treatmentsInterventions", $anarray, "id = " . $id);
+  $recordset = $db->update("treatmentsinterventions", $anarray, "id = " . $id);
 endif;
 
 //añadir
@@ -44,7 +44,7 @@ endif;
 
 
 // SQL for ForeignKey table
-$categories = $db->send("SELECT name FROM treatmentsCategories;");
+$categories = $db->send("SELECT name FROM treatmentscategories;");
 $categoriesNames = array(); //nombre de las categorías
 foreach ($categories as $cat) {
   array_push($categoriesNames, $cat['name']);
@@ -181,7 +181,7 @@ if (isset($_GET['edit'])) :
     $fields[0]["duration"] = $duration;
     $fields[0]["price"] = $price;
   else :
-    $fields = $db->send("SELECT * FROM treatmentsInterventions WHERE id = " . $_GET['edit']);
+    $fields = $db->send("SELECT * FROM treatmentsinterventions WHERE id = " . $_GET['edit']);
   endif;
 ?>
   <a name="form"></a>

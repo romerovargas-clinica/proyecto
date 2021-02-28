@@ -52,3 +52,4 @@
   </section>
   <!-- ========================= slider-section end ========================= -->
 </div>
+<script src="assets/js/tiny-slider.js"></script>

@@ -5,24 +5,28 @@ $error = "";
 if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
     $id = $_POST['inputId'];
-    $db->send("DELETE FROM testimonial WHERE id = $id;");
+    $db->delete("testimonial" ,"id = $id");
+    unset($_GET['edit']);
+  else:
+    // EDIT
+    // Campos Obligatorios
+    $id = $_POST['inputId'];
+    $name = $_POST['inputName'];
+    $occupation = $_POST['inputOccupation'];
+    $imageFile = $_POST['inputImageFile'];
+    $comment = $_POST['inputComment'];
+    $enable = $_POST['inputEnable'];
+    //TO-DO: hay que adaptar la comprobacion de los datos para esta parte
+    $anarray = array();
+    $anarray["name"] = $name;
+    $anarray["occupation"] = $occupation;
+    $anarray["image"] = $imageFile;
+    $anarray["comment"] = $comment;
+    $anarray["enabled"] = $enable;
+    $recordset = $db->update("testimonial", $anarray, "id = " . $id);
   endif;
-  // Campos Obligatorios
-  $id = $_POST['inputId'];
-  $name = $_POST['inputName'];
-  $occupation = $_POST['inputOccupation'];
-  $imageFile = $_POST['inputImageFile'];
-  $comment = $_POST['inputComment'];
-  $enable = $_POST['inputEnable'];
-  //TO-DO: hay que adaptar la comprobacion de los datos para esta parte
-  $anarray = array();
-  $anarray["name"] = $name;
-  $anarray["occupation"] = $occupation;
-  $anarray["image"] = $imageFile;
-  $anarray["comment"] = $comment;
-  $anarray["enabled"] = $enable;
-  $recordset = $db->update("testimonial", $anarray, "id = " . $id);
 endif;
+
 //añadir
 if (isset($_POST['InputNew'])) :
   $name = $_POST['inputName'];
@@ -84,7 +88,7 @@ $isEnable[1] = "Case_Enable";
               <?php endif; ?>
             </td>
             <td><?= $recordT["comment"] ?></td>
-            <td><?= $recordT["enabled"] ?></td>
+            <td class="" style=""><?= $recordT["enabled"] == 1 ? __('Case_Enable', $lang) : __('Case_Disable', $lang) ?></td>
           </tr>
       <?php
 
