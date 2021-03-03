@@ -32,10 +32,10 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 								else :
 									$_img = "images/uploads/" . $article["image"];
 								endif; ?>
-								<a href="#"><img src="<?= $_img ?>" alt=""></a>
+								<a href="article.php?id=<?= $article["id"] ?>"><img src="<?= $_img ?>" alt=""></a>
 							</div>
 							<div class="blog-content">
-								<h4><a href="#"><?= $article["title"] ?></a></h4>
+								<h4><a href="article.php?id=<?= $article["id"] ?>"><?= $article["title"] ?></a></h4>
 								<p><?= $article["subtitle"] ?></p>
 								<a class="read-more" href="article.php?id=<?= $article["id"] ?>"><?= __('Learn_more', $lang) ?> <i class="lni lni-arrow-right"></i></a>
 							</div>

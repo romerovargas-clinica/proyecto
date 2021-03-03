@@ -122,8 +122,13 @@
                       </ul>
                     </li>
                   <?php endif; ?>
+<<<<<<< HEAD
               </div>
 
+=======
+                </ul>
+              </div>
+>>>>>>> e5d3b9fcb07785c8caad976f5b9bab4bae8050a6
             </nav>
           </div>
         </div>
