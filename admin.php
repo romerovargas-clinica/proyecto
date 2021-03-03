@@ -44,16 +44,7 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
       <li class="nav-item text-nowrap">
         <a class="nav-link mx-3" href="#"><?= $_SESSION['name'] ?></a>
       </li>
-      <?php
-      // comprueba la existencia de sesiones de chat pendientes
-      $pendientes = $db->send("SELECT Count(DISTINCT session_id) as m FROM chat WHERE date_read IS NULL");
-      if ($pendientes) : ?>
-        <li class="nav-item btn btn-primary position-relative" onclick="">
-
-          Chat <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?= $pendientes[0]['m'] ?></span>
-
-        </li>
-      <?php endif; ?>
+      
       <li class="nav-item text-nowrap">
         <a class="nav-link" href="logout.php"><?= __('mn_Logout', $lang) ?></a>
       </li>
@@ -121,12 +112,6 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link<?= $adm_pag == 'chat' ? ' active' : '' ?>" href="admin.php?section=chat">
-                <span data-feather="message-square"></span>
-                <?= __('sect_Chat', $lang) ?>
-              </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link<?= $adm_pag == 'professionals' ? ' active' : '' ?>" href="admin.php?section=professionals">
                 <span data-feather="briefcase"></span>
                 <?= __('sect_professionals', $lang) ?>
@@ -175,10 +160,6 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
           case ("images"):
             $sectTitle = __('sect_gallery', $lang);
             include "admin/images.php";
-            break;
-          case ("chat"):
-            $sectTitle = __('sect_Chat', $lang);
-            include "admin/chat.php";
             break;
           case ("professionals"):
             $sectTitle = __('sect_professionals', $lang);

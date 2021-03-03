@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: mysqlc
--- Tiempo de generación: 28-02-2021 a las 02:54:54
--- Versión del servidor: 5.7.28
--- Versión de PHP: 7.4.13
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 03-03-2021 a las 13:22:44
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `articles` (
   `subtitle` varchar(255) NOT NULL,
   `text` text NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_published` datetime DEFAULT NULL,
   `date_modifiqued` datetime DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE `block` (
   `text#4` varchar(200) DEFAULT NULL,
   `label#10` varchar(50) DEFAULT NULL,
   `text#5` varchar(200) DEFAULT NULL,
-  `css` text
+  `css` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -140,7 +140,7 @@ CREATE TABLE `budgets` (
   `customer_id` int(11) NOT NULL,
   `amount` float NOT NULL,
   `discount` float NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1'
+  `enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -192,44 +192,6 @@ INSERT INTO `category` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `chat`
---
-
-CREATE TABLE `chat` (
-  `id` int(11) NOT NULL,
-  `session_id` varchar(26) NOT NULL,
-  `user_id` int(9) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `message` text,
-  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `date_read` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `chat`
---
-
-INSERT INTO `chat` (`id`, `session_id`, `user_id`, `name`, `message`, `created_on`, `date_read`) VALUES
-(25, 'tsm28s6u50eq917kog03dane2c', 3, 'david', 'Hola Clínica, soy David', '2021-01-22 18:36:10', '2021-01-22 18:36:10'),
-(26, 'tsm28s6u50eq917kog03dane2c', 3, 'david', 'Querría saber si me pueden sacar una muela?', '2021-01-22 18:36:10', '2021-01-22 18:36:10'),
-(34, 'tsm28s6u50eq917kog03dane2c', 2, 'system', 'Keep waiting. An operator will briefly contact you.', '2021-01-22 18:36:10', '2021-01-22 18:36:10'),
-(35, 'tsm28s6u50eq917kog03dane2c', 3, 'david', 'Disculpe... No tengo ni puta idea de inglés', '2021-01-22 18:36:52', NULL),
-(36, 'lkbv86u4p30cvehr2idfs2ekv9', 3, 'david', 'Hola, caracola', '2021-01-22 18:38:49', '2021-01-22 18:38:49'),
-(37, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'system', 'Keep waiting. An operator will briefly contact you.', '2021-01-22 18:38:49', '2021-01-22 18:38:49'),
-(38, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'kn', '2021-01-25 07:32:24', '2021-01-25 07:32:24'),
-(39, 'ur1ug3s0r7j36kse4rjbpip28a', 4, 'cintia', 'probando\r\n', '2021-01-25 08:47:36', '2021-01-25 08:47:36'),
-(40, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'zxcz\r\n', '2021-01-25 08:48:09', '2021-01-25 08:48:09'),
-(41, 'im7kb1ea3veh3hogvd5f8ffof9', 4, 'cintia', 'Hola me podrian atender?\r\n', '2021-01-26 17:30:00', '2021-01-26 17:30:00'),
-(42, 'so83nh2bc85dnod571lmae2ru8', 4, 'cintia', 'Hola me poueden atender', '2021-01-26 17:31:58', '2021-01-26 17:31:58'),
-(43, 'so83nh2bc85dnod571lmae2ru8', 2, 'admin', 'Pues si claro que te puedo atender\r\n', '2021-01-26 17:32:10', '2021-01-26 17:32:10'),
-(44, 'lkbv86u4p30cvehr2idfs2ekv9', 2, 'admin', 'lkj', '2021-01-29 19:50:11', '2021-01-29 19:50:11'),
-(45, '8bj71a8439s2di7fi7ck1dped8', 4, 'cintia', 'asdasdasda', '2021-02-10 14:17:18', '2021-02-10 14:17:18'),
-(46, '8bj71a8439s2di7fi7ck1dped8', 2, 'admin', 'asdasd', '2021-02-10 14:17:22', '2021-02-10 14:17:22'),
-(47, 'n12nko1udb2q6ufbvf2mpmj1uv', 3, 'david', 'hola', '2021-02-24 19:13:39', '2021-02-24 19:13:39');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `cites`
 --
 
@@ -272,7 +234,7 @@ CREATE TABLE `faq` (
   `id` int(11) NOT NULL,
   `question` varchar(255) NOT NULL,
   `response` text NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1'
+  `enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -339,7 +301,7 @@ INSERT INTO `images` (`id`, `name`, `src`, `alt`, `dir`) VALUES
 CREATE TABLE `pages` (
   `id` int(9) NOT NULL,
   `page` varchar(56) NOT NULL,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
   `enabled` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -371,7 +333,7 @@ CREATE TABLE `professionals` (
   `name` varchar(150) NOT NULL,
   `degree` varchar(150) NOT NULL,
   `job` varchar(150) NOT NULL,
-  `enabled` int(1) NOT NULL DEFAULT '1'
+  `enabled` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -417,7 +379,7 @@ CREATE TABLE `register` (
   `password` varchar(255) NOT NULL,
   `number` varchar(255) NOT NULL,
   `address` text NOT NULL,
-  `modified_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `modified_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -472,7 +434,7 @@ CREATE TABLE `testimonial` (
   `occupation` varchar(56) NOT NULL,
   `image` varchar(255) NOT NULL,
   `comment` text NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1'
+  `enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -567,7 +529,7 @@ CREATE TABLE `users` (
   `city` varchar(56) DEFAULT NULL,
   `province` varchar(56) DEFAULT NULL,
   `phone` varchar(9) DEFAULT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1'
+  `enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -575,9 +537,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `address`, `postalcode`, `city`, `province`, `phone`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-28 03:13:34', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-03-03 13:21:19', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
 (3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-26 17:50:32', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
-(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
+(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-03-03 12:13:43', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (38, '60362cdb001c6', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[CUSTOMER]', NULL, 'es', 'David', 'Bermudez', 'davidbermudez@jerez.es', 'Calle Parque de Doñana', '11400', 'Jerez', 'Cádiz', '654654654', 1),
 (39, '6038f56999690', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-26 16:47:15', '[CUSTOMER]', '', 'es', 'Antonio', 'Gomez', 'elarahal.1972@gmail.com', '', '', '', '', '897987987', 1);
 
@@ -622,12 +584,6 @@ ALTER TABLE `budgets_treatments`
 -- Indices de la tabla `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `chat`
---
-ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -752,12 +708,6 @@ ALTER TABLE `budgets_treatments`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `chat`
---
-ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `cites`

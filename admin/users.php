@@ -5,8 +5,8 @@ $error = "";
 if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
     $id = $_POST['inputId'];
-    $db->send("DELETE FROM users
-    WHERE id = $id;");
+    $db->delete("users" ,"id = $id");
+    unset($_GET['edit']);
   endif;
   // Campos Obligatorios
   $id = $_POST['inputId'];

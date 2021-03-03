@@ -5,9 +5,8 @@ $error = "";
 if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
     $id = $_POST['inputId'];
-    $db->send("DELETE FROM treatmentscategories
-    WHERE id = $id;");
-    header("url= <?= $urlsite ?>/admin.php?section=treatmentsCategories&page=<?= $page ?>");
+    $db->delete("treatmentsCategories" ,"id = $id");
+    unset($_GET['edit']);
   endif;
   // Campos Obligatorios
   $id = $_POST['inputId'];

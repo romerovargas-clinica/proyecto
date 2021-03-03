@@ -60,8 +60,8 @@
       $href = "index.php";
     endif;
     ?>
-    <div class="navbar-area">
-      <div class="container">
+    <div class="navbar-area bg-light">
+      <div class="container ">
         <div class="row">
           <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
