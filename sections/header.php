@@ -48,10 +48,10 @@
                   <?php endif; ?>
                 </li>
                 <li class="nav-item">
-                  <button onclick="window.location.href='<?=$_SERVER['PHP_SELF']?>?lang=es'" class="es-button" style="height: 30px;width: 30px;border-radius:50%;border:none;background-image:url('../images/lenguages/espana.svg');background-repeat: no-repeat;"  > &nbsp; </button>
+                  <button onclick="window.location.href='<?=$_SERVER['PHP_SELF']?>?lang=es'" class="es-button" > &nbsp; </button>
                 </li>
                 <li class="nav-item">
-                <button onclick="window.location.href='<?=$_SERVER['PHP_SELF']?>?lang=en'" class="en-button" style="height: 30px; width: 30px; border-radius:50%; border:none; background-image: url('images/lenguages/reino-unido.svg');   background-repeat: no-repeat"> &nbsp; </button>
+                <button onclick="window.location.href='<?=$_SERVER['PHP_SELF']?>?lang=en'" class="en-button" > &nbsp; </button>
                 </li>
               </ul>
             </div>

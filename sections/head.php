@@ -36,5 +36,34 @@
       width: 100%;
       float: left;
     }
+
+    ul li button.es-button {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      border: none;
+      background-image:
+        url('../images/lenguages/espana.svg');
+      background-repeat: no-repeat;
+    }
+
+    .es-button:hover {
+      opacity: 0.5;
+    }
+
+    .en-button {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      border: none;
+      background-image:
+        url('../images/lenguages/reino-unido.svg');
+      background-repeat: no-repeat;
+    }
+
+    .en-button:hover {
+      opacity: 0.5;
+    }
+
   </style>
 </head>
