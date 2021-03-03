@@ -93,7 +93,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel"><?= __('budget-client-subtitle', $lang) ?></h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="lni lni-close"></i></button>
 			</div>
 			<h6>Cliente</h6>
 			<div class="row">
@@ -116,6 +116,10 @@
 			<h6>Descuento:</h6>
 			<div class="row">
 				<div class="pe-2" id="discountBudget"></div>
+			</div>
+			<h6>Total Tratamientos:</h6>
+			<div class="row">
+				<div class="pe-2" id="total_tr"></div>
 			</div>
 			<h6>Total Presupuesto:</h6>
 			<div class="row">
@@ -177,7 +181,10 @@
 						$('#priceList').append("<p class='font-monospace price' style='text-align:right; padding-right: 30px;'>" + parseFloat(m["price"]) + " € </p>");
 						amount = amount + parseFloat(m["price"]);
 						$('#total_').attr("value", amount);
-						$('#total_').html("<p style='text-align:right; padding-right: 30px;'>" + amount + " €</p>");
+						$('#total_tr').html("<p style='text-align:right; padding-right: 30px;'>" + amount + " €</p>");
+						let total = amount - (amount * discount / 100);
+						console.log(total);
+						$('#total_').html("<p style='text-align:right; padding-right: 30px;'>" + total + " €</p>");
 					}
 				})
 			});

@@ -3,7 +3,7 @@ $db = new DataBase();
 $result = $db->select("blocks", "id = " . $block["id"]);
 ?>
 <!--========================= budget-section start ========================= -->
-<section id="budget" class="we-do-section pt-20">
+<section id="budget" class="we-do-section pt-20 mt-5">
 	<div class="shape shape-3">
 		<img src="assets/img/shapes/shape-3.svg" alt="">
 	</div>
