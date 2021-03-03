@@ -28,7 +28,7 @@
               echo "No existen citas";
             endif;
             ?>
-            <a href="admin.php?cites.php" class="btn btn-primary">Gestionar Citas</a>
+            <a href="admin.php?section=cites" class="btn btn-primary">Gestionar Citas</a>
           </div>
         </div>
       </div>

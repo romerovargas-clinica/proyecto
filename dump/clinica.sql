@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 26-02-2021 a las 21:46:52
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Servidor: mysqlc
+-- Tiempo de generación: 28-02-2021 a las 02:54:54
+-- Versión del servidor: 5.7.28
+-- Versión de PHP: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `articles` (
   `subtitle` varchar(255) NOT NULL,
   `text` text NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_published` datetime DEFAULT NULL,
   `date_modifiqued` datetime DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL,
@@ -49,10 +49,11 @@ INSERT INTO `articles` (`id`, `category`, `title`, `subtitle`, `text`, `image`, 
 (1, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
 (7, 2, 'La Clínica', '', '<p>En SonriseClinic cuidamos tu salud y estética dental utilizando la tecnología más avanzada para lograr los mejores resultados.</p>\r\n\r\n<p>Contamos con un equipo profesionales que harán que por fin consigas sonreír. </p>\r\n\r\n<p>Hoy en día, están en expansión los modelos de Clínicas Dentales, en muchos casos franquicias, las cuales “obligan” al paciente a realizarse costosos tratamientos finalizados en tiempos récords, los cuales a medio plazo fracasan. Fracasan no sólo por los tiempos inadecuados que emplean e ellos, sino también por la incorporación a su plantilla principal de Odontólogos sin experiencia en el campo, además sometidos a usar materiales “low cost”, que en muchas ocasiones acaparan tratamientos de gran envergadura atraídos por la repercusión económica que les aporta sin evaluar si están preparados para realizarlos. Esto deja desamparados a numerosos pacientes que, bien por principios no están dispuestos a ser manejados al antojo de estas clínicas, o por incapacidad económica desisten de realizarse los tratamientos propuestos en estos tipos de clínicas. Son en estos pacientes y en todos los demás en los que volcaremos nuestros esfuerzos para atenderlos de la mejor manera que se merecen.</p>', NULL, '2021-01-29 20:38:54', NULL, NULL, 0, 2),
 (8, 2, 'Mensaje del Director', 'Dr. D. Juan Juan Juan', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', NULL, '2021-01-29 21:21:00', NULL, NULL, 1, 2),
-(9, 1, 'asdsa', 'sadasd', '<p>easdasd sad sa asdsadsadas</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<hr />\r\n<p>hoka jaosja a d</p>\r\n', '', '2021-02-15 12:45:18', '2021-02-25 19:08:25', NULL, 1, 2),
 (10, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
 (11, 1, 'Este es el título de un artículo', 'Un subtítulo de muestra, para un artículo de muestra', '<p>Voluptatem alias neque eum labore, soluta officiis eaque et officia porro quibusdam dicta eius voluptate. Ex rem assumenda ea a corporis mollitia quis illo modi sapiente nulla laboriosam, tenetur quaerat. <strong>Vitae in laborum atque</strong>. Eius accusamus, et voluptates, doloribus facere, mollitia ipsa necessitatibus recusandae optio soluta quae rem tempora eum labore consequuntur ea eveniet nisi quidem omnis. Autem, possimus tempora.sdf dsfds</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/compartecoche.png\" style=\"height:354px; width:354px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>dlskjfldsjf</p>\r\n\r\n<p><img alt=\"\" src=\"http://clinica.es/images/uploads/juanjuanjuan.jpg\" style=\"height:148px; width:185px\" /></p>\r\n\r\n<p>fdlsfjsdlk</p>\r\n', '', '2021-01-02 06:40:27', '2021-01-02 06:40:27', NULL, 1, 2),
-(12, 1, 'Este Artículo pretende ser una muestra para poder tener más de tres', 'Este subtitulo acompaña al artículo que pretende ser una muestra para poder tener más de tres', '<p><strong>Ha aumentado la demanda de tratamientos sencillos, como limpiezas y revisiones, mientras que disminuye la de implantes, cirug&iacute;as y est&eacute;tica dental</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>El Observatorio de la Salud Oral (OSOE), puesto en marcha en 2015 por el Consejo General de Dentistas y la Fundaci&oacute;n Dental Espa&ntilde;ola, uno de los pocos que existen en el mundo, ha publicado los resultados del an&aacute;lisis que se ha realizado en el periodo 2015-2019 sobre la salud oral y la profesi&oacute;n de dentista en Espa&ntilde;a.<br />\r\n&nbsp;</p>\r\n\r\n<p>En el estudio ha participado una red de dentistas centinela que han hecho posible la recogida de datos para el OSOE bianualmente. De las encuestas realizadas se extraen varias conclusiones.<br />\r\n<br />\r\n<strong>Pacientes y tratamientos</strong><br />\r\n&nbsp;</p>\r\n\r\n<p>En cuanto al perfil de los pacientes, existe una mayor demanda de tratamientos odontol&oacute;gicos por parte de las mujeres (un 57%), cuando representan el 51% de la poblaci&oacute;n en Espa&ntilde;a. Por el contrario, existe una infra demanda por parte de los pacientes mayores de 65 a&ntilde;os, puesto que solo representan un 15% de los pacientes cuando su peso poblacional es del 21%.<br />\r\n&nbsp;</p>\r\n\r\n<p>En el periodo 2015-2019, se aprecia un incremento del 2-12% de las actividades cl&iacute;nicas m&aacute;s sencillas, como tartrectom&iacute;as (limpiezas dentales), revisiones, tratamientos restauradores y endodoncias. Sin embargo, los tratamientos est&eacute;ticos (blanqueamientos, carillas), cirug&iacute;a oral, prostodoncia e implantes, han disminuido un 18-20%.<br />\r\n&nbsp;</p>\r\n\r\n<p>Situaci&oacute;n de los dentistas<br />\r\n&nbsp;</p>\r\n\r\n<p>Seg&uacute;n los datos obtenidos, los dentistas trabajan un promedio de 120 horas mensuales y atienden a unos 190 pacientes. En este sentido, existe un mayor volumen de trabajo durante el primer semestre del a&ntilde;o. El 76% del tiempo laboral lo emplean en actividades asistenciales, un 13% a tareas administrativas y un 11% a otras actividades, como formaci&oacute;n. As&iacute;, de cada 10 horas de actividad asistencial, 6 se dedican a tratamientos curativos, 2 a actividades preventivas y 2 a revisiones de pacientes.<br />\r\n&nbsp;</p>\r\n\r\n<p>Con relaci&oacute;n a su situaci&oacute;n econ&oacute;mica, un 27% de los dentistas estiman que sus ingresos se redujeron de 2015 a 2019. En 2020, como consecuencia de la pandemia COVID-19, el impacto en los ingresos ser&aacute; muy significativo. El an&aacute;lisis de la encuesta realizada a cerca de 3.000 dentistas espa&ntilde;oles en noviembre de 2020 muestra que 9 de cada 10 dentistas encuestados esperaban una reducci&oacute;n de los ingresos. La cuant&iacute;a esperada de reducci&oacute;n es muy variable, predominando los que la estiman entre un 11-20% (27% de la muestra) y un 21-30% (27%).<br />\r\n<br />\r\nUno de cada 10 dentistas piensa que esta reducci&oacute;n incluso superar&aacute; el 40%. Estas cifras, unidas a la solicitud de ayudas (ERTEs) en cerca del 30% de las cl&iacute;nicas y al hecho de que durante el periodo hayan perdido su trabajo un 3% de los encuestados, muestran el alcance y el impacto de la crisis en la profesi&oacute;n dental.<br />\r\n&nbsp;</p>\r\n\r\n<p>Por &uacute;ltimo, el an&aacute;lisis confirma que las principales preocupaciones de los dentistas encuestados son la pl&eacute;tora profesional, la necesidad de legislar la publicidad sanitaria e incrementar los controles de las cl&iacute;nicas dentales por parte de la Administraci&oacute;n.</p>\r\n', 'juanjuanjuan.jpg', '2021-02-25 18:17:31', '2021-02-25 19:07:44', NULL, 1, 2);
+(12, 1, 'Este Artículo pretende ser una muestra para poder tener más de tres', 'Este subtitulo acompaña al artículo que pretende ser una muestra para poder tener más de tres', '<p><strong>Ha aumentado la demanda de tratamientos sencillos, como limpiezas y revisiones, mientras que disminuye la de implantes, cirug&iacute;as y est&eacute;tica dental</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>El Observatorio de la Salud Oral (OSOE), puesto en marcha en 2015 por el Consejo General de Dentistas y la Fundaci&oacute;n Dental Espa&ntilde;ola, uno de los pocos que existen en el mundo, ha publicado los resultados del an&aacute;lisis que se ha realizado en el periodo 2015-2019 sobre la salud oral y la profesi&oacute;n de dentista en Espa&ntilde;a.<br />\r\n&nbsp;</p>\r\n\r\n<p>En el estudio ha participado una red de dentistas centinela que han hecho posible la recogida de datos para el OSOE bianualmente. De las encuestas realizadas se extraen varias conclusiones.<br />\r\n<br />\r\n<strong>Pacientes y tratamientos</strong><br />\r\n&nbsp;</p>\r\n\r\n<p>En cuanto al perfil de los pacientes, existe una mayor demanda de tratamientos odontol&oacute;gicos por parte de las mujeres (un 57%), cuando representan el 51% de la poblaci&oacute;n en Espa&ntilde;a. Por el contrario, existe una infra demanda por parte de los pacientes mayores de 65 a&ntilde;os, puesto que solo representan un 15% de los pacientes cuando su peso poblacional es del 21%.<br />\r\n&nbsp;</p>\r\n\r\n<p>En el periodo 2015-2019, se aprecia un incremento del 2-12% de las actividades cl&iacute;nicas m&aacute;s sencillas, como tartrectom&iacute;as (limpiezas dentales), revisiones, tratamientos restauradores y endodoncias. Sin embargo, los tratamientos est&eacute;ticos (blanqueamientos, carillas), cirug&iacute;a oral, prostodoncia e implantes, han disminuido un 18-20%.<br />\r\n&nbsp;</p>\r\n\r\n<p>Situaci&oacute;n de los dentistas<br />\r\n&nbsp;</p>\r\n\r\n<p>Seg&uacute;n los datos obtenidos, los dentistas trabajan un promedio de 120 horas mensuales y atienden a unos 190 pacientes. En este sentido, existe un mayor volumen de trabajo durante el primer semestre del a&ntilde;o. El 76% del tiempo laboral lo emplean en actividades asistenciales, un 13% a tareas administrativas y un 11% a otras actividades, como formaci&oacute;n. As&iacute;, de cada 10 horas de actividad asistencial, 6 se dedican a tratamientos curativos, 2 a actividades preventivas y 2 a revisiones de pacientes.<br />\r\n&nbsp;</p>\r\n\r\n<p>Con relaci&oacute;n a su situaci&oacute;n econ&oacute;mica, un 27% de los dentistas estiman que sus ingresos se redujeron de 2015 a 2019. En 2020, como consecuencia de la pandemia COVID-19, el impacto en los ingresos ser&aacute; muy significativo. El an&aacute;lisis de la encuesta realizada a cerca de 3.000 dentistas espa&ntilde;oles en noviembre de 2020 muestra que 9 de cada 10 dentistas encuestados esperaban una reducci&oacute;n de los ingresos. La cuant&iacute;a esperada de reducci&oacute;n es muy variable, predominando los que la estiman entre un 11-20% (27% de la muestra) y un 21-30% (27%).<br />\r\n<br />\r\nUno de cada 10 dentistas piensa que esta reducci&oacute;n incluso superar&aacute; el 40%. Estas cifras, unidas a la solicitud de ayudas (ERTEs) en cerca del 30% de las cl&iacute;nicas y al hecho de que durante el periodo hayan perdido su trabajo un 3% de los encuestados, muestran el alcance y el impacto de la crisis en la profesi&oacute;n dental.<br />\r\n&nbsp;</p>\r\n\r\n<p>Por &uacute;ltimo, el an&aacute;lisis confirma que las principales preocupaciones de los dentistas encuestados son la pl&eacute;tora profesional, la necesidad de legislar la publicidad sanitaria e incrementar los controles de las cl&iacute;nicas dentales por parte de la Administraci&oacute;n.</p>\r\n', 'juanjuanjuan.jpg', '2021-02-25 18:17:31', '2021-02-25 19:07:44', NULL, 1, 2),
+(13, 1, 'Hola', 'Caracola', '&lt;p&gt;asdsadasd sa d&lt;/p&gt;\r\n\r\n&lt;p&gt;as&lt;/p&gt;\r\n\r\n&lt;p&gt;d ad&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;asd&lt;/p&gt;\r\n', '', '2021-02-28 02:36:58', NULL, NULL, 0, 2),
+(14, 1, 'Utilizar productos sanitarios destinados al uso exclusivo del facultativo supone un grave riesgo para la salud', 'Muchos influencers promocionan estos productos en sus redes sociales, especialmente, blanqueamientos dentales y ortodoncias', '<p>El Consejo General de Dentistas de Espa&ntilde;a vuelve a advertir a los ciudadanos de los peligros de adquirir determinados productos sanitarios por internet. La Organizaci&oacute;n Colegial lleva a&ntilde;os denunciando ante la AEMPS (Agencia Espa&ntilde;ola del Medicamento y Productos Sanitarios) y ante la Administraci&oacute;n, que algunas p&aacute;ginas web, as&iacute; como plataformas como Amazon y Aliexpress, venden directamente al consumidor art&iacute;culos que solo pueden ser utilizados por profesionales sanitarios y que pueden suponer un riesgo para la salud.</p>\r\n\r\n<p>De hecho, seg&uacute;n el Real Decreto Legislativo 1/2015, de 24 de julio, por el que se aprueba el texto refundido de la Ley de garant&iacute;as y uso racional de los medicamentos y productos sanitarios, &ldquo;se proh&iacute;be la venta, por correspondencia y por procedimientos telem&aacute;ticos, de medicamentos y productos sanitarios sujetos a prescripci&oacute;n&rdquo;. Asimismo, en el art&iacute;culo 80.7 se a&ntilde;ade que &ldquo;no podr&aacute;n ser objeto de publicidad destinada al p&uacute;blico los productos sanitarios que est&eacute;n destinados a ser utilizados o aplicados exclusivamente por profesionales sanitarios.&rdquo;</p>\r\n\r\n<p>El riesgo de estos productos se ve incrementado cuando influencers con miles de seguidores los promocionan en las redes sociales, induciendo a su consumo sin ning&uacute;n tipo de control ni de conocimiento sanitario. Entre ellos, destacan los blanqueamientos dentales con carb&oacute;n activado o productos blanqueadores, as&iacute; como las ortodoncias que prometen resultados visibles en cuesti&oacute;n de d&iacute;as sin necesidad de ir al dentista.</p>\r\n\r\n<p><img alt=\"\" src=\"images/uploads/Obturaciones42.png\" style=\"border-style:solid; border-width:1px; float:left; height:202px; margin-bottom:20px; margin-top:20px; width:300px\" />En este sentido, el Dr. &Oacute;scar Castro Reino, presidente del Consejo General de Dentistas, asegura que el carb&oacute;n activado no blanquea los dientes ni elimina las manchas, por lo que las afirmaciones que lo describen como un producto milagro, son falsas y, por tanto, se trata de publicidad enga&ntilde;osa. &ldquo;La principal caracter&iacute;stica del carb&oacute;n activado es su capacidad abrasiva, es como pasar una lija por los dientes. Desgasta el esmalte y, como consecuencia, queda a la vista la dentina (m&aacute;s amarilla que el propio esmalte), aumenta la sensibilidad dental y puede da&ntilde;ar las enc&iacute;as&rdquo;, declara el Dr. Castro.</p>\r\n\r\n<p>En cuanto al blanqueamiento dental, explica que se trata de un proceso sanitario que debe ser realizado por un dentista o bajo su supervisi&oacute;n, puesto que previamente hay que descartar cualquier patolog&iacute;a bucodental del paciente.&nbsp;&nbsp;</p>\r\n\r\n<p>Las mol&eacute;culas m&aacute;s utilizadas por los laboratorios para este tratamiento son el per&oacute;xido de hidr&oacute;geno (en concentraciones entre el 0,1 y el 12%) y el per&oacute;xido de carbamida (entre el 16 y 32%). Y, seg&uacute;n el Real Decreto 1599/1997, de 17 de octubre, por el que se regulan los productos cosm&eacute;ticos:</p>\r\n\r\n<p>Una concentraci&oacute;n &le;0,1% de pe&shy;r&oacute;xido de hidr&oacute;geno, presente en los productos bucales o liberada de otros compuestos o mezclas en esos produc&shy;tos se considera segura. Pero sus efectos son m&iacute;nimos, en ocasiones, ni siquiera apreciables. De nuevo, en muchos casos, podr&iacute;a tratarse de publicidad enga&ntilde;osa&rdquo;, apunta el Dr. Castro.<br />\r\nEn concentraciones &gt;0,1 y &le;6% de per&oacute;xido de hidr&oacute;geno, se con&shy;sidera que estos productos pueden ser seguros siempre y cuando se cumplan las siguientes condiciones: que se realice un examen cl&iacute;nico ade&shy;cuado para garantizar que no exis&shy;ten factores de riesgo en la utilizaci&oacute;n en el paciente de estos productos; que la venta de los productos con estas concentraciones de per&oacute;xido de hidr&oacute;&shy;geno quede restringida exclusivamente a los dentistas, y que no se utilicen en menores de 18 a&ntilde;os.<br />\r\nEn concentraciones superiores al 6%, ya no se consideran productos cosm&eacute;ticos sino &ldquo;Productos de Cuidado Personal&rdquo;. La AEMPS limita su uso de la siguiente forma:<br />\r\n- La distribuci&oacute;n de estos productos ser&aacute; exclusiva a dentistas (odont&oacute;logos/es&shy;tomat&oacute;logos).</p>\r\n', 'Blanqueamiento15.png', '2021-02-28 02:40:32', '2021-02-28 03:40:46', NULL, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -84,7 +85,7 @@ CREATE TABLE `block` (
   `text#4` varchar(200) DEFAULT NULL,
   `label#10` varchar(50) DEFAULT NULL,
   `text#5` varchar(200) DEFAULT NULL,
-  `css` text DEFAULT NULL
+  `css` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -97,7 +98,7 @@ CREATE TABLE `blocks` (
   `id` int(9) NOT NULL,
   `id_page` int(9) NOT NULL,
   `name` varchar(56) NOT NULL,
-  `block` varchar(56) NOT NULL,
+  `label` varchar(56) DEFAULT NULL,
   `order_n` int(9) NOT NULL,
   `title` varchar(56) DEFAULT NULL,
   `subtitle` varchar(56) DEFAULT NULL,
@@ -108,23 +109,24 @@ CREATE TABLE `blocks` (
 -- Volcado de datos para la tabla `blocks`
 --
 
-INSERT INTO `blocks` (`id`, `id_page`, `name`, `block`, `order_n`, `title`, `subtitle`, `text`) VALUES
-(1, 1, 'portada', 'we-do-section', 2, NULL, NULL, NULL),
-(2, 5, 'about-more-section', 'about-more-section', 2, 'about-more-section-title', 'about-more-section-subtitle', 'about-more-section-text'),
-(3, 3, 'schedule-section', 'schedule-section', 1, 'schedule-section-title', 'schedule-section-subtitle', 'schedule-section-text'),
-(4, 1, 'service-section', 'service-section', 4, 'service-section-title', 'service-section-subtitle', 'service-section-text'),
-(6, 6, 'interventions', 'interventions', 1, NULL, NULL, NULL),
-(7, 2, 'login-block', 'login-block', 1, NULL, NULL, NULL),
-(8, 1, 'about-section', 'about-section', 3, 'about-section-title', 'about-section-subtitle', 'about-section-text'),
-(9, 1, 'testimonial-section', 'testimonial-section', 5, 'testimonial-section-title', 'testimonial-section-subtitle', 'testimonial-section-text'),
-(10, 1, 'faq-section', 'faq-section', 6, 'faq-section-title', 'faq-section-subtitle', 'faq-section-text'),
-(11, 1, 'team-section', 'team-section', 7, 'team-section-title', 'team-section-subtitle', 'team-section-text'),
-(12, 1, 'subscribe-section', 'subscribe-section', 8, NULL, NULL, NULL),
-(13, 1, 'blog-section', 'blog-section', 9, 'blog-section-title', 'blog-section-subtitle', 'blog-section-text'),
-(14, 1, 'contact-section', 'contact-section', 10, 'contact-section-title', 'contact-section-subtitle', 'contact-section-text'),
-(15, 1, 'slider-section', 'slider-section', 1, NULL, NULL, NULL),
-(16, 7, 'budget-section', 'budget-section', 1, 'budget-section-title', 'budget-client-subtitle', 'budget-section-text'),
-(17, 8, 'register-section', 'register-section', 1, 'register-section-title', 'register-section-subtitle', 'register-section-text');
+INSERT INTO `blocks` (`id`, `id_page`, `name`, `label`, `order_n`, `title`, `subtitle`, `text`) VALUES
+(1, 1, 'we-do-section', 'section', 10, NULL, NULL, NULL),
+(2, 5, 'about-more-section', 'Mapa Web', 9, 'about-more-section-title', 'about-more-section-subtitle', 'about-more-section-text'),
+(3, 3, 'schedule-section', 'Gestión de Citas', 9, 'schedule-section-title', 'schedule-section-subtitle', 'schedule-section-text'),
+(4, 1, 'service-section', 'Especialidades', 3, 'service-section-title', 'service-section-subtitle', 'service-section-text'),
+(6, 6, 'interventions', 'Intervenciones', 9, NULL, NULL, NULL),
+(7, 2, 'login-block', 'Login', 9, NULL, NULL, NULL),
+(8, 1, 'about-section', 'Sobre Nosotros', 2, 'about-section-title', 'about-section-subtitle', 'about-section-text'),
+(9, 1, 'testimonial-section', 'Testimonios', 4, 'testimonial-section-title', 'testimonial-section-subtitle', 'testimonial-section-text'),
+(10, 1, 'faq-section', 'Faq', 7, 'faq-section-title', 'faq-section-subtitle', 'faq-section-text'),
+(11, 1, 'team-section', 'Equipo', 6, 'team-section-title', 'team-section-subtitle', 'team-section-text'),
+(12, 1, 'subscribe-section', 'Suscríbete', 8, NULL, NULL, NULL),
+(13, 1, 'blog-section', 'Novedades', 5, 'blog-section-title', 'blog-section-subtitle', 'blog-section-text'),
+(14, 1, 'contact-section', 'Contacto', 9, 'contact-section-title', 'contact-section-subtitle', 'contact-section-text'),
+(15, 1, 'slider-section', 'Carrusel', 1, NULL, NULL, NULL),
+(16, 7, 'budget-section', 'Presupuestos', 9, 'budget-section-title', 'budget-client-subtitle', 'budget-section-text'),
+(17, 8, 'register-section', 'Registro', 9, 'register-section-title', 'register-section-subtitle', 'register-section-text'),
+(18, 4, 'article-section', 'article-section', 1, 'article-section-title', 'article-section-subtitle', 'article-section-text');
 
 -- --------------------------------------------------------
 
@@ -138,7 +140,7 @@ CREATE TABLE `budgets` (
   `customer_id` int(11) NOT NULL,
   `amount` float NOT NULL,
   `discount` float NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 1
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -198,8 +200,8 @@ CREATE TABLE `chat` (
   `session_id` varchar(26) NOT NULL,
   `user_id` int(9) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `message` text DEFAULT NULL,
-  `created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `message` text,
+  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `date_read` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -270,7 +272,7 @@ CREATE TABLE `faq` (
   `id` int(11) NOT NULL,
   `question` varchar(255) NOT NULL,
   `response` text NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 1
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -337,7 +339,7 @@ INSERT INTO `images` (`id`, `name`, `src`, `alt`, `dir`) VALUES
 CREATE TABLE `pages` (
   `id` int(9) NOT NULL,
   `page` varchar(56) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `enabled` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -369,7 +371,7 @@ CREATE TABLE `professionals` (
   `name` varchar(150) NOT NULL,
   `degree` varchar(150) NOT NULL,
   `job` varchar(150) NOT NULL,
-  `enabled` int(1) NOT NULL DEFAULT 1
+  `enabled` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -415,7 +417,7 @@ CREATE TABLE `register` (
   `password` varchar(255) NOT NULL,
   `number` varchar(255) NOT NULL,
   `address` text NOT NULL,
-  `modified_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `modified_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -470,7 +472,7 @@ CREATE TABLE `testimonial` (
   `occupation` varchar(56) NOT NULL,
   `image` varchar(255) NOT NULL,
   `comment` text NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 1
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -565,7 +567,7 @@ CREATE TABLE `users` (
   `city` varchar(56) DEFAULT NULL,
   `province` varchar(56) DEFAULT NULL,
   `phone` varchar(9) DEFAULT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 1
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -573,7 +575,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `address`, `postalcode`, `city`, `province`, `phone`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-26 17:28:21', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-02-28 03:13:34', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
 (3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-26 17:50:32', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-10 15:16:59', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (38, '60362cdb001c6', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[CUSTOMER]', NULL, 'es', 'David', 'Bermudez', 'davidbermudez@jerez.es', 'Calle Parque de Doñana', '11400', 'Jerez', 'Cádiz', '654654654', 1),
@@ -719,19 +721,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `block`
 --
 ALTER TABLE `block`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `budgets`
@@ -791,7 +793,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT de la tabla `professionals`
 --
 ALTER TABLE `professionals`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `publi`
@@ -815,13 +817,13 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT de la tabla `testimonial`
 --
 ALTER TABLE `testimonial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `treatmentscategories`
 --
 ALTER TABLE `treatmentscategories`
-  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `treatmentsinterventions`

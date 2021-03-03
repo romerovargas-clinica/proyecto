@@ -4,38 +4,42 @@
 //print_r($_POST);
 $error = "";
 if (isset($_POST['inputTitle']) && isset($_GET['edit'])) :
-  if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == true) :
-    echo "Pendiente: Eliminar Articulo";
-  endif;
-  // Campos Obligatorios
-  //print_r($_POST);
-  $id = $_POST['inputId'];
-  $title = $_POST['inputTitle'];
-  $subtitle = $_POST['inputSubTitle'];
-  $author = $_POST['inputAuthor'];
-  $imageFile = $_POST['inputImageFile'];
-  $text = $_POST['inputText'];
-  $enabled = isset($_POST["flexSwitchCheckDefault"]) ? 1 : 0;
-  $date_published = $_POST["date_published"] == "" ? Null : $_POST["date_published"];
-  if ($date_published == "" && $enabled == 1) :
-    $date_published = date("Y-m-d H:i:s");
-  endif;
-  if ($title != "") :
-    //update($table, $update, $where, $SQLInyection = 'YES')
-    $anarray = array();
-    $anarray["title"] = $title;
-    $anarray["subtitle"] = $subtitle;
-    $anarray["author"] = $author;
-    $anarray["image"] = $imageFile;
-    $anarray["text"] = $text;
-    $anarray["enabled"] = $enabled;
-    $anarray["date_published"] = $date_published;
-    $recordset = $db->update("articles", $anarray, "id = " . $id);
-    if (!$recordset) :
-      $error = __('err_UpdateInfo', $lang);
+  if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
+    $id = $_POST['inputId'];
+    $db->delete("articles" ,"id = $id");
+    unset($_GET['edit']);
+  else:
+    // EDIT
+    // Campos Obligatorios
+    //print_r($_POST);
+    $id = $_POST['inputId'];
+    $title = $_POST['inputTitle'];
+    $subtitle = $_POST['inputSubTitle'];
+    $author = $_POST['inputAuthor'];
+    $imageFile = $_POST['inputImageFile'];
+    $text = $_POST['inputText'];
+    $enabled = isset($_POST["flexSwitchCheckDefault"]) ? 1 : 0;
+    $date_published = $_POST["date_published"] == "" ? Null : $_POST["date_published"];
+    if ($date_published == "" && $enabled == 1) :
+      $date_published = date("Y-m-d H:i:s");
     endif;
-  else :
-    $error = __('err_MissingData', $lang);
+    if ($title != "") :
+      //update($table, $update, $where, $SQLInyection = 'YES')
+      $anarray = array();
+      $anarray["title"] = $title;
+      $anarray["subtitle"] = $subtitle;
+      $anarray["author"] = $author;
+      $anarray["image"] = $imageFile;
+      $anarray["text"] = $text;
+      $anarray["enabled"] = $enabled;
+      $anarray["date_published"] = $date_published;
+      $recordset = $db->update("articles", $anarray, "id = " . $id);
+      if (!$recordset) :
+        $error = __('err_UpdateInfo', $lang);
+      endif;
+    else :
+      $error = __('err_MissingData', $lang);
+    endif;
   endif;
 endif;
 
@@ -43,13 +47,15 @@ endif;
 //Añadir nuevos artículos
 
 if (isset($_POST['InputNew'])) :
-  // Campos Obligatorios  
-  print_r($_POST);
+  // Campos Obligatorios    
+  // print_r($_POST);
   $title = $_POST['inputTitle'];
-  $imageFile = $_POST['inputImageFile'];
   $subtitle = $_POST['inputSubTitle'];
   $author = $_POST['inputAuthor'];
-  $text = $_POST['inputText'];
+  $imageFile = $_POST['inputImageFile'];
+  $text = htmlspecialchars($_POST['inputText'], ENT_QUOTES);
+  $author = $_POST['inputAuthor'];
+  // $enabled = isset($_POST["flexSwitchCheckDefault"]) ? 1 : 0;
   if ($title != "") :
     $anarray = array();
     $anarray["title"] = $title;
@@ -58,6 +64,7 @@ if (isset($_POST['InputNew'])) :
     $anarray["author"] = $author;
     $anarray["category"] = 1;
     $anarray["text"] = $text;
+    $anarray["enabled"] = 0;
     $recordset = $db->insert("articles", $anarray);
     if (!$recordset) :
       $error = __('err_UpdateInfo', $lang);
@@ -69,8 +76,8 @@ endif;
 ?>
 
 <h2><?= __('sect_articles', $lang) ?></h2>
-<div class="table-responsive">
 
+<div class="table-responsive">
   <?php
   $table = "articles";
   $where = "category = 1";
@@ -313,6 +320,7 @@ if (isset($_GET['edit'])) :
     filebrowserWindowWidth: '730',
     filebrowserWindowHeight: '500',
     removeDialogTabs: "image:advanced",
+
   });
 
   function aceptar(del) {

@@ -180,21 +180,21 @@ if (isset($_GET['edit'])) :
               <?php
               $bloques = $db->select("blocks", "id_page = " . $fields[0]["id"] . " ORDER BY order_n ASC");
               if ($bloques) :
-                $cont = 0;
+                $cont = 1;
                 foreach ($bloques as $bloque) :
               ?>
                   <tr>
                     <td>
-                      <h5><span class="badge bg-dark"><?= $bloque["name"] ?></span></h5>
+                      <h5><span style="cursor: pointer;" class="badge bg-dark"><?= $bloque["name"] ?></span></h5>
                     </td>
                     <td>
-                      <?php if ($cont != 0) : ?>
-                        <span id="<?= $bloque["name"] ?>_up" data-feather="arrow-up-circle" data-order="<?= $cont ?>" onclick="moveUp(<?= $cont ?>, this.id)"></span>
+                      <?php if ($cont != 1) : ?>
+                        <span style="cursor: pointer;" id="<?= $bloque["name"] ?>_up" data-feather="arrow-up-circle" data-order="<?= $cont ?>" onclick="moveUp(<?= $cont ?>, this.id)"></span>
                       <?php endif; ?>
                     </td>
                     <td>
-                      <?php if ($cont != count($bloques) - 1) : ?>
-                        <span id="<?= $bloque["name"] ?>_down" data-feather="arrow-down-circle" data-order="<?= $cont ?>" onclick="moveDown(<?= $cont ?>, this.id)"></span>
+                      <?php if ($cont != count($bloques)) : ?>
+                        <span style="cursor: pointer;" id="<?= $bloque["name"] ?>_down" data-feather="arrow-down-circle" data-order="<?= $cont ?>" onclick="moveDown(<?= $cont ?>, this.id)"></span>
                       <?php endif; ?>
                     </td>
                     <td id="<?= $bloque["name"] ?>_flag"></td>
@@ -210,8 +210,8 @@ if (isset($_GET['edit'])) :
       </div>
       <input type="hidden" id="inputId" name="inputId" value="<?= $fields[0]["id"] ?>">
       <input type="hidden" id="inputDelete" name="inputDelete" value="0">
-      <button type="submit" class="btn btn-primary" name="bttn1"><?= __('btn_Update', $lang) ?></button>
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal"><?= __('btn_Deleted', $lang) ?></button>
+      <!-- button type="submit" class="btn btn-primary" name="bttn1"><?= __('btn_Update', $lang) ?></button> -->
+      <!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal"><?= __('btn_Deleted', $lang) ?></button> -->
     </form>
   </div>
 <?php endif; ?>

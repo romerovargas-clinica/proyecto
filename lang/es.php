@@ -15,7 +15,7 @@ $texts = array(
   'mn_Logout' => "Cerrar Sesión",
   'mn_Admin' => "Panel de Control",
   'mn_Cites' => "Mis citas",
-  'mn_AboutUs' => "Sobre Nosotros",
+  'mn_AboutUs' => "Tu Clínica",
   'mn_budget' => "Presupuestos",
   // Block
   'Bl_About' => "Sobre nosotros",

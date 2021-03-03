@@ -15,7 +15,7 @@
                   <form id="frmLogin" method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
                     <div class="mb-3">
                       <label for="frmInputEmail" class="form-label"><?= __('frm_Email', $lang) ?></label>
-                      <input type="text" class="form-control" name="frmInputEmail" id="frmInputEmail" placeholder="nick our name@example.com" required>
+                      <input type="text" class="form-control" name="frmInputEmail" id="frmInputEmail" placeholder="name@example.com" required>
                     </div>
                     <div class="mb-3">
                       <label for="frmInputPass" class="form-label"><?= __('frm_Pass', $lang) ?></label>
