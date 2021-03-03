@@ -1,21 +1,22 @@
 <?php
 $texts = array(
-  // General Options
+  // Opciones generales
   'app_Title' => "SonriseClinic",
-  // Menú Buttons
+  // Menú
   'mn_Home' => "Home",
   'mn_News' => "News",
   'mn_Categories' => "Categories",
   'mn_Meeting' => "Managed Meeting",
   'mn_Chat' => "Chat",
   'mn_Speciality' => "Speciality",
-  'mn_Team' => "Doctor",
+  'mn_Team' => "Our Team",
   'mn_Contact' => "Contact",
   'mn_Login' => "Login",
   'mn_Logout' => "Logout",
-  'mn_Admin' => "CPanel",
+  'mn_Admin' => "Control Panel",
   'mn_Cites' => "My Cites",
-  'mn_AboutUs' => "About",
+  'mn_AboutUs' => "About us",
+  'mn_budget' => "budgets",
   // Block
   'Bl_About' => "About us",
   'Bl_Login' => "Login",
@@ -23,6 +24,9 @@ $texts = array(
   'about-section-title' => "About us",
   'about-section-subtitle' => "Welcome to Our Dental Clinic",
   'about-section-text' => "At SonriseClinic you will have the care you need with the best specialists. We want to be your family dental clinic and that is why we are committed to never disappoint our patients. We offer you an effective solution at an unbeatable price. Do not stop consulting us",
+  // About more section
+  'about-more-section-title' => "Web map",
+  'about-more-section-text' => "SonriseClinic website content diagram",
   // Service
   'service-section-title' => "Speciality",
   'service-section-subtitle' => "Experience and Professionalism",
@@ -37,6 +41,10 @@ $texts = array(
   'team-section-title' => "Team",
   'team-section-subtitle' => "Meet Our Doctors",
   'team-section-text' => "We introduce you to all our professionals. Click on him or her to learn more information",
+  // Blog section
+  'blog-section-title' => "News",
+  'blog-section-subtitle' => "Watch the latest news",
+  'blog-section-text' => "We publish the most interesting news related to dental health",
   // Faq section
   'faq-section-title' => "Frequently Asked Questions",
   'faq-section-subtitle' => "Get all the answers there if you want",
@@ -49,23 +57,36 @@ $texts = array(
   'footer-text' => "Your Family Clinic",
   // Budget
   // Menu 
-  'budget-menu-new' => "Nuevo",
-  'budget-menu-search' => "Recuperar",
-  'budget-menu-clients' => "Clientes",
-  'budget-menu-list' => "Presupuestos",
+  'budget-menu-new' => "New",
+  'budget-menu-search' => "Recuperate",
+  'budget-menu-clients' => "Customers",
+  'budget-menu-list' => "Budgets",
+  // Cites section
+  'schedule-section-title' => "",
+  'schedule-section-subtitle' => "Cites",
+  'schedule-section-text' => "We offer you a system to request and manage all your appointments quickly and easily.",
   // Client section
-  'budget-client-title' => "Cliente",
-  'budget-client-subtitle' => "Presupuesto",
+  'budget-client-title' => "Client",
+  'budget-client-subtitle' => "Budget",
   'budget-client-text' => "",
   // List section
-  'budget-list-title' => "Presupuestos",
-  'budget-list-date' => "Fecha",
-  'budget-list-customer' => "Cliente",
-  'budget-list-treatments' => "Tratamientos",
-  'budget-list-amount' => "Precio",
+  'budget-list-title' => "Budgets",
+  'budget-list-date' => "Date",
+  'budget-list-customer' => "Client",
+  'budget-list-treatments' => "Treatments",
+  'budget-list-amount' => "Price",
   'budget-list-discount' => "Discount",
-  'budget-list-action' => "Acciones",
-  'budget-list-none' => "No existen presupuestos anteriores",
+  'budget-list-action' => "Actions",
+  'budget-list-none' => "There are no previous budgets",
+  // New section
+  'budget-new-title' => "New Budget",
+  'budget-new-text' => "Complete the fields and press accept to create a new budget",
+  // Clients section
+  'budget-clients-title' => "New Client",
+  'budget-clients-text' => "Complete the fields and press accept to create a new client",
+  // Register section
+  'budget-clients-title' => "New User",
+  'budget-clients-text' => "Complete the fields and press accept to register",
   // Forms
   'frm_Email' => "Email address",
   'frm_Pass' => "Password",
@@ -74,6 +95,11 @@ $texts = array(
   'frm_Name' => "Nick",
   'frm_FirstName' => "Firstname",
   'frm_LastName' => "Lastname",
+  'frm_Phone' => "Phone number",
+  'frm_Address' => "Address",
+  'frm_PostalCode' => "Postal Code",
+  'frm_City' => "Cite",
+  'frm_Province' => "Province",
   'frm_Roles' => "Role",
   'frm_Type' => "Group",
   'frm_Label' => "Label",
@@ -81,32 +107,39 @@ $texts = array(
   'frm_Title' => "Title",
   'frm_Subtitle' => "Subtitle",
   'frm_Text' => "Text",
+  'frm_Author' => "Author",
   'frm_Image' => "Image",
   'frm_Desc' => "Description",
   'frm_Duration' => "Duration",
   'frm_Price' => "Price",
   'frm_Categorie' => "Categorie",
   'frm_lblImages' => "Name",
-  'frm_Src' => "url",
+  'frm_Src' => "Location",
   'frm_lblLong' => "Text in image-footer",
   'frm_Style' => "Style-CSS",
   'frm_Lenguage' => "Lenguage",
   'frm_Password' => "Password",
-  'frm_ConfirmPassword' => "Confrim password",
-  'frm_Register' => 'Sign up',
+  'frm_ConfirmPassword' => "Confirm password",
+  'frm_Register' => "Sign up",
   'frm_RegisterEmail' => "Please confirm your email address by clicking on the link we just sent you. (Check your Spam folder)",
   'frm_Policies' => "Accept our <a href='privacypolicies.php' target='_blank'>privacy policies</a>",
   'frm_Job' => "Job",
+  'frm_Treat' => "Treat",
   'frm_Degree' => "Degree",
   'frm_Block1' => "Block 1",
-  'frm_Block2' => "Block 2",
+  'frm_Block2' => "Block 1",
   'frm_Active' => "Status",
-
-
+  'frm_ButtonSend' => "New User Registration",
+  'frm_Enabled' => "Enabled",
+  'frm_Occupation' => "Occupation",
+  'frm_Comment' => "Comment",
+  'frm_Page' => "Page",
+  'frm_Block' => "Secctions",
+  'frm_BlockUp' => "Go up",
+  'frm_BlockDown' => "Go down",
   //Cases
   'Case_Disable' => "Disable",
   'Case_Enable' => "Enable",
-
   // Buttons
   'btn_Update' => "Update",
   'btn_Deleted' => "Deleted",
@@ -117,7 +150,7 @@ $texts = array(
   'btn_Add' => 'Add',
   'btn_NewCite' => 'Pedir cita',
   'btn_More' => 'More sites',
-
+  'btn_mapweb' => 'Web map',
   // Admin
   'sect_gallery' => "Gallery",
   'sect_users' => "Users",
@@ -131,11 +164,11 @@ $texts = array(
   'sect_Interventions' => "Interventions",
   'sect_Chat' => "Messages",
   'sect_professionals' => "Professionals",
-
+  'sect_opinions' => "Opinios",
   // Modal
   'modal_title_confirm' => "Confirm selection",
   'modal_text_confirm' => "It is not possible to undo. If you really intend to continue with it, click on 'OK'",
-  'modal_cite_confirm' => "Por favor, asegúrate de que las opciones de tu cita son correctas",
+  'modal_cite_confirm' => "Please make sure your appointment options are correct",
   // Error Messages
   'err_NotAutenticates' => "Unregistered user",
   'err_UpdateInfo' => "Failure updating data",
