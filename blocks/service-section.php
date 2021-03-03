@@ -20,8 +20,8 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 		<div class="row">
 			<?php
 			// Parámetros de configuración del bloque
-			$specialties = $db->select("block", "name = '" . $name_block . "'");
-			$recordset = $db->send("SELECT * FROM treatmentscategories;"); ?>
+			$specialties = $db->select("blocks", "name = '" . $name_block . "'");
+			$recordset = $db->send("SELECT * FROM treatmentscategories;");  ?>
 			<?php foreach ($recordset as $specialty) : ?>
 				<div class="col-lg-4 col-md-6">
 					<div class="service-item mb-30">
