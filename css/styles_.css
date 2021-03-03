@@ -25,3 +25,31 @@ tr.tbl-h tr:hover{
   transition:all .5s ease-in-out;
   filter: opacity(.5);
 }
+
+/* .es-button
+ul li button.es-button {
+  height: 30px;
+  width: 30px;
+  border-radius:50%;
+  border:none;
+  background-image:
+  url('../images/lenguages/espana.svg');
+  background-repeat: no-repeat;
+}
+ul li button.es-button:hover {
+  opacity: 0.5;
+}
+.en-button{
+height: 30px;
+  width: 30px;
+  border-radius:50%;
+  border:none;
+  background-image:
+  url('../images/lenguages/reino-unodp.svg');
+  background-repeat: no-repeat;
+}
+.en-button{ opacity:0,5}
+
+
+
+*/
