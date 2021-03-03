@@ -51,7 +51,7 @@
                   <button onclick="window.location.href='<?=$_SERVER['PHP_SELF']?>?lang=es'" class="es-button" style="height: 30px;width: 30px;border-radius:50%;border:none;background-image:url('../images/lenguages/espana.svg');background-repeat: no-repeat;"  > &nbsp; </button>
                 </li>
                 <li class="nav-item">
-                <button onclick="window.location.href='<?=$_SERVER['PHP_SELF']?>?lang=en'" class="en-button" style="height: 30px; width: 30px; border-radius:50%; border:none; background-image: url('images/lenguages/reino-unido.svg');   background-repeat: no-repeat"> &nbsp; </button>
+                <button onclick="window.location.href='<?=$_SERVER['PHP_SELF']?>?lang=e'" class="en-button" style="height: 30px; width: 30px; border-radius:50%; border:none; background-image: url('images/lenguages/reino-unido.svg');   background-repeat: no-repeat"> &nbsp; </button>
                 </li>
               </ul>
             </div>
@@ -122,13 +122,8 @@
                       </ul>
                     </li>
                   <?php endif; ?>
-<<<<<<< HEAD
               </div>
 
-=======
-                </ul>
-              </div>
->>>>>>> e5d3b9fcb07785c8caad976f5b9bab4bae8050a6
             </nav>
           </div>
         </div>
