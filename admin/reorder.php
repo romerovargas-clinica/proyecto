@@ -15,17 +15,17 @@ $flag = $_POST['flag'];
 
 $elem = $ndb->select("blocks", "name = '$ele'");
 
-if ($elem) :
+if ($elem && ($flag == 0 || $flag == 1)) :    // Reordenacion de secciones
   $anarray = array();
-  
+
   if ($flag == 1) : // subir
     // Val = 2    =>  1->2 && 2->1
     $anarray["order_n"] = $pos;
     $where = "id_page = " . $elem[0]["id_page"] . " AND order_n = " . ($pos - 1);
     $upSQL1 = $ndb->update("blocks", $anarray, $where);
     $pos--;
-  endif;  
-  
+  endif;
+
   if ($flag == 0) : // bajar
     // Val = 2    =>  3->2 && 2->3
     $anarray["order_n"] = $pos;
@@ -37,12 +37,46 @@ if ($elem) :
   $anarray = array();
   $anarray["order_n"] = $pos;
   $where = "name = '" . $ele . "'";
-  
-  $upSQL2 = $ndb->update("blocks", $anarray, $where);  
-else :
 
-    $jsondata['code'] = '300';
+  $upSQL2 = $ndb->update("blocks", $anarray, $where);
 
+endif;
+
+$elem = $ndb->select("blocks", "name = '$ele'");
+
+if ($elem && ($flag == 2 || $flag == 3)) :    // Habilitar/Deshabilitar secciones
+
+  $anarray = array();
+
+  if ($flag == 2) : // Habilitar
+    $max = $ndb->send("SELECT MAX(order_n) as maxim FROM blocks WHERE id_page = " . $elem[0]["id_page"] . " AND enabled = 1");
+    $maxim = $max[0]["maxim"] + 1;
+    $anarray["order_n"] = $maxim; //Colocar el último de los habilitados
+    $anarray["enabled"] = 1;
+    $where = "name = '" . $ele . "'";
+    $upSQL1 = $ndb->update("blocks", $anarray, $where);
+  endif;
+
+  if ($flag == 3) : // Deshabilitar    
+    $anarray["order_n"] = 0;
+    $anarray["enabled"] = 0;
+    $where = "name = '" . $ele . "'";
+    $upSQL1 = $ndb->update("blocks", $anarray, $where);
+  endif;
+
+endif;
+
+// Reordenar
+$reorder = $ndb->select("blocks", "id_page = " . $elem[0]["id_page"] . " AND enabled = 1 ORDER BY order_n ASC");
+if ($reorder) :
+  $pos = 1;
+  foreach ($reorder as $bloque) :
+    $anarray = array();
+    $anarray["order_n"] = $pos;
+    $where = "name = '" . $bloque["name"] . "'";
+    $upd = $ndb->update("blocks", $anarray, $where);
+    $pos++;
+  endforeach;
 endif;
 
 header('Content-type: application/json; charset=utf-8');

@@ -65,6 +65,7 @@ $texts = array(
   'schedule-section-title' => "",
   'schedule-section-subtitle' => "Citas",
   'schedule-section-text' => "Te ofrecemos un sistema para solicitar y gestionar todas tus citas de manera rápida y sencilla.",
+  'schedule-section-hour' => "Horario",
   // Client section
   'budget-client-title' => "Cliente",
   'budget-client-subtitle' => "Presupuesto",

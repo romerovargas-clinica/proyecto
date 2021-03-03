@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2021 a las 13:22:44
+-- Tiempo de generación: 03-03-2021 a las 20:38:12
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -58,10 +58,51 @@ INSERT INTO `articles` (`id`, `category`, `title`, `subtitle`, `text`, `image`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `block`
+-- Estructura de tabla para la tabla `blocks`
 --
 
-CREATE TABLE `block` (
+CREATE TABLE `blocks` (
+  `id` int(9) NOT NULL,
+  `id_page` int(9) NOT NULL,
+  `name` varchar(56) NOT NULL,
+  `label` varchar(56) DEFAULT NULL,
+  `order_n` int(9) NOT NULL,
+  `title` varchar(56) DEFAULT NULL,
+  `subtitle` varchar(56) DEFAULT NULL,
+  `text` varchar(56) DEFAULT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `blocks`
+--
+
+INSERT INTO `blocks` (`id`, `id_page`, `name`, `label`, `order_n`, `title`, `subtitle`, `text`, `enabled`) VALUES
+(1, 1, 'we-do-section', 'section', 0, NULL, NULL, NULL, 0),
+(2, 5, 'about-more-section', 'Mapa Web', 9, 'about-more-section-title', 'about-more-section-subtitle', 'about-more-section-text', 1),
+(3, 3, 'schedule-section', 'Gestión de Citas', 9, 'schedule-section-title', 'schedule-section-subtitle', 'schedule-section-text', 1),
+(4, 1, 'service-section', 'Especialidades', 4, 'service-section-title', 'service-section-subtitle', 'service-section-text', 1),
+(6, 6, 'interventions', 'Intervenciones', 9, NULL, NULL, NULL, 1),
+(7, 2, 'login-block', 'Login', 9, NULL, NULL, NULL, 1),
+(8, 1, 'about-section', 'Sobre Nosotros', 2, 'about-section-title', 'about-section-subtitle', 'about-section-text', 1),
+(9, 1, 'testimonial-section', 'Testimonios', 3, 'testimonial-section-title', 'testimonial-section-subtitle', 'testimonial-section-text', 1),
+(10, 1, 'faq-section', 'Faq', 7, 'faq-section-title', 'faq-section-subtitle', 'faq-section-text', 1),
+(11, 1, 'team-section', 'Equipo', 6, 'team-section-title', 'team-section-subtitle', 'team-section-text', 1),
+(12, 1, 'subscribe-section', 'Suscríbete', 0, NULL, NULL, NULL, 0),
+(13, 1, 'blog-section', 'Novedades', 5, 'blog-section-title', 'blog-section-subtitle', 'blog-section-text', 1),
+(14, 1, 'contact-section', 'Contacto', 8, 'contact-section-title', 'contact-section-subtitle', 'contact-section-text', 1),
+(15, 1, 'slider-section', 'Carrusel', 1, NULL, NULL, NULL, 1),
+(16, 7, 'budget-section', 'Presupuestos', 9, 'budget-section-title', 'budget-client-subtitle', 'budget-section-text', 1),
+(17, 8, 'register-section', 'Registro', 1, 'register-section-title', 'register-section-subtitle', 'register-section-text', 1),
+(18, 4, 'article-section', 'article-section', 1, 'article-section-title', 'article-section-subtitle', 'article-section-text', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `block_borrar`
+--
+
+CREATE TABLE `block_borrar` (
   `id` int(9) NOT NULL,
   `name` varchar(56) NOT NULL,
   `description` varchar(256) NOT NULL,
@@ -91,46 +132,6 @@ CREATE TABLE `block` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `blocks`
---
-
-CREATE TABLE `blocks` (
-  `id` int(9) NOT NULL,
-  `id_page` int(9) NOT NULL,
-  `name` varchar(56) NOT NULL,
-  `label` varchar(56) DEFAULT NULL,
-  `order_n` int(9) NOT NULL,
-  `title` varchar(56) DEFAULT NULL,
-  `subtitle` varchar(56) DEFAULT NULL,
-  `text` varchar(56) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `blocks`
---
-
-INSERT INTO `blocks` (`id`, `id_page`, `name`, `label`, `order_n`, `title`, `subtitle`, `text`) VALUES
-(1, 1, 'we-do-section', 'section', 10, NULL, NULL, NULL),
-(2, 5, 'about-more-section', 'Mapa Web', 9, 'about-more-section-title', 'about-more-section-subtitle', 'about-more-section-text'),
-(3, 3, 'schedule-section', 'Gestión de Citas', 9, 'schedule-section-title', 'schedule-section-subtitle', 'schedule-section-text'),
-(4, 1, 'service-section', 'Especialidades', 3, 'service-section-title', 'service-section-subtitle', 'service-section-text'),
-(6, 6, 'interventions', 'Intervenciones', 9, NULL, NULL, NULL),
-(7, 2, 'login-block', 'Login', 9, NULL, NULL, NULL),
-(8, 1, 'about-section', 'Sobre Nosotros', 2, 'about-section-title', 'about-section-subtitle', 'about-section-text'),
-(9, 1, 'testimonial-section', 'Testimonios', 4, 'testimonial-section-title', 'testimonial-section-subtitle', 'testimonial-section-text'),
-(10, 1, 'faq-section', 'Faq', 7, 'faq-section-title', 'faq-section-subtitle', 'faq-section-text'),
-(11, 1, 'team-section', 'Equipo', 6, 'team-section-title', 'team-section-subtitle', 'team-section-text'),
-(12, 1, 'subscribe-section', 'Suscríbete', 8, NULL, NULL, NULL),
-(13, 1, 'blog-section', 'Novedades', 5, 'blog-section-title', 'blog-section-subtitle', 'blog-section-text'),
-(14, 1, 'contact-section', 'Contacto', 9, 'contact-section-title', 'contact-section-subtitle', 'contact-section-text'),
-(15, 1, 'slider-section', 'Carrusel', 1, NULL, NULL, NULL),
-(16, 7, 'budget-section', 'Presupuestos', 9, 'budget-section-title', 'budget-client-subtitle', 'budget-section-text'),
-(17, 8, 'register-section', 'Registro', 9, 'register-section-title', 'register-section-subtitle', 'register-section-text'),
-(18, 4, 'article-section', 'article-section', 1, 'article-section-title', 'article-section-subtitle', 'article-section-text');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `budgets`
 --
 
@@ -148,7 +149,8 @@ CREATE TABLE `budgets` (
 --
 
 INSERT INTO `budgets` (`id`, `date`, `customer_id`, `amount`, `discount`, `enabled`) VALUES
-(6, '2021-02-05', 3, 505, 0, 1);
+(7, '2021-03-11', 39, 455, 10, 1),
+(9, '2021-03-26', 40, 1865, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -168,7 +170,14 @@ CREATE TABLE `budgets_treatments` (
 
 INSERT INTO `budgets_treatments` (`id`, `id_budget`, `id_treatments`) VALUES
 (1, 6, 2),
-(2, 6, 4);
+(2, 6, 4),
+(3, 7, 2),
+(4, 7, 3),
+(7, 9, 9),
+(8, 9, 10),
+(9, 9, 11),
+(10, 9, 3),
+(11, 9, 4);
 
 -- --------------------------------------------------------
 
@@ -209,15 +218,17 @@ CREATE TABLE `cites` (
 --
 
 INSERT INTO `cites` (`id`, `date`, `time_from`, `time_until`, `user_id`, `id_treatments`) VALUES
-(5, '2021-02-26', '09:30:00', '10:20:00', 3, 0);
+(7, '2021-03-04', '12:30:00', '15:00:00', 4, 2),
+(8, '2021-03-04', '15:00:00', '15:45:00', 4, 3),
+(9, '2021-03-04', '09:30:00', '11:45:00', 3, 7);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `content`
+-- Estructura de tabla para la tabla `content_borrar`
 --
 
-CREATE TABLE `content` (
+CREATE TABLE `content_borrar` (
   `id` int(11) NOT NULL,
   `label` varchar(15) NOT NULL,
   `content` text NOT NULL,
@@ -347,10 +358,10 @@ INSERT INTO `professionals` (`id`, `image`, `info`, `tr`, `name`, `degree`, `job
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `publi`
+-- Estructura de tabla para la tabla `publi_borrar`
 --
 
-CREATE TABLE `publi` (
+CREATE TABLE `publi_borrar` (
   `id` int(9) NOT NULL,
   `title` varchar(300) NOT NULL,
   `block1` varchar(300) NOT NULL,
@@ -359,10 +370,10 @@ CREATE TABLE `publi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `publi`
+-- Volcado de datos para la tabla `publi_borrar`
 --
 
-INSERT INTO `publi` (`id`, `title`, `block1`, `block2`, `enable`) VALUES
+INSERT INTO `publi_borrar` (`id`, `title`, `block1`, `block2`, `enable`) VALUES
 (1, 'TRATAMIENTO DE IMPLANTOLOGÍA', 'Durante el mes de marzo', '199,99€', 1),
 (5, 'BLANQUEAMIENTO GRATUITO', 'Niños menores de 14 años', 'Por cada tratamiento endodóntico en Adultos', 0);
 
@@ -537,11 +548,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `address`, `postalcode`, `city`, `province`, `phone`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-03-03 13:21:19', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
-(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-26 17:50:32', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
-(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-03-03 12:13:43', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-03-03 17:55:40', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
+(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-03-03 20:11:35', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
+(4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-03-03 19:50:35', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (38, '60362cdb001c6', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[CUSTOMER]', NULL, 'es', 'David', 'Bermudez', 'davidbermudez@jerez.es', 'Calle Parque de Doñana', '11400', 'Jerez', 'Cádiz', '654654654', 1),
-(39, '6038f56999690', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-26 16:47:15', '[CUSTOMER]', '', 'es', 'Antonio', 'Gomez', 'elarahal.1972@gmail.com', '', '', '', '', '897987987', 1);
+(39, '6038f56999690', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-26 16:47:15', '[CUSTOMER]', '', 'es', 'Antonio', 'Gomez', 'elarahal.1972@gmail.com', '', '', '', '', '897987987', 1),
+(40, '603f8f6577f5e', '', NULL, NULL, '[CUSTOMER]', NULL, 'es', 'Gustavo Adolfo', 'Domínguez Bastida', 'becquer@gmail.com', 'C/ Puerto Serrano, 61', '11010', 'Cádiz', 'Cádiz', '989879879', 1);
 
 --
 -- Índices para tablas volcadas
@@ -555,16 +567,16 @@ ALTER TABLE `articles`
   ADD KEY `author` (`author`);
 
 --
--- Indices de la tabla `block`
+-- Indices de la tabla `blocks`
 --
-ALTER TABLE `block`
+ALTER TABLE `blocks`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indices de la tabla `blocks`
+-- Indices de la tabla `block_borrar`
 --
-ALTER TABLE `blocks`
+ALTER TABLE `block_borrar`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
@@ -595,9 +607,9 @@ ALTER TABLE `cites`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indices de la tabla `content`
+-- Indices de la tabla `content_borrar`
 --
-ALTER TABLE `content`
+ALTER TABLE `content_borrar`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -625,9 +637,9 @@ ALTER TABLE `professionals`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `publi`
+-- Indices de la tabla `publi_borrar`
 --
-ALTER TABLE `publi`
+ALTER TABLE `publi_borrar`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -680,28 +692,28 @@ ALTER TABLE `articles`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT de la tabla `block`
---
-ALTER TABLE `block`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `blocks`
 --
 ALTER TABLE `blocks`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT de la tabla `block_borrar`
+--
+ALTER TABLE `block_borrar`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `budgets`
 --
 ALTER TABLE `budgets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `budgets_treatments`
 --
 ALTER TABLE `budgets_treatments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `category`
@@ -713,12 +725,12 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT de la tabla `cites`
 --
 ALTER TABLE `cites`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `content`
+-- AUTO_INCREMENT de la tabla `content_borrar`
 --
-ALTER TABLE `content`
+ALTER TABLE `content_borrar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -746,9 +758,9 @@ ALTER TABLE `professionals`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `publi`
+-- AUTO_INCREMENT de la tabla `publi_borrar`
 --
-ALTER TABLE `publi`
+ALTER TABLE `publi_borrar`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -785,7 +797,7 @@ ALTER TABLE `treatmentsinterventions`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Restricciones para tablas volcadas

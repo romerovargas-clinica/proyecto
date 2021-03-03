@@ -17,6 +17,22 @@ class DataBase
         return true;
     }
 
+    public function nameUser($id)
+    {
+        $sql = "SELECT firstname, lastname FROM users WHERE id = " . $id;
+        $result = mysqli_query($this->connection, $sql) or die(mysqli_error($this->connection));
+        $fila = mysqli_fetch_array($result);
+        return $fila["firstname"] . " " . $fila["lastname"];
+    }
+
+    public function emailUser($id)
+    {
+        $sql = "SELECT email FROM users WHERE id = " . $id;
+        $result = mysqli_query($this->connection, $sql) or die(mysqli_error($this->connection));
+        $fila = mysqli_fetch_array($result);
+        return $fila["email"];
+    }
+
     public function send($sql, $type = 'ARRAY')
     {
         $result = mysqli_query($this->connection, $sql) or die(mysqli_error($this->connection));

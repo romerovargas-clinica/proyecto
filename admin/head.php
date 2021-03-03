@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/dashboard.css">
   <script src="js/ckeditor/ckeditor.js"></script>
   <!-- Favicons -->
-
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
   <!--
 <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">

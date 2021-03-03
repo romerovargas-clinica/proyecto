@@ -21,16 +21,6 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 			</div>
 			<div class="col-lg-3">
 				<div class="we-do-item mb-30">
-					<a href="budget.php?action=search">
-						<div class="we-do-icon mb-25">
-							<i class="lni lni-search-alt" style="font-size: 30px; color: #00ADB5; translate: 0 8px"></i>
-						</div>
-					</a>
-					<h5><a href="budget.php?action=search"><?= __('budget-menu-search', $lang) ?></a></h5>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="we-do-item mb-30">
 					<a href="budget.php?action=clients">
 						<div class="we-do-icon mb-25">
 							<i class="lni lni-users" style="font-size: 30px; color: #00ADB5; translate: 0 8px"></i>

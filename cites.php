@@ -20,8 +20,10 @@ if (isset($_POST["trataiments"])) :
   $field['time_from'] = $_POST['hourfrom'];
   $field['time_until'] = $_POST['houruntil'];
   $field['user_id'] = $_SESSION['id'];
-  $comprobar = $ndb->send("SELECT * FROM cites WHERE date='" . $field['date'] . "' AND (time_from BETWEEN '" . $field['time_from'] . "' AND '" . $field['time_until'] . "' OR time_until BETWEEN '" . $field['time_from'] . "' AND '" . $field['time_until'] . "')");
-  if ($comprobar) die("Hack!!");
+  $field['id_treatments'] = $_POST['trataiments'];
+  $sql = "SELECT * FROM cites WHERE date='" . $field['date'] . "' AND (time_from > '" . $field['time_from'] . "' AND time_from < '" . $field['time_until'] . "' OR time_until > '" . $field['time_from'] . "' AND time_until < '" . $field['time_until'] . "')";
+  $comprobar = $ndb->send($sql);
+  if ($comprobar) die("Hack???");
   $add = $ndb->insert("cites", $field);
   if ($add) {
     unset($_GET);
@@ -30,8 +32,11 @@ if (isset($_POST["trataiments"])) :
     unset($_SESSION["cite"]["step"]);
     unset($_SESSION["cite"]["hourfrom"]);
     unset($_SESSION["cite"]["houruntil"]);
-    unset($_POST);
     $exito = true;
+    $email = $ndb->emailUser($_SESSION["id"]);
+    $message = "No conteste a este email por favor.\n\nSe ha registrado correctamente su cita en nuestra clínica \n Día: " . $_POST['date'] . "\n Hora: " . $field['time_from'] . "\n";
+    mail($email, "Confirmación de cita ", $message, "From: admin@sonriseclinic.es");
+    unset($_POST);
   }
   $ndb->close();
 endif;

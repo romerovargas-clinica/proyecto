@@ -172,13 +172,14 @@ if (isset($_GET['edit'])) :
                 <th><?= __('frm_Block', $lang) ?></th>
                 <th><?= __('frm_BlockUp', $lang) ?></th>
                 <th><?= __('frm_BlockDown', $lang) ?></th>
+                <th><?= __('frm_Active', $lang) ?></th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
 
               <?php
-              $bloques = $db->select("blocks", "id_page = " . $fields[0]["id"] . " ORDER BY order_n ASC");
+              $bloques = $db->select("blocks", "id_page = " . $fields[0]["id"] . " AND enabled = 1 ORDER BY order_n ASC");
               if ($bloques) :
                 $cont = 1;
                 foreach ($bloques as $bloque) :
@@ -197,13 +198,30 @@ if (isset($_GET['edit'])) :
                         <span style="cursor: pointer;" id="<?= $bloque["name"] ?>_down" data-feather="arrow-down-circle" data-order="<?= $cont ?>" onclick="moveDown(<?= $cont ?>, this.id)"></span>
                       <?php endif; ?>
                     </td>
-                    <td id="<?= $bloque["name"] ?>_flag"></td>
+                    <td><input id="<?= $bloque["name"] ?>_check" type="checkbox" checked="checked" onchange="deshabilitar(this.id)"></td>
                   </tr>
                 <?php
                   $cont++;
                 endforeach; ?>
-                </td>
-              <?php endif; ?>
+                <?php endif;
+              $bloques = $db->select("blocks", "id_page = " . $fields[0]["id"] . " AND enabled = 0 ORDER BY order_n ASC");
+              if ($bloques) :
+                $cont = 1;
+                foreach ($bloques as $bloque) :
+                ?>
+                  <tr>
+                    <td>
+                      <h5><span style="cursor: pointer;" class="badge bg-secondary"><?= $bloque["name"] ?></span></h5>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><input id="<?= $bloque["name"] ?>_check" type="checkbox" onchange="habilitar(this.id)"></td>
+                  </tr>
+                <?php
+                  $cont++;
+                endforeach; ?>
+              <?php endif;
+              ?>
             </tbody>
           </table>
         </div>
@@ -272,6 +290,36 @@ if (isset($_GET['edit'])) :
     }, function(data) {
       if (data["code"] == 200) {
         $("#" + flag + "_flag").html('');
+        location.reload();
+      }
+    });
+  }
+
+  function habilitar(ele) {
+    console.log(ele);
+    var flag = ele.slice(0, -6);
+    pos = 0;
+    $.post("admin/reorder.php", {
+      ele: flag,
+      pos: pos,
+      flag: 2
+    }, function(data) {
+      if (data["code"] == 200) {
+        location.reload();
+      }
+    });
+  }
+
+  function deshabilitar(ele) {
+    console.log(ele);
+    var flag = ele.slice(0, -6);
+    pos = 0;
+    $.post("admin/reorder.php", {
+      ele: flag,
+      pos: pos,
+      flag: 3
+    }, function(data) {
+      if (data["code"] == 200) {
         location.reload();
       }
     });

@@ -113,21 +113,33 @@ endswitch;
                       <h5 class="card-title">
                         <a href="cites.php?new" class="text-decoration-none"><?= $trataiments[0]["name"] ?></a>
                       </h5>
-                    <?php endif;
+                      <div class="card-body">
+                      <?php endif;
                     if (isset($_SESSION["cite"]["date"])) : ?>
-                      <p class="card-text"><a href="cites.php?new" class="text-decoration-none"><?= $_SESSION["cite"]["date"] ?></a></p>
-                    <?php endif; ?>
-                </div>
-                <?php if (isset($_SESSION["cite"]["hourfrom"])) : ?>
-                  <p class="card-text"><a href="cites.php?new" class="text-decoration-none"><?= $_SESSION["cite"]["hourfrom"] . " - " . $_SESSION["cite"]["houruntil"] ?></a></p>
-                  <input type="hidden" name="trataiments" value="<?= $_SESSION["cite"]["intervention"] ?>">
-                  <input type="hidden" name="date" value="<?= $_SESSION["cite"]["date"] ?>">
-                  <input type="hidden" name="hourfrom" value="<?= $_SESSION["cite"]["hourfrom"] ?>">
-                  <input type="hidden" name="houruntil" value="<?= $_SESSION["cite"]["houruntil"] ?>">
-                  <button type="button" class="btn theme-btn wow fadeInUp" data-wow-delay=".8s" data-bs-toggle="modal" data-bs-target="#myModal"><?= __('btn_NewCite', $lang) ?></button>
-              <?php endif;
+                        <p class="card-text">
+                          <?= __('budget-list-date', $lang) ?>:
+                          <a href="cites.php?new&tab=1" class="text-decoration-none"><?= $_SESSION["cite"]["date"] ?>
+                          </a>
+                        </p>
+                      <?php endif;
+                    if (isset($_SESSION["cite"]["hourfrom"])) : ?>
+                        <p class="card-text">
+                          <?= __('schedule-section-hour', $lang) ?>:
+                          <a href="cites.php?new&tab=2" class="text-decoration-none"><?= $_SESSION["cite"]["hourfrom"] . " - " . $_SESSION["cite"]["houruntil"] ?></a>
+                        </p>
+                    <?php endif;
                   endif; ?>
-              </div>
+                    <div class="card-footer">
+                      <?php if (isset($_SESSION["cite"]["hourfrom"])) : ?>
+                        <input type="hidden" name="trataiments" value="<?= $_SESSION["cite"]["intervention"] ?>">
+                        <input type="hidden" name="date" value="<?= $_SESSION["cite"]["date"] ?>">
+                        <input type="hidden" name="hourfrom" value="<?= $_SESSION["cite"]["hourfrom"] ?>">
+                        <input type="hidden" name="houruntil" value="<?= $_SESSION["cite"]["houruntil"] ?>">
+                        <button type="button" class="btn theme-btn wow fadeInUp" data-wow-delay=".8s" data-bs-toggle="modal" data-bs-target="#myModal"><?= __('btn_NewCite', $lang) ?></button>
+                      <?php endif; ?>
+                    </div>
+                      </div>
+                </div>
             </form>
           </div>
         <?php else : ?>

@@ -44,13 +44,12 @@ endif;
 							<tr>
 								<td><?= $budget["id"] ?></td>
 								<td><?= $budget["date"] ?></td>
-								<td><?= $budget["customer_id"] ?></td>
+								<td><?= $ndb->nameUser($budget["customer_id"]) ?></td>
 								<td><?= $budget["date"] ?></td>
 								<td><?= $budget["amount"] ?> </td>
 								<td><?= $budget["discount"] ?> %</td>
 								<td><?= $budget["amount"] - ($budget["amount"] * $budget["discount"] / 100) ?></td>
 								<td class="nav-item">
-									<a href="#"><i class="lni lni-eye" style="font-size: 30px; color: #00ADB5;"></i></a>
 									<a href="admin/printPdf.php?id=<?= $budget['id'] ?>"><i class="lni lni-printer" style="font-size: 30px; color: #00ADB5;" id="pri_<?= $budget['id'] ?>"></i></a>
 									<a href="#"><i class="lni lni-trash" style="font-size: 30px; color: #00ADB5;" id="del_<?= $budget['id'] ?>" onclick="deleteBudget(this)"></i></a>
 								</td>
@@ -65,7 +64,7 @@ endif;
 		</div>
 	</div>
 </section>
-<!-- Modal -->
+<!-- Modal1 -->
 <?php
 
 ?>
@@ -84,6 +83,7 @@ endif;
 		</div>
 	</div>
 </div>
+
 <?php $db->close() ?>
 <script>
 	function deleteBudget(budget) {
