@@ -19,6 +19,7 @@
 									<?php endforeach;
 									endif;
 									$mapSRC = $db->send("SELECT value FROM settings WHERE type = 'map';");
+									$especialities = $db->send("SELECT id, name FROM treatmentscategories ;");
 									$db->close();
 									?>
 								</ul>
@@ -47,14 +48,15 @@
 					</div>
 					<div class="col-xl-2 col-lg-3 col-md-5">
 						<div class="footer-widget mb-30">
-							<h4><?= __('footer-quick-link', $lang)?> por utilizar</h4>
+							<h4><?= __('footer-quick-link', $lang) ?></h4>
 							<ul class="footer-links">
-								<li><a href="#">Cardiology</a></li>
-								<li><a href="#">Neurology</a></li>
-								<li><a href="#">Gastroenterology</a></li>
-								<li><a href="#">Routine Checkup</a></li>
-								<li><a href="#">Orthopedics</a></li>
-								<li><a href="#">Dental Surgery</a></li>
+
+								<?php foreach ($especialities  as $categorie) : ?>
+
+								<li><a href="/categorieInterventions.php?categorie=<?= $categorie['id']?>"><?= $categorie['name']?></a></li>
+
+								<?php endforeach;?>
+
 							</ul>
 						</div>
 					</div>
