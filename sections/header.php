@@ -102,7 +102,6 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li><a class="dropdown-item" href="cites.php"><?= __('mn_Cites', $lang) ?></a></li>
-                          <li><a class="dropdown-item" href="chat.php"><?= __('mn_Chat', $lang) ?></a></li>
                           <?php if (isset($_SESSION["roles"]) && $_SESSION["roles"] == "[ADMIN-USER]") : ?>
                             <li>
                               <hr class="dropdown-divider">
