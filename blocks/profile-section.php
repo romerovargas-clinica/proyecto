@@ -78,7 +78,7 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 									</div>
 									<div class="col-md-4">
 										<label><?= __('frm_PostalCode', $lang) ?></label>
-										<input type="text" name="postalCode" id="postalCode" placeholder="<?= __('frm_PostalCode', $lang) ?>" value="<?= $user[0]["postalcode"] ?>">
+										<input type="text" name="postalcode" id="postalcode" placeholder="<?= __('frm_PostalCode', $lang) ?>" value="<?= $user[0]["postalcode"] ?>">
 									</div>
 								</div>
 

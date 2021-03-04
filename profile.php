@@ -57,6 +57,12 @@ if (isset($_POST['enviar'])) :
   if (isset($anarray["lang"])) :
     $lang = $anarray["lang"];
   endif;
+  // Actualizar los datos de la sesión
+  foreach ($anarray as $key => $valor) :
+    if (isset($_SESSION[$key])) :
+      $_SESSION[$key] = $anarray[$key];
+    endif;
+  endforeach;
 endif;
 ?>
 <!DOCTYPE html>
