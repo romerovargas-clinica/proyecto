@@ -107,13 +107,12 @@
                         <?= $_SESSION['firstname'] ?>
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="cites.php"><?= __('mn_Cites', $lang) ?></a></li>
+                        
                         <?php if (isset($_SESSION["roles"]) && $_SESSION["roles"] == "[ADMIN-USER]") : ?>
-                          <li>
-                            <hr class="dropdown-divider">
-                          </li>
                           <li><a class="dropdown-item" href="admin.php"><?= __('mn_Admin', $lang) ?></a></li>
                           <li><a class="dropdown-item" href="budget.php"><?= __('mn_budget', $lang) ?></a></li>
+                        <?php else: ?>
+                          <li><a class="dropdown-item" href="cites.php"><?= __('mn_Cites', $lang) ?></a></li>
                         <?php endif; ?>
                         <li>
                           <hr class="dropdown-divider">
