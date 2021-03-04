@@ -28,7 +28,7 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 						<a class="list-group-item list-group-item-action text-light" style="background-color: #00ADB5" href="index.php"><?= __('mn_Home', $lang) ?></a>
 						<div class="list-group">
 							<?php
-							$bloques = $db->select("blocks", "id_page = 1 ORDER BY order_n ASC");
+							$bloques = $db->select("blocks", "id_page = 1 AND enabled = 1 ORDER BY order_n ASC");
 							if ($bloques) : ?>
 								<?php foreach ($bloques as $bloque) : ?>
 									<a class="list-group-item list-group-item-action" href="index.php#<?= $bloque["name"] ?>"><?= $bloque["label"] ?></a>
@@ -41,7 +41,6 @@ $result = $db->select("blocks", "id = " . $block["id"]);
 						<a class="list-group-item list-group-item-action text-light" style="background-color: #00ADB5" href="login.php"><?= __('mn_Login', $lang) ?></a>
 						<div class="list-group">
 							<a class="list-group-item list-group-item-action" href="cites.php"><?= __('mn_Cites', $lang) ?></a>
-							<a class="list-group-item list-group-item-action" href="chat.php"><?= __('mn_Chat', $lang) ?></a>
 						</div>
 					</li>
 

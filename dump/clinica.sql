@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2021 a las 20:38:12
+-- Tiempo de generación: 04-03-2021 a las 19:38:59
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -94,40 +94,8 @@ INSERT INTO `blocks` (`id`, `id_page`, `name`, `label`, `order_n`, `title`, `sub
 (15, 1, 'slider-section', 'Carrusel', 1, NULL, NULL, NULL, 1),
 (16, 7, 'budget-section', 'Presupuestos', 9, 'budget-section-title', 'budget-client-subtitle', 'budget-section-text', 1),
 (17, 8, 'register-section', 'Registro', 1, 'register-section-title', 'register-section-subtitle', 'register-section-text', 1),
-(18, 4, 'article-section', 'article-section', 1, 'article-section-title', 'article-section-subtitle', 'article-section-text', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `block_borrar`
---
-
-CREATE TABLE `block_borrar` (
-  `id` int(9) NOT NULL,
-  `name` varchar(56) NOT NULL,
-  `description` varchar(256) NOT NULL,
-  `label#01` varchar(256) NOT NULL,
-  `num#1` int(9) DEFAULT NULL,
-  `label#02` varchar(256) DEFAULT NULL,
-  `num#2` int(9) DEFAULT NULL,
-  `label#03` varchar(256) DEFAULT NULL,
-  `num#3` int(9) DEFAULT NULL,
-  `label#04` varchar(256) DEFAULT NULL,
-  `num#4` int(9) DEFAULT NULL,
-  `label#05` varchar(256) DEFAULT NULL,
-  `num#5` int(9) DEFAULT NULL,
-  `label#06` varchar(50) DEFAULT NULL,
-  `text#1` varchar(200) DEFAULT NULL,
-  `label#07` varchar(50) DEFAULT NULL,
-  `text#2` varchar(200) DEFAULT NULL,
-  `label#08` varchar(50) DEFAULT NULL,
-  `text#3` varchar(200) DEFAULT NULL,
-  `label#09` varchar(50) DEFAULT NULL,
-  `text#4` varchar(200) DEFAULT NULL,
-  `label#10` varchar(50) DEFAULT NULL,
-  `text#5` varchar(200) DEFAULT NULL,
-  `css` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(18, 4, 'article-section', 'article-section', 1, 'article-section-title', 'article-section-subtitle', 'article-section-text', 1),
+(19, 9, 'profile-section', 'Perfil', 1, 'profile-section-title', 'profile-section-subtitle', 'profile-section-text', 1);
 
 -- --------------------------------------------------------
 
@@ -225,19 +193,6 @@ INSERT INTO `cites` (`id`, `date`, `time_from`, `time_until`, `user_id`, `id_tre
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `content_borrar`
---
-
-CREATE TABLE `content_borrar` (
-  `id` int(11) NOT NULL,
-  `label` varchar(15) NOT NULL,
-  `content` text NOT NULL,
-  `last_modify` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `faq`
 --
 
@@ -328,7 +283,8 @@ INSERT INTO `pages` (`id`, `page`, `created`, `enabled`) VALUES
 (5, 'ABOUTMORE', '2021-01-29 19:45:07', 1),
 (6, 'SPECIALITIE', '2021-01-30 19:00:49', 1),
 (7, 'BUDGET', '2021-02-22 10:20:53', 1),
-(8, 'REGISTER', '2021-02-23 17:29:59', 1);
+(8, 'REGISTER', '2021-02-23 17:29:59', 1),
+(9, 'PROFILE', '2021-03-04 18:08:49', 1);
 
 -- --------------------------------------------------------
 
@@ -354,28 +310,6 @@ CREATE TABLE `professionals` (
 INSERT INTO `professionals` (`id`, `image`, `info`, `tr`, `name`, `degree`, `job`, `enabled`) VALUES
 (1, 'team-152.png', 'Dr. Juan es el Director de SonriseClinic con una amplia experiencia en el tratamiento de las correcciones.', 'Dr.', 'Juan Jesús Bernal García', 'Ortodentista', 'Director', 1),
 (3, 'team-2100.png', 'La Doctora Dª. Ana Bernal se ha formado en el prestigioso Institute Dental of Massachusetts adquiriendo una experiencia inmejorable en las intervenciones quirúrgicas y de corrección maxilofacial que realizamos en nuestra propia clínica con las máximas garantías.', 'Dra.', 'Ana Bernal García', 'Cirujía maxilofacial', 'Quirófano', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `publi_borrar`
---
-
-CREATE TABLE `publi_borrar` (
-  `id` int(9) NOT NULL,
-  `title` varchar(300) NOT NULL,
-  `block1` varchar(300) NOT NULL,
-  `block2` varchar(300) NOT NULL,
-  `enable` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `publi_borrar`
---
-
-INSERT INTO `publi_borrar` (`id`, `title`, `block1`, `block2`, `enable`) VALUES
-(1, 'TRATAMIENTO DE IMPLANTOLOGÍA', 'Durante el mes de marzo', '199,99€', 1),
-(5, 'BLANQUEAMIENTO GRATUITO', 'Niños menores de 14 años', 'Por cada tratamiento endodóntico en Adultos', 0);
 
 -- --------------------------------------------------------
 
@@ -548,8 +482,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `address`, `postalcode`, `city`, `province`, `phone`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-03-03 17:55:40', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
-(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-03-03 20:11:35', '[CUSTOMER]', '', 'es', 'asdasd', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', '', '', '', '', '', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-03-03 20:51:46', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
+(3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-03-04 18:05:43', '[CUSTOMER]', '', 'es', 'Antonio David', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 'C/ Real, 46', '11406', 'Jerez de la Frontera', 'Cádiz', '987987987', 1),
 (4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-03-03 19:50:35', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (38, '60362cdb001c6', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[CUSTOMER]', NULL, 'es', 'David', 'Bermudez', 'davidbermudez@jerez.es', 'Calle Parque de Doñana', '11400', 'Jerez', 'Cádiz', '654654654', 1),
 (39, '6038f56999690', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-02-26 16:47:15', '[CUSTOMER]', '', 'es', 'Antonio', 'Gomez', 'elarahal.1972@gmail.com', '', '', '', '', '897987987', 1),
@@ -570,13 +504,6 @@ ALTER TABLE `articles`
 -- Indices de la tabla `blocks`
 --
 ALTER TABLE `blocks`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indices de la tabla `block_borrar`
---
-ALTER TABLE `block_borrar`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
@@ -607,12 +534,6 @@ ALTER TABLE `cites`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indices de la tabla `content_borrar`
---
-ALTER TABLE `content_borrar`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `faq`
 --
 ALTER TABLE `faq`
@@ -634,12 +555,6 @@ ALTER TABLE `pages`
 -- Indices de la tabla `professionals`
 --
 ALTER TABLE `professionals`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `publi_borrar`
---
-ALTER TABLE `publi_borrar`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -695,13 +610,7 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT de la tabla `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT de la tabla `block_borrar`
---
-ALTER TABLE `block_borrar`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `budgets`
@@ -728,12 +637,6 @@ ALTER TABLE `cites`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `content_borrar`
---
-ALTER TABLE `content_borrar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `faq`
 --
 ALTER TABLE `faq`
@@ -749,19 +652,13 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT de la tabla `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `professionals`
 --
 ALTER TABLE `professionals`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `publi_borrar`
---
-ALTER TABLE `publi_borrar`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `register`

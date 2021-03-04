@@ -17,6 +17,7 @@ $texts = array(
   'mn_Cites' => "Mis citas",
   'mn_AboutUs' => "Sobre Nosotros",
   'mn_budget' => "Presupuestos",
+  'mn_Profile' => "Mi Perfil",
   // Block
   'Bl_About' => "Sobre nosotros",
   'Bl_Login' => "Iniciar Sesión",
@@ -45,6 +46,10 @@ $texts = array(
   'blog-section-title' => "Novedades",
   'blog-section-subtitle' => "Accede a las últimas noticias",
   'blog-section-text' => "Publicamos las noticias más interesantes relacionadas con la salud dental",
+  // Profile section
+  'profile-section-title' => "Página de Perfil",
+  'profile-section-subtitle' => "Actualiza tus datos de perfil",
+  'profile-section-text' => "Confirma tus datos o actualízalos para poder mantener el contacto contigo",
   // Faq section
   'faq-section-title' => "Preguntas Más Frecuentes",
   'faq-section-subtitle' => "Obtenga una respuesta rápida a las preguntas más usuales",
@@ -66,6 +71,7 @@ $texts = array(
   'schedule-section-subtitle' => "Citas",
   'schedule-section-text' => "Te ofrecemos un sistema para solicitar y gestionar todas tus citas de manera rápida y sencilla.",
   'schedule-section-hour' => "Horario",
+  'schedule-section-login' => "Acceda a la página de login para iniciar sesión",
   // Client section
   'budget-client-title' => "Cliente",
   'budget-client-subtitle' => "Presupuesto",
@@ -173,9 +179,12 @@ $texts = array(
   // Error Messages
   'err_NotAutenticates' => "Usuario no registrado",
   'err_UpdateInfo' => "Fallo al actualizar los datos",
+  'err_RecoveryInfo' => "Fallo al recuperar los datos",
   'err_MissingData' => "Faltan datos por cumplimentar",
   'err_RepeatData' => "Datos repetidos, el email y el nick deben ser únicos",
   'err_RepeatEmail' => "El email ya se encuentra registrado en nuestros sistemas",
+  'err_NothingUpdate' => "Nada que actualizar",
+  'ok_Update' => "Datos actualizados correctamente",
   // Labels
   'date_Published' => "Fecha de publicación",
   'lbl_chat' => "Contacta con la clínica",

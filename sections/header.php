@@ -48,10 +48,10 @@
                   <?php endif; ?>
                 </li>
                 <li class="nav-item">
-                  <button onclick="window.location.href='<?=$_SERVER['PHP_SELF']?>?lang=es'" class="es-button" > &nbsp; </button>
+                  <button onclick="window.location.href='<?= $_SERVER['PHP_SELF'] ?>?lang=es'" class="es-button"> &nbsp; </button>
                 </li>
                 <li class="nav-item">
-                <button onclick="window.location.href='<?=$_SERVER['PHP_SELF']?>?lang=en'" class="en-button" > &nbsp; </button>
+                  <button onclick="window.location.href='<?= $_SERVER['PHP_SELF'] ?>?lang=en'" class="en-button"> &nbsp; </button>
                 </li>
               </ul>
             </div>
@@ -107,11 +107,12 @@
                         <?= $_SESSION['firstname'] ?>
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        
+
                         <?php if (isset($_SESSION["roles"]) && $_SESSION["roles"] == "[ADMIN-USER]") : ?>
                           <li><a class="dropdown-item" href="admin.php"><?= __('mn_Admin', $lang) ?></a></li>
                           <li><a class="dropdown-item" href="budget.php"><?= __('mn_budget', $lang) ?></a></li>
-                        <?php else: ?>
+                        <?php else : ?>
+                          <li><a class="dropdown-item" href="profile.php"><?= __('mn_Profile', $lang) ?></a></li>
                           <li><a class="dropdown-item" href="cites.php"><?= __('mn_Cites', $lang) ?></a></li>
                         <?php endif; ?>
                         <li>
@@ -131,4 +132,3 @@
   </div>
 </header>
 <!-- ========================= header end ========================= -->
-

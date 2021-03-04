@@ -17,6 +17,7 @@ $texts = array(
   'mn_Cites' => "My Cites",
   'mn_AboutUs' => "About us",
   'mn_budget' => "budgets",
+  'mn_Profile' => "Profile",
   // Block
   'Bl_About' => "About us",
   'Bl_Login' => "Login",
@@ -45,6 +46,10 @@ $texts = array(
   'blog-section-title' => "News",
   'blog-section-subtitle' => "Watch the latest news",
   'blog-section-text' => "We publish the most interesting news related to dental health",
+  // Profile section
+  'profile-section-title' => "Profile Page",
+  'profile-section-subtitle' => "Update your profile data",
+  'profile-section-text' => "Confirm your details or update them to keep in touch with you",
   // Faq section
   'faq-section-title' => "Frequently Asked Questions",
   'faq-section-subtitle' => "Get all the answers there if you want",
@@ -66,6 +71,7 @@ $texts = array(
   'schedule-section-subtitle' => "Cites",
   'schedule-section-text' => "We offer you a system to request and manage all your appointments quickly and easily.",
   'schedule-section-hour' => "Time",
+  'schedule-section-login' => "Access the login page to login",
   // Client section
   'budget-client-title' => "Client",
   'budget-client-subtitle' => "Budget",
@@ -173,9 +179,12 @@ $texts = array(
   // Error Messages
   'err_NotAutenticates' => "Unregistered user",
   'err_UpdateInfo' => "Failure updating data",
+  'err_RecoveryInfo' => "Failed to retrieve data",
   'err_MissingData' => "missing data, need to complete it",
   'err_RepeatData' => "Repeat data, email and nick must be unique",
   'err_RepeatEmail' => "The email is already registered in our systems",
+  'err_NothingUpdate' => "Nothing for Update",
+  'ok_Update' => "Update Ok",
   // Labels
   'date_Published' => "Date published",
   'lbl_chat' => "Contact the clinic",

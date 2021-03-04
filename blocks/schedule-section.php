@@ -108,8 +108,15 @@ else :
               </div>
             </div>
           <?php else : ?>
-
             <!-- invitar a loguearse/registrarse -->
+            <div class="col-xl-10 col-lg-11 mx-auto">
+              <div class="about-content text-center mb-55">
+
+                <p class="mb-35 wow fadeInUp" data-wow-delay=".6s"><?= __('schedule-section-login', $lang) ?></p>
+                <a href="login.php" class="btn theme-btn wow fadeInUp" data-wow-delay=".8s"><?= __('mn_Login', $lang) ?></a>
+              </div>
+            </div>
+
 
           <?php endif; ?>
         </div>
