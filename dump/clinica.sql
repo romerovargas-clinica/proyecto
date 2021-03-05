@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2021 a las 19:38:59
+-- Tiempo de generación: 05-03-2021 a las 10:31:07
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -209,7 +209,7 @@ CREATE TABLE `faq` (
 
 INSERT INTO `faq` (`id`, `question`, `response`, `enabled`) VALUES
 (1, '¿Dónde se encuentra la clínica?', 'Nuestra ubicación es C/ XXXX, nº XX de la localidad de El Puerto de Santa María. En la parte inferior de la página podrás ver un mapa con la localización exacta.', 1),
-(2, 'Se aceptan pacientes de mutuas y sanidad privada', 'Por supuesto. En la actualidad mantenemos convenios con ASISA, ADESLAS y SANITAS para la atención preferencial de sus afiliados en nuestra clínica', 1),
+(2, '¿Se aceptan pacientes de mutuas y sanidad privada?', 'Por supuesto. En la actualidad mantenemos convenios con ASISA, ADESLAS y SANITAS para la atención preferencial de sus afiliados en nuestra clínica', 1),
 (3, '¿Participan en el programa de salud dental infantil?', 'Los niños hasta 9 años que se acojan al plan de salud dental infantil aprobado por la Junta de Andalucía tendrán asistencia gratuita en odontología y odontopediatría.', 1);
 
 -- --------------------------------------------------------
@@ -231,15 +231,10 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `name`, `src`, `alt`, `dir`) VALUES
-(8, 'diente', 'aboutUsImage1.png', 'diente', 'uploads'),
-(754, 'autobus', 'compartecoche.png', 'autobus', 'uploads'),
 (755, 'Director', 'juanjuanjuan.jpg', 'director', 'uploads'),
-(758, 'YOYO', '1579004124255489.jpg', 'hitler', 'uploads'),
-(759, 'Nueva Imagen', '40674904142_5c0c3c8676_o64.jpg', 'Perro', 'uploads'),
-(760, 'Fuente', 'fuente2100.gif', 'Fuente', 'uploads'),
 (761, 'Juan Jesus Bernal Garcia', 'team-152.png', 'Juan Jesus', NULL),
 (762, 'Ana Bernal García', 'team-2100.png', 'Ana Bernal', NULL),
-(763, 'David', 'testimonial-125.png', '', NULL),
+(763, 'David', 'testimonial-125.png', 'David', NULL),
 (764, 'Doctor Pedro Sánchez', 'team-363.png', 'Pedro Sanchez', NULL),
 (765, 'Dra. Isabel Muñoz', 'team-413.png', 'Isabel Muñoz', NULL),
 (766, 'Personas Anónimas 1', 'testimonial-286.png', 'anonimo', NULL),
@@ -413,7 +408,8 @@ INSERT INTO `treatmentscategories` (`id`, `name`, `info`, `image`) VALUES
 (2, 'Estética', 'La Estética Dental es la especialidad de la Odontología que se encarga de mejorar la apariencia de la boca para que tenga un aspecto más armónico y saludable. Para ello, ponemos a disposición de nuestros pacientes los tratamientos de carillas, blanqueamiento y coronas de zirconio.', 'estetica.jpg'),
 (3, 'Ortodoncia', 'La ortodoncia es una especialidad de la odontología que estudia, previene y corrige las alteraciones del desarrollo, las formas de las arcadas dentarias y la posición de los maxilares, con el objetivo de restablecer el equilibrio tanto en forma como en función de la boca y de la cara, mejorando también la estética', 'ortodoncia.jpg'),
 (4, 'Cirugía', 'La cirugía bucal es un campo amplio que abarca diferentes tipos de tratamientos. Sin embargo, las técnicas que se llevan a cabo para realizar las intervenciones quirúrgicas son muy similares: requieren anestesia y abordar el procedimiento desde una pequeña incisión en la encía.', 'cirugia.jpg'),
-(5, 'Odontopediatría', 'Aunque tu hijo/a no presente problemas de salud oral, es recomendable que acudas con él al odontopediatra cuando cumpla su primer año. De esta manera, el profesional podrá detectar posibles patologías que compremeterían su desarrollo más adelante.', 'odontopediatria.jpeg');
+(5, 'Odontopediatría', 'Aunque tu hijo/a no presente problemas de salud oral, es recomendable que acudas con él al odontopediatra cuando cumpla su primer año. De esta manera, el profesional podrá detectar posibles patologías que compremeterían su desarrollo más adelante.', 'odontopediatria.jpeg'),
+(6, 'sdfsdf', '1579004124255489.jpg', 'sdfsdf');
 
 -- --------------------------------------------------------
 
@@ -448,8 +444,8 @@ INSERT INTO `treatmentsinterventions` (`id`, `name`, `categorie`, `duration`, `p
 (10, 'Extracción de cordales', 4, 40, 15.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolorhenderit ind est laborum', 'Extraccion_cordales8.png'),
 (11, 'Regeneración oseas', 4, 50, 60.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu laborum', 'Regeneracion_osea20.png'),
 (12, 'Pulpotomía ', 5, 35, 40.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate um', 'Pulpotomia81.png'),
-(13, 'Mantenedores de espacioo', 5, 40, 90.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit iid est laborum', 'mantenedores_espacio79.png'),
-(29, 'Estudio', 5, 30, 30.00, 'Analizamos el crecimiento y formación dentaria de niños menores de 16 años, elaborando un exhaustivo informe sobre el estado y las incidencias con mayor probabilidad ', NULL);
+(13, 'Mantenedores de espacio', 5, 40, 90.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit iid est laborum', 'mantenedores_espacio79.png'),
+(29, 'Estudio', 5, 30, 30.00, 'Analizamos el crecimiento y formación dentaria de niños menores de 16 años, elaborando un exhaustivo informe sobre el estado y las incidencias con mayor probabilidad ', 'Pulpotomia81.png');
 
 -- --------------------------------------------------------
 
@@ -482,7 +478,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `confirmKey`, `pass`, `last_login`, `roles`, `auth_key`, `lang`, `firstname`, `lastname`, `email`, `address`, `postalcode`, `city`, `province`, `phone`, `enabled`) VALUES
-(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-03-03 20:51:46', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
+(2, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '2021-03-05 08:55:34', '[ADMIN-USER]', '', 'es', 'admin', 'admin', 'admin@sonriseclinic.es', '', '', '', '', '', 1),
 (3, 'david', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-03-04 18:05:43', '[CUSTOMER]', '', 'es', 'Antonio David', 'Bermúdez Moreno', 'davidbermudezmoreno@fp.iesromerovargas.com', 'C/ Real, 46', '11406', 'Jerez de la Frontera', 'Cádiz', '987987987', 1),
 (4, 'cintia', '', '81dc9bdb52d04dc20036dbd8313ed055', '2021-03-03 19:50:35', '[AUTHOR]', '', 'es', 'Cintia probando', 'Cabrera Gamaza', 'cintiacabreragamaza@fp.iesromerovargas.com', '', '', '', '', '', 1),
 (38, '60362cdb001c6', '', '81dc9bdb52d04dc20036dbd8313ed055', NULL, '[CUSTOMER]', NULL, 'es', 'David', 'Bermudez', 'davidbermudez@jerez.es', 'Calle Parque de Doñana', '11400', 'Jerez', 'Cádiz', '654654654', 1),
@@ -640,7 +636,7 @@ ALTER TABLE `cites`
 -- AUTO_INCREMENT de la tabla `faq`
 --
 ALTER TABLE `faq`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `images`
@@ -682,13 +678,13 @@ ALTER TABLE `testimonial`
 -- AUTO_INCREMENT de la tabla `treatmentscategories`
 --
 ALTER TABLE `treatmentscategories`
-  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `treatmentsinterventions`
 --
 ALTER TABLE `treatmentsinterventions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
