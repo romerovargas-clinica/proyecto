@@ -5,7 +5,7 @@ $error = "";
 if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
     $id = $_POST['inputId'];
-    $db->delete("treatmentsinterventions" ,"id = $id");
+    $db->delete("treatmentsinterventions", "id = $id");
     unset($_GET['edit']);
   endif;
   // Campos Obligatorios
@@ -30,18 +30,15 @@ endif;
 
 //añadir
 if (isset($_POST['InputNew'])) :
-  $name = $_POST['inputName'];
-  $categorie = $_POST['inputCategorie'];
-  $imageFile = $_POST['inputImageFile'];
-  $info = $_POST['inputInfo'];
-  $duration = $_POST['inputDuration'];
-  $price = $_POST['inputPrice'];
-
-  $db->send("INSERT INTO `treatmentsinterventions` ( `name`, `categorie`, `duration`, `price`, `info`, `image`) VALUES
-  ( '$name', $categorie, $duration, $price, '$info', '$imageFile');");
+  $anarray = array();
+  $anarray["name"] = $_POST['inputName'];
+  $anarray["categorie"] = $_POST['inputCategorie'];
+  $anarray["image"] = $_POST['inputImageFile'];
+  $anarray["info"] = $_POST['inputInfo'];
+  $anarray["duration"] = $_POST['inputDuration'];
+  $anarray["Price"] = $_POST['inputPrice'];
+  $db->insert("treatmentsinterventions", $anarray);
 endif;
-
-
 
 // SQL for ForeignKey table
 $categories = $db->send("SELECT name FROM treatmentscategories;");
@@ -123,6 +120,7 @@ if (isset($_GET['AddNew'])) : ?>
           <input type="text" class="form-control form-control-sm" name="inputName" id="inputName" required>
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputCategorie" class="col-sm-2 col-form-label"><?= __('frm_Categorie', $lang) ?></label>
         <div class="col-sm-6">
@@ -136,26 +134,30 @@ if (isset($_GET['AddNew'])) : ?>
           </select>
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputImage" class="col-sm-2 col-form-label"><?= __('frm_Image', $lang) ?></label>
         <div class="col-sm-6">
           <div class="card-img-top"><img src="images/blank.png" class="crop rounded d-block" alt="" height="50" onclick="changeImg();" id="img_base"></div>
-          <input type="hidden" name="inputImageFile" value="" id="img_file">
-          <input type="hidden" name="inputImageDir" value="" id="img_dir">
+          <input type="hidden" name="inputImageFile" value="" id="inputImageFile">
+          <input type="hidden" name="inputImageDir" value="" id="inputImageDir">
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputInfo" class="col-sm-2 col-form-label"><?= __('frm_Desc', $lang) ?></label>
         <div class="col-sm-6">
           <input type="text" class="form-control form-control-sm" name="inputInfo" id="inputInfo" required>
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputDuration" class="col-sm-2 col-form-label"><?= __('frm_Duration', $lang) ?></label>
         <div class="col-sm-6">
           <input type="number" class="form-control form-control-sm" name="inputDuration" id="inputDuration" min="0" required>
         </div>
       </div>
+
       <div class="mb-6 row">
         <label for="inputPrice" class="col-sm-2 col-form-label"><?= __('frm_Price', $lang) ?></label>
         <div class="col-sm-6">

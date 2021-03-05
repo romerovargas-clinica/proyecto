@@ -5,7 +5,7 @@ $error = "";
 if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
     $id = $_POST['inputId'];
-    $db->delete("treatmentsCategories" ,"id = $id");
+    $db->delete("treatmentsCategories", "id = $id");
     unset($_GET['edit']);
   endif;
   // Campos Obligatorios
@@ -28,13 +28,13 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   endif;
 endif;
 //añadir
-if (isset($_POST['InputNew'])) :
-  $name = $_POST['inputName'];
-  $imageFile = $_POST['inputImageFile'];
-  $info = $_POST['inputInfo'];
 
-  $db->send("INSERT INTO `treatmentscategories` (`name`, `info`, `image`) VALUES
-    ('$name', '$imageFile', '$info');");
+if (isset($_POST['InputNew'])) :
+  $anarray = array();
+  $anarray["name"] = $_POST['inputName'];
+  $anarray["image"] = $_POST['inputImageFile'];
+  $anarray["info"] = $_POST['inputInfo'];
+  $db->insert("treatmentscategories", $anarray);
 endif;
 ?>
 
