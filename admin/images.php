@@ -6,19 +6,24 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
     $id = $_POST['inputId'];
     $imageDeleteName = $db->send("SELECT src FROM images where id = $id");
     $imageDeleteName = $imageDeleteName[0][0];
-    echo $imageDeleteName;
+
     $anarray = array();
     $anarray["image"] = 'no_image.png';
-    
+
     $db->update("articles", $anarray, "image = '$imageDeleteName'");
+
     $db->update("treatmentscategories", $anarray, "image = '$imageDeleteName'");
+
     $db->update("treatmentsinterventions", $anarray, "image = '$imageDeleteName'");
+
     $db->update("professionals", $anarray, "image = '$imageDeleteName'");
+
     $db->update("testimonial", $anarray, "image = '$imageDeleteName'");
 
-    $db->delete("images" ,"id = $id");
+
+    $db->delete("images", "id = $id");
     unset($_GET['edit']);
-    unlink('images/uploads/'.$imageDeleteName);
+    unlink('images/uploads/' . $imageDeleteName);
 
   endif;
   // Campos Obligatorios

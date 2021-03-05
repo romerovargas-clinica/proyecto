@@ -44,7 +44,7 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
       <li class="nav-item text-nowrap">
         <a class="nav-link mx-3" href="#"><?= $_SESSION['name'] ?></a>
       </li>
-      
+
       <li class="nav-item text-nowrap">
         <a class="nav-link" href="logout.php"><?= __('mn_Logout', $lang) ?></a>
       </li>
@@ -123,6 +123,12 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
                 <?= __('sect_opinions', $lang) ?>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link<?= $adm_pag == 'faq' ? ' active' : '' ?>" href="admin.php?section=faq">
+                <span data-feather="help-circle"></span>
+                <?= __('sect_Faq', $lang) ?>
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -176,6 +182,10 @@ $urlsite = $param[1]['value']; // value of urlsite in settings table
           case ("cites"):
             $sectTitle = __('mn_Meeting', $lang);
             include "admin/cites.php";
+            break;
+          case ("faq"):
+            $sectTitle = __('sect_Faq', $lang);
+            include "admin/faq.php";
             break;
         endswitch;
         ?>
