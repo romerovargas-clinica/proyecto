@@ -15,6 +15,7 @@ if (isAuthenticated()) header("location:index.php");
 $PG_NAME = "Login";
 $tt_name_int = "Bl_Login";
 $nav_style = "alt";
+$loginFailedMessage = "err_NotAutenticates";
 // Procesado de formulario //
 if (isset($_POST['frmInputEmail'])) :
   if (isset($_POST['frmInputRemember']) && $_POST['frmInputRemember'] == 1) :
@@ -32,7 +33,7 @@ if (isset($_POST['frmInputEmail'])) :
     header("location:index.php");
   } else {
     $mensaje = $loginFailedMessage;
-    $name = $_POST['name'];
+    //$name = $_POST['name'];
   }
 endif;
 ?>

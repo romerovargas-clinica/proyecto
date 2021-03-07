@@ -28,7 +28,7 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
     $anarray["degree"] = $degree;
     $anarray["job"] = $job;
     $anarray["enabled"] = $enable;
-    $recordset = $db->update("professionals", $anarray, "id = " . $id,);
+    $recordset = $db->update("professionals", $anarray, "id = " . $id);
   endif;
 endif;
 

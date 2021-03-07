@@ -47,24 +47,26 @@ endif;
 <?php require "sections/head.php"; ?>
 
 <body>
-  <!-- ========================= preloader start ========================= -->
-  <div class="preloader">
-    <div class="loader">
-      <div class="ytp-spinner">
-        <div class="ytp-spinner-container">
-          <div class="ytp-spinner-rotator">
-            <div class="ytp-spinner-left">
-              <div class="ytp-spinner-circle"></div>
-            </div>
-            <div class="ytp-spinner-right">
-              <div class="ytp-spinner-circle"></div>
+  <?php if (!isset($_GET['new'])) : ?>
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="ytp-spinner">
+          <div class="ytp-spinner-container">
+            <div class="ytp-spinner-rotator">
+              <div class="ytp-spinner-left">
+                <div class="ytp-spinner-circle"></div>
+              </div>
+              <div class="ytp-spinner-right">
+                <div class="ytp-spinner-circle"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- preloader end -->
+    <!-- preloader end -->
+  <?php endif ?>
   <?php
   include "sections/header.php";
   include "includes/blocks.php";
