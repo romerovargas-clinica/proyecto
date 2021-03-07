@@ -42,6 +42,10 @@ $texts = array(
   'team-section-title' => "El Equipo",
   'team-section-subtitle' => "Conoce a nuestros profesionales",
   'team-section-text' => "Te presentamos a todos nuestros profesionales. Pulsa sobre él o ella conocer más datos",
+  // Team member section
+  'team-member-section-title' => "El Equipo",
+  'team-member-section-subtitle' => "Conoce a nuestros profesionales",
+  'team-member-section-text' => "Te presentamos a todos nuestros profesionales. Pulsa sobre él o ella conocer más datos",
   // Blog section
   'blog-section-title' => "Novedades",
   'blog-section-subtitle' => "Accede a las últimas noticias",

@@ -1814,7 +1814,7 @@ p {
     left: 0;
     z-index: -1;
     border-radius: 20px;
-    background: url(../img/service/service-1.png);
+    background: url(../../images/specialities/odontopediatria.jpeg);
     opacity: 0;
     visibility: hidden;
     -webkit-transform: scale(.9);

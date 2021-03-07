@@ -42,6 +42,10 @@ $texts = array(
   'team-section-title' => "Team",
   'team-section-subtitle' => "Meet Our Doctors",
   'team-section-text' => "We introduce you to all our professionals. Click on him or her to learn more information",
+  // Team member section
+  'team-member-section-title' => "Team",
+  'team-member-section-subtitle' => "Meet Our Doctors",
+  'team-member-section-text' => "We introduce you to all our professionals. Click on him or her to learn more information",
   // Blog section
   'blog-section-title' => "News",
   'blog-section-subtitle' => "Watch the latest news",

@@ -80,7 +80,7 @@ $isEnable[1] = "Case_Enable";
                 <th><?= __('frm_Occupation', $lang) ?></th>
                 <th><?= __('frm_Image', $lang) ?></th>
                 <th><?= __('frm_Comment', $lang) ?></th>
-                <th><?= __('frm_Enabled', $lang) ?></th>
+                <th><?= __('frm_Enable', $lang) ?></th>
 
             </tr>
         </thead>
