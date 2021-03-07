@@ -5,7 +5,7 @@ $error = "";
 if (isset($_POST['inputName']) && isset($_GET['edit'])) :
   if (isset($_POST['inputDelete']) && $_POST['inputDelete'] == 1) :
     $id = $_POST['inputId'];
-    $db->delete("treatmentsCategories", "id = $id");
+    $db->delete("treatmentscategories", "id = $id");
     unset($_GET['edit']);
   endif;
   // Campos Obligatorios
@@ -19,7 +19,7 @@ if (isset($_POST['inputName']) && isset($_GET['edit'])) :
     $anarray["name"] = $name;
     $anarray["image"] = $imageFile;
     $anarray["info"] = $info;
-    $recordset = $db->update("treatmentsCategories", $anarray, "id = " . $id);
+    $recordset = $db->update("treatmentscategories", $anarray, "id = " . $id);
     if (!$recordset) :
       $error = __('err_UpdateInfo', $lang);
     endif;
@@ -138,7 +138,7 @@ if (isset($_GET['edit'])) :
     $fields[0]["info"] = $info;
 
   else :
-    $fields = $db->send("SELECT * FROM treatmentsCategories WHERE id = " . $_GET['edit']);
+    $fields = $db->send("SELECT * FROM treatmentscategories WHERE id = " . $_GET['edit']);
   endif;
 ?>
   <a name="form"></a>
