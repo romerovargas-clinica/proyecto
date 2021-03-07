@@ -94,7 +94,7 @@ endif;
         <th id="subtitle"><?= __('frm_Subtitle', $lang) ?></th>
         <th><?= __('date_Published', $lang) ?></th>
         <th><?= __('frm_Text', $lang) ?></th>
-        <th><?= __('frm_Enabled', $lang) ?></th>
+        <th><?= __('frm_Enable', $lang) ?></th>
       </tr>
     </thead>
     <tbody>

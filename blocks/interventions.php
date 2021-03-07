@@ -30,8 +30,8 @@ $categories = $db->send("SELECT * FROM treatmentscategories WHERE id = $categori
             $interventions = $ndb->select('treatmentsinterventions', "categorie = " . $categorie);
             $collapsed = array("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Teen");
             $cont = 0;
-            ?>
-            <?php foreach ($interventions as $intervention) : ?>
+            if($interventions):
+            foreach ($interventions as $intervention) : ?>
               <div class="faq-item mb-20">
                 <div id="heading<?= $collapsed[$cont] ?>">
                   <h5 class="mb-0">
@@ -63,7 +63,8 @@ $categories = $db->send("SELECT * FROM treatmentscategories WHERE id = $categori
                 </div>
               </div>
               <?php $cont++ ?>
-            <?php endforeach; ?>
+            <?php endforeach; 
+            endif;?>
           </div>
         </div>
       </div>
