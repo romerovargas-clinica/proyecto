@@ -28,12 +28,7 @@ El desarrollo del proyecto está enfocado en 3 tareas fundamentales para el desa
 - Tareas de DESPLIEGUE y MANTENIMIENTO. 
 
   - Configuración del hosting y publicación del sitio web en la Internet.
-  - Capacitación, soporte y garantía de funcionamiento.
-  - Asistencia técnica y mantenimiento durante 6 meses (max. 5 horas semanales) que incluye:
-  - Mantenimiento de contenidos y novedades del sitio web
-  - Inserción de imágenes, iconografía y piezas publicitarias 
   - Posicionamiento del sitio web y manejo de SEO (Search Engine Optimization).
-  - Pasados los 6 meses posteriores a la entrega del producto, el servicio de mantenimiento tendrá un coste adicional que se incluye como opcional en el apartado económico.
 
 ### INSTALACIÓN
 
